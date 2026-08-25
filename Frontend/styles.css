@@ -265,6 +265,15 @@ backdrop-filter: blur(20px) saturate(160%);
   z-index: 99990;
 }
 
+.navbar.navbar--scrolled .nav-logo-img {
+  filter: brightness(0) saturate(100%)
+          invert(23%)
+          sepia(18%)
+          saturate(1800%)
+          hue-rotate(249deg)
+          brightness(83%)
+          contrast(94%);
+}
 
 /* -----------------------------------------
    NAVIGATION COLORS WHEN STICKY

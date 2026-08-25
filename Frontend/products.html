@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Remify: Sea Moss Gel</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+
+<!-- =========================================
+     REMIFY SCROLL PROGRESS
+     ========================================= -->
+
+<div class="scroll-progress" aria-hidden="true">
+  <div class="scroll-progress-fill" id="scrollFill"></div>
+</div>
+
+
+<!-- =========================================
+     REMIFY CUSTOM CURSOR
+     ========================================= -->
+
+<canvas
+  class="cursor-trail"
+  id="cursorTrail"
+  aria-hidden="true"
+></canvas>
+
+<div
+  class="cursor-spark"
+  id="cursorSpark"
+  aria-hidden="true"
+>
+  <span></span>
+</div>
+
+
+  <!-- =========================================
+       PRODUCT NAVBAR
+       ========================================= -->
+
+  <header
+    class="product-navbar"
+    id="productNavbar"
+  >
+
+    <div class="product-navbar-inner">
+
+      <!-- BACK -->
+      <a
+        href="index.html#productShowcase"
+        class="product-nav-back"
+        aria-label="Go back to products"
+      >
+        <span class="back-arrow">←</span>
+        <span>Back</span>
+      </a>
+
+
+      <!-- RIGHT SIDE -->
+      <div class="product-nav-right">
+
+        <!-- LOGO -->
+        <a
+          href="index.html"
+          class="product-nav-logo"
+          aria-label="Remify home"
+        >
+          <img
+            src="images/rem-logo-mainb.png"
+            alt="Remify"
+          >
+        </a>
+
+
+        <!-- MENU BUTTON -->
+        <button
+          class="product-nav-toggle"
+          id="productNavToggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MOBILE MENU
+         ========================================= -->
+
+    <div
+      class="product-mobile-menu"
+      id="productMobileMenu"
+    >
+
+      <div class="product-mobile-menu-inner">
+
+        <!-- MOBILE MENU HEADER -->
+
+        <div class="mobile-menu-header">
+
+          <a
+            href="index.html"
+            class="mobile-menu-logo"
+            aria-label="Remify home"
+          >
+            <img
+              src="images/rem-logo-mainb.png"
+              alt="Remify"
+            >
+          </a>
+
+
+          <button
+            class="mobile-menu-close"
+            id="mobileMenuClose"
+            type="button"
+            aria-label="Close navigation"
+          >
+            <span></span>
+            <span></span>
+          </button>
+
+        </div>
+
+
+        <!-- MOBILE LINKS -->
+
+        <nav class="mobile-menu-links">
+
+          <a href="index.html#productShowcase">
+            <span>Product</span>
+            <span>↗</span>
+          </a>
+
+          <a href="#ourStory">
+            <span>Our Story</span>
+            <span>↗</span>
+          </a>
+
+          <a href="#contact">
+            <span>Contact</span>
+            <span>↗</span>
+          </a>
+
+        </nav>
+
+
+        <!-- MOBILE FOOTER TEXT -->
+
+        <div class="mobile-menu-footer">
+
+          <p>
+            Fresh. Natural. Made with intention.
+          </p>
+
+          <span>
+            REMIFY © 2026
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+
+  <!-- =========================================
+       PRODUCT PAGE
+       ========================================= -->
+
+<main id="productPage">
+
+  <!-- =========================================
+       PRODUCT HERO
+       ========================================= -->
+
+  <section
+    class="product-hero"
+    id="productHero"
+  >
+
+    <div class="product-hero-inner">
+
+      <!-- =====================================
+           PRODUCT IMAGE
+           ===================================== -->
+
+      <div class="product-visual">
+
+        <div class="product-visual-glow"></div>
+
+        <div class="product-image-wrap">
+
+          <img
+            id="productImage"
+            src=""
+            alt=""
+          >
+
+        </div>
+
+        <div class="product-visual-index">
+          <span>01</span>
+          <span>PRODUCT</span>
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           PRODUCT INFORMATION
+           ===================================== -->
+
+      <div class="product-information">
+
+        <!-- BRAND -->
+        <div class="product-brand-mark">
+
+          <span class="brand-word">
+            remify
+          </span>
+
+          <span class="brand-dot"></span>
+
+        </div>
+
+
+        <!-- PRODUCT NAME -->
+        <div class="product-heading">
+
+          <p
+            class="product-eyebrow"
+            id="productCategory"
+          >
+            WELLNESS / DAILY ESSENTIAL
+          </p>
+
+          <h1 id="productName">
+            —
+          </h1>
+
+          <p
+            class="product-tagline"
+            id="productTagline"
+          >
+            —
+          </p>
+
+        </div>
+
+
+        <!-- SIZE -->
+        <div class="product-size-row">
+
+          <span>SIZE</span>
+
+          <strong id="productSize">
+            —
+          </strong>
+
+        </div>
+
+
+        <!-- QUANTITY -->
+        <div class="product-purchase">
+
+          <div class="quantity-block">
+
+            <span class="quantity-label">
+              QUANTITY
+            </span>
+
+            <div class="quantity-control">
+
+              <button
+                type="button"
+                class="quantity-btn"
+                id="quantityMinus"
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+
+              <span
+                id="quantityValue"
+                class="quantity-value"
+              >
+                1
+              </span>
+
+              <button
+                type="button"
+                class="quantity-btn"
+                id="quantityPlus"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- PRICE -->
+
+          <div class="product-price">
+
+            <span
+              class="price-label"
+              id="priceCurrency"
+            >
+              KES
+            </span>
+
+            <strong id="productPrice">
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="product-description">
+
+          <p id="productDescription">
+            —
+          </p>
+
+        </div>
+
+
+        <!-- CHECKOUT -->
+
+        <div class="product-checkout">
+
+          <a
+            href="#"
+            id="checkoutButton"
+            class="checkout-button"
+          >
+
+            <span>
+              Proceed to checkout
+            </span>
+
+            <span class="checkout-arrow">
+              ↗
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <!-- SMALL PURCHASE NOTE -->
+
+        <div class="product-purchase-note">
+
+          <span class="purchase-note-dot"></span>
+
+          <span id="availabilityText">
+            Available to order
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+     REMIFY PRODUCT DETAILS
+     ========================================= -->
+
+<section
+  class="product-details"
+  id="productDetails"
+  aria-labelledby="productDetailsTitle"
+>
+
+  <div class="product-details-inner">
+
+    <!-- =====================================
+         INTRO
+         ===================================== -->
+
+    <header class="product-details-intro reveal">
+
+      <div class="product-details-kicker">
+        <span class="product-details-kicker-line"></span>
+        <span>Know your product</span>
+      </div>
+
+      <div class="product-details-heading">
+
+        <h2 id="productDetailsTitle">
+          Everything that goes
+          <span>into Remify.</span>
+        </h2>
+
+        <p>
+          A closer look at what makes this product
+          simple, natural and intentional.
+        </p>
+
+      </div>
+
+    </header>
+
+
+    <!-- =====================================
+         DETAILS GRID
+         ===================================== -->
+
+    <div class="product-details-grid">
+
+
+      <!-- ===================================
+           INGREDIENTS
+           =================================== -->
+
+      <article
+        class="product-detail-card product-detail-card--ingredients reveal"
+        data-detail-card="ingredients"
+      >
+
+        <div class="product-detail-card-header">
+
+          <div class="product-detail-card-index">
+            01
+          </div>
+
+          <div>
+            <span class="product-detail-card-eyebrow">
+              What's inside
+            </span>
+
+            <h3>
+              Ingredients
+            </h3>
+          </div>
+
+        </div>
+
+
+        <div
+          class="product-ingredients"
+          id="productIngredients"
+        ></div>
+
+      </article>
+
+
+      <!-- ===================================
+           BENEFITS
+           =================================== -->
+
+      <article
+        class="product-detail-card product-detail-card--benefits reveal"
+        data-detail-card="benefits"
+      >
+
+        <div class="product-detail-card-header">
+
+          <div class="product-detail-card-index">
+            02
+          </div>
+
+          <div>
+            <span class="product-detail-card-eyebrow">
+              Why it matters
+            </span>
+
+            <h3>
+              Benefits
+            </h3>
+          </div>
+
+        </div>
+
+
+        <div
+          class="product-benefits"
+          id="productBenefits"
+        ></div>
+
+      </article>
+
+
+      <!-- ===================================
+           USAGE
+           =================================== -->
+
+      <article
+        class="product-detail-card product-detail-card--usage reveal"
+        data-detail-card="usage"
+      >
+
+        <div class="product-detail-card-header">
+
+          <div class="product-detail-card-index">
+            03
+          </div>
+
+          <div>
+            <span class="product-detail-card-eyebrow">
+              Everyday ritual
+            </span>
+
+            <h3>
+              How to use
+            </h3>
+          </div>
+
+        </div>
+
+
+        <div class="product-usage" id="productUsage">
+
+          <div
+            class="product-usage-copy"
+            id="productUsageText"
+          ></div>
+
+          <div
+            class="product-usage-tags"
+            id="productUsageTags"
+          ></div>
+
+        </div>
+
+      </article>
+
+
+      <!-- ===================================
+           STORAGE / FRESHNESS
+           =================================== -->
+
+      <article
+        class="product-detail-card product-detail-card--freshness reveal"
+        data-detail-card="freshness"
+      >
+
+        <div class="product-detail-card-header">
+
+          <div class="product-detail-card-index">
+            04
+          </div>
+
+          <div>
+            <span class="product-detail-card-eyebrow">
+              Keep it fresh
+            </span>
+
+            <h3>
+              Storage & freshness
+            </h3>
+          </div>
+
+        </div>
+
+
+        <div class="product-freshness">
+
+          <div class="product-freshness-main">
+
+            <span class="product-freshness-label">
+              Shelf life
+            </span>
+
+            <strong
+              id="productShelfLife"
+              class="product-shelf-life"
+            >
+              —
+            </strong>
+
+          </div>
+
+
+          <div
+            class="product-storage"
+            id="productStorage"
+          ></div>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+
+    <!-- =====================================
+         NATURAL PRODUCT NOTE
+         ===================================== -->
+
+    <aside
+      class="product-details-note reveal"
+      id="productNaturalNote"
+    >
+
+      <div class="product-details-note-mark">
+        ✦
+      </div>
+
+      <div class="product-details-note-content">
+
+        <span>
+          A note on nature
+        </span>
+
+        <p id="productNaturalNoteText">
+          Natural products can vary slightly in
+          colour, texture and appearance from one
+          batch to another.
+        </p>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         CLOSING STATEMENT
+         ===================================== -->
+
+    <footer class="product-details-closing reveal">
+
+      <span>
+        Nothing unnecessary.
+      </span>
+
+      <strong>
+        Just what belongs in the jar.
+      </strong>
+
+    </footer>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     REMIFY — FOOTER
+     ========================================================= -->
+
+<footer class="remify-footer">
+    <div class="remify-footer-top-line"></div>
+
+  <!-- Atmospheric background -->
+  <div class="remify-footer-glow remify-footer-glow--one"></div>
+  <div class="remify-footer-glow remify-footer-glow--two"></div>
+
+
+  <div class="remify-footer-container">
+
+
+    <!-- =====================================================
+         TOP FOOTER
+         ===================================================== -->
+
+    <div class="remify-footer-top">
+
+
+      <!-- BRAND -->
+      <div class="remify-footer-brand">
+
+        <a href="/" class="remify-footer-logo">
+          <img
+            src="images/rem-logo-main.png"
+            alt="Remify"
+          >
+        </a>
+
+        <p>
+          Purple sea moss,
+          <br>
+          prepared fresh.
+        </p>
+
+        <a
+          href="mailto:hello@remifyproducts.com"
+          class="remify-footer-email"
+        >
+          hello@remifyproducts.com
+        </a>
+
+      </div>
+
+
+      <!-- NAVIGATION -->
+      <div class="remify-footer-nav">
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            EXPLORE
+          </span>
+
+<a href="products.html?id=sea-moss-gel">
+  Shop Now
+</a>
+
+          <a href="why-remify.html">
+            Why Remify
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            INFORMATION
+          </span>
+
+          <a href="shipping.html">
+            Shipping
+          </a>
+
+          <a href="">
+            FAQs
+          </a>
+
+          <a href="privacy-policy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms.html">
+            Terms & Conditions
+          </a>
+
+        </div>
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            GET IN TOUCH
+          </span>
+
+          <a href="mailto:hello@remifyproducts.com">
+            Email us
+          </a>
+
+          <a href="tel:+254000000000">
+            +254 720 460 145
+          </a>
+
+          <span class="remify-footer-location">
+            Nairobi, Kenya
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DIVIDER
+         ===================================================== -->
+
+    <div class="remify-footer-line"></div>
+
+
+    <!-- =====================================================
+         NEWSLETTER / STATEMENT
+         ===================================================== -->
+
+    <div class="remify-footer-middle">
+
+      <div class="remify-footer-message">
+
+        <span>
+          MADE FRESH.
+        </span>
+
+        <strong>
+          Made with intention.
+        </strong>
+
+      </div>
+
+
+      <a hhref="products.html?id=sea-moss-gel" class="remify-footer-cta">
+
+        <span>
+          Shop Remify
+        </span>
+
+        <i>
+          <svg viewBox="0 0 24 24">
+            <path d="M5 19L19 5"/>
+            <path d="M9 5H19V15"/>
+          </svg>
+        </i>
+
+      </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         GIANT WORDMARK
+         ===================================================== -->
+
+    <div class="remify-giant-wordmark">
+
+      <span>
+        remify
+      </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM BAR
+         ===================================================== -->
+
+    <div class="remify-footer-bottom">
+
+      <span>
+        © 2026 Remify Products
+      </span>
+
+      <span>
+        All rights reserved.
+      </span>
+
+      <span>
+        Nairobi · Kenya
+      </span>
+
+    </div>
+
+
+  </div>
+
+</footer>
+
+
+</main>
+
+
+
+
+  <script src="product.js"></script>
+
+</body>
+</html>
