@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- =========================================
+       BASIC META
+       ========================================= -->
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Discover what makes Remify different."
+  >
+
+  <meta
+    name="theme-color"
+    content="#ffffff"
+  >
+
+  <title>Why Remify, Remify Products</title>
+
+
+  <!-- =========================================
+       GOOGLE FONTS
+       ========================================= -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =========================================
+       AOS
+       ========================================= -->
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+  >
+
+
+  <!-- =========================================
+       PAGE CSS
+       ========================================= -->
+
+  <link
+    rel="stylesheet"
+    href="why.css"
+  >
+    <link rel="stylesheet" href="page-transition.css">
+</head>
+
+
+<body>
+
+  <div class="remify-page-transition" id="remifyPageTransition" aria-hidden="true">
+  <div class="remify-transition-glass"></div>
+  <div class="remify-transition-overlay"></div>
+  <div class="remify-transition-pixels" id="remifyTransitionPixels"></div>
+
+  <div class="remify-transition-word" id="remifyTransitionWord">
+    remify
+  </div>
+</div>
+
+
+  <!-- =================================================
+       CUSTOM SCROLL PROGRESS
+       ================================================= -->
+
+  <div class="scroll-progress">
+    <div
+      class="scroll-progress-fill"
+      id="scrollFill"
+    ></div>
+  </div>
+
+
+  <!-- =================================================
+       CUSTOM CURSOR
+       ================================================= -->
+
+  <canvas
+    class="cursor-trail"
+    id="cursorTrail"
+  ></canvas>
+
+  <div
+    class="cursor-spark"
+    id="cursorSpark"
+    aria-hidden="true"
+  >
+    <span></span>
+  </div>
+
+
+  <!-- =================================================
+       WHY REMIFY HERO
+       ================================================= -->
+
+  <main>
+
+    <section
+      class="why-hero"
+      id="whyHero"
+    >
+
+
+      <!-- =============================================
+           HERO BACKGROUND
+           ============================================= -->
+
+      <div
+        class="why-hero-background"
+        aria-hidden="true"
+      >
+
+        <!-- Desktop image -->
+
+        <img
+          class="why-hero-image why-hero-image--desktop"
+          src="images/why-desk.webp"
+          alt=""
+        >
+
+
+        <!-- Mobile image -->
+
+        <img
+          class="why-hero-image why-hero-image--mobile"
+          src="images/why-phone.webp"
+          alt=""
+        >
+
+
+        <!-- Very subtle atmosphere -->
+
+        <div class="why-hero-vignette"></div>
+
+        <div class="why-hero-grain"></div>
+
+      </div>
+
+
+
+      <!-- =============================================
+           NAVIGATION
+           ============================================= -->
+
+      <header
+        class="why-navbar"
+        id="whyNavbar"
+      >
+
+        <div class="why-navbar-inner">
+
+
+          <!-- LEFT NAV -->
+
+          <nav
+            class="why-nav why-nav--left"
+            aria-label="Primary navigation"
+          >
+
+            <a
+              href="#whyHero"
+              class="why-nav-link is-active"
+            >
+              Why Remify
+            </a>
+
+            <a
+              href="#"
+              class="why-nav-link"
+            >
+              Our Products
+            </a>
+
+          </nav>
+
+
+
+          <!-- CENTER LOGO -->
+
+          <a
+            href="#whyHero"
+            class="why-logo"
+            aria-label="Remify home"
+          >
+
+            <img
+              src="images/rem-logo-mainb.png"
+              alt="Remify"
+            >
+
+          </a>
+
+
+
+          <!-- RIGHT NAV -->
+
+          <nav
+            class="why-nav why-nav--right"
+            aria-label="Secondary navigation"
+          >
+
+            <a
+              href="contact.html"
+              class="why-nav-link"
+            >
+              Contact
+            </a>
+
+            <a
+              href="#"
+              class="why-nav-link"
+            >
+              Shop
+            </a>
+
+          </nav>
+
+
+
+          <!-- MOBILE MENU BUTTON -->
+
+          <button
+            class="why-menu-toggle"
+            id="whyMenuToggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="whyMobileMenu"
+          >
+
+            <span></span>
+            <span></span>
+
+          </button>
+
+        </div>
+
+
+
+        <!-- NAV DIVIDER -->
+
+        <div class="why-navbar-line"></div>
+
+      </header>
+
+
+
+      <!-- =============================================
+           MOBILE MENU
+           ============================================= -->
+
+      <div
+        class="why-mobile-menu"
+        id="whyMobileMenu"
+        aria-hidden="true"
+      >
+
+        <div class="why-mobile-menu-inner">
+
+          <a href="#whyHero">
+            Why Remify
+          </a>
+
+          <a href="index.html">
+            Home
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+          <a href="products.html?id=sea-moss-gel">
+            Shop
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =============================================
+           HERO CONTENT
+           ============================================= -->
+
+      <div class="why-hero-content">
+
+
+        <!-- LEFT EDITORIAL COPY -->
+
+        <div
+          class="why-hero-copy why-hero-copy--left"
+          data-aos="fade-up"
+          data-aos-delay="300"
+          data-aos-duration="1100"
+        >
+
+          <span class="why-hero-kicker">
+            The Remify difference
+          </span>
+
+          <h1>
+            Wellness,
+            <br>
+            <em>made real.</em>
+          </h1>
+
+          <p>
+            Fresh sea moss gel, made with intention
+            and brought closer to the way wellness
+            should feel.
+          </p>
+
+        </div>
+
+
+
+        <!-- RIGHT EDITORIAL COPY -->
+
+        <div
+          class="why-hero-copy why-hero-copy--right"
+          data-aos="fade-up"
+          data-aos-delay="500"
+          data-aos-duration="1100"
+        >
+
+          <span class="why-hero-number">
+            01
+          </span>
+
+          <div class="why-hero-rule"></div>
+
+          <p>
+            Made fresh.
+            <br>
+            Kept simple.
+            <br>
+            Made for you.
+          </p>
+
+          <span class="why-hero-caption">
+            Sea moss · wellness · everyday ritual
+          </span>
+
+        </div>
+
+
+
+        <!-- =========================================
+             BOTTOM BRAND WORD
+             ========================================= -->
+
+
+
+
+
+      </div>
+
+
+    </section>
+
+    <!-- =========================================================
+     WHY SEA MOSS
+     ========================================================= -->
+
+<section class="sea-moss" id="whySeaMoss">
+
+  <div class="sea-moss-inner">
+
+    <!-- INTRO -->
+    <div class="sea-moss-intro">
+
+      <div
+        class="sea-moss-label"
+        data-aos="fade-up"
+        data-aos-duration="900"
+      >
+        <span class="sea-moss-label-line"></span>
+        Why sea moss
+      </div>
+
+      <div class="sea-moss-intro-grid">
+
+        <h2
+          class="sea-moss-title"
+          data-aos="fade-up"
+          data-aos-delay="100"
+          data-aos-duration="1100"
+        >
+          A little ocean
+          <br>
+          <em>goes a long way.</em>
+        </h2>
+
+        <div
+          class="sea-moss-intro-copy"
+          data-aos="fade-up"
+          data-aos-delay="220"
+          data-aos-duration="1000"
+        >
+          <p>
+            Sea moss is a naturally occurring red seaweed
+            that has been enjoyed as food for generations.
+            Remify turns this ocean-grown ingredient into
+            a simple part of your everyday ritual.
+          </p>
+
+          <span class="sea-moss-intro-note">
+            Chondrus crispus · Irish moss · red seaweed
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MAIN FEATURE -->
+    <div class="sea-moss-feature">
+
+      <div
+        class="sea-moss-image-wrap"
+        data-aos="fade-right"
+        data-aos-duration="1200"
+      >
+
+        <div class="sea-moss-image-frame">
+
+          <img
+            src="images/hero-mobile-2.webp"
+            alt="Fresh sea moss"
+            class="sea-moss-image"
+            loading="lazy"
+          >
+
+          <div class="sea-moss-image-overlay"></div>
+
+          <span class="sea-moss-image-tag">
+            From the sea
+          </span>
+
+        </div>
+
+        <div class="sea-moss-image-caption">
+          <span>01</span>
+          <span>Nature, kept close.</span>
+        </div>
+
+      </div>
+
+
+      <div class="sea-moss-story">
+
+        <div
+          class="sea-moss-story-number"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          01
+        </div>
+
+        <h3
+          data-aos="fade-up"
+          data-aos-delay="100"
+          data-aos-duration="900"
+        >
+          Naturally
+          <em>mineral-rich.</em>
+        </h3>
+
+        <p
+          data-aos="fade-up"
+          data-aos-delay="180"
+          data-aos-duration="900"
+        >
+          Sea moss naturally contains a range of minerals
+          and trace elements, including iodine. Its exact
+          nutritional composition depends on the species,
+          growing conditions and where it is sourced.
+        </p>
+
+        <div
+          class="sea-moss-fact"
+          data-aos="fade-up"
+          data-aos-delay="260"
+          data-aos-duration="900"
+        >
+          <span class="sea-moss-fact-mark"></span>
+
+          <div>
+            <strong>From the ocean</strong>
+            <span style="color: black;" >
+              Naturally occurring minerals &amp; polysaccharides
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- THREE PRINCIPLES -->
+    <div class="sea-moss-principles">
+
+      <div
+        class="sea-moss-principles-heading"
+        data-aos="fade-up"
+        data-aos-duration="900"
+      >
+        <span>Why it stands out</span>
+
+        <p>
+          Simple by nature.
+          Interesting by composition.
+        </p>
+      </div>
+
+
+      <div class="sea-moss-principles-list">
+
+        <article
+          class="sea-moss-principle"
+          data-aos="fade-up"
+          data-aos-delay="100"
+          data-aos-duration="900"
+        >
+
+          <span class="sea-moss-principle-number">
+            01
+          </span>
+
+          <div class="sea-moss-principle-content">
+
+            <h3>
+              Ocean-grown
+            </h3>
+
+            <p>
+              A red seaweed that grows in marine environments
+              and has long been used as a food ingredient.
+            </p>
+
+          </div>
+
+          <span class="sea-moss-principle-arrow">
+            ↗
+          </span>
+
+        </article>
+
+
+        <article
+          class="sea-moss-principle"
+          data-aos="fade-up"
+          data-aos-delay="180"
+          data-aos-duration="900"
+        >
+
+          <span class="sea-moss-principle-number">
+            02
+          </span>
+
+          <div class="sea-moss-principle-content">
+
+            <h3>
+              Naturally versatile
+            </h3>
+
+            <p>
+              Its naturally gel-like texture makes sea moss
+              easy to incorporate into drinks, smoothies
+              and everyday recipes.
+            </p>
+
+          </div>
+
+          <span class="sea-moss-principle-arrow">
+            ↗
+          </span>
+
+        </article>
+
+
+        <article
+          class="sea-moss-principle"
+          data-aos="fade-up"
+          data-aos-delay="260"
+          data-aos-duration="900"
+        >
+
+          <span class="sea-moss-principle-number">
+            03
+          </span>
+
+          <div class="sea-moss-principle-content">
+
+            <h3>
+              Simply sea moss
+            </h3>
+
+            <p>
+              No need to overcomplicate it. Remify keeps
+              the ingredient at the heart of the ritual.
+            </p>
+
+          </div>
+
+          <span class="sea-moss-principle-arrow">
+            ↗
+          </span>
+
+        </article>
+
+      </div>
+
+    </div>
+
+
+    <!-- BOTTOM STATEMENT -->
+    <div
+      class="sea-moss-statement"
+      data-aos="fade-up"
+      data-aos-duration="1100"
+    >
+
+      <span class="sea-moss-statement-small">
+        The ingredient behind the ritual
+      </span>
+
+      <p>
+        From the ocean.
+        <em>Into your everyday.</em>
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="remify-difference" id="remifyDifference">
+  <div class="remify-difference-inner">
+
+    <div class="remify-difference-top" data-aos="fade-up" data-aos-duration="900">
+      <span class="remify-difference-label">
+        The Remify difference
+      </span>
+      <span class="remify-difference-index">02 / 06</span>
+    </div>
+
+    <div class="remify-difference-heading">
+      <h2 data-aos="fade-up" data-aos-duration="1100">
+        Not just sea moss.
+        <em>Remified.</em>
+      </h2>
+      <p data-aos="fade-up" data-aos-delay="120" data-aos-duration="900">
+        We keep the ingredient at the centre and the process intentional —
+        fresh, simple and made for real life.
+      </p>
+    </div>
+
+    <div class="remify-difference-grid">
+
+      <article class="remify-difference-item" data-aos="fade-up" data-aos-delay="100" data-aos-duration="900">
+        <span class="remify-difference-number">01</span>
+        <div>
+          <h3>Fresh by design</h3>
+          <p>
+            Made in small batches and kept close to the moment it is made.
+          </p>
+        </div>
+        <span class="remify-difference-arrow">↗</span>
+      </article>
+
+      <article class="remify-difference-item" data-aos="fade-up" data-aos-delay="180" data-aos-duration="900">
+        <span class="remify-difference-number">02</span>
+        <div>
+          <h3>Quality, without the noise</h3>
+          <p>
+            Thoughtful sourcing and attention to what goes into every batch.
+          </p>
+        </div>
+        <span class="remify-difference-arrow">↗</span>
+      </article>
+
+      <article class="remify-difference-item" data-aos="fade-up" data-aos-delay="260" data-aos-duration="900">
+        <span class="remify-difference-number">03</span>
+        <div>
+          <h3>Wellness made simple</h3>
+          <p>
+            One uncomplicated ritual designed to fit naturally into your day.
+          </p>
+        </div>
+        <span class="remify-difference-arrow">↗</span>
+      </article>
+
+    </div>
+
+    <div class="remify-difference-bottom" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+      <span></span>
+      <p>
+        Good ingredients.<br>
+        <em>Nothing unnecessary.</em>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================================
+     REMIFY — MADE FRESH EVERY WEEK
+     ========================================================= -->
+
+<section class="fresh-section" id="fresh">
+
+  <div class="fresh-container">
+
+    <!-- Section Intro -->
+    <div class="fresh-intro" data-aos="fade-up">
+
+      <div class="fresh-eyebrow">
+        <span class="fresh-eyebrow-dot"></span>
+        OUR FRESHNESS PROMISE
+      </div>
+
+      <h2 class="fresh-title">
+        Made fresh.
+        <span>Every week.</span>
+      </h2>
+
+      <p class="fresh-description">
+        We believe sea moss should feel fresh, clean and alive.
+        That's why every batch of Remify is prepared fresh each week —
+        never sitting around for longer than it needs to.
+      </p>
+
+    </div>
+
+
+    <!-- Main Visual / Story -->
+    <div class="fresh-story">
+
+      <!-- Left: Timeline -->
+      <div class="fresh-timeline" data-aos="fade-right">
+
+        <div class="fresh-step fresh-step--active">
+
+          <div class="fresh-step-marker">
+            <span></span>
+          </div>
+
+          <div class="fresh-step-content">
+            <span class="fresh-step-number">01</span>
+
+            <h3>Source</h3>
+
+            <p>
+              Carefully selected sea moss,
+              chosen for quality and consistency.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="fresh-timeline-line"></div>
+
+
+        <div class="fresh-step">
+
+          <div class="fresh-step-marker">
+            <span></span>
+          </div>
+
+          <div class="fresh-step-content">
+            <span class="fresh-step-number">02</span>
+
+            <h3>Prepare</h3>
+
+            <p>
+              Cleaned, prepared and crafted
+              into every Remify batch.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="fresh-timeline-line"></div>
+
+
+        <div class="fresh-step">
+
+          <div class="fresh-step-marker">
+            <span></span>
+          </div>
+
+          <div class="fresh-step-content">
+            <span class="fresh-step-number">03</span>
+
+            <h3>Deliver</h3>
+
+            <p>
+              Freshly prepared goodness,
+              ready to become part of your routine.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Center: Freshness Visual -->
+      <div class="fresh-visual" data-aos="zoom-in" data-aos-delay="100">
+
+        <div class="fresh-glow"></div>
+
+        <!-- Decorative rings -->
+        <div class="fresh-orbit fresh-orbit--one"></div>
+        <div class="fresh-orbit fresh-orbit--two"></div>
+
+<!-- Main card -->
+<div class="fresh-card">
+
+  <div class="fresh-card-image"></div>
+
+  <div class="fresh-card-overlay"></div>
+
+  <div class="fresh-card-top">
+
+    <span class="fresh-card-label">
+      FRESH BATCH
+    </span>
+
+    <span class="fresh-card-status">
+      <span></span>
+      READY
+    </span>
+
+  </div>
+
+  <div class="fresh-batch-copy">
+    <span class="fresh-batch-small">MADE</span>
+
+    <strong>FRESH</strong>
+
+    <span class="fresh-batch-small">
+      EVERY WEEK
+    </span>
+  </div>
+
+  <div class="fresh-card-bottom">
+
+    <span>
+      Crafted with intention
+    </span>
+
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 12h14M13 6l6 6-6 6"/>
+    </svg>
+
+  </div>
+
+</div>
+
+
+        <!-- Floating botanical detail -->
+        <div class="fresh-leaf fresh-leaf--one">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M83 17C44 18 19 35 17 72c35 3 58-17 66-55Z"/>
+            <path d="M18 82C34 59 51 42 78 22"/>
+          </svg>
+        </div>
+
+        <div class="fresh-leaf fresh-leaf--two">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M83 17C44 18 19 35 17 72c35 3 58-17 66-55Z"/>
+            <path d="M18 82C34 59 51 42 78 22"/>
+          </svg>
+        </div>
+
+
+        <!-- Small bubbles -->
+        <span class="fresh-bubble fresh-bubble--one"></span>
+        <span class="fresh-bubble fresh-bubble--two"></span>
+        <span class="fresh-bubble fresh-bubble--three"></span>
+
+      </div>
+
+
+      <!-- Right: Freshness Statement -->
+      <div class="fresh-note" data-aos="fade-left">
+
+        <div class="fresh-note-icon">
+
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C12 2 5 9.2 5 14.2a7 7 0 0 0 14 0C19 9.2 12 2 12 2Z"/>
+            <path d="M9 15.5c.4 1.2 1.3 2 3 2.4"/>
+          </svg>
+
+        </div>
+
+        <span class="fresh-note-label">
+          FRESHNESS, BUILT IN
+        </span>
+
+        <h3>
+          Less waiting.
+          <br>
+          <em>More freshness.</em>
+        </h3>
+
+        <p>
+          No months-old stock.
+          No unnecessary storage.
+          Just carefully prepared batches,
+          made with the intention of keeping
+          your daily ritual as fresh as possible.
+        </p>
+
+
+        <div class="fresh-stat">
+
+          <div class="fresh-stat-number">
+            <strong>52</strong>
+            <span>×</span>
+          </div>
+
+          <div class="fresh-stat-copy">
+            <strong>fresh cycles</strong>
+            <span>every year</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Bottom reassurance strip -->
+    <div class="fresh-bottom" data-aos="fade-up">
+
+      <div class="fresh-bottom-item">
+
+        <span class="fresh-check">
+          <svg viewBox="0 0 24 24">
+            <path d="m5 12 4 4L19 6"/>
+          </svg>
+        </span>
+
+        <span>Prepared fresh</span>
+
+      </div>
+
+
+      <div class="fresh-bottom-item">
+
+        <span class="fresh-check">
+          <svg viewBox="0 0 24 24">
+            <path d="m5 12 4 4L19 6"/>
+          </svg>
+        </span>
+
+        <span>Quality focused</span>
+
+      </div>
+
+
+      <div class="fresh-bottom-item">
+
+        <span class="fresh-check">
+          <svg viewBox="0 0 24 24">
+            <path d="m5 12 4 4L19 6"/>
+          </svg>
+        </span>
+
+        <span>Made with intention</span>
+
+      </div>
+
+
+      <div class="fresh-bottom-item fresh-bottom-item--last">
+
+        <span class="fresh-bottom-word">
+          REMIFY
+        </span>
+
+        <span class="fresh-bottom-dot"></span>
+
+        <span>Fresh by design</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     REMIFY — WHAT'S INSIDE / WHAT REMIFY SUPPORTS
+     ========================================================= -->
+
+<section class="remify-inside" id="inside">
+
+  <div class="inside-container">
+
+    <!-- Section Header -->
+    <div class="inside-header" data-aos="fade-up">
+
+      <div class="inside-eyebrow">
+        <span class="inside-eyebrow-line"></span>
+        WHAT'S INSIDE
+      </div>
+
+      <h2 class="inside-title">
+        Thoughtfully made.
+        <span>Made for your everyday.</span>
+      </h2>
+
+      <p class="inside-intro">
+        Clean ingredients, carefully combined into a simple daily ritual
+        designed to fit naturally into your routine.
+      </p>
+
+    </div>
+
+
+    <!-- Main Composition -->
+    <div class="inside-main">
+
+
+      <!-- LEFT — WHAT'S INSIDE -->
+      <div class="inside-column inside-column--ingredients"
+           data-aos="fade-right">
+
+        <div class="inside-column-heading">
+
+          <span class="inside-column-number">01</span>
+
+          <div>
+            <span class="inside-column-kicker">
+              WHAT'S INSIDE
+            </span>
+
+            <h3>
+              Simple ingredients.
+            </h3>
+          </div>
+
+        </div>
+
+
+        <div class="inside-items">
+
+          <div class="inside-item">
+
+            <div class="inside-item-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3C9.2 6.4 6 9.8 6 14a6 6 0 0 0 12 0c0-4.2-3.2-7.6-6-11Z"/>
+                <path d="M9.5 15.5c.4 1.2 1.2 1.9 2.5 2.2"/>
+              </svg>
+            </div>
+
+            <div class="inside-item-copy">
+              <h4>Sea Moss</h4>
+
+              <p>
+                The foundation of every Remify blend.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="inside-item">
+
+            <div class="inside-item-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 4C10.5 4 5 8.2 5 14.5A5.5 5.5 0 0 0 10.5 20C16.8 20 20 13.5 20 4Z"/>
+                <path d="M4 20c3.2-5 7.1-8.7 13-12"/>
+              </svg>
+            </div>
+
+            <div class="inside-item-copy">
+              <h4>Plant-Based Ingredients</h4>
+
+              <p>
+                Carefully selected ingredients that complement the blend.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="inside-item">
+
+            <div class="inside-item-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v18"/>
+                <path d="M5 8c2.4 0 4.2 1.2 7 4"/>
+                <path d="M19 8c-2.4 0-4.2 1.2-7 4"/>
+                <path d="M5 16c2.4 0 4.2-1.2 7-4"/>
+                <path d="M19 16c-2.4 0-4.2-1.2-7-4"/>
+              </svg>
+            </div>
+
+            <div class="inside-item-copy">
+              <h4>Thoughtful Blends</h4>
+
+              <p>
+                Made with intention, without unnecessary complexity.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CENTER PRODUCT VISUAL -->
+      <div class="inside-product"
+           data-aos="zoom-in"
+           data-aos-delay="100">
+
+        <div class="inside-product-glow"></div>
+
+        <div class="inside-product-ring inside-product-ring--one"></div>
+        <div class="inside-product-ring inside-product-ring--two"></div>
+
+        <div class="inside-product-image">
+
+          <img
+            src="images/hero-desk.webp"
+            alt="Remify product"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="inside-product-tag">
+          <span></span>
+          MADE WITH INTENTION
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT — WHAT REMIFY SUPPORTS -->
+      <div class="inside-column inside-column--supports"
+           data-aos="fade-left">
+
+        <div class="inside-column-heading">
+
+          <span class="inside-column-number">02</span>
+
+          <div>
+            <span class="inside-column-kicker">
+              REMIFY SUPPORTS
+            </span>
+
+            <h3>
+              Your daily ritual.
+            </h3>
+          </div>
+
+        </div>
+
+
+        <div class="inside-supports">
+
+          <div class="support-row">
+
+            <span class="support-index">01</span>
+
+            <div>
+              <h4>Daily Wellness</h4>
+              <p>
+                An easy addition to a consistent everyday routine.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="support-row">
+
+            <span class="support-index">02</span>
+
+            <div>
+              <h4>Simple Nutrition</h4>
+              <p>
+                A convenient way to bring sea moss into your day.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="support-row">
+
+            <span class="support-index">03</span>
+
+            <div>
+              <h4>Intentional Living</h4>
+              <p>
+                Small, considered choices that become part of your routine.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Bottom Statement -->
+    <div class="inside-bottom"
+         data-aos="fade-up">
+
+      <div class="inside-bottom-line"></div>
+
+      <p>
+        Simple ingredients.
+        <strong>Thoughtfully combined.</strong>
+      </p>
+
+      <div class="inside-bottom-line"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     REMIFY — REAL PEOPLE + CTA
+     ========================================================= -->
+
+<section class="remify-proof" id="remifyProof">
+
+  <!-- Background image -->
+  <div class="remify-proof__image"></div>
+
+  <!-- Image treatment -->
+  <div class="remify-proof__shade"></div>
+
+  <div class="remify-proof__container">
+
+    <!-- Top label -->
+    <div class="remify-proof__top" data-aos="fade-down">
+
+      <div class="remify-proof__eyebrow">
+        <span></span>
+        REAL PEOPLE. REAL EXPERIENCES.
+      </div>
+
+      <div class="remify-proof__index">
+        04 / 05
+      </div>
+
+    </div>
+
+
+    <!-- Main content -->
+    <div class="remify-proof__main">
+
+      <!-- =========================================
+           TESTIMONIAL
+           ========================================= -->
+
+      <article
+        class="remify-proof__testimonial"
+        data-aos="fade-up"
+      >
+
+        <div class="remify-proof__quote">
+          “
+        </div>
+
+        <p class="remify-proof__headline">
+          I started taking sea moss after
+          a close friend shared her experience
+          with me.
+        </p>
+
+        <p class="remify-proof__story">
+          Since then, my joint and knee pains have eased,
+          I’ve been able to exercise more consistently,
+          and my kids rarely get sick since they started
+          taking sea moss first thing in the morning.
+        </p>
+
+        <div class="remify-proof__person">
+
+          <div class="remify-proof__avatar">
+            R
+          </div>
+
+          <div class="remify-proof__person-copy">
+            <strong>Remify Customer</strong>
+            <span>Customer experience</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- =========================================
+           CTA
+           ========================================= -->
+
+      <div
+        class="remify-proof__cta"
+        data-aos="fade-up"
+        data-aos-delay="120"
+      >
+
+        <div class="remify-proof__cta-kicker">
+          YOUR DAILY RITUAL
+        </div>
+
+        <h2>
+          Feel good.
+          <span>Keep going.</span>
+        </h2>
+
+        <p>
+          Freshly prepared sea moss, made with intention
+          and created to fit naturally into your everyday routine.
+        </p>
+
+        <a
+          href="#products"
+          class="remify-proof__button"
+        >
+          <span>Explore Remify</span>
+
+          <div class="remify-proof__button-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+
+          </div>
+
+        </a>
+
+        <div class="remify-proof__microcopy">
+          Freshly prepared · Made with intention
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         BOTTOM BRAND BAR
+         ========================================= -->
+
+    <div
+      class="remify-proof__bottom"
+      data-aos="fade-up"
+    >
+
+      <span class="remify-proof__brand">
+        REMIFY
+      </span>
+
+      <span class="remify-proof__line"></span>
+
+      <span>
+        FRESH BY DESIGN
+      </span>
+
+      <span class="remify-proof__dot"></span>
+
+      <span>
+        MADE FOR YOUR ROUTINE
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     REMIFY — SOCIAL TRANSITION
+     ========================================================= -->
+
+<section class="remify-social-transition">
+
+  <div class="remify-social-inner">
+
+    <div class="remify-social-copy">
+
+      <span class="remify-social-kicker">
+        STAY CONNECTED
+      </span>
+
+      <h3>
+        Keep up with
+        <em>Remify.</em>
+      </h3>
+
+    </div>
+
+
+    <div class="remify-social-links">
+
+      <a href="https://www.instagram.com/remify.co/?utm_source=ig_web_button_share_sheet" aria-label="Instagram">
+        <span>Instagram</span>
+        <svg viewBox="0 0 24 24">
+          <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z"/>
+          <circle cx="12" cy="12" r="3.5"/>
+          <circle cx="17.4" cy="6.6" r=".8"/>
+        </svg>
+      </a>
+
+
+      <a href="https://www.tiktok.com/@remify.products?is_from_webapp=1&sender_device=pc" aria-label="TikTok">
+        <span>TikTok</span>
+        <svg viewBox="0 0 24 24">
+          <path d="M14 4v10.2a4.3 4.3 0 1 1-3.5-4.2"/>
+          <path d="M14 4c.5 2.5 2 4 4.5 4"/>
+        </svg>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     REMIFY — FOOTER
+     ========================================================= -->
+
+<footer class="remify-footer">
+    <div class="remify-footer-top-line"></div>
+
+  <!-- Atmospheric background -->
+  <div class="remify-footer-glow remify-footer-glow--one"></div>
+  <div class="remify-footer-glow remify-footer-glow--two"></div>
+
+
+  <div class="remify-footer-container">
+
+
+    <!-- =====================================================
+         TOP FOOTER
+         ===================================================== -->
+
+    <div class="remify-footer-top">
+
+
+      <!-- BRAND -->
+      <div class="remify-footer-brand">
+
+        <a href="/" class="remify-footer-logo">
+          <img
+            src="images/rem-logo-main.png"
+            alt="Remify"
+          >
+        </a>
+
+        <p>
+          Purple sea moss,
+          <br>
+          prepared fresh.
+        </p>
+
+        <a
+          href="mailto:remifyproducts@gmail.com"
+          class="remify-footer-email"
+        >
+          remifyproducts@gmail.com
+        </a>
+
+      </div>
+
+
+      <!-- NAVIGATION -->
+      <div class="remify-footer-nav">
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            EXPLORE
+          </span>
+
+<a href="products.html?id=sea-moss-gel">
+  Shop Now
+</a>
+
+          <a href="why-remify.html">
+            Why Remify
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            INFORMATION
+          </span>
+
+          <a href="shipping.html">
+            Shipping
+          </a>
+
+          <a href="">
+            FAQs
+          </a>
+
+          <a href="privacy-policy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms.html">
+            Terms & Conditions
+          </a>
+
+        </div>
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            GET IN TOUCH
+          </span>
+
+          <a href="mailto:remifyproducts@gmail.com">
+            Email us
+          </a>
+
+          <a href="tel:+254000000000">
+            +254 720 460 145
+          </a>
+
+          <span class="remify-footer-location">
+            Nairobi, Kenya
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DIVIDER
+         ===================================================== -->
+
+    <div class="remify-footer-line"></div>
+
+
+    <!-- =====================================================
+         NEWSLETTER / STATEMENT
+         ===================================================== -->
+
+    <div class="remify-footer-middle">
+
+      <div class="remify-footer-message">
+
+        <span>
+          MADE FRESH.
+        </span>
+
+        <strong>
+          Made with intention.
+        </strong>
+
+      </div>
+
+
+      <a hhref="products.html?id=sea-moss-gel" class="remify-footer-cta">
+
+        <span>
+          Shop Remify
+        </span>
+
+        <i>
+          <svg viewBox="0 0 24 24">
+            <path d="M5 19L19 5"/>
+            <path d="M9 5H19V15"/>
+          </svg>
+        </i>
+
+      </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         GIANT WORDMARK
+         ===================================================== -->
+
+    <div class="remify-giant-wordmark">
+
+      <span>
+        remify
+      </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM BAR
+         ===================================================== -->
+
+    <div class="remify-footer-bottom">
+
+      <span>
+        © 2026 Remify Products
+      </span>
+
+      <span>
+        All rights reserved.
+      </span>
+
+      <span>
+        Nairobi · Kenya
+      </span>
+
+    </div>
+
+
+  </div>
+
+</footer>
+
+
+
+
+  </main>
+
+
+
+  <!-- =============================================
+       AOS
+       ============================================= -->
+
+  <script
+    src="https://unpkg.com/aos@2.3.4/dist/aos.js"
+  ></script>
+
+
+  <!-- =============================================
+       PAGE JAVASCRIPT
+       ============================================= -->
+
+  <script src="why.js"></script>
+  <script src="page-transition.js"></script>
+    
+  <!-- LENIS SMOOTH SCROLL -->
+<script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+<script>
+  /* =========================================================
+     REMIFY — LENIS SMOOTH SCROLL
+     ========================================================= */
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    wheelMultiplier: 0.9,
+    touchMultiplier: 1.2,
+    infinite: false
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Remify.">
+  <title>Contact — Remify</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="page-transition.css">
+</head>
+
+<body>
+
+  <div class="remify-page-transition" id="remifyPageTransition" aria-hidden="true">
+  <div class="remify-transition-glass"></div>
+  <div class="remify-transition-overlay"></div>
+  <div class="remify-transition-pixels" id="remifyTransitionPixels"></div>
+
+  <div class="remify-transition-word" id="remifyTransitionWord">
+    remify
+  </div>
+</div>
+
+  <!-- =========================================
+       SCROLL PROGRESS
+       ========================================= -->
+
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-fill" id="scrollFill"></div>
+  </div>
+
+
+  <!-- =========================================
+       CUSTOM CURSOR
+       ========================================= -->
+
+  <canvas class="cursor-trail" id="cursorTrail"></canvas>
+
+  <div class="cursor-spark" id="cursorSpark">
+    <span></span>
+  </div>
+
+
+  <!-- =========================================
+       CONTACT HERO
+       ========================================= -->
+
+  <main class="contact-page">
+
+    <section class="contact-hero" id="contactHero">
+
+      <!-- Desktop / mobile background -->
+      <picture class="contact-hero-background">
+        <source
+          media="(max-width: 700px)"
+          srcset="images/product2.jpg"
+        >
+        <img
+          src="images/hero-desk2.webp"
+          alt=""
+        >
+      </picture>
+
+      <div class="contact-hero-overlay"></div>
+      <div class="contact-hero-vignette"></div>
+
+
+      <!-- =====================================
+           FLOATING NAVBAR
+           ===================================== -->
+
+      <nav
+        class="contact-navbar"
+        id="contactNavbar"
+        aria-label="Main navigation"
+        data-aos="fade-down"
+        data-aos-duration="900"
+      >
+
+        <a href="index.html" class="contact-logo" aria-label="Remify home">
+          <img
+            src="images/rem-logo-main.png"
+            alt="Remify"
+          >
+        </a>
+
+
+        <div class="contact-nav-links">
+          <a href="index.html">Home</a>
+          <a href="why-remify.html">Why Remify</a>
+        </div>
+
+
+        <a href="products.html?id=sea-moss-gel" class="contact-shop">
+          <span>Shop</span>
+          <i>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 19L19 5"></path>
+              <path d="M9 5H19V15"></path>
+            </svg>
+          </i>
+        </a>
+
+
+        <button
+          class="contact-menu-toggle"
+          id="contactMenuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+        </button>
+
+      </nav>
+
+
+      <!-- =====================================
+           MOBILE MENU
+           ===================================== -->
+
+      <div
+        class="contact-mobile-menu"
+        id="contactMobileMenu"
+        aria-hidden="true"
+      >
+
+        <div class="contact-mobile-menu-top">
+
+          <img
+            src="images/rem-logo-main.png"
+            alt="Remify"
+          >
+
+          <button
+            id="contactMenuClose"
+            type="button"
+            aria-label="Close menu"
+          >
+            <span></span>
+            <span></span>
+          </button>
+
+        </div>
+
+
+        <div class="contact-mobile-links">
+
+          <a href="/">
+            <span>01</span>
+            Home
+          </a>
+
+          <a href="why-remify.html">
+            <span>02</span>
+            Why Remify
+          </a>
+
+          <a href="products.html?id=sea-moss-gel">
+            <span>03</span>
+            Shop
+          </a>
+
+        </div>
+
+
+        <div class="contact-mobile-footer">
+          FRESHLY PREPARED · NAIROBI, KENYA
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           HERO INTRO
+           ===================================== -->
+
+
+
+
+      <!-- =====================================
+           CONTACT PANEL
+           ===================================== -->
+
+      <div class="contact-panel">
+
+        <!-- ===================================
+             FORM
+             =================================== -->
+
+        <div
+          class="contact-form-card"
+          data-aos="fade-up"
+          data-aos-delay="450"
+        >
+
+          <div class="contact-form-heading">
+
+            <span>GET IN TOUCH</span>
+
+            <h2>
+              Tell us
+              <em>what's on your mind.</em>
+            </h2>
+
+          </div>
+
+
+          <form id="contactForm" novalidate>
+
+            <div class="contact-form-grid">
+
+              <div class="contact-field">
+                <label for="contactName">
+                  Your name
+                </label>
+
+                <input
+                  type="text"
+                  id="contactName"
+                  name="name"
+                  placeholder="Jane Doe"
+                  autocomplete="name"
+                  required
+                >
+              </div>
+
+
+              <div class="contact-field">
+                <label for="contactEmail">
+                  Email address
+                </label>
+
+                <input
+                  type="email"
+                  id="contactEmail"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                >
+              </div>
+
+            </div>
+
+
+            <div class="contact-field">
+              <label for="contactSubject">
+                Subject
+              </label>
+
+              <input
+                type="text"
+                id="contactSubject"
+                name="subject"
+                placeholder="How can we help?"
+                required
+              >
+            </div>
+
+
+            <div class="contact-field">
+              <label for="contactMessage">
+                Message
+              </label>
+
+              <textarea
+                id="contactMessage"
+                name="message"
+                rows="4"
+                placeholder="Tell us a little more..."
+                required
+              ></textarea>
+            </div>
+
+
+            <button
+              type="submit"
+              class="contact-submit"
+            >
+
+              <span>Send message</span>
+
+              <i>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 19L19 5"></path>
+                  <path d="M9 5H19V15"></path>
+                </svg>
+              </i>
+
+            </button>
+
+
+            <p
+              class="contact-form-status"
+              id="contactFormStatus"
+              role="status"
+              aria-live="polite"
+            ></p>
+
+          </form>
+
+        </div>
+
+
+        <!-- ===================================
+             CONTACT INFORMATION
+             =================================== -->
+
+        <aside
+          class="contact-info-card"
+          data-aos="fade-up"
+          data-aos-delay="550"
+        >
+
+          <div class="contact-info-image"></div>
+
+          <div class="contact-info-overlay"></div>
+
+
+          <div class="contact-info-content">
+
+            <span class="contact-info-kicker">
+              REMIFY / CONTACT
+            </span>
+
+
+            <div class="contact-info-location">
+
+              <span class="contact-info-label">
+                VISIT US
+              </span>
+
+              <h3>
+                Nairobi,
+                <em>Kenya.</em>
+              </h3>
+
+            </div>
+
+
+            <div class="contact-info-details">
+
+              <a href="tel:+254720460145">
+                <span>PHONE</span>
+                <strong>+254 720 460 145</strong>
+              </a>
+
+
+              <a href="mailto:remifyproducts@gmail.com">
+                <span>EMAIL</span>
+                <strong>remifyproducts@gmail.com</strong>
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-info-bottom">
+            FRESHLY PREPARED
+          </div>
+
+        </aside>
+
+      </div>
+
+
+      <!-- =====================================
+           HERO FOOTER MARK
+           ===================================== -->
+
+      <div
+        class="contact-hero-bottom"
+        data-aos="fade-up"
+        data-aos-delay="700"
+      >
+        <span>SMALL BATCHES</span>
+
+        <span class="contact-bottom-dot"></span>
+
+        <span>MADE WITH INTENTION</span>
+
+        <span class="contact-bottom-dot"></span>
+
+        <span>REMYFI</span>
+      </div>
+
+    </section>
+
+    <!-- =========================================
+     REMIFY INFINITE WORD TRANSITION
+     ========================================= -->
+
+<section class="remify-word-marquee" aria-label="Remify">
+
+  <div class="remify-word-marquee-glow"></div>
+  <div class="remify-word-marquee-noise"></div>
+
+  <div class="remify-word-marquee-line" data-aos="fade-in">
+
+    <div class="remify-word-track">
+
+      <div class="remify-word-group">
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+      </div>
+
+      <!-- Exact duplicate creates the seamless loop -->
+      <div class="remify-word-group" aria-hidden="true">
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+        <span>remify</span>
+        <i>•</i>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     REMIFY — SOCIAL TRANSITION
+     ========================================================= -->
+
+<section class="remify-social-transition">
+
+  <div class="remify-social-inner">
+
+    <div class="remify-social-copy" data-aos="fade-up" data-aos-duration="900" data-aos-delay="150">
+
+      <span class="remify-social-kicker" data-aos="fade-up" data-aos-duration="700" data-aos-delay="250">
+        STAY CONNECTED
+      </span>
+
+      <h3 data-aos="fade-up" data-aos-duration="900" data-aos-delay="350">
+        Keep up with
+        <em>Remify.</em>
+      </h3>
+
+    </div>
+
+
+    <div class="remify-social-links">
+
+      <a href="https://www.instagram.com/remify.co/?utm_source=ig_web_button_share_sheet" aria-label="Instagram" data-aos="fade-up" data-aos-duration="800" data-aos-delay="450">
+        <span>Instagram</span>
+        <svg viewBox="0 0 24 24">
+          <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z"/>
+          <circle cx="12" cy="12" r="3.5"/>
+          <circle cx="17.4" cy="6.6" r=".8"/>
+        </svg>
+      </a>
+
+
+
+      <a href="https://www.tiktok.com/@remify.products?is_from_webapp=1&sender_device=pc" aria-label="TikTok" data-aos="fade-up" data-aos-duration="800" data-aos-delay="550">
+        <span>TikTok</span>
+        <svg viewBox="0 0 24 24">
+          <path d="M14 4v10.2a4.3 4.3 0 1 1-3.5-4.2"/>
+          <path d="M14 4c.5 2.5 2 4 4.5 4"/>
+        </svg>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     REMIFY — FOOTER
+     ========================================================= -->
+
+<footer class="remify-footer">
+    <div class="remify-footer-top-line"></div>
+
+  <!-- Atmospheric background -->
+  <div class="remify-footer-glow remify-footer-glow--one"></div>
+  <div class="remify-footer-glow remify-footer-glow--two"></div>
+
+
+  <div class="remify-footer-container">
+
+
+    <!-- =====================================================
+         TOP FOOTER
+         ===================================================== -->
+
+    <div class="remify-footer-top">
+
+
+      <!-- BRAND -->
+      <div class="remify-footer-brand">
+
+        <a href="/" class="remify-footer-logo">
+          <img
+            src="images/rem-logo-main.png"
+            alt="Remify"
+          >
+        </a>
+
+        <p>
+          Purple sea moss,
+          <br>
+          prepared fresh.
+        </p>
+
+        <a
+          href="mailto:remifyproducts@gmail.com"
+          class="remify-footer-email"
+        >
+          remifyproducts@gmail.com
+        </a>
+
+      </div>
+
+
+      <!-- NAVIGATION -->
+      <div class="remify-footer-nav">
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            EXPLORE
+          </span>
+
+<a href="products.html?id=sea-moss-gel">
+  Shop Now
+</a>
+
+          <a href="why-remify.html">
+            Why Remify
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            INFORMATION
+          </span>
+
+          <a href="shipping.html">
+            Shipping
+          </a>
+
+          <a href="">
+            FAQs
+          </a>
+
+          <a href="privacy-policy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms.html">
+            Terms & Conditions
+          </a>
+
+        </div>
+
+
+        <div class="remify-footer-group">
+
+          <span class="remify-footer-label">
+            GET IN TOUCH
+          </span>
+
+          <a href="mailto:remifyproducts@gmail.com">
+            Email us
+          </a>
+
+          <a href="tel:+254000000000">
+            +254 720 460 145
+          </a>
+
+          <span class="remify-footer-location">
+            Nairobi, Kenya
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DIVIDER
+         ===================================================== -->
+
+    <div class="remify-footer-line"></div>
+
+
+    <!-- =====================================================
+         NEWSLETTER / STATEMENT
+         ===================================================== -->
+
+    <div class="remify-footer-middle">
+
+      <div class="remify-footer-message">
+
+        <span>
+          MADE FRESH.
+        </span>
+
+        <strong>
+          Made with intention.
+        </strong>
+
+      </div>
+
+
+      <a hhref="products.html?id=sea-moss-gel" class="remify-footer-cta">
+
+        <span>
+          Shop Remify
+        </span>
+
+        <i>
+          <svg viewBox="0 0 24 24">
+            <path d="M5 19L19 5"/>
+            <path d="M9 5H19V15"/>
+          </svg>
+        </i>
+
+      </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         GIANT WORDMARK
+         ===================================================== -->
+
+    <div class="remify-giant-wordmark">
+
+      <span>
+        remify
+      </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM BAR
+         ===================================================== -->
+
+    <div class="remify-footer-bottom">
+
+      <span>
+        © 2026 Remify Products
+      </span>
+
+      <span>
+        All rights reserved.
+      </span>
+
+      <span>
+        Nairobi · Kenya
+      </span>
+
+    </div>
+
+
+  </div>
+
+</footer>
+
+
+  </main>
+
+
+  <!-- =========================================
+       AOS
+       ========================================= -->
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script src="contact.js"></script>
+  <script src="page-transition.js"></script>
+</body>
+</html>

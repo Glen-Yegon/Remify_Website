@@ -14,11 +14,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<!-- AOS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+>
   <link rel="stylesheet" href="product.css">
+      <link rel="stylesheet" href="page-transition.css">
 </head>
 
 <body>
+
+  <div class="remify-page-transition" id="remifyPageTransition" aria-hidden="true">
+  <div class="remify-transition-glass"></div>
+  <div class="remify-transition-overlay"></div>
+  <div class="remify-transition-pixels" id="remifyTransitionPixels"></div>
+
+  <div class="remify-transition-word" id="remifyTransitionWord">
+    remify
+  </div>
+</div>
 
 <!-- =========================================
      REMIFY SCROLL PROGRESS
@@ -147,17 +162,17 @@
 
         <nav class="mobile-menu-links">
 
-          <a href="index.html#productShowcase">
-            <span>Product</span>
+          <a href="index.html">
+            <span>Home</span>
             <span>↗</span>
           </a>
 
-          <a href="#ourStory">
-            <span>Our Story</span>
+          <a href="why-remify.html">
+            <span>Why Remify</span>
             <span>↗</span>
           </a>
 
-          <a href="#contact">
+          <a href="contact.html">
             <span>Contact</span>
             <span>↗</span>
           </a>
@@ -198,205 +213,208 @@
        PRODUCT HERO
        ========================================= -->
 
-  <section
-    class="product-hero"
-    id="productHero"
-  >
+<section
+  class="product-hero"
+  id="productHero"
+>
 
-    <div class="product-hero-inner">
+  <div class="product-hero-inner">
 
-      <!-- =====================================
-           PRODUCT IMAGE
-           ===================================== -->
+    <!-- =====================================
+         PRODUCT IMAGE
+         ===================================== -->
 
-      <div class="product-visual">
+    <div
+      class="product-visual"
+    >
 
-        <div class="product-visual-glow"></div>
+      <div class="product-visual-glow"></div>
 
-        <div class="product-image-wrap">
+      <div class="product-image-wrap">
 
-          <img
-            id="productImage"
-            src=""
-            alt=""
-          >
-
-        </div>
-
-        <div class="product-visual-index">
-          <span>01</span>
-          <span>PRODUCT</span>
-        </div>
-
-      </div>
-
-
-      <!-- =====================================
-           PRODUCT INFORMATION
-           ===================================== -->
-
-      <div class="product-information">
-
-        <!-- BRAND -->
-        <div class="product-brand-mark">
-
-          <span class="brand-word">
-            remify
-          </span>
-
-          <span class="brand-dot"></span>
-
-        </div>
-
-
-        <!-- PRODUCT NAME -->
-        <div class="product-heading">
-
-          <p
-            class="product-eyebrow"
-            id="productCategory"
-          >
-            WELLNESS / DAILY ESSENTIAL
-          </p>
-
-          <h1 id="productName">
-            —
-          </h1>
-
-          <p
-            class="product-tagline"
-            id="productTagline"
-          >
-            —
-          </p>
-
-        </div>
-
-
-        <!-- SIZE -->
-        <div class="product-size-row">
-
-          <span>SIZE</span>
-
-          <strong id="productSize">
-            —
-          </strong>
-
-        </div>
-
-
-        <!-- QUANTITY -->
-        <div class="product-purchase">
-
-          <div class="quantity-block">
-
-            <span class="quantity-label">
-              QUANTITY
-            </span>
-
-            <div class="quantity-control">
-
-              <button
-                type="button"
-                class="quantity-btn"
-                id="quantityMinus"
-                aria-label="Decrease quantity"
-              >
-                −
-              </button>
-
-              <span
-                id="quantityValue"
-                class="quantity-value"
-              >
-                1
-              </span>
-
-              <button
-                type="button"
-                class="quantity-btn"
-                id="quantityPlus"
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
-
-            </div>
-
-          </div>
-
-
-          <!-- PRICE -->
-
-          <div class="product-price">
-
-            <span
-              class="price-label"
-              id="priceCurrency"
-            >
-              KES
-            </span>
-
-            <strong id="productPrice">
-              —
-            </strong>
-
-          </div>
-
-        </div>
-
-
-        <!-- DESCRIPTION -->
-
-        <div class="product-description">
-
-          <p id="productDescription">
-            —
-          </p>
-
-        </div>
-
-
-        <!-- CHECKOUT -->
-
-        <div class="product-checkout">
-
-          <a
-            href="#"
-            id="checkoutButton"
-            class="checkout-button"
-          >
-
-            <span>
-              Proceed to checkout
-            </span>
-
-            <span class="checkout-arrow">
-              ↗
-            </span>
-
-          </a>
-
-        </div>
-
-
-        <!-- SMALL PURCHASE NOTE -->
-
-        <div class="product-purchase-note">
-
-          <span class="purchase-note-dot"></span>
-
-          <span id="availabilityText">
-            Available to order
-          </span>
-
-        </div>
+        <img
+          id="productImage"
+          src=""
+          alt=""
+        >
 
       </div>
 
     </div>
 
-  </section>
+
+    <!-- =====================================
+         PRODUCT INFORMATION
+         ===================================== -->
+
+    <div
+      class="product-information"
+      data-aos="fade-up"
+      data-aos-delay="300"
+      data-aos-duration="1100"
+      data-aos-easing="cubic-bezier(.16,1,.3,1)"
+    >
+
+      <!-- BRAND -->
+      <div class="product-brand-mark">
+
+        <span class="brand-word">
+          remify
+        </span>
+
+        <span class="brand-dot"></span>
+
+      </div>
+
+
+      <!-- PRODUCT NAME -->
+      <div class="product-heading">
+
+        <p
+          class="product-eyebrow"
+          id="productCategory"
+        >
+          WELLNESS / DAILY ESSENTIAL
+        </p>
+
+        <h1 id="productName">
+          —
+        </h1>
+
+        <p
+          class="product-tagline"
+          id="productTagline"
+        >
+          —
+        </p>
+
+      </div>
+
+
+      <!-- SIZE -->
+      <div class="product-size-row">
+
+        <span>SIZE</span>
+
+        <strong id="productSize">
+          —
+        </strong>
+
+      </div>
+
+
+      <!-- QUANTITY -->
+      <div class="product-purchase">
+
+        <div class="quantity-block">
+
+          <span class="quantity-label">
+            QUANTITY
+          </span>
+
+          <div class="quantity-control">
+
+            <button
+              type="button"
+              class="quantity-btn"
+              id="quantityMinus"
+              aria-label="Decrease quantity"
+            >
+              −
+            </button>
+
+            <span
+              id="quantityValue"
+              class="quantity-value"
+            >
+              1
+            </span>
+
+            <button
+              type="button"
+              class="quantity-btn"
+              id="quantityPlus"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- PRICE -->
+
+        <div class="product-price">
+
+          <span
+            class="price-label"
+            id="priceCurrency"
+          >
+            KES
+          </span>
+
+          <strong id="productPrice">
+            —
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- DESCRIPTION -->
+
+      <div class="product-description">
+
+        <p id="productDescription">
+          —
+        </p>
+
+      </div>
+
+
+      <!-- CHECKOUT -->
+
+      <div class="product-checkout">
+
+        <a
+          href="#"
+          id="checkoutButton"
+          class="checkout-button"
+        >
+
+          <span>
+            Proceed to checkout
+          </span>
+
+          <span class="checkout-arrow">
+            ↗
+          </span>
+
+        </a>
+
+      </div>
+
+
+      <!-- SMALL PURCHASE NOTE -->
+
+      <div class="product-purchase-note">
+
+        <span class="purchase-note-dot"></span>
+
+        <span id="availabilityText">
+          Available to order
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
   <!-- =========================================
      REMIFY PRODUCT DETAILS
@@ -414,7 +432,11 @@
          INTRO
          ===================================== -->
 
-    <header class="product-details-intro reveal">
+    <header class="product-details-intro reveal"
+      data-aos="fade-up"
+      data-aos-duration="900"
+      data-aos-offset="80"
+    >
 
       <div class="product-details-kicker">
         <span class="product-details-kicker-line"></span>
@@ -452,6 +474,10 @@
       <article
         class="product-detail-card product-detail-card--ingredients reveal"
         data-detail-card="ingredients"
+        data-aos="fade-up"
+        data-aos-duration="900"
+        data-aos-delay="100"
+        data-aos-offset="80"
       >
 
         <div class="product-detail-card-header">
@@ -488,6 +514,10 @@
       <article
         class="product-detail-card product-detail-card--benefits reveal"
         data-detail-card="benefits"
+        data-aos="fade-up"
+        data-aos-duration="900"
+        data-aos-delay="180"
+        data-aos-offset="80"
       >
 
         <div class="product-detail-card-header">
@@ -524,6 +554,10 @@
       <article
         class="product-detail-card product-detail-card--usage reveal"
         data-detail-card="usage"
+        data-aos="fade-up"
+        data-aos-duration="900"
+        data-aos-delay="260"
+        data-aos-offset="80"
       >
 
         <div class="product-detail-card-header">
@@ -569,6 +603,10 @@
       <article
         class="product-detail-card product-detail-card--freshness reveal"
         data-detail-card="freshness"
+        data-aos="fade-up"
+        data-aos-duration="1100"
+        data-aos-delay="340"
+        data-aos-offset="80"
       >
 
         <div class="product-detail-card-header">
@@ -628,6 +666,10 @@
     <aside
       class="product-details-note reveal"
       id="productNaturalNote"
+      data-aos="fade-up"
+      data-aos-duration="1100"
+      data-aos-delay="150"
+      data-aos-offset="80"
     >
 
       <div class="product-details-note-mark">
@@ -655,7 +697,13 @@
          CLOSING STATEMENT
          ===================================== -->
 
-    <footer class="product-details-closing reveal">
+    <footer
+      class="product-details-closing reveal"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="100"
+      data-aos-offset="80"
+    >
 
       <span>
         Nothing unnecessary.
@@ -670,7 +718,6 @@
   </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -886,6 +933,53 @@
 
 
   <script src="product.js"></script>
+    <script src="page-transition.js"></script>
+  <!-- LENIS SMOOTH SCROLL -->
+<script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+<script>
+  /* =========================================================
+     REMIFY — LENIS SMOOTH SCROLL
+     ========================================================= */
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    wheelMultiplier: 0.9,
+    touchMultiplier: 1.2,
+    infinite: false
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
+
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    AOS.init({
+      once: false,
+      mirror: false,
+      duration: 1200,
+      easing: "cubic-bezier(.16,1,.3,1)",
+      offset: 30,
+      disable: () =>
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+    });
+  });
+</script>
 
 </body>
 </html>

@@ -9,12 +9,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<!-- AOS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+>
   <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-transition.css">
+  
 </head>
 <body>
 
+<div class="remify-page-transition" id="remifyPageTransition" aria-hidden="true">
+  <div class="remify-transition-glass"></div>
+  <div class="remify-transition-overlay"></div>
+  <div class="remify-transition-pixels" id="remifyTransitionPixels"></div>
 
+  <div class="remify-transition-word" id="remifyTransitionWord">
+    remify
+  </div>
+</div>
 
   <header class="site-header">
     <div class="hero">
@@ -52,23 +66,85 @@
         </div>
       </nav>
 
-      <picture class="hero-picture">
-        <source media="(max-width: 700px)" srcset="images/hero-mobile-2.webp">
-        <img src="images/hero-desk2.webp" alt="A jar of Remify purple sea moss gel resting beside raw ocean-harvested sea moss" class="hero-img">
-      </picture>
 
-      <div class="hero-scrim"></div>
+    <picture
+      class="hero-picture"
+      data-aos="zoom-out"
+      data-aos-duration="1800"
+      data-aos-delay="100"
+      data-aos-easing="cubic-bezier(.16,1,.3,1)"
+    >
 
-      <div class="hero-content">
-        <h1 class="hero-title">Nourishment,<br>from the ocean.</h1>
-        <p class="hero-subtitle">Purple sea moss, prepared fresh weekly.</p>
-<a href="products.html?id=sea-moss-gel" class="product-card-cta">
-  <span>Shop Sea Moss Gel</span>
-</a>
-      </div>
+      <source
+        media="(max-width: 700px)"
+        srcset="images/hero-mobile-2.webp"
+      >
+
+      <img
+        src="images/hero-desk2.webp"
+        alt="A jar of Remify purple sea moss gel resting beside raw ocean-harvested sea moss"
+        class="hero-img"
+      >
+
+    </picture>
+
+
+    <!-- =====================================================
+         HERO SCRIM
+         ===================================================== -->
+
+    <div
+      class="hero-scrim"
+      data-aos="fade"
+      data-aos-duration="1400"
+      data-aos-delay="100"
+    ></div>
+
+
+    <!-- =====================================================
+         HERO CONTENT
+         ===================================================== -->
+
+    <div class="hero-content">
+
+      <h1
+        class="hero-title"
+        data-aos="fade-up"
+        data-aos-duration="1100"
+        data-aos-delay="450"
+        data-aos-easing="cubic-bezier(.16,1,.3,1)"
+      >
+        Nourishment,<br>
+        from the ocean.
+      </h1>
+
+
+      <p
+        class="hero-subtitle"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="600"
+        data-aos-easing="cubic-bezier(.16,1,.3,1)"
+      >
+        Purple sea moss, prepared fresh weekly.
+      </p>
+
+
+      <a
+        href="products.html?id=sea-moss-gel"
+        class="product-card-cta"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="750"
+        data-aos-easing="cubic-bezier(.16,1,.3,1)"
+      >
+        <span>Shop Sea Moss Gel</span>
+      </a>
 
     </div>
-  </header>
+
+  </div>
+</header>
 
     <section class="brand-reveal" id="brandReveal">
     <div class="brand-reveal-inner">
@@ -81,37 +157,113 @@
   </section>
 
 
-    <section class="product-showcase" id="productShowcase">
-    <div class="product-showcase-bg">
-      <img src="images/product2.jpg" alt="" aria-hidden="true">
-    </div>
-    <div class="product-showcase-overlay"></div>
+<!-- =========================================================
+     PRODUCT SHOWCASE
+     ========================================================= -->
 
-    <div class="product-card" id="productCard">
-      <div class="product-card-image">
-        <img src="images/product2.jpg" alt="Jar of Remify purple sea moss gel">
+<section
+  class="product-showcase"
+  id="productShowcase"
+>
+
+  <div
+    class="product-showcase-bg"
+  >
+    <img
+      src="images/product2.jpg"
+      alt=""
+      aria-hidden="true"
+    >
+  </div>
+
+
+  <div
+    class="product-showcase-overlay"
+    data-aos="fade"
+    data-aos-duration="1200"
+    data-aos-delay="150"
+  ></div>
+
+
+  <div
+    class="product-card"
+    id="productCard"
+    data-aos="fade-up"
+    data-aos-duration="1100"
+    data-aos-delay="250"
+    data-aos-easing="cubic-bezier(.16,1,.3,1)"
+  >
+
+    <div
+      class="product-card-image"
+    >
+      <img
+        src="images/product2.jpg"
+        alt="Jar of Remify purple sea moss gel"
+      >
+    </div>
+
+
+    <div class="product-card-info">
+
+      <h3
+        class="product-card-name"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="500"
+      >
+        Sea Moss Gel
+      </h3>
+
+
+      <p
+        class="product-card-desc"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="580"
+      >
+        Fresh. Natural. Nourishing.
+      </p>
+
+
+      <div
+        class="product-card-meta"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="650"
+      >
+
+        <span class="product-card-price">
+          Kshs. 1,200
+        </span>
+
+        <span class="product-card-size">
+          1000ml
+        </span>
+
       </div>
 
-      <div class="product-card-info">
-        <h3 class="product-card-name">Sea Moss Gel</h3>
-        <p class="product-card-desc">Fresh. Natural. Nourishing.</p>
 
-        <div class="product-card-meta">
-          <span class="product-card-price">Kshs. 1,200</span>
-          <span class="product-card-size">1000ml</span>
-        </div>
+      <a
+        href="products.html?id=sea-moss-gel"
+        class="product-card-cta"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="730"
+      >
+        <span>Shop Now</span>
+      </a>
 
-<a href="products.html?id=sea-moss-gel" class="product-card-cta">
-  <span>Shop Now</span>
-</a>
-      </div>
     </div>
-  </section>
+
+  </div>
+
+</section>
 
     <section class="why-remify" id="whyRemify">
     <div class="why-remify-inner">
 
-      <div class="why-remify-intro reveal">
+      <div class="why-remify-intro reveal" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="80">
         <p class="why-eyebrow">Why Remify</p>
         <h2 class="why-heading">Rooted in<br>something real.</h2>
         <p class="why-lead">Sea moss has nourished coastal communities for generations. We didn't invent it — we just refused to cut corners bringing it to you.</p>
@@ -128,22 +280,22 @@
       </div>
 
       <div class="why-benefits">
-        <div class="why-benefit-card reveal">
+        <div class="why-benefit-card reveal" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100" data-aos-offset="80">
           <h3>Rich in antioxidants</h3>
           <p>Naturally packed with minerals and antioxidants that support everyday cellular health.</p>
         </div>
 
-        <div class="why-benefit-card reveal">
+        <div class="why-benefit-card reveal" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200" data-aos-offset="80">
           <h3>Reproductive health</h3>
           <p>Traditionally used to support hormonal balance and everyday reproductive wellness.</p>
         </div>
 
-        <div class="why-benefit-card reveal">
+        <div class="why-benefit-card reveal" data-aos="fade-up" data-aos-duration="900" data-aos-delay="300" data-aos-offset="80">
           <h3>Blood pressure support</h3>
           <p>Rich in potassium and trace minerals that help maintain healthy blood pressure.</p>
         </div>
 
-        <div class="why-benefit-card reveal">
+        <div class="why-benefit-card reveal" data-aos="fade-up" data-aos-duration="900" data-aos-delay="400" data-aos-offset="80">
           <h3>Weight management</h3>
           <p>Low in calories and naturally fibrous — a simple fit for a balanced routine.</p>
         </div>
@@ -247,28 +399,28 @@
 
 
     <!-- Content -->
-    <div class="remify-photo-cta-content">
+    <div class="remify-photo-cta-content" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
 
-      <div class="remify-photo-cta-eyebrow">
+      <div class="remify-photo-cta-eyebrow" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
         <span></span>
         PURPLE SEA MOSS
         <span></span>
       </div>
 
 
-      <h2>
+      <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
         Make something
         <em>good for you.</em>
       </h2>
 
 
-      <p>
+      <p data-aos="fade-up" data-aos-duration="900" data-aos-delay="500">
         Freshly prepared purple sea moss gel,
         made in small batches for the everyday.
       </p>
 
 
-      <a href="/shop" class="remify-photo-cta-button">
+      <a href="/shop" class="remify-photo-cta-button" data-aos="fade-up" data-aos-duration="900" data-aos-delay="600">
 
         <span>
           Explore Remify
@@ -287,7 +439,7 @@
 
 
     <!-- Bottom metadata -->
-    <div class="remify-photo-cta-meta">
+    <div class="remify-photo-cta-meta" data-aos="fade-up" data-aos-duration="900" data-aos-delay="700">
 
       <span>FRESHLY PREPARED</span>
 
@@ -313,13 +465,13 @@
 
   <div class="remify-social-inner">
 
-    <div class="remify-social-copy">
+    <div class="remify-social-copy" data-aos="fade-up" data-aos-duration="900" data-aos-delay="150">
 
-      <span class="remify-social-kicker">
+      <span class="remify-social-kicker" data-aos="fade-up" data-aos-duration="700" data-aos-delay="250">
         STAY CONNECTED
       </span>
 
-      <h3>
+      <h3 data-aos="fade-up" data-aos-duration="900" data-aos-delay="350">
         Keep up with
         <em>Remify.</em>
       </h3>
@@ -329,7 +481,7 @@
 
     <div class="remify-social-links">
 
-      <a href="#" aria-label="Instagram">
+      <a href="https://www.instagram.com/remify.co/?utm_source=ig_web_button_share_sheet" aria-label="Instagram" data-aos="fade-up" data-aos-duration="800" data-aos-delay="450">
         <span>Instagram</span>
         <svg viewBox="0 0 24 24">
           <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z"/>
@@ -338,14 +490,9 @@
         </svg>
       </a>
 
-      <a href="#" aria-label="Facebook">
-        <span>Facebook</span>
-        <svg viewBox="0 0 24 24">
-          <path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.7.3-1 1-1Z"/>
-        </svg>
-      </a>
 
-      <a href="#" aria-label="TikTok">
+
+      <a href="https://www.tiktok.com/@remify.products?is_from_webapp=1&sender_device=pc" aria-label="TikTok" data-aos="fade-up" data-aos-duration="800" data-aos-delay="550">
         <span>TikTok</span>
         <svg viewBox="0 0 24 24">
           <path d="M14 4v10.2a4.3 4.3 0 1 1-3.5-4.2"/>
@@ -358,7 +505,6 @@
   </div>
 
 </section>
-
 
 <!-- =========================================================
      REMIFY — FOOTER
@@ -399,10 +545,10 @@
         </p>
 
         <a
-          href="mailto:hello@remifyproducts.com"
+          href="mailto:remifyproducts@gmail.com"
           class="remify-footer-email"
         >
-          hello@remifyproducts.com
+          remifyproducts@gmail.com
         </a>
 
       </div>
@@ -464,7 +610,7 @@
             GET IN TOUCH
           </span>
 
-          <a href="mailto:hello@remifyproducts.com">
+          <a href="mailto:remifyproducts@gmail.com">
             Email us
           </a>
 
@@ -578,5 +724,48 @@
 </div>
 
   <script src="script.js"></script>
+  <script src="page-transition.js"></script>
+  <!-- LENIS SMOOTH SCROLL -->
+<script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+<script>
+  /* =========================================================
+     REMIFY — LENIS SMOOTH SCROLL
+     ========================================================= */
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    wheelMultiplier: 0.9,
+    touchMultiplier: 1.2,
+    infinite: false
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+
+    AOS.init({
+      once: false,
+      duration: 1000,
+      easing: "cubic-bezier(.16,1,.3,1)",
+      offset: 30,
+      disable: () =>
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+    });
+
+  });
+</script>
 </body>
 </html>

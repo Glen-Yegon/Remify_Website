@@ -11,6 +11,8 @@
   --nav-height: 88px;
 }
 
+
+
 * {
   margin: 0;
   padding: 0;
@@ -33,11 +35,6 @@ html::-webkit-scrollbar {
   height: 0;
 }
 
-
-
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   font-family: var(--font-body);
@@ -2050,9 +2047,11 @@ backdrop-filter: blur(20px) saturate(160%);
 
   background:
     rgba(255,255,255,.025);
+    -webkit-backdrop-filter: blur(10px);
 
   backdrop-filter:
     blur(10px);
+
 
   transition:
     transform .4s cubic-bezier(.22,1,.36,1),
@@ -3402,7 +3401,7 @@ backdrop-filter: blur(20px) saturate(160%);
   left: 0;
 
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
 
   margin: 0;
   padding: 0;
@@ -3414,10 +3413,20 @@ backdrop-filter: blur(20px) saturate(160%);
 
   gap: 0;
 
-  background: rgba(7, 7, 7, 0.78);
+  /* =========================================
+     GLASS — ALWAYS THE SAME
+     ========================================= */
 
-  backdrop-filter: blur(26px) saturate(110%);
-  -webkit-backdrop-filter: blur(26px) saturate(110%);
+  background:
+    rgba(7, 7, 7, 0.78) !important;
+
+  backdrop-filter:
+    blur(26px)
+    saturate(110%) !important;
+
+  -webkit-backdrop-filter:
+    blur(26px)
+    saturate(110%) !important;
 
   z-index: 99998;
 
@@ -3428,7 +3437,29 @@ backdrop-filter: blur(20px) saturate(160%);
   transition:
     transform 0.65s cubic-bezier(.22, 1, .36, 1);
 
-  max-height: none;
+  max-height: none !important;
+
+  opacity: 1 !important;
+}
+
+/* =========================================
+   MOBILE MENU — IGNORE NAVBAR SCROLL STATE
+   ========================================= */
+
+.navbar.navbar--scrolled .nav-links,
+.navbar.navbar--scrolled .nav-links.open {
+  background:
+    rgba(7, 7, 7, 0.78) !important;
+
+  backdrop-filter:
+    blur(26px)
+    saturate(110%) !important;
+
+  -webkit-backdrop-filter:
+    blur(26px)
+    saturate(110%) !important;
+
+  opacity: 1 !important;
 }
 
   /* -----------------------------------------
@@ -3691,4 +3722,457 @@ backdrop-filter: blur(20px) saturate(160%);
     background: #dcbde9;
   }
 
+}
+
+
+/* =========================================================
+   REMIFY — MOBILE MENU
+   ALWAYS DARK GLASS — TOP + SCROLLED
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .navbar .nav-links,
+  .navbar.navbar--scrolled .nav-links,
+  .navbar.navbar--scrolled .nav-links.open {
+
+    background:
+      rgba(7, 7, 7, 0.78) !important;
+
+    backdrop-filter:
+      blur(26px)
+      saturate(110%) !important;
+
+    -webkit-backdrop-filter:
+      blur(26px)
+      saturate(110%) !important;
+
+    background-color:
+      rgba(7, 7, 7, 0.78) !important;
+
+    box-shadow:
+      none !important;
+
+    border:
+      none !important;
+
+  }
+
+
+  /* -----------------------------------------
+     OPEN STATE
+     ----------------------------------------- */
+
+  .navbar .nav-links.open,
+  .navbar.navbar--scrolled .nav-links.open {
+
+    transform:
+      translateX(0);
+
+  }
+
+
+  /* -----------------------------------------
+     LINKS
+     ----------------------------------------- */
+
+  .navbar.navbar--scrolled .nav-links a {
+
+    color:
+      rgba(255, 255, 255, .72) !important;
+
+  }
+
+
+  .navbar.navbar--scrolled .nav-links a:hover {
+
+    color:
+      #fff !important;
+
+    border-bottom:
+      none !important;
+
+  }
+
+}
+@media (max-width: 900px) {
+
+  .navbar.navbar--scrolled .nav-links {
+    z-index: 100001;
+  }
+
+  .navbar.navbar--scrolled .nav-links.open {
+    z-index: 100001;
+  }
+
+}
+
+/* =========================================================
+   REMIFY — CINEMATIC PAGE TRANSITION
+   ========================================================= */
+
+.remify-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  pointer-events: none;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  background: #09000f;
+  isolation: isolate;
+}
+
+.remify-transition.is-active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* =========================================================
+   MAIN PURPLE FIELD
+   ========================================================= */
+
+.remify-transition-core {
+  position: absolute;
+  width: 160vmax;
+  height: 160vmax;
+  left: var(--transition-x, 50%);
+  top: var(--transition-y, 50%);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      #9a5dcc 0%,
+      #5b2d82 22%,
+      #310d4d 52%,
+      #12001e 78%,
+      #050006 100%
+    );
+  box-shadow:
+    0 0 100px rgba(91,45,130,.55),
+    0 0 220px rgba(91,45,130,.28);
+  will-change: transform;
+  z-index: 3;
+}
+
+.remify-transition.is-entering .remify-transition-core {
+  animation:
+    remifyTransitionExpand
+    .82s
+    cubic-bezier(.16,1,.3,1)
+    forwards;
+}
+
+/* =========================================================
+   ATMOSPHERIC GLOW
+   ========================================================= */
+
+.remify-transition-glow {
+  position: absolute;
+  inset: -20%;
+  z-index: 1;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(132,67,182,.28),
+      transparent 45%
+    );
+  filter: blur(60px);
+  transform: scale(.4);
+}
+
+.remify-transition.is-entering .remify-transition-glow {
+  animation:
+    remifyGlowIn
+    1.05s
+    cubic-bezier(.16,1,.3,1)
+    forwards;
+}
+
+/* =========================================================
+   FLOATING ORBS
+   ========================================================= */
+
+.remify-transition-orb {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 2;
+  opacity: 0;
+  filter: blur(30px);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.remify-transition-orb--one {
+  width: 28vw;
+  height: 28vw;
+  left: 8%;
+  top: 12%;
+  background: rgba(123,67,165,.3);
+}
+
+.remify-transition-orb--two {
+  width: 34vw;
+  height: 34vw;
+  right: 4%;
+  bottom: 4%;
+  background: rgba(74,25,108,.38);
+}
+
+.remify-transition-orb--three {
+  width: 18vw;
+  height: 18vw;
+  left: 48%;
+  top: 45%;
+  background: rgba(188,121,226,.24);
+}
+
+.remify-transition.is-entering .remify-transition-orb--one {
+  animation:
+    remifyOrbOne
+    1.1s
+    cubic-bezier(.16,1,.3,1)
+    forwards;
+}
+
+.remify-transition.is-entering .remify-transition-orb--two {
+  animation:
+    remifyOrbTwo
+    1.2s
+    cubic-bezier(.16,1,.3,1)
+    forwards;
+}
+
+.remify-transition.is-entering .remify-transition-orb--three {
+  animation:
+    remifyOrbThree
+    1s
+    cubic-bezier(.16,1,.3,1)
+    forwards;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.remify-transition-brand {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #fff;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(42px, 7vw, 92px);
+  font-weight: 100;
+  letter-spacing: -.045em;
+  opacity: 0;
+  transform: translateY(18px) scale(.94);
+}
+
+.remify-transition-brand i {
+  width: 7px;
+  height: 7px;
+  margin-top: 28px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 14px rgba(255,255,255,.65);
+}
+
+.remify-transition.is-entering .remify-transition-brand {
+  animation:
+    remifyBrandIn
+    .5s
+    .32s
+    cubic-bezier(.16,1,.3,1)
+    forwards;
+}
+
+/* =========================================================
+   EXIT / REVEAL
+   ========================================================= */
+
+.remify-transition.is-leaving .remify-transition-core {
+  animation:
+    remifyTransitionReveal
+    .85s
+    cubic-bezier(.76,0,.24,1)
+    forwards;
+}
+
+.remify-transition.is-leaving .remify-transition-brand {
+  animation:
+    remifyBrandOut
+    .4s
+    cubic-bezier(.76,0,.24,1)
+    forwards;
+}
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes remifyTransitionExpand {
+  0% {
+    transform:
+      translate(-50%, -50%)
+      scale(0);
+  }
+
+  100% {
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+}
+
+@keyframes remifyTransitionReveal {
+  0% {
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+  100% {
+    transform:
+      translate(-50%, -50%)
+      scale(0);
+  }
+}
+
+@keyframes remifyGlowIn {
+  0% {
+    opacity: 0;
+    transform: scale(.35);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes remifyOrbOne {
+  0% {
+    opacity: 0;
+    transform: translate(-100px,-80px) scale(.4);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0,0) scale(1);
+  }
+}
+
+@keyframes remifyOrbTwo {
+  0% {
+    opacity: 0;
+    transform: translate(120px,100px) scale(.35);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0,0) scale(1);
+  }
+}
+
+@keyframes remifyOrbThree {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(.4);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes remifyBrandIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes remifyBrandOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-12px) scale(1.04);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .remify-transition-core {
+    width: 230vmax;
+    height: 230vmax;
+  }
+
+  .remify-transition-brand {
+    font-size: clamp(48px, 15vw, 72px);
+  }
+
+  .remify-transition-brand i {
+    width: 5px;
+    height: 5px;
+    margin-top: 20px;
+  }
+
+  .remify-transition-orb--one {
+    width: 55vw;
+    height: 55vw;
+  }
+
+  .remify-transition-orb--two {
+    width: 60vw;
+    height: 60vw;
+  }
+
+  .remify-transition-orb--three {
+    width: 35vw;
+    height: 35vw;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .remify-transition {
+    transition: opacity .2s ease;
+  }
+
+  .remify-transition-core,
+  .remify-transition-glow,
+  .remify-transition-orb,
+  .remify-transition-brand {
+    animation: none !important;
+  }
+
+  .remify-transition.is-active {
+    opacity: 1;
+  }
 }
