@@ -1,0 +1,314 @@
+/* =========================================================
+   REMIFY — AFFILIATE LOGIN
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background: #f7f5f8;
+  color: #171717;
+}
+
+
+/* =========================================================
+   AUTH
+   ========================================================= */
+
+.affiliate-auth {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 18px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.affiliate-auth-card {
+  width: 100%;
+  max-width: 460px;
+
+  background: #ffffff;
+
+  border: 1px solid #ece8ee;
+
+  border-radius: 24px;
+
+  padding: 42px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.affiliate-auth-brand {
+  color: #5b2d82;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 48px;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.eyebrow {
+  margin: 0 0 12px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #8b8290;
+}
+
+.affiliate-auth-heading h1 {
+  margin: 0;
+
+  font-size: 38px;
+  line-height: 1.05;
+
+  letter-spacing: -1.5px;
+}
+
+.affiliate-auth-heading > p:last-child {
+  margin: 14px 0 34px;
+
+  color: #77717b;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  color: #403b43;
+}
+
+.form-field input {
+  width: 100%;
+
+  height: 52px;
+
+  padding: 0 15px;
+
+  border: 1px solid #ddd8e0;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #171717;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-field input:focus {
+  border-color: #5b2d82;
+
+  box-shadow:
+    0 0 0 3px rgba(91, 45, 130, 0.08);
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.affiliate-auth-message {
+  min-height: 20px;
+
+  margin: 4px 0 14px;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.affiliate-auth-message.error {
+  color: #b42318;
+}
+
+.affiliate-auth-message.success {
+  color: #217a43;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+#affiliateLoginButton {
+  position: relative;
+
+  width: 100%;
+  height: 54px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: #5b2d82;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+#affiliateLoginButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+#affiliateLoginButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   LOADER
+   ========================================================= */
+
+.button-loader {
+  display: none;
+
+  width: 17px;
+  height: 17px;
+
+  margin: 0 auto;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation:
+    affiliateSpinner 0.7s linear infinite;
+}
+
+#affiliateLoginButton.is-loading .button-text {
+  display: none;
+}
+
+#affiliateLoginButton.is-loading .button-loader {
+  display: block;
+}
+
+@keyframes affiliateSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.affiliate-auth-footer {
+  margin-top: 28px;
+
+  padding-top: 24px;
+
+  border-top: 1px solid #eeeaf0;
+
+  text-align: center;
+}
+
+.affiliate-auth-footer p {
+  margin: 0 0 8px;
+
+  color: #88818c;
+
+  font-size: 12px;
+}
+
+.affiliate-auth-footer a {
+  color: #5b2d82;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+  .affiliate-auth {
+    padding: 18px 14px;
+  }
+
+  .affiliate-auth-card {
+    padding: 30px 22px;
+
+    border-radius: 20px;
+  }
+
+  .affiliate-auth-brand {
+    margin-bottom: 38px;
+  }
+
+  .affiliate-auth-heading h1 {
+    font-size: 32px;
+  }
+
+}

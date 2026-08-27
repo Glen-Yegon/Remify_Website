@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>Checkout — Remify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="checkout.css">
+<link rel="stylesheet" href="page-transition.css">
+</head>
+<body>
+
+    <!-- =========================================
+     REMIFY SCROLL PROGRESS
+     ========================================= -->
+
+<div class="scroll-progress" aria-hidden="true">
+  <div class="scroll-progress-fill" id="scrollFill"></div>
+</div>
+
+<!-- =========================================
+     REMIFY CUSTOM CURSOR
+     ========================================= -->
+
+<canvas class="cursor-trail" id="cursorTrail" aria-hidden="true"></canvas>
+
+<div class="cursor-spark" id="cursorSpark" aria-hidden="true">
+  <span></span>
+</div>
+
+      <div class="remify-page-transition" id="remifyPageTransition" aria-hidden="true">
+  <div class="remify-transition-glass"></div>
+  <div class="remify-transition-overlay"></div>
+  <div class="remify-transition-pixels" id="remifyTransitionPixels"></div>
+
+  <div class="remify-transition-word" id="remifyTransitionWord">
+    remify
+  </div>
+</div>
+
+<header class="checkout-navbar">
+  <div class="checkout-navbar-inner">
+
+    <a href="javascript:history.back()" class="checkout-back" aria-label="Go back">
+      <span class="checkout-back-arrow">←</span>
+      <span>Back</span>
+    </a>
+
+    <a href="index.html" class="checkout-logo" aria-label="Remify home">
+      <img src="images/rem-logo-mainb.png" alt="Remify">
+    </a>
+
+    <button class="checkout-menu-toggle" id="checkoutMenuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <div class="checkout-menu" id="checkoutMenu" aria-hidden="true">
+    <div class="checkout-menu-inner">
+
+      <div class="checkout-menu-header">
+        <a href="index.html" class="checkout-menu-logo" aria-label="Remify home">
+          <img src="images/rem-logo-mainb.png" alt="Remify">
+        </a>
+
+        <button class="checkout-menu-close" id="checkoutMenuClose" type="button" aria-label="Close menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="checkout-menu-line"></div>
+
+      <nav class="checkout-menu-links">
+        <a href="why-remify.html">
+          <span>Why Remify</span>
+          <span>↗</span>
+        </a>
+        <a href="index.html">
+          <span>Home</span>
+          <span>↗</span>
+        </a>
+        <a href="contact.html">
+          <span>Contact</span>
+          <span>↗</span>
+        </a>
+      </nav>
+
+      <div class="checkout-menu-footer">
+        <span>REMIFY © 2026</span>
+        <span>Fresh. Natural. Made with intention.</span>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<main class="checkout-page" id="checkoutPage">
+
+  <div class="checkout-container">
+
+
+
+    <section class="checkout-form-section">
+
+      <div class="checkout-heading">
+        <span class="checkout-eyebrow">CHECKOUT</span>
+        <h1>Complete your order.</h1>
+        <p>Enter your details below and we'll take care of the rest.</p>
+      </div>
+
+      <form class="checkout-form" id="checkoutForm" novalidate>
+
+        <div class="checkout-form-group">
+          <div class="checkout-section-heading">
+            <span>01</span>
+            <h2>Contact information</h2>
+          </div>
+
+          <div class="checkout-fields">
+
+            <div class="checkout-field checkout-field--full">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Your full name" required>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="checkout-field">
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="checkout-field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+254 7XX XXX XXX" required>
+              <span class="field-error"></span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="checkout-form-divider"></div>
+
+        <div class="checkout-form-group">
+
+          <div class="checkout-section-heading">
+            <span>02</span>
+            <h2>Delivery information</h2>
+          </div>
+
+          <div class="checkout-fields">
+
+            <div class="checkout-field">
+              <label for="country">Country / region</label>
+              <input id="country" name="country" type="text" autocomplete="country-name" placeholder="Kenya" required>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="checkout-field">
+              <label for="city">City</label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="Nairobi" required>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="checkout-field checkout-field--full">
+              <label for="address">Address</label>
+              <input id="address" name="address" type="text" autocomplete="street-address" placeholder="Street, estate or area" required>
+              <span class="field-error"></span>
+            </div>
+
+            <div class="checkout-field checkout-field--full">
+              <label for="apartment">Apartment / suite / building <span>(optional)</span></label>
+              <input id="apartment" name="apartment" type="text" autocomplete="address-line2" placeholder="Apartment, building or house number">
+            </div>
+
+          </div>
+        </div>
+
+        <div class="checkout-shipping-notice">
+          <div class="checkout-shipping-icon">✦</div>
+          <div>
+            <strong>Shipping made simple.</strong>
+            <p>We currently deliver across Kenya. <a href="shipping.html">View our shipping information <span>↗</span></a></p>
+          </div>
+        </div>
+
+        <button class="checkout-payment-button" id="paymentButton" type="submit">
+          <span>Continue to payment</span>
+          <span class="checkout-payment-arrow">↗</span>
+        </button>
+
+        <div class="checkout-secure-note">
+          <span class="secure-dot"></span>
+          <span>Your details are kept private and secure.</span>
+        </div>
+
+      </form>
+
+    </section>
+
+    <aside class="checkout-summary-section">
+
+      <div class="checkout-summary" id="orderSummary">
+
+        <div class="summary-heading">
+          <div>
+            <span class="checkout-eyebrow">YOUR ORDER</span>
+            <h2>Order summary</h2>
+          </div>
+          <span class="summary-item-count" id="summaryItemCount">1 item</span>
+        </div>
+
+        <div class="summary-product" id="summaryProduct">
+
+          <div class="summary-product-image">
+            <img id="summaryProductImage" src="" alt="">
+          </div>
+
+          <div class="summary-product-info">
+            <div class="summary-product-top">
+              <div>
+                <span class="summary-product-brand">REMIFY</span>
+                <h3 id="summaryProductName">Loading...</h3>
+              </div>
+              <strong id="summaryProductPrice">—</strong>
+            </div>
+
+            <div class="summary-product-bottom">
+              <span id="summaryProductSize"></span>
+              <div class="summary-quantity">
+                <button type="button" id="summaryQuantityMinus" aria-label="Decrease quantity">−</button>
+                <span id="summaryQuantity">1</span>
+                <button type="button" id="summaryQuantityPlus" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="summary-line"></div>
+
+        <div class="summary-breakdown">
+          <div>
+            <span>Subtotal</span>
+            <strong id="summarySubtotal">—</strong>
+          </div>
+          <div>
+            <span>Shipping</span>
+            <strong id="summaryShipping">Calculated after order</strong>
+          </div>
+        </div>
+
+        <div class="summary-total">
+          <span>Total</span>
+          <strong id="summaryTotal">—</strong>
+        </div>
+
+        <div class="summary-note">
+          <span>✦</span>
+          <p>Freshly prepared with intention. Your order will be processed once payment is completed.</p>
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <div class="checkout-status" id="checkoutStatus" aria-hidden="true">
+  <div class="checkout-status-card">
+    <button
+      class="checkout-status-close"
+      id="checkoutStatusClose"
+      type="button"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+    <div class="checkout-status-icon" id="checkoutStatusIcon">
+      ✦
+    </div>
+
+    <span class="checkout-eyebrow" id="checkoutStatusEyebrow">
+      REMIFY
+    </span>
+
+    <h2 id="checkoutStatusTitle">
+      Processing your order
+    </h2>
+
+    <p id="checkoutStatusMessage">
+      Please wait while we complete your order.
+    </p>
+
+    <div class="checkout-status-reference" id="checkoutStatusReference"></div>
+
+    <button
+      class="checkout-status-action"
+      id="checkoutStatusAction"
+      type="button"
+    >
+      Continue
+    </button>
+  </div>
+</div>
+
+</main>
+<script src="https://js.paystack.co/v2/inline.js"></script>
+<script src="checkout.js"></script>
+<script src="page-transition.js"></script>
+  <!-- LENIS SMOOTH SCROLL -->
+<script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+<script>
+  /* =========================================================
+     REMIFY — LENIS SMOOTH SCROLL
+     ========================================================= */
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    wheelMultiplier: 0.9,
+    touchMultiplier: 1.2,
+    infinite: false
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>
+
+</body>
+</html>

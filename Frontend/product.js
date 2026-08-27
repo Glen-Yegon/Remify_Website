@@ -485,32 +485,40 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-    const checkoutUrl =
-      product.commerce?.checkoutUrl ||
-      product.commerce?.checkout ||
-      product.commerce?.url ||
-      "#";
+/* -----------------------------------------
+   CHECKOUT
+   ----------------------------------------- */
 
+if (checkoutButton) {
 
-    if (checkoutButton) {
+  checkoutButton.href =
+    `checkout.html?id=${encodeURIComponent(product.id)}&qty=1`;
 
-      checkoutButton.href =
-        checkoutUrl;
+  checkoutButton.removeAttribute("target");
+  checkoutButton.removeAttribute("rel");
 
+  checkoutButton.addEventListener("click",event=>{
 
-      if (
-        checkoutUrl.startsWith("http")
-      ) {
+    event.preventDefault();
 
-        checkoutButton.target =
-          "_blank";
+    const quantityValue =
+      document.getElementById("quantityValue");
 
-        checkoutButton.rel =
-          "noopener noreferrer";
+    const quantity =
+      Math.max(
+        1,
+        Math.min(
+          20,
+          parseInt(quantityValue?.textContent || "1",10) || 1
+        )
+      );
 
-      }
+    window.location.href =
+      `checkout.html?id=${encodeURIComponent(product.id)}&qty=${quantity}`;
 
-    }
+  });
+
+}
 
 
     /* -----------------------------------------

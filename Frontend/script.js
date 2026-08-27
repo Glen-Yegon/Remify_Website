@@ -1,3 +1,50 @@
+/* =========================================================
+   REMIFY — AFFILIATE REFERRAL TRACKING
+   ========================================================= */
+
+(function trackAffiliateReferral() {
+
+  const params =
+    new URLSearchParams(window.location.search);
+
+  const referralCode =
+    params.get("ref");
+
+  if (!referralCode) {
+    return;
+  }
+
+  const normalizedCode =
+    referralCode.trim().toUpperCase();
+
+  if (!/^RMF[A-Z0-9]{6}$/.test(normalizedCode)) {
+    return;
+  }
+
+  localStorage.setItem(
+    "remifyAffiliateCode",
+    normalizedCode
+  );
+
+  console.log(
+    "Remify affiliate referral captured:",
+    normalizedCode
+  );
+
+})();
+
+
+const getRemifyAffiliateCode = () => {
+
+  return localStorage.getItem(
+    "remifyAffiliateCode"
+  ) || null;
+
+};
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* =========================================

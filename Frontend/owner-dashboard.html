@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Owner Dashboard — Remify</title>
+
+  <link
+    rel="stylesheet"
+    href="owner-dashbiard.css"
+  >
+
+</head>
+
+
+<body>
+
+  <div class="owner-dashboard">
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="owner-sidebar">
+
+      <div class="owner-sidebar-top">
+
+        <div class="owner-brand">
+          REMIFY
+        </div>
+
+        <div class="owner-program">
+          Affiliate Management
+        </div>
+
+      </div>
+
+
+      <nav class="owner-nav">
+
+        <a
+          href="#overview"
+          class="owner-nav-link active"
+        >
+
+          <span class="owner-nav-icon">
+            ⌂
+          </span>
+
+          <span>
+            Overview
+          </span>
+
+        </a>
+
+
+        <a
+          href="#affiliates"
+          class="owner-nav-link"
+        >
+
+          <span class="owner-nav-icon">
+            ◎
+          </span>
+
+          <span>
+            Affiliates
+          </span>
+
+        </a>
+
+      </nav>
+
+
+      <div class="owner-sidebar-bottom">
+
+        <button
+          type="button"
+          id="logoutButton"
+          class="owner-logout"
+        >
+
+          <span class="owner-nav-icon">
+            ↪
+          </span>
+
+          <span>
+            Log out
+          </span>
+
+        </button>
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="owner-main">
+
+
+      <!-- ===================================================
+           TOPBAR
+           =================================================== -->
+
+      <header class="owner-topbar">
+
+        <div class="owner-mobile-brand">
+          REMIFY
+        </div>
+
+
+        <div class="owner-topbar-right">
+
+          <div class="owner-user">
+
+            <div class="owner-avatar">
+              R
+            </div>
+
+            <div class="owner-user-info">
+
+              <strong>
+                Remify Owner
+              </strong>
+
+              <span>
+                Administrator
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+
+      <!-- ===================================================
+           CONTENT
+           =================================================== -->
+
+      <section
+        id="overview"
+        class="owner-content"
+      >
+
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <div class="owner-heading">
+
+          <div>
+
+            <p class="owner-eyebrow">
+              OWNER DASHBOARD
+            </p>
+
+            <h1>
+              Affiliate overview.
+            </h1>
+
+            <p>
+              Monitor your affiliate program,
+              referrals and commissions.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             AFFILIATE STATS
+             ================================================= -->
+
+        <div class="owner-section-label">
+          AFFILIATES
+        </div>
+
+
+        <div class="owner-stats">
+
+
+          <!-- TOTAL -->
+
+          <article class="owner-stat-card">
+
+            <div class="owner-stat-label">
+              TOTAL AFFILIATES
+            </div>
+
+            <div
+              id="totalAffiliates"
+              class="owner-stat-value"
+            >
+              —
+            </div>
+
+            <div class="owner-stat-description">
+              All affiliate accounts
+            </div>
+
+          </article>
+
+
+
+          <!-- PENDING -->
+
+          <article
+            class="owner-stat-card owner-stat-card-pending"
+          >
+
+            <div class="owner-stat-label">
+              PENDING
+            </div>
+
+            <div
+              id="pendingAffiliates"
+              class="owner-stat-value"
+            >
+              —
+            </div>
+
+            <div class="owner-stat-description">
+              Applications awaiting review
+            </div>
+
+          </article>
+
+
+
+          <!-- APPROVED -->
+
+          <article class="owner-stat-card">
+
+            <div class="owner-stat-label">
+              APPROVED
+            </div>
+
+            <div
+              id="approvedAffiliates"
+              class="owner-stat-value"
+            >
+              —
+            </div>
+
+            <div class="owner-stat-description">
+              Active affiliates
+            </div>
+
+          </article>
+
+
+
+          <!-- REJECTED -->
+
+          <article class="owner-stat-card">
+
+            <div class="owner-stat-label">
+              REJECTED
+            </div>
+
+            <div
+              id="rejectedAffiliates"
+              class="owner-stat-value"
+            >
+              —
+            </div>
+
+            <div class="owner-stat-description">
+              Rejected applications
+            </div>
+
+          </article>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SALES
+             ================================================= -->
+
+        <div class="owner-section-label owner-section-label-spaced">
+          PERFORMANCE
+        </div>
+
+
+        <div class="owner-performance-grid">
+
+
+          <!-- SALES -->
+
+          <article class="owner-performance-card">
+
+            <div class="owner-performance-label">
+              TOTAL REFERRED SALES
+            </div>
+
+            <div
+              id="totalSales"
+              class="owner-performance-value"
+            >
+              —
+            </div>
+
+            <p>
+              Successful purchases generated
+              through affiliate referrals.
+            </p>
+
+          </article>
+
+
+
+          <!-- SALES VALUE -->
+
+          <article class="owner-performance-card">
+
+            <div class="owner-performance-label">
+              SALES VALUE
+            </div>
+
+            <div
+              id="totalSalesAmount"
+              class="owner-performance-value"
+            >
+              —
+            </div>
+
+            <p>
+              Total revenue generated
+              by affiliate referrals.
+            </p>
+
+          </article>
+
+
+
+          <!-- COMMISSION -->
+
+          <article class="owner-performance-card">
+
+            <div class="owner-performance-label">
+              TOTAL COMMISSION
+            </div>
+
+            <div
+              id="totalCommission"
+              class="owner-performance-value"
+            >
+              —
+            </div>
+
+            <p>
+              Commission earned by affiliates.
+            </p>
+
+          </article>
+
+
+
+          <!-- UNPAID -->
+
+          <article
+            class="owner-performance-card owner-performance-highlight"
+          >
+
+            <div class="owner-performance-label">
+              UNPAID COMMISSION
+            </div>
+
+            <div
+              id="unpaidCommission"
+              class="owner-performance-value"
+            >
+              —
+            </div>
+
+            <p>
+              Commission currently awaiting payout.
+            </p>
+
+          </article>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PENDING NOTICE
+             ================================================= -->
+
+        <section
+          id="affiliates"
+          class="owner-panel"
+        >
+
+          <div class="owner-panel-content">
+
+            <div>
+
+              <p class="owner-panel-eyebrow">
+                AFFILIATE MANAGEMENT
+              </p>
+
+              <h2>
+                Review affiliate applications.
+              </h2>
+
+              <p>
+                New affiliate applications can be
+                reviewed and approved from the
+                affiliate management area.
+              </p>
+
+            </div>
+
+
+            <a
+              href="owner-affiliates.html"
+              class="owner-panel-button"
+            >
+              Manage affiliates
+            </a>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SYSTEM STATUS
+             ================================================= -->
+
+        <section class="owner-system-status">
+
+          <div class="system-status-mark">
+            ✓
+          </div>
+
+          <div>
+
+            <strong>
+              Affiliate system operational
+            </strong>
+
+            <p>
+              Dashboard data is being retrieved
+              directly from Remify's backend.
+            </p>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ERROR
+             ================================================= -->
+
+        <div
+          id="ownerDashboardError"
+          class="owner-dashboard-error"
+          aria-live="polite"
+        ></div>
+
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+
+  <script src="owner-dashboard.js"></script>
+
+</body>
+
+</html>

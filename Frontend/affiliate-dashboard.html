@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Affiliate Dashboard — Remify</title>
+
+  <link rel="stylesheet" href="affiliate-dashboard.css">
+</head>
+
+<body>
+
+  <div class="affiliate-dashboard">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="affiliate-sidebar">
+
+      <div class="sidebar-brand">
+        REMIFY
+      </div>
+
+      <div class="sidebar-program">
+        <span>Affiliate Program</span>
+      </div>
+
+      <nav class="sidebar-nav">
+
+        <a
+          href="#overview"
+          class="sidebar-nav-link active"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Overview</span>
+        </a>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <button
+          type="button"
+          id="logoutButton"
+          class="logout-button"
+        >
+          <span class="nav-icon">↪</span>
+          <span>Log out</span>
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="affiliate-main">
+
+      <!-- TOP BAR -->
+
+      <header class="dashboard-topbar">
+
+        <div class="dashboard-mobile-brand">
+          REMIFY
+        </div>
+
+        <div class="dashboard-user">
+
+          <div class="dashboard-user-avatar">
+            <span id="userInitial">—</span>
+          </div>
+
+          <div class="dashboard-user-info">
+
+            <strong id="userName">
+              Loading...
+            </strong>
+
+            <span>
+              Affiliate
+            </span>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <!-- CONTENT -->
+
+      <section
+        id="overview"
+        class="dashboard-content"
+      >
+
+        <!-- WELCOME -->
+
+        <div class="dashboard-heading">
+
+          <div>
+
+            <p class="dashboard-eyebrow">
+              AFFILIATE DASHBOARD
+            </p>
+
+            <h1>
+              Welcome back<span id="welcomeName"></span>.
+            </h1>
+
+            <p>
+              Here's how your Remify referrals are performing.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             STATS
+             ================================================= -->
+
+        <div class="dashboard-stats">
+
+          <!-- SALES -->
+
+          <article class="stat-card">
+
+            <div class="stat-card-label">
+              TOTAL SALES
+            </div>
+
+            <div
+              id="totalSales"
+              class="stat-card-value"
+            >
+              —
+            </div>
+
+            <div class="stat-card-description">
+              Successful referred sales
+            </div>
+
+          </article>
+
+
+          <!-- SALES AMOUNT -->
+
+          <article class="stat-card">
+
+            <div class="stat-card-label">
+              SALES VALUE
+            </div>
+
+            <div
+              id="totalSalesAmount"
+              class="stat-card-value"
+            >
+              —
+            </div>
+
+            <div class="stat-card-description">
+              Total value generated
+            </div>
+
+          </article>
+
+
+          <!-- COMMISSION -->
+
+          <article class="stat-card">
+
+            <div class="stat-card-label">
+              TOTAL COMMISSION
+            </div>
+
+            <div
+              id="totalCommission"
+              class="stat-card-value"
+            >
+              —
+            </div>
+
+            <div class="stat-card-description">
+              Commission earned
+            </div>
+
+          </article>
+
+
+          <!-- UNPAID -->
+
+          <article class="stat-card stat-card-highlight">
+
+            <div class="stat-card-label">
+              AVAILABLE PAYOUT
+            </div>
+
+            <div
+              id="unpaidCommission"
+              class="stat-card-value"
+            >
+              —
+            </div>
+
+            <div class="stat-card-description">
+              To be paid at month end
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <!-- =================================================
+             REFERRAL LINK
+             ================================================= -->
+
+        <section class="dashboard-panel referral-panel">
+
+          <div class="panel-heading">
+
+            <div>
+
+              <p class="panel-eyebrow">
+                YOUR REFERRAL LINK
+              </p>
+
+              <h2>
+                Share Remify.
+              </h2>
+
+              <p>
+                Anyone who purchases through your link
+                is attributed to your affiliate account.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="referral-link-box">
+
+            <div class="referral-link-content">
+
+              <span class="referral-link-label">
+                YOUR LINK
+              </span>
+
+              <span
+                id="referralLink"
+                class="referral-link"
+              >
+                Loading...
+              </span>
+
+            </div>
+
+            <button
+              type="button"
+              id="copyReferralButton"
+              class="copy-referral-button"
+            >
+              Copy link
+            </button>
+
+          </div>
+
+
+          <div
+            id="copyMessage"
+            class="copy-message"
+            aria-live="polite"
+          ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             ACCOUNT INFORMATION
+             ================================================= -->
+
+        <section class="dashboard-panel account-panel">
+
+          <div class="panel-heading">
+
+            <p class="panel-eyebrow">
+              ACCOUNT
+            </p>
+
+            <h2>
+              Affiliate details
+            </h2>
+
+          </div>
+
+
+          <div class="account-details">
+
+            <div class="account-detail">
+
+              <span>
+                Name
+              </span>
+
+              <strong id="accountName">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="account-detail">
+
+              <span>
+                Email
+              </span>
+
+              <strong id="accountEmail">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="account-detail">
+
+              <span>
+                Phone
+              </span>
+
+              <strong id="accountPhone">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="account-detail">
+
+              <span>
+                Commission rate
+              </span>
+
+              <strong id="commissionRate">
+                —
+              </strong>
+
+            </div>
+
+
+            <div class="account-detail">
+
+              <span>
+                Affiliate status
+              </span>
+
+              <strong
+                id="affiliateStatus"
+                class="status-badge"
+              >
+                —
+              </strong>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PAYOUT INFORMATION
+             ================================================= -->
+
+        <section class="dashboard-payout-note">
+
+          <div class="payout-note-mark">
+            ✓
+          </div>
+
+          <div>
+
+            <strong>
+              Monthly payouts
+            </strong>
+
+            <p>
+              Your approved commission is paid once at the
+              end of each month. Your available payout above
+              updates automatically as you generate sales.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ERROR
+             ================================================= -->
+
+        <div
+          id="dashboardError"
+          class="dashboard-error"
+          aria-live="polite"
+        ></div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script src="affiliate-dashboard.js"></script>
+
+</body>
+
+</html>

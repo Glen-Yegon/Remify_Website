@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Owner Login — Remify</title>
+
+  <link
+    rel="stylesheet"
+    href="owner-login.css"
+  >
+
+</head>
+
+
+<body>
+
+  <main class="owner-login-page">
+
+    <section class="owner-login-card">
+
+      <div class="owner-login-brand">
+        REMIFY
+      </div>
+
+      <p class="owner-login-eyebrow">
+        ADMINISTRATION
+      </p>
+
+      <h1>
+        Owner login.
+      </h1>
+
+      <p class="owner-login-description">
+        Sign in to manage the Remify affiliate program.
+      </p>
+
+
+      <form id="ownerLoginForm">
+
+        <div class="owner-field">
+
+          <label for="username">
+            Username
+          </label>
+
+          <input
+            type="text"
+            id="username"
+            name="username"
+            autocomplete="username"
+            required
+          >
+
+        </div>
+
+
+        <div class="owner-field">
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="current-password"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          id="ownerLoginButton"
+        >
+          Sign in
+        </button>
+
+
+        <div
+          id="ownerLoginError"
+          class="owner-login-error"
+          aria-live="polite"
+        ></div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <script src="owner-login.js"></script>
+
+</body>
+
+</html>

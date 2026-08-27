@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Affiliates — Remify</title>
+
+  <link
+    rel="stylesheet"
+    href="owner-affiliates.css"
+  >
+
+</head>
+
+
+<body>
+
+  <div class="owner-affiliates-page">
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="owner-sidebar">
+
+      <div class="owner-sidebar-top">
+
+        <div class="owner-brand">
+          REMIFY
+        </div>
+
+        <div class="owner-program">
+          Affiliate Management
+        </div>
+
+      </div>
+
+
+      <nav class="owner-nav">
+
+        <a
+          href="owner-dashboard.html"
+          class="owner-nav-link"
+        >
+
+          <span class="owner-nav-icon">
+            ⌂
+          </span>
+
+          <span>
+            Overview
+          </span>
+
+        </a>
+
+
+        <a
+          href="owner-affiliates.html"
+          class="owner-nav-link active"
+        >
+
+          <span class="owner-nav-icon">
+            ◎
+          </span>
+
+          <span>
+            Affiliates
+          </span>
+
+        </a>
+
+      </nav>
+
+
+      <div class="owner-sidebar-bottom">
+
+        <button
+          type="button"
+          id="logoutButton"
+          class="owner-logout"
+        >
+
+          <span class="owner-nav-icon">
+            ↪
+          </span>
+
+          <span>
+            Log out
+          </span>
+
+        </button>
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="owner-main">
+
+
+      <!-- ===================================================
+           TOPBAR
+           =================================================== -->
+
+      <header class="owner-topbar">
+
+        <div class="owner-mobile-brand">
+          REMIFY
+        </div>
+
+
+        <div class="owner-user">
+
+          <div class="owner-avatar">
+            R
+          </div>
+
+          <div class="owner-user-info">
+
+            <strong>
+              Remify Owner
+            </strong>
+
+            <span>
+              Administrator
+            </span>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+
+      <!-- ===================================================
+           CONTENT
+           =================================================== -->
+
+      <section class="owner-content">
+
+
+        <!-- =================================================
+             HEADING
+             ================================================= -->
+
+        <div class="owner-heading">
+
+          <div>
+
+            <p class="owner-eyebrow">
+              AFFILIATE MANAGEMENT
+            </p>
+
+            <h1>
+              Affiliates.
+            </h1>
+
+            <p>
+              Review applications and manage your
+              Remify affiliate network.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SUMMARY
+             ================================================= -->
+
+        <div class="affiliate-summary">
+
+          <div class="summary-item">
+
+            <span>
+              TOTAL
+            </span>
+
+            <strong id="totalAffiliates">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="summary-item">
+
+            <span>
+              PENDING
+            </span>
+
+            <strong id="pendingAffiliates">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="summary-item">
+
+            <span>
+              APPROVED
+            </span>
+
+            <strong id="approvedAffiliates">
+              —
+            </strong>
+
+          </div>
+
+
+          <div class="summary-item">
+
+            <span>
+              REJECTED
+            </span>
+
+            <strong id="rejectedAffiliates">
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             AFFILIATE LIST
+             ================================================= -->
+
+        <section class="owner-panel">
+
+
+          <div class="owner-panel-header">
+
+            <div>
+
+              <p class="owner-panel-eyebrow">
+                AFFILIATE ACCOUNTS
+              </p>
+
+              <h2>
+                All affiliates
+              </h2>
+
+            </div>
+
+
+            <div
+              id="affiliateCount"
+              class="affiliate-count"
+            >
+              —
+            </div>
+
+          </div>
+
+
+
+          <!-- ===============================================
+               TABLE
+               =============================================== -->
+
+          <div class="affiliate-table-wrapper">
+
+            <table class="affiliate-table">
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    Affiliate
+                  </th>
+
+                  <th>
+                    Contact
+                  </th>
+
+                  <th>
+                    Referral
+                  </th>
+
+                  <th>
+                    Sales
+                  </th>
+
+                  <th>
+                    Commission
+                  </th>
+
+                  <th>
+                    Status
+                  </th>
+
+                  <th>
+                    Action
+                  </th>
+
+                </tr>
+
+              </thead>
+
+
+              <tbody id="affiliateTableBody">
+
+                <tr>
+
+                  <td
+                    colspan="7"
+                    class="table-loading"
+                  >
+                    Loading affiliates...
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+
+
+          <!-- ===============================================
+               MOBILE CARDS
+               =============================================== -->
+
+          <div
+            id="affiliateCards"
+            class="affiliate-cards"
+          >
+
+            <div class="affiliate-loading-card">
+              Loading affiliates...
+            </div>
+
+          </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ERROR
+             ================================================= -->
+
+        <div
+          id="ownerAffiliateError"
+          class="owner-dashboard-error"
+          aria-live="polite"
+        ></div>
+
+
+
+        <!-- =================================================
+             SUCCESS
+             ================================================= -->
+
+        <div
+          id="ownerAffiliateSuccess"
+          class="owner-dashboard-success"
+          aria-live="polite"
+        ></div>
+
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+
+  <!-- =======================================================
+       APPROVAL MODAL
+       ======================================================= -->
+
+  <div
+    id="affiliateModal"
+    class="affiliate-modal"
+    aria-hidden="true"
+  >
+
+    <div class="affiliate-modal-backdrop"></div>
+
+
+    <div
+      class="affiliate-modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="affiliateModalTitle"
+    >
+
+      <button
+        type="button"
+        id="closeAffiliateModal"
+        class="affiliate-modal-close"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+
+      <p class="owner-panel-eyebrow">
+        AFFILIATE REVIEW
+      </p>
+
+
+      <h2 id="affiliateModalTitle">
+        Review affiliate
+      </h2>
+
+
+      <div
+        id="affiliateModalContent"
+        class="affiliate-modal-content"
+      >
+      </div>
+
+
+      <div class="affiliate-modal-actions">
+
+        <button
+          type="button"
+          id="rejectAffiliateButton"
+          class="affiliate-action-button reject"
+        >
+          Reject
+        </button>
+
+
+        <button
+          type="button"
+          id="approveAffiliateButton"
+          class="affiliate-action-button approve"
+        >
+          Approve affiliate
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="owner-affiliates.js"></script>
+
+</body>
+
+</html>

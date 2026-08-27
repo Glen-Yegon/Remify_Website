@@ -1,0 +1,1061 @@
+/* =========================================================
+   REMIFY — OWNER DASHBOARD
+   ========================================================= */
+
+:root {
+
+  --violet: #5b2d82;
+  --violet-dark: #3f1f5c;
+
+  --black: #171717;
+  --muted: #777;
+
+  --border: #e9e6eb;
+
+  --background: #f7f5f8;
+
+  --white: #ffffff;
+
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+
+  margin: 0;
+
+  background:
+    var(--background);
+
+  color:
+    var(--black);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+}
+
+
+button,
+a {
+  font: inherit;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.owner-dashboard {
+
+  min-height: 100vh;
+
+  display: flex;
+
+}
+
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.owner-sidebar {
+
+  position: fixed;
+
+  inset: 0 auto 0 0;
+
+  width: 250px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 30px 20px;
+
+  background:
+    var(--white);
+
+  border-right:
+    1px solid var(--border);
+
+}
+
+
+.owner-sidebar-top {
+  padding: 0 12px;
+}
+
+
+.owner-brand {
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  color:
+    var(--violet);
+
+}
+
+
+.owner-program {
+
+  margin-top: 8px;
+
+  font-size: 11px;
+
+  color:
+    var(--muted);
+
+}
+
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.owner-nav {
+
+  margin-top: 48px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+}
+
+
+.owner-nav-link,
+.owner-logout {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 14px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background: transparent;
+
+  color:
+    #666;
+
+  font-size: 13px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease;
+
+}
+
+
+.owner-nav-link:hover,
+.owner-logout:hover {
+
+  background:
+    #f5f1f7;
+
+  color:
+    var(--violet);
+
+}
+
+
+.owner-nav-link.active {
+
+  background:
+    #f1eaf5;
+
+  color:
+    var(--violet);
+
+  font-weight: 600;
+
+}
+
+
+.owner-nav-icon {
+
+  width: 20px;
+
+  text-align: center;
+
+  font-size: 17px;
+
+}
+
+
+.owner-sidebar-bottom {
+
+  margin-top: auto;
+
+}
+
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.owner-main {
+
+  width: calc(100% - 250px);
+
+  margin-left: 250px;
+
+  min-height: 100vh;
+
+}
+
+
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.owner-topbar {
+
+  height: 78px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  padding:
+    0 clamp(24px, 4vw, 60px);
+
+  background:
+    rgba(255,255,255,.82);
+
+  border-bottom:
+    1px solid var(--border);
+
+  backdrop-filter:
+    blur(16px);
+
+}
+
+
+.owner-mobile-brand {
+  display: none;
+}
+
+
+.owner-user {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+}
+
+
+.owner-avatar {
+
+  width: 38px;
+
+  height: 38px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--violet);
+
+  color:
+    white;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+
+.owner-user-info {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+}
+
+
+.owner-user-info strong {
+
+  font-size: 13px;
+
+}
+
+
+.owner-user-info span {
+
+  font-size: 11px;
+
+  color:
+    var(--muted);
+
+}
+
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.owner-content {
+
+  width: min(1400px, 100%);
+
+  margin: 0 auto;
+
+  padding:
+    clamp(40px, 6vw, 72px)
+    clamp(24px, 5vw, 70px);
+
+}
+
+
+.owner-heading {
+
+  margin-bottom: 48px;
+
+}
+
+
+.owner-eyebrow,
+.owner-section-label,
+.owner-panel-eyebrow {
+
+  margin: 0 0 10px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color:
+    var(--violet);
+
+}
+
+
+.owner-heading h1 {
+
+  margin: 0;
+
+  font-size:
+    clamp(32px, 4vw, 48px);
+
+  letter-spacing: -1.5px;
+
+  line-height: 1.05;
+
+}
+
+
+.owner-heading p:last-child {
+
+  margin: 14px 0 0;
+
+  color:
+    var(--muted);
+
+  font-size: 14px;
+
+}
+
+
+
+/* =========================================================
+   SECTION LABEL
+   ========================================================= */
+
+.owner-section-label {
+
+  margin-bottom: 14px;
+
+}
+
+
+.owner-section-label-spaced {
+
+  margin-top: 52px;
+
+}
+
+
+
+/* =========================================================
+   AFFILIATE STATS
+   ========================================================= */
+
+.owner-stats {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+}
+
+
+.owner-stat-card {
+
+  min-height: 150px;
+
+  padding: 24px;
+
+  background:
+    var(--white);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 16px;
+
+}
+
+
+.owner-stat-card-pending {
+
+  border-color:
+    rgba(91,45,130,.22);
+
+}
+
+
+.owner-stat-label,
+.owner-performance-label {
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.6px;
+
+  color:
+    #777;
+
+}
+
+
+.owner-stat-value {
+
+  margin-top: 18px;
+
+  font-size: 32px;
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+}
+
+
+.owner-stat-description {
+
+  margin-top: 7px;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  color:
+    #888;
+
+}
+
+
+
+/* =========================================================
+   PERFORMANCE
+   ========================================================= */
+
+.owner-performance-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+}
+
+
+.owner-performance-card {
+
+  min-height: 190px;
+
+  padding: 26px;
+
+  background:
+    var(--white);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 16px;
+
+}
+
+
+.owner-performance-highlight {
+
+  background:
+    var(--violet);
+
+  color:
+    white;
+
+  border-color:
+    var(--violet);
+
+}
+
+
+.owner-performance-highlight
+.owner-performance-label {
+
+  color:
+    rgba(255,255,255,.68);
+
+}
+
+
+.owner-performance-value {
+
+  margin-top: 18px;
+
+  font-size:
+    clamp(26px, 3vw, 34px);
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+}
+
+
+.owner-performance-card p {
+
+  margin: 14px 0 0;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  color:
+    #888;
+
+}
+
+
+.owner-performance-highlight p {
+
+  color:
+    rgba(255,255,255,.7);
+
+}
+
+
+
+/* =========================================================
+   PANEL
+   ========================================================= */
+
+.owner-panel {
+
+  margin-top: 52px;
+
+  padding: 30px;
+
+  background:
+    var(--white);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 18px;
+
+}
+
+
+.owner-panel-content {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+}
+
+
+.owner-panel h2 {
+
+  margin: 0;
+
+  font-size: 22px;
+
+  letter-spacing: -.5px;
+
+}
+
+
+.owner-panel p:not(.owner-panel-eyebrow) {
+
+  max-width: 600px;
+
+  margin: 10px 0 0;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  color:
+    var(--muted);
+
+}
+
+
+.owner-panel-button {
+
+  flex-shrink: 0;
+
+  padding:
+    13px 20px;
+
+  border-radius: 9px;
+
+  background:
+    var(--violet);
+
+  color:
+    white;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  transition:
+    transform .2s ease,
+    background .2s ease;
+
+}
+
+
+.owner-panel-button:hover {
+
+  background:
+    var(--violet-dark);
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+
+/* =========================================================
+   SYSTEM STATUS
+   ========================================================= */
+
+.owner-system-status {
+
+  margin-top: 18px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  padding: 20px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255,255,255,.7);
+
+}
+
+
+.system-status-mark {
+
+  width: 28px;
+
+  height: 28px;
+
+  display: grid;
+
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background:
+    #eee9f1;
+
+  color:
+    var(--violet);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+
+.owner-system-status strong {
+
+  display: block;
+
+  font-size: 13px;
+
+}
+
+
+.owner-system-status p {
+
+  margin: 5px 0 0;
+
+  font-size: 11px;
+
+  color:
+    var(--muted);
+
+}
+
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.owner-dashboard-error {
+
+  display: none;
+
+  margin-top: 20px;
+
+  padding: 14px 16px;
+
+  border-radius: 10px;
+
+  background:
+    #fff1f1;
+
+  color:
+    #9a2c2c;
+
+  font-size: 12px;
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .owner-sidebar {
+    width: 220px;
+  }
+
+  .owner-main {
+
+    width: calc(100% - 220px);
+
+    margin-left: 220px;
+
+  }
+
+  .owner-stats,
+  .owner-performance-grid {
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+  }
+
+}
+
+
+@media (max-width: 760px) {
+
+  .owner-sidebar {
+
+    position: fixed;
+
+    top: auto;
+
+    right: 0;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 66px;
+
+    z-index: 100;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    padding: 8px 12px;
+
+    border-right: 0;
+
+    border-top:
+      1px solid var(--border);
+
+  }
+
+
+  .owner-sidebar-top {
+    display: none;
+  }
+
+
+  .owner-nav {
+
+    margin: 0;
+
+    flex: 1;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    gap: 6px;
+
+  }
+
+
+  .owner-nav-link {
+
+    width: auto;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    padding: 7px 16px;
+
+    font-size: 9px;
+
+  }
+
+
+  .owner-nav-icon {
+
+    font-size: 15px;
+
+  }
+
+
+  .owner-sidebar-bottom {
+
+    margin: 0;
+
+  }
+
+
+  .owner-logout {
+
+    width: auto;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    padding: 7px 14px;
+
+    font-size: 9px;
+
+  }
+
+
+  .owner-main {
+
+    width: 100%;
+
+    margin-left: 0;
+
+    padding-bottom: 80px;
+
+  }
+
+
+  .owner-topbar {
+
+    height: 64px;
+
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+  }
+
+
+  .owner-mobile-brand {
+
+    display: block;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color:
+      var(--violet);
+
+  }
+
+
+  .owner-user-info {
+
+    display: none;
+
+  }
+
+
+  .owner-content {
+
+    padding:
+      38px 18px;
+
+  }
+
+
+  .owner-heading {
+
+    margin-bottom: 38px;
+
+  }
+
+
+  .owner-stats,
+  .owner-performance-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .owner-section-label-spaced {
+
+    margin-top: 38px;
+
+  }
+
+
+  .owner-panel {
+
+    margin-top: 38px;
+
+    padding: 22px;
+
+  }
+
+
+  .owner-panel-content {
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+  }
+
+
+  .owner-panel-button {
+
+    width: 100%;
+
+    text-align: center;
+
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .owner-heading h1 {
+
+    font-size: 32px;
+
+  }
+
+
+  .owner-stat-card,
+  .owner-performance-card {
+
+    padding: 21px;
+
+  }
+
+}

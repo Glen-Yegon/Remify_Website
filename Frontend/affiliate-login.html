@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Affiliate Login — Remify</title>
+
+  <link rel="stylesheet" href="affiliate-login.css">
+</head>
+
+<body>
+
+  <main class="affiliate-auth">
+
+    <section class="affiliate-auth-card">
+
+      <div class="affiliate-auth-brand">
+        <span>REMIFY</span>
+      </div>
+
+      <div class="affiliate-auth-heading">
+        <p class="eyebrow">AFFILIATE PROGRAM</p>
+
+        <h1>Welcome back.</h1>
+
+        <p>
+          Sign in to your Remify affiliate account
+          and manage your referrals.
+        </p>
+      </div>
+
+      <form id="affiliateLoginForm">
+
+        <div class="form-field">
+          <label for="affiliateEmail">
+            Email address
+          </label>
+
+          <input
+            type="email"
+            id="affiliateEmail"
+            name="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            required
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="affiliatePassword">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="affiliatePassword"
+            name="password"
+            autocomplete="current-password"
+            placeholder="Enter your password"
+            required
+          >
+        </div>
+
+        <div
+          id="affiliateLoginMessage"
+          class="affiliate-auth-message"
+          aria-live="polite"
+        ></div>
+
+        <button
+          type="submit"
+          id="affiliateLoginButton"
+        >
+          <span class="button-text">
+            Sign in
+          </span>
+
+          <span
+            class="button-loader"
+            aria-hidden="true"
+          ></span>
+        </button>
+
+      </form>
+
+      <div class="affiliate-auth-footer">
+
+        <p>
+          Don't have an affiliate account?
+        </p>
+
+        <a href="affiliate-register.html">
+          Apply to become an affiliate
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="affiliate-login.js"></script>
+
+</body>
+</html>
