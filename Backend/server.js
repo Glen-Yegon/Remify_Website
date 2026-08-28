@@ -224,12 +224,14 @@ app.post("/api/affiliate/register",async(req,res)=>{
 
   try{
 
-    const {
-      fullName,
-      email,
-      phone,
-      password
-    }=req.body;
+const {
+  fullName,
+  email,
+  phone,
+  socialPlatform,
+  socialHandle,
+  password
+}=req.body;
 
 
     /* =====================================================
@@ -257,6 +259,20 @@ app.post("/api/affiliate/register",async(req,res)=>{
       });
     }
 
+    if(!socialPlatform?.trim()){
+      return res.status(400).json({
+        success:false,
+        message:"Social media platform is required."
+      });
+    }
+
+    if(!socialHandle?.trim()){
+      return res.status(400).json({
+        success:false,
+        message:"Social media handle is required."
+      });
+    }
+
     if(!password){
       return res.status(400).json({
         success:false,
@@ -272,6 +288,19 @@ app.post("/api/affiliate/register",async(req,res)=>{
       });
     }
 
+    const allowedPlatforms = [
+      "instagram",
+      "x",
+      "facebook",
+      "tiktok"
+    ];
+
+    if(!allowedPlatforms.includes(socialPlatform.trim().toLowerCase())){
+      return res.status(400).json({
+        success:false,
+        message:"Please select a valid social media platform."
+      });
+    }
 
     /* =====================================================
        NORMALIZE EMAIL
@@ -329,51 +358,57 @@ app.post("/api/affiliate/register",async(req,res)=>{
        SAVE AFFILIATE
        ===================================================== */
 
-    await affiliateRef.set({
+await affiliateRef.set({
 
-    affiliateId,
+  affiliateId,
 
-    referralCode,
+  referralCode,
 
-    fullName:
-        fullName.trim(),
+  fullName:
+    fullName.trim(),
 
-    email:
-        normalizedEmail,
+  email:
+    normalizedEmail,
 
-      phone:
-        phone.trim(),
+  phone:
+    phone.trim(),
 
-      passwordHash,
+  socialPlatform:
+    socialPlatform.trim().toLowerCase(),
 
-      status:
-        "pending",
+  socialHandle:
+    socialHandle.trim(),
 
-      commissionRate:
-        0.20,
+  passwordHash,
 
-      totalSales:
-        0,
+  status:
+    "pending",
 
-      totalSalesAmount:
-        0,
+  commissionRate:
+    0.20,
 
-      totalCommission:
-        0,
+  totalSales:
+    0,
 
-      unpaidCommission:
-        0,
+  totalSalesAmount:
+    0,
 
-      createdAt:
-        new Date().toISOString(),
+  totalCommission:
+    0,
 
-      approvedAt:
-        null,
+  unpaidCommission:
+    0,
 
-      lastPayoutAt:
-        null
+  createdAt:
+    new Date().toISOString(),
 
-    });
+  approvedAt:
+    null,
+
+  lastPayoutAt:
+    null
+
+});
 
 
     /* =====================================================
@@ -1719,6 +1754,14 @@ app.get(
 
             phone:
               affiliate.phone ||
+              "",
+
+            socialPlatform:
+              affiliate.socialPlatform ||
+              "",
+
+            socialHandle:
+              affiliate.socialHandle ||
               "",
 
             referralCode:
@@ -4071,22 +4114,50 @@ app.post("/api/payment/verify", async (req, res) => {
       );
 
 
-    /* =====================================================
-       SEND OWNER EMAIL
-       ===================================================== */
+/* =====================================================
+   SEND EMAILS
+   ===================================================== */
 
-    await sendOwnerOrderEmail(
-      verifiedOrder
-    );
+try {
+
+  await sendOwnerOrderEmail(
+    verifiedOrder
+  );
+
+  console.log(
+    "Owner order email sent:",
+    reference
+  );
+
+} catch (emailError) {
+
+  console.error(
+    "Owner email failed:",
+    emailError
+  );
+
+}
 
 
-    /* =====================================================
-       SEND CUSTOMER EMAIL
-       ===================================================== */
+try {
 
-    await sendCustomerConfirmationEmail(
-      verifiedOrder
-    );
+  await sendCustomerConfirmationEmail(
+    verifiedOrder
+  );
+
+  console.log(
+    "Customer confirmation email sent:",
+    reference
+  );
+
+} catch (emailError) {
+
+  console.error(
+    "Customer confirmation email failed:",
+    emailError
+  );
+
+}
 
 
     /* =====================================================

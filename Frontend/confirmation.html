@@ -929,406 +929,360 @@
   </div>
 
 
-  <script>
+<script>
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      async () => {
+document.addEventListener(
+  "DOMContentLoaded",
+  async () => {
 
+    /* =====================================================
+       API
+       ===================================================== */
 
-        /* =====================================================
-           API
-           ===================================================== */
+    const API_BASE_URL =
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1"
+        ? "http://localhost:5000"
+        : "https://remify-website.onrender.com";
 
-        const API_BASE_URL =
-          "http://localhost:5000";
 
+    const content =
+      document.getElementById(
+        "confirmationContent"
+      );
 
-        const content =
-          document.getElementById(
-            "confirmationContent"
-          );
 
+    /* =====================================================
+       HELPERS
+       ===================================================== */
 
-        /* =====================================================
-           HELPERS
-           ===================================================== */
+    const getReference = () => {
 
-        const getReference = () => {
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
 
-          const params =
-            new URLSearchParams(
-              window.location.search
-            );
+      return (
+        params.get("reference") ||
+        params.get("trxref")
+      );
 
-          return (
-            params.get("reference") ||
-            params.get("trxref")
-          );
+    };
 
-        };
 
+    const escapeHTML = value => {
 
-        const escapeHTML = value => {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-          return String(value ?? "")
-            .replace(
-              /&/g,
-              "&amp;"
-            )
-            .replace(
-              /</g,
-              "&lt;"
-            )
-            .replace(
-              />/g,
-              "&gt;"
-            )
-            .replace(
-              /"/g,
-              "&quot;"
-            )
-            .replace(
-              /'/g,
-              "&#039;"
-            );
+    };
 
-        };
 
+    /* =====================================================
+       LOADING
+       ===================================================== */
 
-        /* =====================================================
-           LOADING
-           ===================================================== */
+    const showLoading = () => {
 
-        const showLoading = () => {
+      content.innerHTML = `
 
-          content.innerHTML = `
+        <div class="loading-state">
 
-            <div class="loading-state">
+          <div class="loading-spinner"></div>
 
-              <div class="loading-spinner"></div>
+          <h1 class="loading-title">
+            Confirming your payment
+          </h1>
 
-              <h1 class="loading-title">
-                Confirming your payment
-              </h1>
+          <p class="loading-message">
+            Please wait while we verify your order.
+          </p>
 
-              <p class="loading-message">
-                Please wait while we verify your order.
-              </p>
+        </div>
 
-            </div>
+      `;
 
-          `;
+    };
 
-        };
 
+    /* =====================================================
+       SUCCESS
+       ===================================================== */
 
-        /* =====================================================
-           SUCCESS
-           ===================================================== */
+    const showSuccess = reference => {
 
-        const showSuccess = reference => {
+      document.title =
+        "Order Confirmed — Remify";
 
-          document.title =
-            "Order Confirmed — Remify";
 
+      content.innerHTML = `
 
-          content.innerHTML = `
+        <div class="success-icon">
 
-            <div class="success-icon">
+          <div
+            class="success-check"
+          ></div>
 
-              <div
-                class="success-check"
-              ></div>
+        </div>
 
-            </div>
 
+        <span class="confirmation-eyebrow">
+          Payment successful
+        </span>
 
-            <span class="confirmation-eyebrow">
-              Payment successful
-            </span>
 
+        <h1 class="confirmation-title">
+          Order <span>confirmed.</span>
+        </h1>
 
-            <h1 class="confirmation-title">
-              Order <span>confirmed.</span>
-            </h1>
 
+        <p class="confirmation-message">
+          Thank you for your order.
+          Your payment has been successfully
+          verified and your order is now being
+          processed.
+        </p>
 
-            <p class="confirmation-message">
-              Thank you for your order.
-              Your payment has been successfully
-              verified and your order is now being
-              processed.
-            </p>
 
+        <div class="reference-box">
 
-            <div class="reference-box">
+          <span class="reference-label">
+            Order reference
+          </span>
 
-              <span class="reference-label">
-                Order reference
-              </span>
+          <span class="reference-value">
+            ${escapeHTML(reference)}
+          </span>
 
-              <span class="reference-value">
-                ${escapeHTML(reference)}
-              </span>
+        </div>
 
-            </div>
 
+        <a
+          href="index.html"
+          class="back-button"
+        >
 
-            <a
-              href="index.html"
-              class="back-button"
-            >
+          Back to Remify
 
-              Back to Remify
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
 
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+            <path
+              d="M5 12H19"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
 
-                <path
-                  d="M5 12H19"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                />
+            <path
+              d="M13 6L19 12L13 18"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
 
-                <path
-                  d="M13 6L19 12L13 18"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+          </svg>
 
-              </svg>
+        </a>
 
-            </a>
+      `;
 
-          `;
+    };
 
-        };
 
+    /* =====================================================
+       ERROR
+       ===================================================== */
 
-        /* =====================================================
-           ERROR
-           ===================================================== */
+    const showError = message => {
 
-        const showError = message => {
+      document.title =
+        "Payment Verification — Remify";
 
-          document.title =
-            "Payment Verification — Remify";
 
+      content.innerHTML = `
 
-          content.innerHTML = `
+        <div class="error-state">
 
-            <div class="error-state">
+          <div class="error-icon">
+            !
+          </div>
 
-              <div class="error-icon">
-                !
-              </div>
 
+          <h1 class="error-title">
+            We couldn't confirm
+            your payment.
+          </h1>
 
-              <h1 class="error-title">
-                We couldn't confirm
-                your payment.
-              </h1>
 
+          <p class="error-message">
+            ${escapeHTML(message)}
+          </p>
 
-              <p class="error-message">
-                ${escapeHTML(message)}
-              </p>
 
+          <a
+            href="index.html"
+            class="back-button"
+          >
+            Back to Remify
+          </a>
 
-              <a
-                href="index.html"
-                class="back-button"
-              >
-                Back to Remify
-              </a>
+        </div>
 
-            </div>
+      `;
 
-          `;
+    };
 
-        };
 
+    /* =====================================================
+       GET REFERENCE FROM PAYSTACK
+       ===================================================== */
 
-        /* =====================================================
-           GET REFERENCE
-           ===================================================== */
+    const reference =
+      getReference();
 
-        const reference =
-          getReference();
 
+    console.log(
+      "Paystack reference:",
+      reference
+    );
 
-        if(!reference){
 
-          showError(
-            "No payment reference was found. If you completed a payment, please contact Remify with your payment details."
-          );
+    if (!reference) {
 
-          return;
+      showError(
+        "No payment reference was found. If you completed a payment, please contact Remify with your payment details."
+      );
 
-        }
+      return;
 
+    }
 
-        /* =====================================================
-           GET PENDING ORDER
-           ===================================================== */
 
-        let pendingOrder = null;
+    /* =====================================================
+       START VERIFICATION
+       ===================================================== */
 
+    showLoading();
 
-        try {
 
-          const savedOrder =
-            sessionStorage.getItem(
-              "remifyPendingOrder"
-            );
+    try {
 
+      console.log(
+        "Sending payment verification request..."
+      );
 
-          if(savedOrder){
 
-            pendingOrder =
-              JSON.parse(
-                savedOrder
-              );
+      const response =
+        await fetch(
+          `${API_BASE_URL}/api/payment/verify`,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body: JSON.stringify({
+
+              reference
+
+            })
 
           }
-
-        } catch(error) {
-
-          console.error(
-            "Could not restore pending order:",
-            error
-          );
-
-        }
+        );
 
 
-        if(!pendingOrder){
-
-          showError(
-            `We couldn't recover your order details. Please contact Remify with your payment reference: ${reference}`
-          );
-
-          return;
-
-        }
+      const data =
+        await response.json();
 
 
-        /* =====================================================
-           VERIFY PAYMENT
-           ===================================================== */
-
-        showLoading();
-
-
-        try {
-
-          const response =
-            await fetch(
-              `${API_BASE_URL}/api/payment/verify`,
-              {
-                method: "POST",
-
-                headers: {
-                  "Content-Type":
-                    "application/json"
-                },
-
-                body:
-                  JSON.stringify({
-
-                    reference,
-
-                    order:
-                      pendingOrder
-
-                  })
-
-              }
-            );
+      console.log(
+        "Verification response:",
+        data
+      );
 
 
-          const data =
-            await response.json();
+      if (
+        !response.ok ||
+        !data.success
+      ) {
 
-
-          if(
-            !response.ok ||
-            !data.success
-          ){
-
-            throw new Error(
-              data.message ||
-              "Payment verification failed."
-            );
-
-          }
-
-
-          /* =================================================
-             SUCCESS
-             ================================================= */
-
-          const confirmedReference =
-            data.reference ||
-            reference;
-
-
-          /* Clear temporary order */
-
-          sessionStorage.removeItem(
-            "remifyPendingOrder"
-          );
-
-
-          sessionStorage.removeItem(
-            "remifyPaymentReference"
-          );
-
-
-          /* Show confirmation */
-
-          showSuccess(
-            confirmedReference
-          );
-
-
-          /* Clean URL after displaying reference */
-
-          window.history.replaceState(
-            {},
-            document.title,
-            "confirmation.html"
-          );
-
-
-        } catch(error) {
-
-          console.error(
-            "Remify payment verification error:",
-            error
-          );
-
-
-          showError(
-            error.message ||
-            "We couldn't verify your payment. Please contact Remify if money was deducted."
-          );
-
-        }
+        throw new Error(
+          data.message ||
+          "Payment verification failed."
+        );
 
       }
 
-    );
 
-  </script>
+      /* =================================================
+         SUCCESS
+         ================================================= */
 
+      const confirmedReference =
+        data.reference ||
+        reference;
+
+
+      /* Clear old temporary storage
+         if it exists */
+
+      sessionStorage.removeItem(
+        "remifyPendingOrder"
+      );
+
+      sessionStorage.removeItem(
+        "remifyPaymentReference"
+      );
+
+
+      /* Show confirmation */
+
+      showSuccess(
+        confirmedReference
+      );
+
+
+      /* Clean URL */
+
+      window.history.replaceState(
+        {},
+        document.title,
+        "confirmation.html"
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "Remify payment verification error:",
+        error
+      );
+
+
+      showError(
+        error.message ||
+        "We couldn't verify your payment. Please contact Remify if money was deducted."
+      );
+
+    }
+
+  }
+
+);
+
+</script>
 </body>
 
 </html>

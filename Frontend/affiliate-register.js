@@ -52,29 +52,36 @@ const API_BASE_URL =
   const termsInput =
     document.getElementById("terms");
 
+  const socialPlatformInput =
+  document.getElementById("socialPlatform");
+
+  const socialHandleInput =
+  document.getElementById("socialHandle");
 
   /* =======================================================
      SAFETY CHECK
   ======================================================= */
 
-  if (
-    !form ||
-    !submitButton ||
-    !fullNameInput ||
-    !emailInput ||
-    !phoneInput ||
-    !passwordInput ||
-    !confirmPasswordInput ||
-    !termsInput
-  ) {
+if (
+  !form ||
+  !submitButton ||
+  !fullNameInput ||
+  !emailInput ||
+  !phoneInput ||
+  !socialPlatformInput ||
+  !socialHandleInput ||
+  !passwordInput ||
+  !confirmPasswordInput ||
+  !termsInput
+) {
 
-    console.error(
-      "Remify affiliate registration: required elements are missing."
-    );
+  console.error(
+    "Remify affiliate registration: required elements are missing."
+  );
 
-    return;
+  return;
 
-  }
+}
 
 
   /* =======================================================
@@ -272,6 +279,43 @@ const API_BASE_URL =
 
     }
 
+    /* ===============================================
+   SOCIAL MEDIA PLATFORM
+=============================================== */
+
+const socialPlatform =
+  socialPlatformInput.value.trim();
+
+if (!socialPlatform) {
+
+  setFieldError(
+    "socialPlatform",
+    "Please select a social media platform."
+  );
+
+  valid = false;
+
+}
+
+
+/* ===============================================
+   SOCIAL MEDIA HANDLE
+=============================================== */
+
+const socialHandle =
+  socialHandleInput.value.trim();
+
+if (!socialHandle) {
+
+  setFieldError(
+    "socialHandle",
+    "Please enter your social media handle."
+  );
+
+  valid = false;
+
+}
+
 
     /* ===============================================
        PASSWORD
@@ -426,13 +470,15 @@ const API_BASE_URL =
      LIVE ERROR CLEARING
   ======================================================= */
 
-  [
-    fullNameInput,
-    emailInput,
-    phoneInput,
-    passwordInput,
-    confirmPasswordInput
-  ].forEach(input => {
+[
+  fullNameInput,
+  emailInput,
+  phoneInput,
+  socialPlatformInput,
+  socialHandleInput,
+  passwordInput,
+  confirmPasswordInput
+].forEach(input => {
 
     input.addEventListener(
       "input",
@@ -515,6 +561,12 @@ const API_BASE_URL =
       const phone =
         phoneInput.value.trim();
 
+const socialPlatform =
+  socialPlatformInput.value.trim();
+
+const socialHandle =
+  socialHandleInput.value.trim();
+
       const password =
         passwordInput.value;
 
@@ -545,17 +597,21 @@ const API_BASE_URL =
                   "application/json"
               },
 
-              body: JSON.stringify({
+body: JSON.stringify({
 
-                fullName,
+  fullName,
 
-                email,
+  email,
 
-                phone,
+  phone,
 
-                password
+  socialPlatform,
 
-              })
+  socialHandle,
+
+  password
+
+})
 
             }
           );

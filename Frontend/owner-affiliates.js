@@ -838,6 +838,38 @@ function openAffiliateModal(
 
     </div>
 
+    <div class="modal-detail">
+
+  <span>
+    Social media
+  </span>
+
+  <strong>
+    ${escapeHTML(
+      affiliate.socialPlatform
+        ? capitalize(affiliate.socialPlatform)
+        : "—"
+    )}
+  </strong>
+
+</div>
+
+
+<div class="modal-detail">
+
+  <span>
+    Social media handle
+  </span>
+
+  <strong>
+    ${escapeHTML(
+      affiliate.socialHandle ||
+      "—"
+    )}
+  </strong>
+
+</div>
+
 
     <div class="modal-detail">
 
