@@ -14,26 +14,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- AOS -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/aos@2.3.4/dist/aos.css"
->
+
   <link rel="stylesheet" href="product.css">
-      <link rel="stylesheet" href="page-transition.css">
 </head>
 
 <body>
-
-  <div class="remify-page-transition" id="remifyPageTransition" aria-hidden="true">
-  <div class="remify-transition-glass"></div>
-  <div class="remify-transition-overlay"></div>
-  <div class="remify-transition-pixels" id="remifyTransitionPixels"></div>
-
-  <div class="remify-transition-word" id="remifyTransitionWord">
-    remify
-  </div>
-</div>
 
 <!-- =========================================
      REMIFY SCROLL PROGRESS
@@ -249,10 +234,6 @@
 
     <div
       class="product-information"
-      data-aos="fade-up"
-      data-aos-delay="300"
-      data-aos-duration="1100"
-      data-aos-easing="cubic-bezier(.16,1,.3,1)"
     >
 
       <!-- BRAND -->
@@ -433,9 +414,6 @@
          ===================================== -->
 
     <header class="product-details-intro reveal"
-      data-aos="fade-up"
-      data-aos-duration="900"
-      data-aos-offset="80"
     >
 
       <div class="product-details-kicker">
@@ -474,10 +452,6 @@
       <article
         class="product-detail-card product-detail-card--ingredients reveal"
         data-detail-card="ingredients"
-        data-aos="fade-up"
-        data-aos-duration="900"
-        data-aos-delay="100"
-        data-aos-offset="80"
       >
 
         <div class="product-detail-card-header">
@@ -514,10 +488,6 @@
       <article
         class="product-detail-card product-detail-card--benefits reveal"
         data-detail-card="benefits"
-        data-aos="fade-up"
-        data-aos-duration="900"
-        data-aos-delay="180"
-        data-aos-offset="80"
       >
 
         <div class="product-detail-card-header">
@@ -554,10 +524,6 @@
       <article
         class="product-detail-card product-detail-card--usage reveal"
         data-detail-card="usage"
-        data-aos="fade-up"
-        data-aos-duration="900"
-        data-aos-delay="260"
-        data-aos-offset="80"
       >
 
         <div class="product-detail-card-header">
@@ -603,10 +569,6 @@
       <article
         class="product-detail-card product-detail-card--freshness reveal"
         data-detail-card="freshness"
-        data-aos="fade-up"
-        data-aos-duration="1100"
-        data-aos-delay="340"
-        data-aos-offset="80"
       >
 
         <div class="product-detail-card-header">
@@ -666,10 +628,6 @@
     <aside
       class="product-details-note reveal"
       id="productNaturalNote"
-      data-aos="fade-up"
-      data-aos-duration="1100"
-      data-aos-delay="150"
-      data-aos-offset="80"
     >
 
       <div class="product-details-note-mark">
@@ -699,10 +657,6 @@
 
     <footer
       class="product-details-closing reveal"
-      data-aos="fade-up"
-      data-aos-duration="1000"
-      data-aos-delay="100"
-      data-aos-offset="80"
     >
 
       <span>
@@ -789,6 +743,9 @@
           <a href="contact.html">
             Contact
           </a>
+                    <a href="affiliate-dashboard.html">
+            Partnership
+          </a>
 
         </div>
 
@@ -801,10 +758,6 @@
 
           <a href="shipping.html">
             Shipping
-          </a>
-
-          <a href="">
-            FAQs
           </a>
 
           <a href="privacy-policy.html">
@@ -933,7 +886,6 @@
 
 
   <script src="product.js"></script>
-    <script src="page-transition.js"></script>
   <!-- LENIS SMOOTH SCROLL -->
 <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
 <script>
@@ -957,29 +909,6 @@
   requestAnimationFrame(raf);
 </script>
 
-
-<!-- AOS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    AOS.init({
-      once: false,
-      mirror: false,
-      duration: 1200,
-      easing: "cubic-bezier(.16,1,.3,1)",
-      offset: 30,
-      disable: () =>
-        window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches
-    });
-  });
-</script>
 
 </body>
 </html>

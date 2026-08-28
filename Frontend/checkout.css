@@ -5,9 +5,65 @@
   --muted:#77727b;
   --line:#e8e5e9;
   --soft:#f8f7f9;
-  --serif:"DM Serif Display",serif;
-  --sans:"Manrope",sans-serif;
 }
+
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+  background: #f7f5f8;
+  color: #171717;
+  font-weight: 400;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+}
+
+/* Everything else */
+p,
+span,
+li,
+a,
+button,
+input,
+textarea,
+select {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+}
+
+
 
 *{
   box-sizing:border-box;
@@ -177,7 +233,7 @@ html::-webkit-scrollbar{
 body{
   background:var(--white);
   color:var(--black);
-  font-family:var(--sans);
+  font-family: "Satoshi", sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -291,42 +347,87 @@ button{
   width:22px;
 }
 
-.checkout-menu{
-  position:fixed;
-  inset:0;
-  padding:20px;
-  background:rgba(17,17,17,.08);
-  backdrop-filter:blur(24px) saturate(140%);
-  -webkit-backdrop-filter:blur(24px) saturate(140%);
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition:opacity .45s ease,visibility .45s ease;
+.checkout-menu {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100dvh;
+
+  padding: 40px clamp(24px, 6vw, 90px);
+
+  background: rgba(8, 8, 8, 0.72);
+
+  backdrop-filter: blur(28px) saturate(120%);
+  -webkit-backdrop-filter: blur(28px) saturate(120%);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity .45s ease,
+    visibility .45s ease;
 }
 
-.checkout-menu.is-open{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
+.checkout-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
-.checkout-menu-inner{
-  width:min(620px,100%);
-  min-height:min(720px,calc(100vh - 40px));
-  margin-left:auto;
-  padding:28px;
-  display:flex;
-  flex-direction:column;
-  background:rgba(255,255,255,.78);
-  border:1px solid rgba(255,255,255,.85);
-  border-radius:24px;
-  box-shadow:0 25px 80px rgba(20,10,30,.14);
-  transform:translateY(-18px) scale(.98);
-  transition:transform .5s cubic-bezier(.16,1,.3,1);
+.checkout-menu-inner {
+  width: min(620px, 100%);
+  min-height: 100%;
+
+  margin-left: 0;
+
+  padding: 28px 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  color: #fff;
+
+  transform: translateY(-18px);
+  transition:
+    transform .5s cubic-bezier(.16,1,.3,1);
 }
 
-.checkout-menu.is-open .checkout-menu-inner{
-  transform:translateY(0) scale(1);
+.checkout-menu.is-open .checkout-menu-inner {
+  transform: translateY(0);
+}
+
+.checkout-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout-menu-logo img {
+  width: 88px;
+  display: block;
+}
+
+.checkout-menu-close {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(255,255,255,.10);
+  color: #fff;
+
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%;
+
+  position: relative;
 }
 
 .checkout-menu-header{
@@ -383,7 +484,7 @@ button{
   justify-content:space-between;
   padding:23px 0;
   border-bottom:1px solid rgba(17,17,17,.08);
-  font-family:var(--serif);
+  font-family: "Satoshi", sans-serif;
   font-size:clamp(28px,4vw,42px);
   transition:color .3s ease,padding-left .3s ease;
 }
@@ -394,7 +495,7 @@ button{
 }
 
 .checkout-menu-links a span:last-child{
-  font-family:var(--sans);
+  font-family: "Satoshi", sans-serif;
   font-size:18px;
 }
 
@@ -404,11 +505,11 @@ button{
   display:flex;
   justify-content:space-between;
   gap:20px;
-  font-size:9px;
+  font-size:11px;
   font-weight:700;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:#8a858c;
+  color:#f3f2f4;
 }
 
 .checkout-page{
@@ -441,7 +542,7 @@ button{
 
 .checkout-heading h1{
   max-width:650px;
-  font-family:var(--serif);
+  font-family: "Satoshi", sans-serif;
   font-size:clamp(42px,5vw,70px);
   font-weight:400;
   line-height:.98;
@@ -669,7 +770,7 @@ button{
 }
 
 .summary-heading h2{
-  font-family:var(--serif);
+  font-family: "Satoshi", sans-serif;
   font-size:27px;
   font-weight:400;
   line-height:1;
@@ -730,7 +831,7 @@ button{
 
 .summary-product-info h3{
   max-width:170px;
-  font-family:var(--serif);
+  font-family: "Satoshi", sans-serif;
   font-size:22px;
   font-weight:400;
   line-height:1.05;
@@ -816,7 +917,7 @@ button{
 }
 
 .summary-total span{
-  font-family:var(--serif);
+  font-family: "Satoshi", sans-serif;
   font-size:22px;
 }
 
@@ -857,7 +958,7 @@ button{
 }
 
 .checkout-error-state h1{
-  font-family:var(--serif);
+  font-family: "Satoshi", sans-serif;
   font-size:48px;
   font-weight:400;
 }
@@ -1118,7 +1219,7 @@ button{
 
 .checkout-status-card h2{
   margin:12px 0 12px;
-  font-family:"DM Serif Display",serif;
+  font-family: "Satoshi", sans-serif;
   font-size:clamp(30px,5vw,42px);
   font-weight:400;
   line-height:1.05;
@@ -1128,7 +1229,7 @@ button{
 .checkout-status-card p{
   max-width:410px;
   margin:0 auto;
-  font-family:"Manrope",sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-size:14px;
   line-height:1.75;
   color:#666;
@@ -1136,7 +1237,7 @@ button{
 
 .checkout-status-reference{
   margin-top:22px;
-  font-family:"Manrope",sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-size:11px;
   letter-spacing:.04em;
   color:#777;
@@ -1153,7 +1254,7 @@ button{
   border-radius:999px;
   background:#5b2d82;
   color:#fff;
-  font-family:"Manrope",sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-size:13px;
   font-weight:700;
   cursor:pointer;

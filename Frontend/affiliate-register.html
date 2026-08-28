@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Become a Remify Affiliate</title>
+
+  <meta
+    name="description"
+    content="Join the Remify Affiliate Program and earn commission by sharing Remify with your audience."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="affiliate-register.css">
+</head>
+
+<body>
+    <!-- =========================================
+     SCROLL PROGRESS
+     ========================================= -->
+
+<div class="scroll-progress" aria-hidden="true">
+  <div
+    class="scroll-progress-fill"
+    id="scrollFill"
+  ></div>
+</div>
+
+
+<!-- =========================================
+     CUSTOM CURSOR
+     ========================================= -->
+
+<canvas
+  class="cursor-trail"
+  id="cursorTrail"
+></canvas>
+
+<div
+  class="cursor-spark"
+  id="cursorSpark"
+>
+  <span></span>
+</div>
+
+
+
+  <main class="affiliate-page">
+
+    <!-- =========================================
+         LEFT BRAND PANEL
+    ========================================== -->
+
+    <section class="brand-panel">
+
+      <div class="brand-panel__inner">
+
+<div class="sidebar-brand">
+  <a href="index.html" aria-label="Remify home">
+    <img src="images/rem-logo-mainb.png" alt="Remify">
+  </a>
+</div>
+
+        <div class="brand-copy">
+
+          <p class="eyebrow">
+            REMIFY AFFILIATE PROGRAM
+          </p>
+
+          <h1>
+            Share something
+            <em>worth sharing.</em>
+          </h1>
+
+          <p class="brand-description">
+            Join the Remify Affiliate Program and earn
+            commission every time someone discovers
+            Remify through you.
+          </p>
+
+        </div>
+
+        <div class="brand-bottom">
+
+          <div class="commission-badge">
+            <span class="commission-badge__value">20%</span>
+            <span class="commission-badge__text">
+              commission per<br>
+              successful sale
+            </span>
+          </div>
+
+          <p class="brand-note">
+            Fresh. Natural. Made with intention.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         REGISTRATION PANEL
+    ========================================== -->
+
+    <section class="form-panel">
+
+      <div class="form-container">
+
+<div class="sidebar-brand">
+  <a href="index.html" aria-label="Remify home">
+    <img src="images/rem-logo-mainb.png" alt="Remify">
+  </a>
+</div>
+
+
+        <!-- =====================================
+             FORM HEADER
+        ====================================== -->
+
+        <div class="form-header">
+
+          <p class="form-eyebrow">
+            GET STARTED
+          </p>
+
+          <h2>
+            Become an affiliate.
+          </h2>
+
+          <p>
+            Tell us a little about yourself.
+            Applications are reviewed before
+            affiliate access is activated.
+          </p>
+
+        </div>
+
+
+        <!-- =====================================
+             ERROR / SUCCESS MESSAGE
+        ====================================== -->
+
+        <div
+          class="form-message"
+          id="formMessage"
+          role="alert"
+          aria-live="polite"
+        ></div>
+
+
+        <!-- =====================================
+             REGISTRATION FORM
+        ====================================== -->
+
+        <form
+          id="affiliateRegisterForm"
+          class="affiliate-form"
+          novalidate
+        >
+
+          <!-- FULL NAME -->
+
+          <div class="field">
+
+            <label for="fullName">
+              Full name
+            </label>
+
+            <div class="input-wrap">
+
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Your full name"
+                autocomplete="name"
+                maxlength="100"
+                required
+              >
+
+            </div>
+
+            <span
+              class="field-error"
+              id="fullNameError"
+            ></span>
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="field">
+
+            <label for="email">
+              Email address
+            </label>
+
+            <div class="input-wrap">
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                maxlength="150"
+                required
+              >
+
+            </div>
+
+            <span
+              class="field-error"
+              id="emailError"
+            ></span>
+
+          </div>
+
+
+          <!-- PHONE -->
+
+          <div class="field">
+
+            <label for="phone">
+              Phone number
+            </label>
+
+            <div class="input-wrap">
+
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+254 7XX XXX XXX"
+                autocomplete="tel"
+                maxlength="30"
+                required
+              >
+
+            </div>
+
+            <span
+              class="field-error"
+              id="phoneError"
+            ></span>
+
+          </div>
+
+
+          <!-- PASSWORD ROW -->
+
+          <div class="password-grid">
+
+            <!-- PASSWORD -->
+
+            <div class="field">
+
+              <label for="password">
+                Password
+              </label>
+
+              <div class="input-wrap input-wrap--password">
+
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="At least 8 characters"
+                  autocomplete="new-password"
+                  minlength="8"
+                  maxlength="100"
+                  required
+                >
+
+                <button
+                  type="button"
+                  class="password-toggle"
+                  data-target="password"
+                  aria-label="Show password"
+                >
+                  <span class="eye-icon"></span>
+                </button>
+
+              </div>
+
+              <span
+                class="field-error"
+                id="passwordError"
+              ></span>
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="field">
+
+              <label for="confirmPassword">
+                Confirm password
+              </label>
+
+              <div class="input-wrap input-wrap--password">
+
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Repeat password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  maxlength="100"
+                  required
+                >
+
+                <button
+                  type="button"
+                  class="password-toggle"
+                  data-target="confirmPassword"
+                  aria-label="Show password"
+                >
+                  <span class="eye-icon"></span>
+                </button>
+
+              </div>
+
+              <span
+                class="field-error"
+                id="confirmPasswordError"
+              ></span>
+
+            </div>
+
+          </div>
+
+
+          <!-- TERMS -->
+
+          <label class="terms">
+
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              required
+            >
+
+            <span class="terms__box"></span>
+
+            <span class="terms__text">
+              I agree to the Remify Affiliate Program terms
+              and understand that applications are subject
+              to approval.
+            </span>
+
+          </label>
+
+          <span
+            class="field-error terms-error"
+            id="termsError"
+          ></span>
+
+
+          <!-- SUBMIT -->
+
+          <button
+            type="submit"
+            class="submit-button"
+            id="submitButton"
+          >
+
+            <span class="submit-button__text">
+              Submit application
+            </span>
+
+            <span class="submit-button__arrow">
+              →
+            </span>
+
+            <span
+              class="submit-button__loader"
+              aria-hidden="true"
+            ></span>
+
+          </button>
+
+
+          <!-- LOGIN -->
+
+          <p class="login-prompt">
+
+            Already an affiliate?
+
+            <a href="affiliate-login.html">
+              Log in
+            </a>
+
+          </p>
+
+        </form>
+
+
+        <!-- =====================================
+             SUCCESS STATE
+        ====================================== -->
+
+        <section
+          class="success-state"
+          id="successState"
+          hidden
+        >
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <p class="form-eyebrow">
+            APPLICATION RECEIVED
+          </p>
+
+          <h2>
+            You're on your way.
+          </h2>
+
+          <p class="success-description">
+            Your affiliate application has been
+            successfully submitted and is now awaiting
+            approval.
+          </p>
+
+          <div class="referral-card">
+
+            <span class="referral-card__label">
+              YOUR REFERRAL CODE
+            </span>
+
+            <strong id="referralCode">
+              —
+            </strong>
+
+            <span class="referral-card__note">
+              You'll be able to use your referral link
+              once your application is approved.
+            </span>
+
+          </div>
+
+          <a
+            href="affiliate-login.html"
+            class="success-button"
+          >
+            Go to affiliate login
+            <span>→</span>
+          </a>
+
+        </section>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="affiliate-register.js"></script>
+<!-- Lenis -->
+<script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+
+<!-- Your scripts -->
+<script src="./lenis.js"></script>
+</body>
+</html>

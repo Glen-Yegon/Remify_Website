@@ -5,8 +5,63 @@
   --white: #fff;
   --off-white: #f7f6f4;
   --muted: rgba(255,255,255,.62);
-  --font-body: "Manrope", sans-serif;
-  --font-display: "DM Serif Display", serif;
+
+}
+
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+  background: #f7f5f8;
+  color: #171717;
+  font-weight: 400;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+}
+
+/* Everything else */
+p,
+span,
+li,
+a,
+button,
+input,
+textarea,
+select {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
 }
 
 * {
@@ -29,7 +84,7 @@ html::-webkit-scrollbar {
 body {
   background: var(--black);
   color: var(--white);
-  font-family: var(--font-body);
+  font-family: "Satoshi", sans-serif;
   overflow-x: hidden;
 }
 
@@ -356,7 +411,7 @@ padding: 5px 7px 5px 14px;
 
 .contact-hero-intro h1 {
   margin-top: 16px;
-  font-family: var(--font-display);
+  font-family: "Satoshi", sans-serif;
   font-size: clamp(54px,7vw,92px);
   font-weight: 100;
   line-height: .92;
@@ -418,7 +473,7 @@ padding: 5px 7px 5px 14px;
 .contact-form-heading h2 {
   max-width: 470px;
   margin-top: 10px;
-  font-family: var(--font-display);
+  font-family: "Satoshi", sans-serif;
   font-size: clamp(34px,4vw,54px);
   font-weight: 100;
   line-height: .98;
@@ -573,7 +628,7 @@ padding: 5px 7px 5px 14px;
 
 .contact-info-location h3 {
   margin-top: 9px;
-  font-family: var(--font-display);
+  font-family: "Satoshi", sans-serif;
   font-size: clamp(34px,4vw,52px);
   font-weight: 100;
   line-height: .95;
@@ -838,7 +893,7 @@ padding: 5px 7px 5px 14px;
     align-items: baseline;
     gap: 15px;
     border-bottom: 1px solid rgba(255,255,255,.1);
-    font-family: var(--font-display);
+  font-family: "Satoshi", sans-serif;
     font-size: clamp(40px,12vw,58px);
     font-weight: 100;
     line-height: 1;
@@ -846,7 +901,7 @@ padding: 5px 7px 5px 14px;
 
   .contact-mobile-links a span {
     color: rgba(255,255,255,.28);
-    font-family: var(--font-body);
+  font-family: "Satoshi", sans-serif;
     font-size: 8px;
     font-weight: 800;
     letter-spacing: .15em;
@@ -974,7 +1029,7 @@ padding: 5px 7px 5px 14px;
 .remify-word-group span {
   display: inline-block;
   color: black;
-  font-family: "DM Serif Display", serif;
+  font-family: "Satoshi", sans-serif;
   font-size: clamp(86px, 15vw, 230px);
   font-weight: 100;
   line-height: .85;
@@ -988,7 +1043,7 @@ padding: 5px 7px 5px 14px;
   justify-content: center;
   width: clamp(45px, 7vw, 110px);
   color: #9a69ba;
-  font-family: "Manrope", sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-size: clamp(20px, 2.5vw, 38px);
   font-style: normal;
   font-weight: 400;
@@ -1020,7 +1075,7 @@ padding: 5px 7px 5px 14px;
   gap: 11px;
   white-space: nowrap;
   color: rgba(255,255,255,.4);
-  font-family: "Manrope", sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-size: 8px;
   font-weight: 700;
   letter-spacing: .24em;
@@ -1244,9 +1299,7 @@ padding: 5px 7px 5px 14px;
 
   margin:
     0;
-
-  font-family:
-    var(--font-display);
+  font-family: "Satoshi", sans-serif;
 
   font-size:
     clamp(30px,3.5vw,48px);
@@ -1816,9 +1869,7 @@ padding: 5px 7px 5px 14px;
 
   color:
     rgba(255,255,255,.42);
-
-  font-family:
-    var(--font-display);
+  font-family: "Satoshi", sans-serif;
 
   font-size:
     clamp(17px,1.6vw,21px);
@@ -2043,9 +2094,7 @@ padding: 5px 7px 5px 14px;
 
 
 .remify-footer-message strong {
-
-  font-family:
-    var(--font-display);
+  font-family: "Satoshi", sans-serif;
 
   font-size:
     clamp(22px,2.3vw,32px);
@@ -2207,9 +2256,7 @@ padding: 5px 7px 5px 14px;
 
   display:
     block;
-
-  font-family:
-    var(--font-display);
+  font-family: "Satoshi", sans-serif;
 
   font-size:
     clamp(150px,21vw,300px);

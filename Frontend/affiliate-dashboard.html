@@ -12,6 +12,72 @@
 
 <body>
 
+  <!-- =========================================
+     SCROLL PROGRESS
+     ========================================= -->
+
+<div class="scroll-progress" aria-hidden="true">
+  <div
+    class="scroll-progress-fill"
+    id="scrollFill"
+  ></div>
+</div>
+
+
+<!-- =========================================
+     CUSTOM CURSOR
+     ========================================= -->
+
+<canvas
+  class="cursor-trail"
+  id="cursorTrail"
+></canvas>
+
+<div
+  class="cursor-spark"
+  id="cursorSpark"
+>
+  <span></span>
+</div>
+
+  <!-- =========================================================
+     AFFILIATE ACCESS MODAL
+     ========================================================= -->
+
+<div class="affiliate-access" id="affiliateAccess" aria-hidden="true">
+  <div class="affiliate-access__backdrop"></div>
+
+  <div class="affiliate-access__modal" role="dialog" aria-modal="true">
+    
+    <div class="affiliate-access__icon" aria-hidden="true">
+      <span>✦</span>
+    </div>
+
+    <div class="affiliate-access__content">
+      <span class="affiliate-access__eyebrow">AFFILIATE PROGRAM</span>
+
+      <h2>Grow with us.</h2>
+
+      <p>
+        Share Remify with your audience, earn commissions, and grow
+        alongside the brand.
+      </p>
+    </div>
+
+    <div class="affiliate-access__actions">
+      <a href="affiliate-register.html" class="affiliate-access__primary">
+        Become an Affiliate
+      </a>
+
+      <a href="affiliate-login.html" class="affiliate-access__secondary">
+        Already have an account? <span>Log in</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
   <div class="affiliate-dashboard">
 
     <!-- =====================================================
@@ -20,14 +86,13 @@
 
     <aside class="affiliate-sidebar">
 
-      <div class="sidebar-brand">
-        REMIFY
-      </div>
 
-      <div class="sidebar-program">
-        <span>Affiliate Program</span>
-      </div>
 
+<div class="sidebar-brand">
+  <a href="index.html" aria-label="Remify home">
+    <img src="images/rem-logo-mainb.png" alt="Remify">
+  </a>
+</div>
       <nav class="sidebar-nav">
 
         <a
@@ -66,9 +131,11 @@
 
       <header class="dashboard-topbar">
 
-        <div class="dashboard-mobile-brand">
-          REMIFY
-        </div>
+<div class="sidebar-brand">
+  <a href="index.html" aria-label="Remify home">
+    <img src="images/rem-logo-mainb.png" alt="Remify">
+  </a>
+</div>
 
         <div class="dashboard-user">
 
@@ -376,6 +443,41 @@
 
         </section>
 
+        <!-- =================================================
+             PAYOUT HISTORY
+             ================================================= -->
+
+        <section class="dashboard-panel payout-history-panel">
+
+          <div class="panel-heading">
+
+            <p class="panel-eyebrow">
+              PAYOUT HISTORY
+            </p>
+
+            <h2>
+              Your payouts
+            </h2>
+
+            <p>
+              A record of commissions that have been paid to you.
+            </p>
+
+          </div>
+
+
+          <div
+            id="payoutHistory"
+            class="payout-history"
+          >
+
+            <div class="payout-history-empty">
+              Loading payout history...
+            </div>
+
+          </div>
+
+        </section>
 
         <!-- =================================================
              PAYOUT INFORMATION
@@ -422,7 +524,58 @@
 
 
   <script src="affiliate-dashboard.js"></script>
+  <script>
+/* =========================================================
+   REMIFY — AFFILIATE ACCESS CHECK
+   ========================================================= */
 
+document.addEventListener("DOMContentLoaded", () => {
+
+  const accessModal =
+    document.getElementById("affiliateAccess");
+
+  if (!accessModal) return;
+
+
+  /* =======================================================
+     CHECK AUTHENTICATION
+     ======================================================= */
+
+  const affiliateToken =
+    localStorage.getItem("remifyAffiliateToken");
+
+  const affiliateId =
+    localStorage.getItem("remifyAffiliateId");
+
+
+  const isLoggedIn =
+    !!affiliateToken && !!affiliateId;
+
+
+  /* =======================================================
+     SHOW MODAL ONLY WHEN NOT LOGGED IN
+     ======================================================= */
+
+  if (!isLoggedIn) {
+
+    accessModal.classList.add("is-visible");
+
+    accessModal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow = "hidden";
+
+  }
+
+});
+</script>
+<!-- Lenis -->
+<script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+
+<!-- Your scripts -->
+<script src="./lenis.js"></script>
 </body>
 
 </html>

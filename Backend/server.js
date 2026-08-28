@@ -1778,6 +1778,820 @@ app.get(
 
 
 /* =========================================================
+   15L-0. OWNER — AFFILIATE PAYMENTS SUMMARY
+   ========================================================= */
+
+app.get(
+  "/api/owner/affiliates/payments",
+  authenticateOwner,
+  async (req, res) => {
+
+    try {
+
+      /* =========================================
+         GET APPROVED AFFILIATES
+         ========================================= */
+
+      const affiliatesSnapshot =
+        await db
+          .collection("affiliates")
+          .where("status", "==", "approved")
+          .get();
+
+      const affiliates = {};
+
+      affiliatesSnapshot.docs.forEach(doc => {
+
+        const affiliate = doc.data();
+
+        affiliates[doc.id] = {
+
+          affiliateId:
+            affiliate.affiliateId || doc.id,
+
+          fullName:
+            affiliate.fullName || "",
+
+          email:
+            affiliate.email || "",
+
+          phone:
+            affiliate.phone || "",
+
+          referralCode:
+            affiliate.referralCode || "",
+
+          commissionRate:
+            Number(affiliate.commissionRate || 0),
+
+          totalSalesAmount:
+            Number(affiliate.totalSalesAmount || 0),
+
+          totalCommission:
+            Number(affiliate.totalCommission || 0),
+
+          unpaidCommission:
+            Number(affiliate.unpaidCommission || 0),
+
+          lastPayoutAt:
+            affiliate.lastPayoutAt || null,
+
+          monthlySalesCount: 0,
+
+          monthlySalesAmount: 0,
+
+          monthlyCommissionAmount: 0
+
+        };
+
+      });
+
+
+      /* =========================================
+         CURRENT MONTH WINDOW
+         ========================================= */
+
+      const now = new Date();
+
+      const monthStart =
+        new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          1
+        ).toISOString();
+
+
+      /* =========================================
+         THIS MONTH'S AFFILIATE ORDERS
+         ========================================= */
+
+      const ordersSnapshot =
+        await db
+          .collection("affiliate_orders")
+          .where("createdAt", ">=", monthStart)
+          .get();
+
+      ordersSnapshot.docs.forEach(doc => {
+
+        const order = doc.data();
+        const affiliateId = order.affiliateId;
+
+        if (affiliates[affiliateId]) {
+
+          affiliates[affiliateId].monthlySalesCount += 1;
+
+          affiliates[affiliateId].monthlySalesAmount +=
+            Number(order.saleAmount || 0);
+
+          affiliates[affiliateId].monthlyCommissionAmount +=
+            Number(order.commissionAmount || 0);
+
+        }
+
+      });
+
+
+      /* =========================================
+         BUILD RESPONSE LIST
+         ========================================= */
+
+      const affiliatePayments =
+        Object.values(affiliates).map(affiliate => ({
+
+          ...affiliate,
+
+          monthlySalesAmount:
+            Number(affiliate.monthlySalesAmount.toFixed(2)),
+
+          monthlyCommissionAmount:
+            Number(affiliate.monthlyCommissionAmount.toFixed(2))
+
+        }));
+
+
+      /* =========================================
+         SORT — HIGHEST UNPAID FIRST
+         ========================================= */
+
+      affiliatePayments.sort((a, b) => {
+        return b.unpaidCommission - a.unpaidCommission;
+      });
+
+
+      /* =========================================
+         RESPONSE
+         ========================================= */
+
+      return res.json({
+
+        success: true,
+
+        count:
+          affiliatePayments.length,
+
+        affiliates:
+          affiliatePayments
+
+      });
+
+    } catch (error) {
+
+      console.error(
+        "Affiliate payments summary error:",
+        error
+      );
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "We couldn't load affiliate payment data."
+
+      });
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   15L. OWNER — AFFILIATE PAYOUT
+   ========================================================= */
+
+app.post(
+  "/api/owner/affiliates/:affiliateId/payout",
+  authenticateOwner,
+  async (req, res) => {
+
+    try {
+
+      const affiliateId =
+        String(req.params.affiliateId || "").trim();
+
+      const {
+        amount,
+        method,
+        reference,
+        notes
+      } = req.body;
+
+
+      /* =========================================
+         VALIDATION
+         ========================================= */
+
+      if (!affiliateId) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            "Affiliate ID is required."
+
+        });
+
+      }
+
+
+      /* =========================================
+         GET AFFILIATE
+         ========================================= */
+
+      const affiliateRef =
+        db
+          .collection("affiliates")
+          .doc(affiliateId);
+
+
+      const affiliateSnapshot =
+        await affiliateRef.get();
+
+
+      if (!affiliateSnapshot.exists) {
+
+        return res.status(404).json({
+
+          success: false,
+
+          message:
+            "Affiliate account could not be found."
+
+        });
+
+      }
+
+
+      const affiliate =
+        affiliateSnapshot.data();
+
+
+      /* =========================================
+         ACCOUNT STATUS
+         ========================================= */
+
+      if (affiliate.status !== "approved") {
+
+        return res.status(409).json({
+
+          success: false,
+
+          message:
+            "Only approved affiliates can receive payouts."
+
+        });
+
+      }
+
+
+      /* =========================================
+         CURRENT UNPAID COMMISSION
+         ========================================= */
+
+      const unpaidCommission =
+        Number(
+          affiliate.unpaidCommission || 0
+        );
+
+
+      if (
+        !Number.isFinite(unpaidCommission) ||
+        unpaidCommission <= 0
+      ) {
+
+        return res.status(409).json({
+
+          success: false,
+
+          message:
+            "This affiliate has no unpaid commission available for payout."
+
+        });
+
+      }
+
+
+      /* =========================================
+         PAYOUT AMOUNT
+         ========================================= */
+
+      let payoutAmount;
+
+
+      if (
+        amount === undefined ||
+        amount === null ||
+        amount === ""
+      ) {
+
+        payoutAmount =
+          unpaidCommission;
+
+      } else {
+
+        payoutAmount =
+          Number(amount);
+
+      }
+
+
+      if (
+        !Number.isFinite(payoutAmount) ||
+        payoutAmount <= 0
+      ) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            "Payout amount must be greater than zero."
+
+        });
+
+      }
+
+
+      /* =========================================
+         ROUND MONEY
+         ========================================= */
+
+      payoutAmount =
+        Number(
+          payoutAmount.toFixed(2)
+        );
+
+
+      /* =========================================
+         PREVENT OVERPAYMENT
+         ========================================= */
+
+      if (payoutAmount > unpaidCommission) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            "Payout amount cannot exceed the affiliate's unpaid commission."
+
+        });
+
+      }
+
+
+      /* =========================================
+         PAYMENT METHOD
+         ========================================= */
+
+      const payoutMethod =
+        String(
+          method || "external"
+        )
+        .trim()
+        .toLowerCase();
+
+
+      const allowedMethods = [
+        "mpesa",
+        "bank",
+        "cash",
+        "external",
+        "other"
+      ];
+
+
+      if (
+        !allowedMethods.includes(
+          payoutMethod
+        )
+      ) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            "Invalid payout method."
+
+        });
+
+      }
+
+
+      /* =========================================
+         PAYOUT REFERENCE
+         ========================================= */
+
+      const payoutReference =
+        String(
+          reference || ""
+        ).trim();
+
+
+      /* =========================================
+         PAYOUT TIMESTAMP
+         ========================================= */
+
+      const paidAt =
+        new Date().toISOString();
+
+
+      /* =========================================
+         PAYOUT ID
+         ========================================= */
+
+      const payoutRef =
+        db
+          .collection("affiliate_payouts")
+          .doc();
+
+
+      const payoutId =
+        payoutRef.id;
+
+
+      /* =========================================
+         FIRESTORE TRANSACTION
+         ========================================= */
+
+      await db.runTransaction(
+        async firestoreTransaction => {
+
+          const currentAffiliateSnapshot =
+            await firestoreTransaction.get(
+              affiliateRef
+            );
+
+
+          if (
+            !currentAffiliateSnapshot.exists
+          ) {
+
+            throw new Error(
+              "AFFILIATE_NOT_FOUND"
+            );
+
+          }
+
+
+          const currentAffiliate =
+            currentAffiliateSnapshot.data();
+
+
+          const currentUnpaidCommission =
+            Number(
+              currentAffiliate.unpaidCommission || 0
+            );
+
+
+          if (
+            !Number.isFinite(
+              currentUnpaidCommission
+            ) ||
+            currentUnpaidCommission <= 0
+          ) {
+
+            throw new Error(
+              "NO_UNPAID_COMMISSION"
+            );
+
+          }
+
+
+          if (
+            payoutAmount >
+            currentUnpaidCommission
+          ) {
+
+            throw new Error(
+              "PAYOUT_EXCEEDS_BALANCE"
+            );
+
+          }
+
+
+          const remainingUnpaidCommission =
+            Number(
+              (
+                currentUnpaidCommission -
+                payoutAmount
+              ).toFixed(2)
+            );
+
+
+          firestoreTransaction.set(
+            payoutRef,
+            {
+
+              payoutId,
+
+              affiliateId,
+
+              affiliateName:
+                currentAffiliate.fullName ||
+                "",
+
+              affiliateEmail:
+                currentAffiliate.email ||
+                "",
+
+              amount:
+                payoutAmount,
+
+              currency:
+                "KES",
+
+              method:
+                payoutMethod,
+
+              reference:
+                payoutReference,
+
+              notes:
+                String(notes || "").trim(),
+
+              status:
+                "paid",
+
+              paidAt,
+
+              createdAt:
+                paidAt,
+
+              processedBy:
+                req.owner.username ||
+                "owner"
+
+            }
+          );
+
+
+          firestoreTransaction.update(
+            affiliateRef,
+            {
+
+              unpaidCommission:
+                remainingUnpaidCommission,
+
+              lastPayoutAt:
+                paidAt
+
+            }
+          );
+
+        }
+      );
+
+
+      /* =========================================
+         RESPONSE
+         ========================================= */
+
+      return res.json({
+
+        success: true,
+
+        message:
+          "Affiliate payout recorded successfully.",
+
+        payout: {
+
+          payoutId,
+
+          affiliateId,
+
+          affiliateName:
+            affiliate.fullName || "",
+
+          amount:
+            payoutAmount,
+
+          currency:
+            "KES",
+
+          method:
+            payoutMethod,
+
+          reference:
+            payoutReference,
+
+          status:
+            "paid",
+
+          paidAt
+
+        }
+
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Affiliate payout error:",
+        error
+      );
+
+
+      if (
+        error.message ===
+        "AFFILIATE_NOT_FOUND"
+      ) {
+
+        return res.status(404).json({
+
+          success: false,
+
+          message:
+            "Affiliate account could not be found."
+
+        });
+
+      }
+
+
+      if (
+        error.message ===
+        "NO_UNPAID_COMMISSION"
+      ) {
+
+        return res.status(409).json({
+
+          success: false,
+
+          message:
+            "This affiliate has no unpaid commission available for payout."
+
+        });
+
+      }
+
+
+      if (
+        error.message ===
+        "PAYOUT_EXCEEDS_BALANCE"
+      ) {
+
+        return res.status(409).json({
+
+          success: false,
+
+          message:
+            "The payout amount exceeds the affiliate's current unpaid commission."
+
+        });
+
+      }
+
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "We couldn't record the affiliate payout."
+
+      });
+
+    }
+
+  }
+);
+
+/* =========================================================
+   AFFILIATE — PAYOUT HISTORY
+   ========================================================= */
+
+app.get(
+  "/api/affiliate/payouts",
+  authenticateAffiliate,
+  async (req, res) => {
+
+    try {
+
+      const affiliateId =
+        req.affiliate.affiliateId;
+
+      /* =========================================
+         GET PAYOUTS
+         ========================================= */
+
+      const snapshot =
+        await db
+          .collection("affiliate_payouts")
+          .where(
+            "affiliateId",
+            "==",
+            affiliateId
+          )
+          .get();
+
+
+      /* =========================================
+         BUILD PAYOUT LIST
+         ========================================= */
+
+      const payouts =
+        snapshot.docs.map(doc => {
+
+          const payout =
+            doc.data();
+
+          return {
+
+            payoutId:
+              payout.payoutId ||
+              doc.id,
+
+            amount:
+              Number(
+                payout.amount || 0
+              ),
+
+            currency:
+              payout.currency ||
+              "KES",
+
+            method:
+              payout.method ||
+              "external",
+
+            reference:
+              payout.reference ||
+              "",
+
+            notes:
+              payout.notes ||
+              "",
+
+            status:
+              payout.status ||
+              "paid",
+
+            paidAt:
+              payout.paidAt ||
+              payout.createdAt ||
+              null
+
+          };
+
+        });
+
+
+      /* =========================================
+         SORT — NEWEST PAYOUT FIRST
+         ========================================= */
+
+      payouts.sort((a, b) => {
+
+        return (
+          new Date(b.paidAt || 0) -
+          new Date(a.paidAt || 0)
+        );
+
+      });
+
+
+      /* =========================================
+         RESPONSE
+         ========================================= */
+
+      return res.json({
+
+        success: true,
+
+        count:
+          payouts.length,
+
+        payouts
+
+      });
+
+    } catch (error) {
+
+      console.error(
+        "Affiliate payout history error:",
+        error
+      );
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "We couldn't load your payout history."
+
+      });
+
+    }
+
+  }
+);
+
+/* =========================================================
    11. AFFILIATE PROFILE
    ========================================================= */
 
@@ -2102,6 +2916,8 @@ app.get(
 
   }
 );
+
+
 
 /* =========================================================
    13B-2. TEST REFERRAL CODE

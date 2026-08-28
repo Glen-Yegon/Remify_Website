@@ -21,6 +21,33 @@
 
 
 <body>
+  <!-- =========================================
+     SCROLL PROGRESS
+     ========================================= -->
+
+<div class="scroll-progress" aria-hidden="true">
+  <div
+    class="scroll-progress-fill"
+    id="scrollFill"
+  ></div>
+</div>
+
+
+<!-- =========================================
+     CUSTOM CURSOR
+     ========================================= -->
+
+<canvas
+  class="cursor-trail"
+  id="cursorTrail"
+></canvas>
+
+<div
+  class="cursor-spark"
+  id="cursorSpark"
+>
+  <span></span>
+</div>
 
   <div class="owner-dashboard">
 
@@ -33,9 +60,11 @@
 
       <div class="owner-sidebar-top">
 
-        <div class="owner-brand">
-          REMIFY
-        </div>
+<div class="sidebar-brand">
+  <a href="index.html" aria-label="Remify home">
+    <img src="images/rem-logo-mainb.png" alt="Remify">
+  </a>
+</div>
 
         <div class="owner-program">
           Affiliate Management
@@ -117,9 +146,12 @@
 
       <header class="owner-topbar">
 
-        <div class="owner-mobile-brand">
-          REMIFY
-        </div>
+<div class="sidebar-brand">
+  <a href="index.html" aria-label="Remify home">
+    <img src="images/rem-logo-mainb.png" alt="Remify">
+  </a>
+</div>
+
 
 
         <div class="owner-topbar-right">
@@ -446,6 +478,64 @@
 
         </section>
 
+        <!-- =================================================
+     AFFILIATE PAYMENTS
+     ================================================= -->
+
+<section class="owner-payments">
+
+  <div class="owner-payments-heading">
+
+    <div>
+
+      <p class="owner-panel-eyebrow">
+        AFFILIATE PAYMENTS
+      </p>
+
+      <h2>
+        Monthly payouts.
+      </h2>
+
+      <p>
+        Review each affiliate's performance this month
+        and mark commissions as paid once you've sent
+        the funds externally.
+      </p>
+
+    </div>
+
+
+    <button
+      type="button"
+      id="refreshPaymentsButton"
+      class="owner-panel-button"
+    >
+      Refresh
+    </button>
+
+  </div>
+
+
+  <div
+    id="affiliatePaymentsList"
+    class="owner-payments-list"
+  >
+
+    <p class="owner-payments-empty">
+      Loading affiliate payment data…
+    </p>
+
+  </div>
+
+
+  <div
+    id="affiliatePaymentsError"
+    class="owner-dashboard-error"
+    aria-live="polite"
+  ></div>
+
+</section>
+
 
 
         <!-- =================================================
@@ -495,7 +585,11 @@
 
 
   <script src="owner-dashboard.js"></script>
+<!-- Lenis -->
+<script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
 
+<!-- Your scripts -->
+<script src="./lenis.js"></script>
 </body>
 
 </html>

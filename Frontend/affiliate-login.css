@@ -12,16 +12,248 @@ body {
   min-height: 100%;
 }
 
-body {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  background: #f7f5f8;
-  color: #171717;
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./fonts/Satoshi-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+  background: #f7f5f8;
+  color: #171717;
+  font-weight: 400;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+}
+
+/* Everything else */
+p,
+span,
+li,
+a,
+button,
+input,
+textarea,
+select {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+  background: #171717;
+  color: #fff;
+  font-weight: 400;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Background image + dark overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.62),
+      rgba(0, 0, 0, 0.62)
+    ),
+    url("./images/hero-desk2.webp") center / cover no-repeat;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+}
+
+/* Regular text */
+p,
+span,
+li,
+a,
+button,
+input,
+textarea,
+select {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+}
+
+/* Mobile background */
+@media (max-width: 768px) {
+  body::before {
+    background:
+      linear-gradient(
+        rgba(0, 0, 0, 0.62),
+        rgba(0, 0, 0, 0.62)
+      ),
+      url("./images/hero-mobile-2.webp") center / cover no-repeat;
+  }
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+   ========================================================= */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100vh;
+  background: rgba(41,0,82,.07);
+  pointer-events: none;
+  z-index: 99999;
+}
+
+.scroll-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,#6d32a8 0%,#5b2d82 55%,#17002e 100%);
+  transform: scaleY(0);
+  transform-origin: top;
+  will-change: transform;
+  box-shadow: 0 0 6px rgba(41,0,82,.45),0 0 14px rgba(41,0,82,.18);
+  border-radius: 0 0 4px 4px;
+}
+
+/* =========================================================
+   HIDE NATIVE SCROLLBAR
+   ========================================================= */
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* =========================================================
+   CURSOR
+   ========================================================= */
+
+.cursor-trail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100000;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  * {
+    cursor: none !important;
+  }
+
+  .cursor-spark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    z-index: 100001;
+    transform: translate(-50%,-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s cubic-bezier(.22,1,.36,1),filter .2s ease;
+  }
+
+  .cursor-spark::before,
+  .cursor-spark::after,
+  .cursor-spark span::before,
+  .cursor-spark span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: var(--violet);
+    transform-origin: center;
+    border-radius: 999px;
+    box-shadow: 0 0 5px rgba(41,0,82,.35);
+  }
+
+  .cursor-spark::before {
+    width: 2px;
+    height: 16px;
+    transform: translate(-50%,-50%);
+  }
+
+  .cursor-spark::after {
+    width: 16px;
+    height: 2px;
+    transform: translate(-50%,-50%);
+  }
+
+  .cursor-spark span::before {
+    width: 1.5px;
+    height: 12px;
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+
+  .cursor-spark span::after {
+    width: 1.5px;
+    height: 12px;
+    transform: translate(-50%,-50%) rotate(-45deg);
+  }
+
+  .cursor-spark--active {
+    transform: translate(-50%,-50%) scale(1.45);
+    filter: drop-shadow(0 0 5px rgba(41,0,82,.35)) drop-shadow(0 0 14px rgba(92,45,145,.35));
+  }
+
+  .cursor-spark--click {
+    transform: translate(-50%,-50%) scale(.72);
+  }
+}
 
 /* =========================================================
    AUTH
@@ -50,7 +282,7 @@ body {
 
   border: 1px solid #ece8ee;
 
-  border-radius: 24px;
+  border-radius: px;
 
   padding: 42px;
 
@@ -87,7 +319,7 @@ body {
 
   letter-spacing: 2px;
 
-  color: #8b8290;
+  color: #050505;
 }
 
 .affiliate-auth-heading h1 {
@@ -97,12 +329,14 @@ body {
   line-height: 1.05;
 
   letter-spacing: -1.5px;
+
+  color: #000;
 }
 
 .affiliate-auth-heading > p:last-child {
   margin: 14px 0 34px;
 
-  color: #77717b;
+  color: #101011;
 
   font-size: 14px;
   line-height: 1.7;
@@ -300,7 +534,7 @@ body {
   .affiliate-auth-card {
     padding: 30px 22px;
 
-    border-radius: 20px;
+    border-radius: 4px;
   }
 
   .affiliate-auth-brand {

@@ -57,7 +57,7 @@ if (navbar) {
 
   const updateNavbar = () => {
 
-    if (window.scrollY > 40) {
+    if (window.scrollY > 10) {
       navbar.classList.add('navbar--scrolled');
     } else {
       navbar.classList.remove('navbar--scrolled');
@@ -454,23 +454,7 @@ if (isFinePointer && cursorSpark && cursorTrail) {
     updateParallax();
   }
 
-    const revealEls = document.querySelectorAll('.reveal');
 
-  if (revealEls.length) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          const siblings = Array.from(entry.target.parentElement.children).filter(el => el.classList.contains('reveal'));
-          const index = siblings.indexOf(entry.target);
-          entry.target.style.transitionDelay = `${index * 0.12}s`;
-          entry.target.classList.add('in-view');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    revealEls.forEach((el) => revealObserver.observe(el));
-  }
 
 
     const howSteps = document.querySelectorAll('.how-step');
