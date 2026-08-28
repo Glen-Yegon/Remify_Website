@@ -638,9 +638,6 @@ button {
   max-width: 440px;
   background: var(--white);
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  transform: translateY(48px);
-  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .product-card.in-view {

@@ -6672,14 +6672,6 @@ button {
 
   }
 
-
-  .remify-giant-wordmark span {
-
-    font-size:
-      27vw;
-
-  }
-
 }
 
 
@@ -6697,6 +6689,1024 @@ button {
     transition:
       none !important;
 
+  }
+
+}
+
+
+/* =========================================================
+   REMIFY — NEW SIMPLIFIED STORY PAGE
+   ========================================================= */
+
+.remify-story {
+  width: 100%;
+  background: #ffffff;
+  color: #050505;
+}
+
+
+/* =========================================================
+   GLOBAL STORY CONTAINER
+   ========================================================= */
+
+.story-container {
+  width: min(1240px, calc(100% - 100px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   GENERAL SECTION
+   ========================================================= */
+
+.story-section {
+  position: relative;
+  width: 100%;
+  padding: 90px 0;
+  overflow: hidden;
+}
+
+.story-section + .story-section {
+  border-top: 1px solid rgba(5, 5, 5, .08);
+}
+
+
+/* =========================================================
+   SECTION META
+   ========================================================= */
+
+.story-section-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid rgba(5, 5, 5, .14);
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.story-section-meta span:first-child {
+  color: var(--violet);
+}
+
+.story-section-meta span:last-child {
+  color: rgba(5, 5, 5, .45);
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.story-section h1,
+.story-section h2,
+.story-section h3,
+.story-section p {
+  margin-top: 0;
+}
+
+.story-section h1,
+.story-section h2 {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  letter-spacing: -.035em;
+}
+
+.story-section em {
+  color: var(--violet);
+  font-style: italic;
+}
+
+
+/* =========================================================
+   01 — THE IDEA
+   ========================================================= */
+
+.story-idea {
+  padding-top: 75px;
+  padding-bottom: 95px;
+}
+
+.story-idea-grid {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 100px;
+
+  align-items: end;
+
+  padding-top: 70px;
+}
+
+.story-idea h1 {
+  max-width: 800px;
+  margin-bottom: 0;
+
+  font-size: clamp(65px, 8vw, 125px);
+  line-height: .88;
+}
+
+.story-copy {
+  max-width: 430px;
+}
+
+.story-lead {
+  margin-bottom: 28px;
+
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(5, 5, 5, .68);
+}
+
+.story-accent {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -.015em;
+}
+
+
+/* =========================================================
+   02 — WHY WE STARTED
+   ========================================================= */
+
+.story-started {
+  background: white;
+}
+
+.story-split {
+  display: grid;
+  grid-template-columns: 1fr .75fr;
+  gap: 100px;
+
+  padding-top: 70px;
+}
+
+.story-split h2 {
+  max-width: 700px;
+  margin: 0;
+
+  font-size: clamp(50px, 6vw, 88px);
+  line-height: .92;
+}
+
+.story-split .story-copy {
+  padding-top: 8px;
+}
+
+.story-split .story-copy > p {
+  margin-bottom: 24px;
+
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(5, 5, 5, .68);
+}
+
+.story-points {
+  margin: 35px 0;
+  border-top: 1px solid rgba(5, 5, 5, .15);
+}
+
+.story-points div {
+  padding: 17px 0;
+  border-bottom: 1px solid rgba(5, 5, 5, .15);
+}
+
+.story-points strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.story-closing {
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   03 — FIRST PRODUCT
+   ========================================================= */
+
+.story-product-grid {
+  display: grid;
+  grid-template-columns: .9fr 1fr;
+  gap: 100px;
+
+  align-items: center;
+
+  padding-top: 70px;
+}
+
+.story-product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background: #f0edf2;
+}
+
+.story-product-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform .8s var(--ease);
+}
+
+.story-product-image:hover img {
+  transform: scale(1.035);
+}
+
+.story-product-content {
+  max-width: 560px;
+}
+
+.story-small-label {
+  display: block;
+
+  margin-bottom: 25px;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  color: var(--violet);
+}
+
+.story-product-content h2 {
+  margin-bottom: 30px;
+
+  font-size: clamp(48px, 5vw, 78px);
+  line-height: .94;
+}
+
+.story-product-content p {
+  max-width: 470px;
+  margin-bottom: 18px;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  color: rgba(5, 5, 5, .65);
+}
+
+.story-product-action {
+  display: flex;
+  gap: 0;
+
+  margin-top: 38px;
+
+  border-top: 1px solid rgba(5, 5, 5, .15);
+  border-bottom: 1px solid rgba(5, 5, 5, .15);
+}
+
+.story-product-action span {
+  flex: 1;
+
+  padding: 17px 0;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.story-product-action span + span {
+  border-left: 1px solid rgba(5, 5, 5, .15);
+  padding-left: 20px;
+}
+
+
+/* =========================================================
+   04 — SEA MOSS, REMIFIED
+   ========================================================= */
+
+.story-remified {
+  background: #17002e;
+  color: #ffffff;
+}
+
+.story-remified .story-section-meta {
+  border-color: rgba(255, 255, 255, .18);
+}
+
+.story-remified .story-section-meta span:last-child {
+  color: rgba(255, 255, 255, .48);
+}
+
+.story-remified .story-section-meta span:first-child {
+  color: #ffffff;
+}
+
+.story-heading-wide {
+  padding: 70px 0 65px;
+}
+
+.story-heading-wide h2 {
+  max-width: 1050px;
+
+  margin: 0;
+
+  font-size: clamp(48px, 6.5vw, 96px);
+  line-height: .91;
+
+  color: #ffffff;
+}
+
+.story-heading-wide em {
+  color: #b987d7;
+}
+
+.story-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid rgba(255, 255, 255, .18);
+}
+
+.story-feature-grid article {
+  min-height: 190px;
+
+  padding: 25px 25px 25px 0;
+
+  border-bottom: 1px solid rgba(255, 255, 255, .18);
+}
+
+.story-feature-grid article + article {
+  padding-left: 25px;
+  border-left: 1px solid rgba(255, 255, 255, .18);
+}
+
+.story-feature-grid span {
+  display: block;
+
+  margin-bottom: 38px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+
+  color: rgba(255, 255, 255, .4);
+}
+
+.story-feature-grid h3 {
+  margin-bottom: 10px;
+
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+.story-feature-grid p {
+  max-width: 230px;
+
+  margin: 0;
+
+  font-size: 11px;
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, .58);
+}
+
+
+/* =========================================================
+   05 — WHAT'S INSIDE
+   ========================================================= */
+
+.story-inside-grid {
+  display: grid;
+  grid-template-columns: 1fr .9fr;
+  gap: 100px;
+
+  padding-top: 70px;
+}
+
+.story-inside-grid h2 {
+  margin: 0;
+
+  font-size: clamp(50px, 6vw, 88px);
+  line-height: .92;
+}
+
+.story-ingredients {
+  border-top: 1px solid rgba(5, 5, 5, .15);
+}
+
+.story-ingredients article {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 20px;
+
+  padding: 23px 0;
+
+  border-bottom: 1px solid rgba(5, 5, 5, .15);
+}
+
+.story-ingredients article > span {
+  padding-top: 3px;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+
+  color: var(--violet);
+}
+
+.story-ingredients h3 {
+  margin-bottom: 7px;
+
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.story-ingredients p {
+  max-width: 430px;
+
+  margin: 0;
+
+  font-size: 11px;
+  line-height: 1.7;
+
+  color: rgba(5, 5, 5, .55);
+}
+
+.ingredient-summary {
+  padding-top: 30px;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   06 — HOW DO YOU REMIFY
+   ========================================================= */
+
+.story-how {
+  background: white;
+}
+
+.story-how-heading {
+  padding: 70px 0 55px;
+}
+
+.story-how-heading h2 {
+  margin: 0;
+
+  font-size: clamp(55px, 7vw, 105px);
+  line-height: .88;
+}
+
+.story-ways {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid rgba(5, 5, 5, .15);
+  border-bottom: 1px solid rgba(5, 5, 5, .15);
+}
+
+.story-ways div {
+  min-height: 150px;
+
+  padding: 22px 22px 22px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.story-ways div + div {
+  padding-left: 22px;
+
+  border-left: 1px solid rgba(5, 5, 5, .15);
+}
+
+.story-ways span {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--violet);
+}
+
+.story-ways strong {
+  max-width: 180px;
+
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+
+.story-how-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+
+  padding-top: 55px;
+}
+
+.story-how-bottom p {
+  max-width: 430px;
+
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.story-how-bottom p:last-child {
+  color: rgba(5, 5, 5, .58);
+}
+
+
+/* =========================================================
+   07 — THE BIGGER IDEA
+   ========================================================= */
+
+.story-bigger-content {
+  max-width: 1000px;
+
+  padding-top: 75px;
+}
+
+.story-bigger-content h2 {
+  margin-bottom: 50px;
+
+  font-size: clamp(60px, 8vw, 120px);
+  line-height: .86;
+}
+
+.story-bigger-content > p {
+  max-width: 520px;
+
+  margin-bottom: 20px;
+
+  font-size: 14px;
+  line-height: 1.75;
+
+  color: rgba(5, 5, 5, .6);
+}
+
+.story-bigger-content > strong {
+  display: block;
+
+  margin: 25px 0;
+
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 500;
+  letter-spacing: -.03em;
+
+  color: var(--violet);
+}
+
+
+/* =========================================================
+   08 — CLOSING
+   ========================================================= */
+.story-closing-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 110px 30px;
+
+  color: #ffffff;
+
+  /* Your background image */
+  background-image: url("images/hero-desk2.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   BLURRED + DARKENED BACKGROUND
+   ========================================================= */
+
+.story-closing-section::before {
+  content: "";
+
+  position: absolute;
+  inset: -25px;
+
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+
+  filter: blur(8px) brightness(45%);
+
+  transform: scale(1.08);
+
+  z-index: -2;
+}
+
+
+/* Dark overlay for extra depth */
+.story-closing-section::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.28);
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   KEEP CONTENT ABOVE THE BACKGROUND
+   ========================================================= */
+
+.story-closing-inner {
+  position: relative;
+  z-index: 2;
+}
+.story-closing-inner {
+  width: min(1050px, 100%);
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.story-closing-label {
+  display: block;
+
+  margin-bottom: 35px;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, .45);
+}
+
+.story-closing-inner h2 {
+  margin-bottom: 25px;
+
+  font-size: clamp(60px, 8vw, 120px);
+  line-height: .86;
+
+  color: #ffffff;
+}
+
+.story-closing-inner em {
+  color: #b987d7;
+}
+
+.story-closing-inner p {
+  margin-bottom: 35px;
+
+  font-size: 13px;
+  letter-spacing: .08em;
+
+  color: rgba(255, 255, 255, .55);
+}
+
+.story-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+
+  padding: 0 28px;
+
+  border: 1px solid rgba(255, 255, 255, .3);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  transition:
+    background .35s ease,
+    color .35s ease,
+    border-color .35s ease,
+    transform .35s var(--ease);
+}
+
+.story-cta:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+
+  color: #050505;
+
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .story-container {
+    width: min(100% - 60px, 700px);
+  }
+
+  .story-section {
+    padding: 70px 0;
+  }
+
+  .story-idea-grid,
+  .story-split,
+  .story-product-grid,
+  .story-inside-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .story-idea-grid,
+  .story-split,
+  .story-product-grid,
+  .story-inside-grid {
+    padding-top: 55px;
+  }
+
+  .story-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-feature-grid article:nth-child(3) {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .story-ways {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .story-ways div:nth-child(3) {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .story-how-bottom {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .story-container {
+    width: calc(100% - 40px);
+  }
+
+  .story-section {
+    padding: 55px 0;
+  }
+
+  .story-idea {
+    padding-top: 50px;
+    padding-bottom: 65px;
+  }
+
+  .story-section-meta {
+    padding-bottom: 14px;
+
+    font-size: 8px;
+    letter-spacing: .12em;
+  }
+
+  .story-idea-grid {
+    gap: 35px;
+    padding-top: 45px;
+  }
+
+  .story-idea h1 {
+    font-size: clamp(52px, 15vw, 76px);
+    line-height: .9;
+  }
+
+  .story-lead {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .story-accent {
+    font-size: 15px;
+  }
+
+
+  /* WHY STARTED */
+
+  .story-split {
+    gap: 38px;
+    padding-top: 45px;
+  }
+
+  .story-split h2 {
+    font-size: clamp(43px, 12vw, 62px);
+  }
+
+  .story-split .story-copy > p {
+    font-size: 13px;
+  }
+
+  .story-points {
+    margin: 28px 0;
+  }
+
+
+  /* PRODUCT */
+
+  .story-product-grid {
+    gap: 38px;
+    padding-top: 45px;
+  }
+
+  .story-product-content h2 {
+    font-size: clamp(43px, 11vw, 62px);
+  }
+
+  .story-product-content p {
+    font-size: 13px;
+  }
+
+  .story-product-action {
+    margin-top: 28px;
+  }
+
+  .story-product-action span {
+    font-size: 8px;
+  }
+
+
+  /* REMIFIED */
+
+  .story-heading-wide {
+    padding: 45px 0;
+  }
+
+  .story-heading-wide h2 {
+    font-size: clamp(42px, 11vw, 60px);
+  }
+
+  .story-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-feature-grid article,
+  .story-feature-grid article + article {
+    min-height: auto;
+
+    padding: 22px 0;
+
+    border-left: none;
+  }
+
+  .story-feature-grid span {
+    margin-bottom: 20px;
+  }
+
+
+  /* INSIDE */
+
+  .story-inside-grid {
+    gap: 40px;
+    padding-top: 45px;
+  }
+
+  .story-inside-grid h2 {
+    font-size: clamp(45px, 12vw, 64px);
+  }
+
+  .story-ingredients article {
+    grid-template-columns: 30px 1fr;
+    gap: 12px;
+  }
+
+
+  /* HOW */
+
+  .story-how-heading {
+    padding: 45px 0;
+  }
+
+  .story-how-heading h2 {
+    font-size: clamp(52px, 14vw, 75px);
+  }
+
+  .story-ways {
+    grid-template-columns: 1fr;
+  }
+
+  .story-ways div,
+  .story-ways div + div {
+    min-height: 105px;
+
+    padding: 18px 0;
+
+    border-left: none;
+  }
+
+  .story-ways strong {
+    max-width: none;
+    font-size: 16px;
+  }
+
+  .story-how-bottom {
+    padding-top: 38px;
+  }
+
+  .story-how-bottom p {
+    font-size: 13px;
+  }
+
+
+  /* BIGGER IDEA */
+
+  .story-bigger-content {
+    padding-top: 50px;
+  }
+
+  .story-bigger-content h2 {
+    margin-bottom: 35px;
+
+    font-size: clamp(52px, 14vw, 76px);
+  }
+
+  .story-bigger-content > p {
+    font-size: 13px;
+  }
+
+
+  /* CLOSING */
+
+  .story-closing-section {
+    padding: 80px 20px;
+  }
+
+  .story-closing-inner h2 {
+    font-size: clamp(55px, 15vw, 82px);
+  }
+
+  .story-closing-label {
+    margin-bottom: 25px;
+  }
+
+  .story-cta {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .story-container {
+    width: calc(100% - 34px);
+  }
+
+  .story-section {
+    padding: 48px 0;
+  }
+
+  .story-idea h1 {
+    font-size: 50px;
+  }
+
+  .story-split h2,
+  .story-inside-grid h2 {
+    font-size: 43px;
+  }
+
+  .story-heading-wide h2 {
+    font-size: 40px;
+  }
+
+  .story-bigger-content h2 {
+    font-size: 50px;
+  }
+
+  .story-closing-inner h2 {
+    font-size: 53px;
   }
 
 }

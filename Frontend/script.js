@@ -417,20 +417,6 @@ if (isFinePointer && cursorSpark && cursorTrail) {
     brandObserver.observe(brandReveal);
   }
 
-    const productCard = document.getElementById('productCard');
-
-  if (productCard) {
-    const cardObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          cardObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    cardObserver.observe(productCard);
-  }
 
   const productShowcase = document.getElementById('productShowcase');
   const showcaseBgImg = document.querySelector('.product-showcase-bg img');
