@@ -52,12 +52,14 @@ app.use(express.urlencoded({
 }));
 
 app.use(cors({
-  origin:[
+  origin: [
     "http://localhost:5500",
-    "http://127.0.0.1:5500"
+    "http://127.0.0.1:5500",
+    "https://remify.co",
+    "https://www.remify.co",
+    "https://remify-website.vercel.app"
   ]
 }));
-
 
 /* =========================================================
    03. SMTP
@@ -159,11 +161,6 @@ const generateReference=()=>{
   return `RMF-${timestamp}-${random}`;
 };
 
-
-/* =========================================================
-   06. PAYSTACK API
-   ========================================================= */
-
 const paystackRequest = async (endpoint, options = {}) => {
 
   const response = await fetch(
@@ -180,13 +177,21 @@ const paystackRequest = async (endpoint, options = {}) => {
     }
   );
 
+  // Read the raw response first
+  const rawResponse = await response.text();
+
+  console.log("=================================");
+  console.log("PAYSTACK STATUS:", response.status);
+  console.log("PAYSTACK RESPONSE:", rawResponse);
+  console.log("=================================");
+
   let data;
 
   try {
-    data = await response.json();
+    data = JSON.parse(rawResponse);
   } catch {
     throw new Error(
-      "Paystack returned an invalid response."
+      `Paystack returned an invalid response. HTTP ${response.status}`
     );
   }
 
@@ -1317,9 +1322,8 @@ app.post(
 
   }
 );
-
 /* =========================================================
-   OWNER — REJECT AFFILIATE
+   OWNER — REMOVE AFFILIATE
    ========================================================= */
 
 app.post(
@@ -1393,21 +1397,7 @@ app.post(
           success: false,
 
           message:
-            "This affiliate application has already been rejected."
-
-        });
-
-      }
-
-
-      if (affiliate.status !== "pending") {
-
-        return res.status(409).json({
-
-          success: false,
-
-          message:
-            "This affiliate application cannot be rejected."
+            "This affiliate has already been removed."
 
         });
 
@@ -1415,10 +1405,44 @@ app.post(
 
 
       /* =========================================
-         REJECT APPLICATION
+         CHECK UNPAID COMMISSION
          ========================================= */
 
-      const rejectedAt =
+      const unpaidCommission =
+        Number(
+          affiliate.unpaidCommission ||
+          affiliate.pendingCommission ||
+          affiliate.totalCommission ||
+          0
+        );
+
+
+      if (unpaidCommission > 0) {
+
+        return res.status(409).json({
+
+          success: false,
+
+          code:
+            "UNPAID_COMMISSION",
+
+          message:
+            `This affiliate has ${formatCurrency(
+              unpaidCommission
+            )} in unpaid commission. Please pay the outstanding commission before removing this affiliate.`,
+
+          unpaidCommission
+
+        });
+
+      }
+
+
+      /* =========================================
+         REMOVE AFFILIATE
+         ========================================= */
+
+      const removedAt =
         new Date().toISOString();
 
 
@@ -1427,7 +1451,10 @@ app.post(
         status:
           "rejected",
 
-        rejectedAt
+        rejectedAt:
+          removedAt,
+
+        removedAt
 
       });
 
@@ -1441,7 +1468,7 @@ app.post(
         success: true,
 
         message:
-          "Affiliate application rejected.",
+          "Affiliate removed successfully.",
 
         affiliate: {
 
@@ -1456,7 +1483,7 @@ app.post(
           status:
             "rejected",
 
-          rejectedAt
+          removedAt
 
         }
 
@@ -1465,7 +1492,7 @@ app.post(
     } catch (error) {
 
       console.error(
-        "Reject affiliate error:",
+        "Remove affiliate error:",
         error
       );
 
@@ -1474,7 +1501,7 @@ app.post(
         success: false,
 
         message:
-          "We couldn't reject this affiliate application."
+          "We couldn't remove this affiliate."
 
       });
 
@@ -2867,10 +2894,12 @@ app.get(
          ===================================================== */
 
       const frontendUrl =
-        String(
-          process.env.FRONTEND_URL ||
-          "http://localhost:5500"
-        ).replace(/\/+$/,"");
+        process.env.FRONTEND_URL ||
+        (
+          process.env.NODE_ENV === "production"
+            ? "https://remify.co"
+            : "http://localhost:5500"
+        ).replace(/\/+$/, "");
 
 
       const referralLink =
@@ -3211,6 +3240,48 @@ console.log(
        ===================================================== */
 
     const paymentReference = generateReference();
+const pendingOrder = {
+  productId: product.id,
+
+  productName: product.name,
+
+  quantity: parsedQuantity,
+
+  unitPrice,
+
+  amount: totalAmount,
+
+  currency,
+
+  customer: {
+    fullName: customer.fullName.trim(),
+    email: customer.email.trim(),
+    phone: customer.phone.trim()
+  },
+
+  delivery: {
+    country: delivery.country.trim(),
+    city: delivery.city.trim(),
+    address: delivery.address.trim(),
+    apartment:
+      delivery.apartment?.trim() || ""
+  },
+
+  affiliateCode:
+    verifiedAffiliate?.referralCode || null,
+
+  reference: paymentReference,
+
+  paymentStatus: "pending",
+
+  createdAt:
+    new Date().toISOString()
+};
+
+await db
+  .collection("pending_orders")
+  .doc(paymentReference)
+  .set(pendingOrder);
 
 
     /* =====================================================
@@ -3274,12 +3345,17 @@ console.log(
 
           reference: paymentReference,
 
+        callback_url:
+          `${String(
+            process.env.FRONTEND_URL ||
+            "http://localhost:5500"
+          ).replace(/\/+$/, "")}/confirmation.html`,
+
           metadata: JSON.stringify(metadata)
 
         })
       }
     );
-
 
     /* =====================================================
        RESPONSE
@@ -3338,129 +3414,264 @@ console.log(
    08. PAYMENT VERIFICATION
    ========================================================= */
 
-app.post("/api/payment/verify",async(req,res)=>{
+app.post("/api/payment/verify", async (req, res) => {
 
-  try{
+  try {
 
-    const {reference,order}=req.body;
+    const { reference } = req.body;
 
-    if(!reference){
-      return res.status(400).json({
-        success:false,
-        message:"Payment reference is missing."
-      });
-    }
 
-    const result=await paystackRequest(
-      `/transaction/verify/${encodeURIComponent(reference)}`,
-      {
-        method:"GET"
-      }
-    );
+    /* =====================================================
+       VALIDATE REFERENCE
+       ===================================================== */
 
-    const transaction=result.data;
-
-    if(transaction.status!=="success"){
-
-      let message="Your payment was not completed.";
-
-      if(transaction.status==="abandoned"){
-        message=
-          "The payment window was closed before payment was completed.";
-      }else if(transaction.status==="failed"){
-        message=
-          transaction.gateway_response||
-          "Paystack could not complete the payment.";
-      }else if(
-        transaction.status==="pending"||
-        transaction.status==="ongoing"||
-        transaction.status==="processing"
-      ){
-        message=
-          "Your payment is still being processed. Please wait a moment and try again.";
-      }
+    if (!reference) {
 
       return res.status(400).json({
-        success:false,
-        paymentStatus:transaction.status,
-        message
-      });
-    }
-
-const verifiedProduct =
-  products[String(order?.productId)];
-
-if (!verifiedProduct) {
-
-  console.error(
-    "Product not found during payment verification:",
-    order?.productId
-  );
-
-  return res.status(400).json({
-    success: false,
-    message:
-      "The product associated with this payment could not be verified."
-  });
-
-}
-
-const verifiedQuantity =
-  Number(order?.quantity);
-
-if (
-  !Number.isInteger(verifiedQuantity) ||
-  verifiedQuantity < 1 ||
-  verifiedQuantity > 20
-) {
-
-  return res.status(400).json({
-    success: false,
-    message:
-      "The order quantity could not be verified."
-  });
-
-}
-
-    const verifiedUnitPrice =
-    Number(verifiedProduct.price);
-
-    if (
-    !Number.isFinite(verifiedUnitPrice) ||
-    verifiedUnitPrice <= 0
-    ) {
-
-    return res.status(500).json({
         success: false,
         message:
-        "The product price could not be verified."
-    });
+          "Payment reference is missing."
+      });
 
     }
 
+
+    /* =====================================================
+       GET PENDING ORDER
+       ===================================================== */
+
+    const pendingOrderSnapshot =
+      await db
+        .collection("pending_orders")
+        .doc(reference)
+        .get();
+
+
+    if (!pendingOrderSnapshot.exists) {
+
+      console.error(
+        "Pending order not found:",
+        reference
+      );
+
+      return res.status(400).json({
+        success: false,
+        message:
+          "The order associated with this payment could not be found."
+      });
+
+    }
+
+
+    const order =
+      pendingOrderSnapshot.data();
+
+
+    /* =====================================================
+       VERIFY PAYMENT WITH PAYSTACK
+       ===================================================== */
+
+    const result =
+      await paystackRequest(
+        `/transaction/verify/${encodeURIComponent(reference)}`,
+        {
+          method: "GET"
+        }
+      );
+
+
+    const transaction =
+      result.data;
+
+
+    /* =====================================================
+       CHECK PAYMENT STATUS
+       ===================================================== */
+
+    if (
+      transaction.status !== "success"
+    ) {
+
+      let message =
+        "Your payment was not completed.";
+
+
+      if (
+        transaction.status ===
+        "abandoned"
+      ) {
+
+        message =
+          "The payment window was closed before payment was completed.";
+
+      } else if (
+        transaction.status ===
+        "failed"
+      ) {
+
+        message =
+          transaction.gateway_response ||
+          "Paystack could not complete the payment.";
+
+      } else if (
+        transaction.status ===
+          "pending" ||
+        transaction.status ===
+          "ongoing" ||
+        transaction.status ===
+          "processing"
+      ) {
+
+        message =
+          "Your payment is still being processed. Please wait a moment and try again.";
+
+      }
+
+
+      return res.status(400).json({
+
+        success: false,
+
+        paymentStatus:
+          transaction.status,
+
+        message
+
+      });
+
+    }
+
+
+    /* =====================================================
+       VERIFY PRODUCT
+       ===================================================== */
+
+    const verifiedProduct =
+      products[
+        String(order.productId)
+      ];
+
+
+    if (!verifiedProduct) {
+
+      console.error(
+        "Product not found during payment verification:",
+        order.productId
+      );
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          "The product associated with this payment could not be verified."
+
+      });
+
+    }
+
+
+    /* =====================================================
+       VERIFY QUANTITY
+       ===================================================== */
+
+    const verifiedQuantity =
+      Number(order.quantity);
+
+
+    if (
+      !Number.isInteger(
+        verifiedQuantity
+      ) ||
+      verifiedQuantity < 1 ||
+      verifiedQuantity > 20
+    ) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          "The order quantity could not be verified."
+
+      });
+
+    }
+
+
+    /* =====================================================
+       VERIFY PRODUCT PRICE
+       ===================================================== */
+
+    const verifiedUnitPrice =
+      Number(
+        verifiedProduct.price
+      );
+
+
+    if (
+      !Number.isFinite(
+        verifiedUnitPrice
+      ) ||
+      verifiedUnitPrice <= 0
+    ) {
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "The product price could not be verified."
+
+      });
+
+    }
+
+
+    /* =====================================================
+       VERIFY AMOUNT
+       ===================================================== */
+
     const expectedAmount =
-    Math.round(
+      Math.round(
         verifiedUnitPrice *
         verifiedQuantity *
         100
-    );
+      );
+
 
     const paidAmount =
-    Number(transaction.amount || 0);
+      Number(
+        transaction.amount || 0
+      );
+
+
+    /* =====================================================
+       VERIFY CURRENCY
+       ===================================================== */
 
     const expectedCurrency =
-    String(
-        verifiedProduct.currency || "KES"
-    ).toUpperCase();
+      String(
+        verifiedProduct.currency ||
+        "KES"
+      ).toUpperCase();
 
-    const paidCurrency=
-      String(transaction.currency||"").toUpperCase();
 
-    if(
-      expectedAmount<=0||
-      paidAmount!==expectedAmount||
-      paidCurrency!==expectedCurrency
-    ){
+    const paidCurrency =
+      String(
+        transaction.currency || ""
+      ).toUpperCase();
+
+
+    /* =====================================================
+       AMOUNT / CURRENCY SECURITY CHECK
+       ===================================================== */
+
+    if (
+      expectedAmount <= 0 ||
+      paidAmount !== expectedAmount ||
+      paidCurrency !== expectedCurrency
+    ) {
 
       console.error(
         "Payment amount/currency mismatch:",
@@ -3473,279 +3684,391 @@ if (
         }
       );
 
+
       return res.status(400).json({
-        success:false,
+
+        success: false,
+
         message:
           "Payment verification failed because the payment amount could not be matched to your order. Please contact Remify."
+
       });
+
     }
 
-/* =====================================================
-   AFFILIATE ORDER + TOTALS
-   ===================================================== */
 
-if (order?.affiliateCode) {
+    /* =====================================================
+       DUPLICATE ORDER PROTECTION
+       ===================================================== */
 
-  try {
+    const existingOrder =
+      await db
+        .collection("orders")
+        .doc(reference)
+        .get();
 
-    const affiliateSnapshot = await db
-      .collection("affiliates")
-      .where("referralCode", "==", order.affiliateCode)
-      .limit(1)
-      .get();
 
-    if (!affiliateSnapshot.empty) {
+    if (existingOrder.exists) {
 
-      const affiliateDoc = affiliateSnapshot.docs[0];
-      const affiliate = affiliateDoc.data();
+      console.log(
+        "Order already processed:",
+        reference
+      );
 
-      if (affiliate.status === "approved") {
 
-        const commissionRate =
-          Number(affiliate.commissionRate || 0.20);
+      return res.json({
 
-        const saleAmount =
-          verifiedUnitPrice * verifiedQuantity;
+        success: true,
 
-        const commissionAmount =
-          Number(
-            (saleAmount * commissionRate).toFixed(2)
+        message:
+          "Payment has already been verified.",
+
+        reference
+
+      });
+
+    }
+
+
+    /* =====================================================
+       AFFILIATE ORDER + TOTALS
+       ===================================================== */
+
+    if (order.affiliateCode) {
+
+      try {
+
+        const normalizedAffiliateCode =
+          String(
+            order.affiliateCode
+          )
+            .trim()
+            .toUpperCase();
+
+
+        const affiliateSnapshot =
+          await db
+            .collection("affiliates")
+            .where(
+              "referralCode",
+              "==",
+              normalizedAffiliateCode
+            )
+            .where(
+              "status",
+              "==",
+              "approved"
+            )
+            .limit(1)
+            .get();
+
+
+        if (
+          !affiliateSnapshot.empty
+        ) {
+
+          const affiliateDoc =
+            affiliateSnapshot.docs[0];
+
+
+          const affiliate =
+            affiliateDoc.data();
+
+
+          const commissionRate =
+            Number(
+              affiliate.commissionRate ||
+              0.20
+            );
+
+
+          const saleAmount =
+            verifiedUnitPrice *
+            verifiedQuantity;
+
+
+          const commissionAmount =
+            Number(
+              (
+                saleAmount *
+                commissionRate
+              ).toFixed(2)
+            );
+
+
+          const affiliateOrderRef =
+            db
+              .collection(
+                "affiliate_orders"
+              )
+              .doc(reference);
+
+
+          const affiliateRef =
+            db
+              .collection("affiliates")
+              .doc(
+                affiliateDoc.id
+              );
+
+
+          /* =============================================
+             FIRESTORE TRANSACTION
+             ============================================= */
+
+          await db.runTransaction(
+            async firestoreTransaction => {
+
+              const existingAffiliateOrder =
+                await firestoreTransaction.get(
+                  affiliateOrderRef
+                );
+
+
+              /* =========================================
+                 DUPLICATE PROTECTION
+                 ========================================= */
+
+              if (
+                existingAffiliateOrder.exists
+              ) {
+
+                console.log(
+                  "Affiliate order already exists:",
+                  reference
+                );
+
+                return;
+
+              }
+
+
+              /* =========================================
+                 CURRENT TOTALS
+                 ========================================= */
+
+              const currentTotalSales =
+                Number(
+                  affiliate.totalSales ||
+                  0
+                );
+
+
+              const currentSalesAmount =
+                Number(
+                  affiliate.totalSalesAmount ||
+                  0
+                );
+
+
+              const currentTotalCommission =
+                Number(
+                  affiliate.totalCommission ||
+                  0
+                );
+
+
+              const currentUnpaidCommission =
+                Number(
+                  affiliate.unpaidCommission ||
+                  0
+                );
+
+
+              /* =========================================
+                 NEW TOTALS
+                 ========================================= */
+
+              const newTotalSales =
+                currentTotalSales + 1;
+
+
+              const newSalesAmount =
+                Number(
+                  (
+                    currentSalesAmount +
+                    saleAmount
+                  ).toFixed(2)
+                );
+
+
+              const newTotalCommission =
+                Number(
+                  (
+                    currentTotalCommission +
+                    commissionAmount
+                  ).toFixed(2)
+                );
+
+
+              const newUnpaidCommission =
+                Number(
+                  (
+                    currentUnpaidCommission +
+                    commissionAmount
+                  ).toFixed(2)
+                );
+
+
+              /* =========================================
+                 CREATE AFFILIATE ORDER
+                 ========================================= */
+
+              firestoreTransaction.set(
+                affiliateOrderRef,
+                {
+
+                  paymentReference:
+                    reference,
+
+                  affiliateId:
+                    affiliateDoc.id,
+
+                  referralCode:
+                    affiliate.referralCode,
+
+                  productId:
+                    verifiedProduct.id,
+
+                  productName:
+                    verifiedProduct.name,
+
+                  quantity:
+                    verifiedQuantity,
+
+                  saleAmount,
+
+                  commissionRate,
+
+                  commissionAmount,
+
+                  commissionStatus:
+                    "unpaid",
+
+                  paymentStatus:
+                    "success",
+
+                  paidAt:
+                    transaction.paid_at ||
+                    new Date().toISOString(),
+
+                  createdAt:
+                    new Date().toISOString()
+
+                }
+              );
+
+
+              /* =========================================
+                 UPDATE AFFILIATE TOTALS
+                 ========================================= */
+
+              firestoreTransaction.update(
+                affiliateRef,
+                {
+
+                  totalSales:
+                    newTotalSales,
+
+                  totalSalesAmount:
+                    newSalesAmount,
+
+                  totalCommission:
+                    newTotalCommission,
+
+                  unpaidCommission:
+                    newUnpaidCommission
+
+                }
+              );
+
+            }
           );
 
-        const affiliateOrderRef =
-          db
-            .collection("affiliate_orders")
-            .doc(reference);
 
-        const affiliateRef =
-          db
-            .collection("affiliates")
-            .doc(affiliateDoc.id);
-
-
-        /* =================================================
-           FIRESTORE TRANSACTION
-           ================================================= */
-
-        await db.runTransaction(async firestoreTransaction => {
-
-          const existingOrder =
-            await firestoreTransaction.get(
-              affiliateOrderRef
-            );
-
-
-          /* ===============================================
-             DUPLICATE PROTECTION
-             =============================================== */
-
-          if (existingOrder.exists) {
-
-            console.log(
-              "Affiliate order already exists:",
-              reference
-            );
-
-            return;
-
-          }
-
-
-          /* ===============================================
-             CURRENT AFFILIATE TOTALS
-             =============================================== */
-
-          const currentTotalSales =
-            Number(
-              affiliate.totalSales || 0
-            );
-
-          const currentSalesAmount =
-            Number(
-              affiliate.totalSalesAmount || 0
-            );
-
-          const currentTotalCommission =
-            Number(
-              affiliate.totalCommission || 0
-            );
-
-          const currentUnpaidCommission =
-            Number(
-              affiliate.unpaidCommission || 0
-            );
-
-
-          /* ===============================================
-             NEW TOTALS
-             =============================================== */
-
-          const newTotalSales =
-            currentTotalSales + 1;
-
-          const newSalesAmount =
-            Number(
-              (
-                currentSalesAmount +
-                saleAmount
-              ).toFixed(2)
-            );
-
-          const newTotalCommission =
-            Number(
-              (
-                currentTotalCommission +
-                commissionAmount
-              ).toFixed(2)
-            );
-
-          const newUnpaidCommission =
-            Number(
-              (
-                currentUnpaidCommission +
-                commissionAmount
-              ).toFixed(2)
-            );
-
-
-          /* ===============================================
-             CREATE AFFILIATE ORDER
-             =============================================== */
-
-          firestoreTransaction.set(
-            affiliateOrderRef,
+          console.log(
+            "Affiliate order and totals recorded:",
             {
-
               paymentReference:
                 reference,
 
               affiliateId:
-                affiliate.affiliateId,
-
-              referralCode:
-                affiliate.referralCode,
-
-              productId:
-                verifiedProduct.id,
-
-              productName:
-                verifiedProduct.name,
-
-              quantity:
-                verifiedQuantity,
+                affiliateDoc.id,
 
               saleAmount,
 
-              commissionRate,
-
-              commissionAmount,
-
-              commissionStatus:
-                "unpaid",
-
-              paymentStatus:
-                "success",
-
-              paidAt:
-                transaction.paid_at ||
-                new Date().toISOString(),
-
-              createdAt:
-                new Date().toISOString()
-
+              commissionAmount
             }
           );
 
+        }
 
-          /* ===============================================
-             UPDATE AFFILIATE TOTALS
-             =============================================== */
+      } catch (
+        affiliateError
+      ) {
 
-          firestoreTransaction.update(
-            affiliateRef,
-            {
-
-              totalSales:
-                newTotalSales,
-
-              totalSalesAmount:
-                newSalesAmount,
-
-              totalCommission:
-                newTotalCommission,
-
-              unpaidCommission:
-                newUnpaidCommission
-
-            }
-          );
-
-        });
-
-
-        console.log(
-          "Affiliate order and totals recorded:",
-          {
-            paymentReference:
-              reference,
-
-            affiliateId:
-              affiliate.affiliateId,
-
-            saleAmount,
-
-            commissionAmount
-          }
+        console.error(
+          "Affiliate order recording error:",
+          affiliateError
         );
 
       }
 
     }
 
-  } catch (affiliateError) {
-
-    console.error(
-      "Affiliate order recording error:",
-      affiliateError
-    );
-
-  }
-
-}
 
     /* =====================================================
-       PAYMENT IS NOW VERIFIED
+       CREATE VERIFIED ORDER
        ===================================================== */
 
     const verifiedOrder = {
 
-    ...order,
+      ...order,
 
-    productId: verifiedProduct.id,
+      productId:
+        verifiedProduct.id,
 
-    productName: verifiedProduct.name,
+      productName:
+        verifiedProduct.name,
 
-    quantity: verifiedQuantity,
+      quantity:
+        verifiedQuantity,
 
-    unitPrice: verifiedUnitPrice,
+      unitPrice:
+        verifiedUnitPrice,
 
-    amount:
-        verifiedUnitPrice * verifiedQuantity,
+      amount:
+        verifiedUnitPrice *
+        verifiedQuantity,
 
-    currency: expectedCurrency,
+      currency:
+        expectedCurrency,
 
-    reference,
+      reference,
 
-    paymentStatus: "success",
+      paymentStatus:
+        "success",
 
-    paymentChannel:
+      paymentChannel:
         transaction.channel || "",
 
-    paidAt:
+      paidAt:
         transaction.paid_at ||
         new Date().toISOString()
 
     };
+
+
+    /* =====================================================
+       SAVE VERIFIED ORDER
+       ===================================================== */
+
+    await db
+      .collection("orders")
+      .doc(reference)
+      .set(
+        verifiedOrder
+      );
 
 
     /* =====================================================
@@ -3766,30 +4089,60 @@ if (order?.affiliateCode) {
     );
 
 
+    /* =====================================================
+       MARK PENDING ORDER AS COMPLETED
+       ===================================================== */
+
+    await db
+      .collection("pending_orders")
+      .doc(reference)
+      .update({
+
+        paymentStatus:
+          "success",
+
+        completedAt:
+          new Date().toISOString()
+
+      });
+
+
+    /* =====================================================
+       SUCCESS
+       ===================================================== */
+
     return res.json({
-      success:true,
+
+      success: true,
+
       message:
         "Payment verified and order received.",
+
       reference
+
     });
 
-  }catch(error){
+
+  } catch (error) {
 
     console.error(
       "Payment verification error:",
       error
     );
 
+
     return res.status(500).json({
-      success:false,
+
+      success: false,
+
       message:
         "We verified the payment request but couldn't complete the order notification. Please contact Remify with your payment reference."
+
     });
 
   }
 
 });
-
 
 /* =========================================================
    09. OWNER ORDER EMAIL

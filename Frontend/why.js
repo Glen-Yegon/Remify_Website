@@ -706,3 +706,94 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+/* =========================================================
+   REMIFY — WHY REMIFY NAVBAR
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const navbar =
+    document.getElementById("whyNavbar");
+
+  const cartBtn =
+    document.getElementById("whyCartBtn");
+
+  const cartCount =
+    document.getElementById("whyCartCount");
+
+
+  /* =======================================================
+     STICKY GLASS NAVBAR
+     ======================================================= */
+
+  if (navbar) {
+
+    const updateNavbar = () => {
+
+      if (window.scrollY > 40) {
+
+        navbar.classList.add("is-scrolled");
+
+      } else {
+
+        navbar.classList.remove("is-scrolled");
+
+      }
+
+    };
+
+
+    window.addEventListener(
+      "scroll",
+      updateNavbar,
+      { passive: true }
+    );
+
+
+    updateNavbar();
+
+  }
+
+
+  /* =======================================================
+     CART
+     ======================================================= */
+
+  if (cartBtn) {
+
+    cartBtn.addEventListener(
+      "click",
+      () => {
+
+        window.location.href = "/cart";
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     UPDATE CART COUNT
+     ======================================================= */
+
+  window.updateWhyCartCount = (count) => {
+
+    if (!cartCount) return;
+
+    cartCount.textContent = count;
+
+    if (cartBtn) {
+
+      cartBtn.setAttribute(
+        "aria-label",
+        `View cart, ${count} items`
+      );
+
+    }
+
+  };
+
+
+});

@@ -299,7 +299,7 @@ button {
 
   height: var(--nav-height);
   padding: 0 clamp(20px, 5vw, 56px);
-
+color: #5b2d82;
   background: rgba(255, 255, 255, 0.28);
 
   backdrop-filter: blur(20px) saturate(160%);
@@ -1100,9 +1100,6 @@ button {
 }
 
 
-/* =========================================================
-   REMIFY — PREMIUM IMAGE CTA
-   ========================================================= */
 
 /* =========================================================
    REMIFY — CTA SECTION BACKGROUND
@@ -1513,6 +1510,281 @@ button {
 
 
 /* =========================================================
+   SUBSCRIPTION FORM
+   ========================================================= */
+
+.remify-photo-cta-form {
+
+  width: 100%;
+
+  max-width: 500px;
+
+  margin-top: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+
+/* =========================================================
+   EMAIL INPUT
+   ========================================================= */
+
+.remify-photo-cta-form input {
+
+  flex: 1;
+
+  min-width: 0;
+
+  height: 58px;
+
+  padding:
+    0 22px;
+
+  border:
+    1px solid rgba(255,255,255,.22);
+
+  border-radius: 999px;
+
+  outline: none;
+
+  background:
+    rgba(255,255,255,.08);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  color:
+    #fff;
+
+  font-family:
+    "Satoshi", sans-serif;
+
+  font-size:
+    11px;
+
+  letter-spacing:
+    .03em;
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+
+.remify-photo-cta-form input::placeholder {
+
+  color:
+    rgba(255,255,255,.48);
+
+}
+
+
+.remify-photo-cta-form input:focus {
+
+  background:
+    rgba(255,255,255,.12);
+
+  border-color:
+    rgba(255,255,255,.45);
+
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,.05);
+
+}
+
+
+/* =========================================================
+   SUBSCRIBE BUTTON
+   ========================================================= */
+
+.remify-photo-cta-form .remify-photo-cta-button {
+
+  flex-shrink: 0;
+
+  width: auto;
+
+  min-width: 150px;
+
+  height: 58px;
+
+  margin-top: 0;
+
+  padding:
+    7px 7px 7px 22px;
+
+  border: 0;
+
+  cursor: pointer;
+
+  font-family:
+    "Satoshi", sans-serif;
+}
+
+
+/* =========================================================
+   BUTTON TEXT
+   ========================================================= */
+
+.remify-photo-cta-form
+.remify-photo-cta-button > span {
+
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    .08em;
+
+  text-transform:
+    uppercase;
+
+}
+
+
+/* =========================================================
+   MOBILE FORM
+   ========================================================= */
+
+/* =========================================================
+   MOBILE — SUBSCRIPTION FORM
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .remify-photo-cta-button {
+
+    width: 100%;
+
+    max-width: 360px;
+
+    min-height: 58px;
+
+    margin-top: 30px;
+
+    padding: 6px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border-radius: 999px;
+
+  }
+
+
+  .remify-photo-cta-button input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    height: 46px;
+
+    padding: 0 17px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #190522;
+
+    font-family: "Satoshi", sans-serif;
+
+    font-size: 13px;
+
+  }
+
+
+  .remify-photo-cta-button input::placeholder {
+
+    color: rgba(25, 5, 34, .5);
+
+  }
+
+
+  .remify-photo-cta-button button {
+
+    flex-shrink: 0;
+
+    min-width: 112px;
+
+    height: 46px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background: var(--violet);
+
+    color: #fff;
+
+    font-family: "Satoshi", sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+  }
+
+}
+
+@media (max-width: 380px) {
+
+  .remify-photo-cta-button {
+
+    max-width: 100%;
+
+    min-height: 60px;
+
+  }
+
+
+  .remify-photo-cta-button input {
+
+    height: 48px;
+
+    padding-left: 18px;
+
+    font-size: 13px;
+
+  }
+
+
+  .remify-photo-cta-button button {
+
+    min-width: 105px;
+
+    height: 48px;
+
+  }
+
+}
+
+
+/* =========================================================
    META
    ========================================================= */
 
@@ -1879,47 +2151,13 @@ button {
 
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      180deg,
-      #4a1767 0%,
-      #321047 48%,
-      #1d082b 100%
-    );
+background: #5b2d82;
 
   color: #fff;
 
 }
 
 
-/* subtle atmospheric light */
-
-.remify-social-transition::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 700px;
-  height: 300px;
-
-  left: 50%;
-  top: -180px;
-
-  transform: translateX(-50%);
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(217,185,233,.16),
-      transparent 70%
-    );
-
-  filter: blur(45px);
-
-  pointer-events: none;
-
-}
 
 
 /* =========================================================
@@ -2365,118 +2603,11 @@ button {
 
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      180deg,
-      #1d082b 0%,
-      #12051b 48%,
-      #09030d 100%
-    );
+background: #5b2d82;
 
   color: #fff;
 
   isolation: isolate;
-
-}
-
-
-/* =========================================================
-   ATMOSPHERE
-   ========================================================= */
-
-.remify-footer::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    radial-gradient(
-      ellipse at 80% 15%,
-      rgba(128,55,163,.18),
-      transparent 34%
-    ),
-    radial-gradient(
-      ellipse at 15% 65%,
-      rgba(84,30,111,.12),
-      transparent 35%
-    );
-
-  pointer-events: none;
-
-  z-index: -2;
-
-}
-
-
-.remify-footer::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      115deg,
-      transparent 20%,
-      rgba(255,255,255,.018) 50%,
-      transparent 80%
-    );
-
-  pointer-events: none;
-
-  z-index: -1;
-
-}
-
-
-.remify-footer-glow {
-
-  position: absolute;
-
-  border-radius: 50%;
-
-  filter: blur(110px);
-
-  pointer-events: none;
-
-  z-index: -1;
-
-}
-
-
-.remify-footer-glow--one {
-
-  width: 420px;
-
-  height: 420px;
-
-  right: -180px;
-
-  top: 100px;
-
-  background:
-    rgba(132,63,164,.13);
-
-}
-
-
-.remify-footer-glow--two {
-
-  width: 300px;
-
-  height: 300px;
-
-  left: -170px;
-
-  bottom: 180px;
-
-  background:
-    rgba(92,36,119,.1);
 
 }
 
@@ -2932,71 +3063,6 @@ button {
 
 
 /* =========================================================
-   GIANT WORDMARK
-   ========================================================= */
-
-.remify-giant-wordmark {
-
-  overflow:
-    hidden;
-
-  padding:
-    55px 0 8px;
-
-  margin-top:
-    15px;
-
-  text-align:
-    center;
-
-}
-
-
-.remify-giant-wordmark span {
-
-  display:
-    block;
-
-  font-family: "Satoshi", sans-serif;
-
-  font-size:
-    clamp(150px,21vw,300px);
-
-  font-weight:
-    400;
-
-  line-height:
-    .68;
-
-  letter-spacing:
-    -.015em;
-
-  white-space:
-    nowrap;
-
-  color:
-    transparent;
-
-  -webkit-text-stroke:
-    1px rgba(255,255,255,.18);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.13),
-      rgba(255,255,255,.025)
-    );
-
-  -webkit-background-clip:
-    text;
-
-  background-clip:
-    text;
-
-}
-
-
-/* =========================================================
    BOTTOM
    ========================================================= */
 
@@ -3073,12 +3139,6 @@ button {
   }
 
 
-  .remify-giant-wordmark {
-
-    padding-top:
-      45px;
-
-  }
 
 }
 
@@ -3136,21 +3196,6 @@ button {
     justify-content: space-between;
   }
 
-  .remify-giant-wordmark {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  .remify-giant-wordmark span {
-    display: block;
-    width: max-content;
-    max-width: none;
-    margin: 0 auto;
-    white-space: nowrap;
-    font-size: 28vw;
-  }
-
   .remify-footer-bottom {
     grid-template-columns: 1fr;
     gap: 9px;
@@ -3197,13 +3242,6 @@ button {
 
   }
 
-
-  .remify-giant-wordmark span {
-
-    font-size:
-      27vw;
-
-  }
 
 }
 
@@ -3748,236 +3786,557 @@ button {
 
 
 /* =========================================================
-   REMIFY — MOBILE MENU CLOSE BUTTON
+   REMIFY — MOBILE MENU
    ========================================================= */
 
-.mobile-menu-close {
-  display: none;
+
+/* =========================================================
+   MOBILE MENU BASE
+   ========================================================= */
+
+.mobile-menu {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100dvh;
+
+  padding: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0, 0, 0, 0.72),
+      rgba(6, 6, 6, 0.64)
+    );
+
+  backdrop-filter:
+    blur(30px)
+    saturate(150%);
+
+  -webkit-backdrop-filter:
+    blur(30px)
+    saturate(150%);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.12);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translateY(-10px);
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease,
+    transform 0.45s cubic-bezier(.22, 1, .36, 1);
+
+  z-index: 100000;
+
 }
 
 
+/* =========================================================
+   OPEN STATE
+   ========================================================= */
+
+.mobile-menu.open {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform:
+    translateY(0);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU INNER
+   ========================================================= */
+
+.mobile-menu-inner {
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+/* =========================================================
+   MOBILE MENU HEADER
+   ========================================================= */
+
+.mobile-menu-header {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+}
+
+
+/* =========================================================
+   MOBILE LOGO
+   ========================================================= */
+
+.mobile-menu-logo {
+
+  display: flex;
+
+  align-items: center;
+
+  height: 52px;
+
+  padding: 2px 0;
+
+  text-decoration: none;
+
+}
+
+
+.mobile-menu-logo img {
+
+  display: block;
+
+  width: auto;
+
+  height: 45px;
+
+  max-width: 145px;
+
+  object-fit: contain;
+
+  filter: brightness(0) invert(1);
+
+  transition:
+    transform 0.3s ease;
+
+}
+
+
+.mobile-menu-logo:hover img {
+
+  transform:
+    scale(1.03);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU CLOSE BUTTON
+   ========================================================= */
+
+.mobile-menu-close {
+
+  width: 43px;
+  height: 43px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.14);
+
+  border-radius: 50%;
+
+  background:
+    rgba(250, 250, 250, 0.05);
+
+  cursor: pointer;
+
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform: rotate(0deg);
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+
+}
+
+
+.mobile-menu-close:hover {
+
+  background:
+    rgba(91, 45, 130, 0.16);
+
+  transform:
+    rotate(4deg);
+
+}
+
+
+.mobile-menu-close span {
+
+  position: absolute;
+
+  width: 17px;
+  height: 1.5px;
+
+  background: #fff;
+
+  border-radius: 999px;
+
+}
+
+
+.mobile-menu-close span:first-child {
+
+  transform:
+    rotate(45deg);
+
+}
+
+
+.mobile-menu-close span:last-child {
+
+  transform:
+    rotate(-45deg);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU LINKS
+   ========================================================= */
+
+.mobile-menu-links {
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 40px 0;
+
+}
+
+
+.mobile-menu-links a {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding:
+    15px 4px;
+
+  border-bottom:
+    1px solid
+    rgba(91, 45, 130, 0.16);
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size:
+    clamp(28px, 7vw, 42px);
+
+  font-weight: 100;
+
+  line-height: 1.1;
+
+  letter-spacing:
+    -0.01em;
+
+  transition:
+    color 0.3s ease,
+    padding 0.3s ease;
+
+}
+
+
+.mobile-menu-links a span:last-child {
+
+  color: #fff;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  letter-spacing: 0;
+
+  transition:
+    transform 0.3s ease;
+
+}
+
+
+.mobile-menu-links a:hover {
+
+  color:
+    var(--violet, #290052);
+
+  padding-left: 8px;
+
+}
+
+
+.mobile-menu-links a:hover span:last-child {
+
+  transform:
+    translate(4px, -4px);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU FOOTER
+   ========================================================= */
+
+.mobile-menu-footer {
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid
+    rgba(91, 45, 130, 0.16);
+
+}
+
+
+.mobile-menu-footer p {
+
+  max-width: 210px;
+
+  margin: 0;
+
+  color: #fff;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+}
+
+
+.mobile-menu-footer span {
+
+  white-space: nowrap;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.10em;
+
+}
+
+
+/* =========================================================
+   BODY WHEN MENU IS OPEN
+   ========================================================= */
+
+body.mobile-menu-open {
+
+  overflow: hidden;
+
+}
+
+
+/* =========================================================
+   NAV TOGGLE
+   ========================================================= */
+
+.nav-toggle {
+
+  position: relative;
+
+  z-index: 100002;
+
+}
+
+
+/* =========================================================
+   MOBILE NAVBAR
+   ========================================================= */
+
 @media (max-width: 900px) {
 
-  .mobile-menu-close {
+  .navbar {
 
-    position: fixed;
+    z-index: 10000;
 
-    top: 24px;
-    right: 20px;
+  }
 
-    width: 32px;
-    height: 32px;
 
-    padding: 0;
+  /*
+   * Keep the original desktop nav completely untouched.
+   * Only hide it on mobile.
+   */
+
+  .navbar .nav-links {
+
+    display: none !important;
+
+  }
+
+
+  /* -----------------------------------------
+     MOBILE TOGGLE
+     ----------------------------------------- */
+
+  .nav-toggle {
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    background: transparent;
+  }
 
-    border: none;
+
+  /* -----------------------------------------
+     CART
+     ----------------------------------------- */
+
+  .nav-cart {
+
+    position: relative;
 
     z-index: 100002;
 
-    opacity: 0;
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform:
-      rotate(-45deg) scale(.8);
-
-    transition:
-      opacity .3s ease,
-      visibility .3s ease,
-      transform .45s cubic-bezier(.22,1,.36,1);
-  }
-
-
-  /* Show close button when menu is open */
-
-  .nav-links.open ~ .mobile-menu-close,
-  .mobile-menu-close.is-visible {
-
-    opacity:
-      1;
-
-    visibility:
-      visible;
-
-    pointer-events:
-      auto;
-
-    transform:
-      rotate(0deg) scale(1);
-  }
-
-
-  /* The two lines */
-
-  .mobile-menu-close span {
-
-    position:
-      absolute;
-
-    width:
-      22px;
-
-    height:
-      1.5px;
-
-    background:
-      #fff;
-
-    border-radius:
-      999px;
-
-    transition:
-      transform .35s cubic-bezier(.22,1,.36,1);
-  }
-
-
-  .mobile-menu-close span:first-child {
-    transform:
-      rotate(45deg);
-  }
-
-
-  .mobile-menu-close span:last-child {
-    transform:
-      rotate(-45deg);
-  }
-
-
-  .mobile-menu-close:hover {
-    transform:
-      rotate(0deg) scale(1.08);
-  }
-
-
-  .mobile-menu-close:hover span {
-    background:
-      #dcbde9;
   }
 
 }
 
 
 /* =========================================================
-   REMIFY — MOBILE MENU
-   ALWAYS DARK GLASS
+   SMALL PHONES
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
 
-  .navbar .nav-links,
-  .navbar.navbar--scrolled .nav-links,
-  .navbar.navbar--scrolled .nav-links.open {
+  .mobile-menu {
 
-    background:
-      rgba(7, 7, 7, 0.78) !important;
-
-    background-color:
-      rgba(7, 7, 7, 0.78) !important;
-
-    backdrop-filter:
-      blur(26px)
-      saturate(110%) !important;
-
-    -webkit-backdrop-filter:
-      blur(26px)
-      saturate(110%) !important;
-
-    box-shadow:
-      none !important;
-
-    border:
-      none !important;
-  }
-
-
-  /* -----------------------------------------
-     OPEN STATE
-     ----------------------------------------- */
-
-  .navbar .nav-links.open,
-  .navbar.navbar--scrolled .nav-links.open {
-
-    transform:
-      translateX(0);
-
-    z-index:
-      100001;
-  }
-
-
-  /* -----------------------------------------
-     LINKS WHEN SCROLLED
-     ----------------------------------------- */
-
-  .navbar.navbar--scrolled .nav-links a {
-
-    color:
-      rgba(255, 255, 255, .72) !important;
-  }
-
-
-  .navbar.navbar--scrolled .nav-links a:hover {
-
-    color:
-      #fff !important;
-
-    border-bottom:
-      none !important;
-  }
-
-}
-  /* -----------------------------------------
-     OPEN STATE
-     ----------------------------------------- */
-
-  .navbar .nav-links.open,
-  .navbar.navbar--scrolled .nav-links.open {
-
-    transform:
-      translateX(0);
+    padding: 18px;
 
   }
 
 
-  /* -----------------------------------------
-     LINKS
-     ----------------------------------------- */
+  .mobile-menu-links {
 
-  .navbar.navbar--scrolled .nav-links a {
-
-    color:
-      rgba(255, 255, 255, .72) !important;
+    padding:
+      40px 0;
 
   }
 
 
-  .navbar.navbar--scrolled .nav-links a:hover {
+  .mobile-menu-links a {
 
-    color:
-      #fff !important;
+    font-size:
+      clamp(27px, 7vw, 40px);
 
-    border-bottom:
-      none !important;
+  }
+
+
+  .mobile-menu-footer {
+
+    gap: 15px;
 
   }
 
 }
-@media (max-width: 900px) {
 
-  .navbar.navbar--scrolled .nav-links {
-    z-index: 100001;
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .mobile-menu {
+
+    padding: 16px;
+
   }
 
-  .navbar.navbar--scrolled .nav-links.open {
-    z-index: 100001;
+
+  .mobile-menu-close {
+
+    width: 40px;
+    height: 40px;
+
+  }
+
+
+  .mobile-menu-logo img {
+
+    height: 40px;
+
+    max-width: 125px;
+
+  }
+
+
+  .mobile-menu-links a {
+
+    font-size: 27px;
+
+    padding:
+      14px 3px;
+
+  }
+
+
+  .mobile-menu-footer {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
   }
 
 }

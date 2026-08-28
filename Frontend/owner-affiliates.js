@@ -2,7 +2,11 @@
    REMIFY — OWNER AFFILIATE MANAGEMENT
    ========================================================= */
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://localhost:5000"
+    : "https://remify-website.onrender.com";
 
 let currentAffiliateId = null;
 
@@ -1123,10 +1127,14 @@ async function updateAffiliateStatus(
     await loadAffiliateData();
 
 
-    showSuccess(
-      data.message ||
-      `Affiliate ${action}d successfully.`
-    );
+showSuccess(
+  data.message ||
+  (
+    action === "approve"
+      ? "Affiliate approved successfully."
+      : "Affiliate removed successfully."
+  )
+);
 
 
   } catch (error) {

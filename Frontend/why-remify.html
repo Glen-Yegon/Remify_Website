@@ -2,42 +2,128 @@
 <html lang="en">
 
 <head>
-
   <!-- =========================================
        BASIC META
        ========================================= -->
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <title>Why Remify — Why Choose Remify Sea Moss Gel</title>
 
   <meta
     name="description"
-    content="Discover what makes Remify different."
+    content="Discover what makes Remify different — fresh Purple Sea Moss Gel, harvested from the Indian Ocean and prepared in small weekly batches."
   >
 
-  <meta
-    name="theme-color"
-    content="#ffffff"
-  >
+  <meta name="theme-color" content="#5b2d82">
+  <meta name="robots" content="index, follow">
 
-  <title>Why Remify, Remify Products</title>
-
+  <link rel="canonical" href="https://remify.co/why-remify.html">
+  <link rel="robots" href="/robots.txt">
 
   <!-- =========================================
        PAGE CSS
        ========================================= -->
 
-  <link
-    rel="stylesheet"
-    href="why.css"
+  <link rel="stylesheet" href="why.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- =========================================
+       FAVICON / APP ICONS
+       ========================================= -->
+
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta name="apple-mobile-web-app-title" content="Remify">
+
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- =========================================
+       OPEN GRAPH
+       ========================================= -->
+
+  <meta property="og:site_name" content="Remify">
+  <meta
+    property="og:title"
+    content="Why Remify — Why Choose Remify Sea Moss Gel"
+  >
+  <meta
+    property="og:description"
+    content="Discover what makes Remify different — Purple Sea Moss Gel harvested from the Indian Ocean and prepared fresh in small weekly batches."
+  >
+  <meta
+    property="og:image"
+    content="https://remify.co/images/product2.jpg"
+  >
+  <meta
+    property="og:image:alt"
+    content="Remify Purple Sea Moss Gel"
+  >
+  <meta
+    property="og:url"
+    content="https://remify.co/why-remify.html"
+  >
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_KE">
+
+  <!-- =========================================
+       TWITTER / X
+       ========================================= -->
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta
+    name="twitter:title"
+    content="Why Remify — Why Choose Remify Sea Moss Gel"
+  >
+  <meta
+    name="twitter:description"
+    content="Discover what makes Remify different — fresh Purple Sea Moss Gel prepared in small weekly batches."
+  >
+  <meta
+    name="twitter:image"
+    content="https://remify.co/images/product2.jpg"
+  >
+  <meta
+    name="twitter:image:alt"
+    content="Remify Purple Sea Moss Gel"
   >
 
-</head>
+  <!-- =========================================
+       STRUCTURED DATA — ORGANIZATION
+       ========================================= -->
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Remify",
+    "url": "https://remify.co/",
+    "logo": "https://remify.co/images/rem-logo-main.png",
+    "description": "Remify produces Purple Sea Moss Gel harvested from the Indian Ocean and prepared fresh in weekly batches.",
+    "sameAs": [
+      "https://www.instagram.com/remify.co/",
+      "https://www.tiktok.com/@remify.products"
+    ]
+  }
+  </script>
+
+  <!-- =========================================
+       STRUCTURED DATA — WEBSITE
+       ========================================= -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Remify",
+    "url": "https://remify.co/"
+  }
+  </script>
+</head>
 
 <body>
 
@@ -79,91 +165,161 @@
 
   <main>
 
-    <section
-      class="why-hero"
-      id="whyHero"
-    >
+<header class="site-header">
+
+  <div class="hero">
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar" id="navbar">
+
+      <!-- LOGO -->
+
+      <a
+        href="index.html"
+        class="nav-logo"
+        aria-label="Remify home"
+      >
+        <img
+          src="images/rem-logo-main.png"
+          alt="Remify"
+          class="nav-logo-img"
+        >
+      </a>
 
 
-      <!-- =============================================
-           HERO BACKGROUND
-           ============================================= -->
+      <!-- DESKTOP / MOBILE TOGGLE -->
 
-      <div
-        class="why-hero-background"
-        aria-hidden="true"
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+
+      <!-- DESKTOP NAVIGATION -->
+
+      <ul
+        class="nav-links"
+        id="navLinks"
       >
 
-        <!-- Desktop image -->
+              <li>
+          <a href="index.html">
+            Home
+          </a>
+        </li>
 
-        <img
-          class="why-hero-image why-hero-image--desktop"
-          src="images/why-desk.webp"
-          alt=""
+        <li>
+          <a href="products.html?id=sea-moss-gel">
+            Shop
+          </a>
+        </li>
+
+
+        <li>
+          <a href="contact.html">
+            Contact
+          </a>
+        </li>
+
+        <li>
+          <a href="affiliate-dashboard.html">
+            Partnership
+          </a>
+        </li>
+
+      </ul>
+
+
+      <!-- CART -->
+
+      <div class="nav-cart">
+
+        <button
+          class="cart-btn"
+          id="cartBtn"
+          type="button"
+          aria-label="View cart, 0 items"
         >
 
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
 
-        <!-- Mobile image -->
+            <path
+              d="M6 6H21L19 15H8L6 6ZM6 6L5 3H2"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
 
-        <img
-          class="why-hero-image why-hero-image--mobile"
-          src="images/why-phone.webp"
-          alt=""
-        >
+            <circle
+              cx="9.5"
+              cy="19"
+              r="1.25"
+              fill="currentColor"
+            />
 
+            <circle
+              cx="17.5"
+              cy="19"
+              r="1.25"
+              fill="currentColor"
+            />
 
-        <!-- Very subtle atmosphere -->
+          </svg>
 
-        <div class="why-hero-vignette"></div>
+          <span
+            class="cart-count"
+            id="cartCount"
+          >
+            0
+          </span>
 
-        <div class="why-hero-grain"></div>
+        </button>
 
       </div>
 
-
-
-      <!-- =============================================
-           NAVIGATION
-           ============================================= -->
-
-      <header
-        class="why-navbar"
-        id="whyNavbar"
-      >
-
-        <div class="why-navbar-inner">
-
-
-          <!-- LEFT NAV -->
-
-          <nav
-            class="why-nav why-nav--left"
-            aria-label="Primary navigation"
-          >
-
-            <a
-              href="#whyHero"
-              class="why-nav-link is-active"
-            >
-              Why Remify
-            </a>
-
-            <a
-              href="affiliate-dashboard.html"
-              class="why-nav-link"
-            >
-              Partnerships
-            </a>
-
-          </nav>
+    </nav>
 
 
 
-          <!-- CENTER LOGO -->
+    <!-- =====================================================
+         MOBILE MENU
+         ===================================================== -->
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-hidden="true"
+    >
+
+      <div class="mobile-menu-inner">
+
+
+        <!-- =================================================
+             MOBILE MENU HEADER
+             ================================================= -->
+
+        <div class="mobile-menu-header">
 
           <a
-            href="#whyHero"
-            class="why-logo"
+            href="index.html"
+            class="mobile-menu-logo"
             aria-label="Remify home"
           >
 
@@ -175,41 +331,11 @@
           </a>
 
 
-
-          <!-- RIGHT NAV -->
-
-          <nav
-            class="why-nav why-nav--right"
-            aria-label="Secondary navigation"
-          >
-
-            <a
-              href="contact.html"
-              class="why-nav-link"
-            >
-              Contact
-            </a>
-
-            <a
-              href="shop.html"
-              class="why-nav-link"
-            >
-              Shop
-            </a>
-
-          </nav>
-
-
-
-          <!-- MOBILE MENU BUTTON -->
-
           <button
-            class="why-menu-toggle"
-            id="whyMenuToggle"
+            class="mobile-menu-close"
+            id="mobileMenuClose"
             type="button"
-            aria-label="Open menu"
-            aria-expanded="false"
-            aria-controls="whyMobileMenu"
+            aria-label="Close navigation"
           >
 
             <span></span>
@@ -221,229 +347,290 @@
 
 
 
-        <!-- NAV DIVIDER -->
+        <!-- =================================================
+             MOBILE LINKS
+             ================================================= -->
 
-        <div class="why-navbar-line"></div>
-
-      </header>
-
-
-
-      <!-- =============================================
-           MOBILE MENU
-           ============================================= -->
-
-      <div
-        class="why-mobile-menu"
-        id="whyMobileMenu"
-        aria-hidden="true"
-      >
-
-        <div class="why-mobile-menu-inner">
-
-          <a href="affiliate-dashboard.html">
-            Partnerships
-          </a>
-
-          <a href="index.html">
-            Home
-          </a>
-
-          <a href="contact.html">
-            Contact
-          </a>
+        <nav
+          class="mobile-menu-links"
+          aria-label="Mobile navigation"
+        >
 
           <a href="products.html?id=sea-moss-gel">
-            Shop
+
+            <span>Shop</span>
+            <span>↗</span>
+
           </a>
 
+
+
+          <a href="contact.html">
+
+            <span>Contact</span>
+            <span>↗</span>
+
+          </a>
+
+
+          <a href="affiliate-dashboard.html">
+
+            <span>Partnership</span>
+            <span>↗</span>
+
+          </a>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             MOBILE FOOTER
+             ================================================= -->
+
+        <div class="mobile-menu-footer">
+
+          <p>
+            Fresh. Natural. Made with intention.
+          </p>
+
+          <span>
+            REMIFY © 2026
+          </span>
+
         </div>
 
       </div>
 
-
-
-      <!-- =============================================
-           HERO CONTENT
-           ============================================= -->
-
-      <div class="why-hero-content">
-
-
-        <!-- LEFT EDITORIAL COPY -->
-
-        <div
-          class="why-hero-copy why-hero-copy--left"
-
-        >
-
-          <span class="why-hero-kicker">
-            The Remify difference
-          </span>
-
-          <h1>
-            Wellness,
-            <br>
-            <em>made real.</em>
-          </h1>
-
-          <p>
-            Fresh sea moss gel, made with intention
-            and brought closer to the way wellness
-            should feel.
-          </p>
-
-        </div>
+    </div>
 
 
 
-        <!-- RIGHT EDITORIAL COPY -->
+    <!-- =====================================================
+         HERO IMAGE
+         ===================================================== -->
 
-        <div
-          class="why-hero-copy why-hero-copy--right"
-        >
+    <picture class="hero-picture">
 
-          <span class="why-hero-number">
-            01
-          </span>
+      <source
+        media="(max-width: 700px)"
+        srcset="images/why-phone.webp"
+      >
 
-          <div class="why-hero-rule"></div>
+      <img
+        src="images/why-desk.webp"
+        alt="A jar of Remify purple sea moss gel resting beside raw ocean-harvested sea moss"
+        class="hero-img"
+      >
 
-          <p>
-            Made fresh.
-            <br>
-            Kept simple.
-            <br>
-            Made for you.
-          </p>
-
-          <span class="why-hero-caption">
-            Sea moss · wellness · everyday ritual
-          </span>
-
-        </div>
+    </picture>
 
 
 
-        <!-- =========================================
-             BOTTOM BRAND WORD
-             ========================================= -->
+    <!-- =====================================================
+         HERO SCRIM
+         ===================================================== -->
+
+    <div class="hero-scrim"></div>
 
 
 
+    <!-- =====================================================
+         HERO CONTENT
+         ===================================================== -->
+
+    <!-- =====================================================
+     WHY REMIFY — HERO CONTENT
+     ===================================================== -->
+
+<div class="why-hero-content">
+
+  <!-- LEFT CONTENT -->
+
+  <div class="why-hero-copy">
+
+    <span class="why-hero-eyebrow">
+      WHY REMIFY
+    </span>
+
+    <h1 class="why-hero-title">
+      Better choices.<br>
+      <em>Made naturally.</em>
+    </h1>
+
+  </div>
 
 
-      </div>
+  <!-- RIGHT CONTENT -->
 
+  <div class="why-hero-side">
 
-    </section>
+    <p class="why-hero-description">
+      We believe nourishment should be simple,
+      intentional, and rooted in nature.
+      That’s why every Remify product is made
+      with purpose.
+    </p>
+
+    <a
+      href="#remify-story"
+      class="why-hero-link"
+    >
+      Discover our story
+      <span>↓</span>
+    </a>
+
+  </div>
+
+</div>
+
+  </div>
+
+</header>
 
 <!-- =========================================================
      REMIFY — NEW WHY REMIFY CONTENT
      ========================================================= -->
 
-<main class="remify-story">
+<main class="remify-story" id="remify-story">
 
   <!-- =======================================================
        01. THE IDEA BEHIND REMIFY
        ======================================================= -->
-  <section class="story-section story-idea" id="idea">
+<section class="story-section story-idea" id="idea">
 
-    <div class="story-container">
+  <!-- LEFT: CONTENT -->
 
-      <div class="story-section-meta">
-        <span>01</span>
-        <span>The idea behind Remify</span>
-      </div>
+  <div class="story-idea-content">
 
-      <div class="story-idea-grid">
+    <div class="story-section-meta">
+      <span>01</span>
+      <span>The idea behind Remify</span>
+    </div>
 
-        <div class="story-heading-wrap">
-          <h1>
-            Remedies,
-            <em>Simplified.</em>
-          </h1>
-        </div>
+    <div class="story-idea-copy">
 
-        <div class="story-copy">
-          <p class="story-lead">
-            Remify was created to make natural wellness products
-            simpler to prepare, easier to enjoy and easier to fit
-            into everyday life.
-          </p>
+      <h1>
+        Remedies,
+        <em>Simplified.</em>
+      </h1>
 
-          <p class="story-accent">
-            Natural ingredients.<br>
-            Modern simplicity.
-          </p>
-        </div>
+      <div class="story-copy">
+
+        <p class="story-lead">
+          Remify was created to make natural wellness products
+          simpler to prepare, easier to enjoy and easier to fit
+          into everyday life.
+        </p>
+
+        <p class="story-accent">
+          Natural ingredients.<br>
+          Modern simplicity.
+        </p>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
 
 
-  <!-- =======================================================
-       02. WHY WE STARTED
-       ======================================================= -->
-  <section class="story-section story-started" id="why-we-started">
+  <!-- RIGHT: IMAGE -->
 
-    <div class="story-container">
+  <div class="story-idea-image">
 
-      <div class="story-section-meta">
-        <span>02</span>
-        <span>Why we started</span>
-      </div>
+    <img
+      src="images/hero-desk2.webp"
+      alt="Remify natural wellness product"
+    >
 
-      <div class="story-split">
+  </div>
 
-        <div>
-          <h2>
-            Good Things<br>
-            Shouldn’t Be<br>
-            <em>Difficult To Keep Up With.</em>
-          </h2>
-        </div>
+</section>
 
-        <div class="story-copy">
 
-          <p>
-            Natural wellness products can sometimes require soaking,
-            boiling, blending or getting used to strong tastes.
-          </p>
+ <!-- =======================================================
+     02. WHY WE STARTED
+     ======================================================= -->
 
-          <p>
-            We wanted to keep what people value about these ingredients
-            while making the experience simpler.
-          </p>
+<section class="story-section story-started" id="why-we-started">
 
-          <div class="story-points">
-            <div>
-              <strong>Less Preparation.</strong>
-            </div>
+  <!-- =====================================================
+       LEFT — IMAGE
+       ===================================================== -->
 
-            <div>
-              <strong>Better Taste.</strong>
-            </div>
+  <div class="story-started-image">
 
-            <div>
-              <strong>Easier To Enjoy.</strong>
-            </div>
+    <img
+      src="images/hero-mobile-2.webp"
+      alt="Natural ingredients prepared by Remify"
+    >
+
+  </div>
+
+
+  <!-- =====================================================
+       RIGHT — CONTENT
+       ===================================================== -->
+
+  <div class="story-started-content">
+
+    <div class="story-section-meta">
+      <span>02</span>
+      <span>Why we started</span>
+    </div>
+
+
+    <div class="story-started-copy">
+
+      <h2>
+        Good Things<br>
+        Shouldn’t Be<br>
+        <em>Difficult To Keep Up With.</em>
+      </h2>
+
+
+      <div class="story-copy">
+
+        <p>
+          Natural wellness products can sometimes require soaking,
+          boiling, blending or getting used to strong tastes.
+        </p>
+
+        <p>
+          We wanted to keep what people value about these ingredients
+          while making the experience simpler.
+        </p>
+
+
+        <div class="story-points">
+
+          <div>
+            <strong>Less Preparation.</strong>
           </div>
 
-          <p class="story-closing">
-            That’s what it means to <em>Remify.</em>
-          </p>
+          <div>
+            <strong>Better Taste.</strong>
+          </div>
+
+          <div>
+            <strong>Easier To Enjoy.</strong>
+          </div>
 
         </div>
+
+
+        <p class="story-closing">
+          That’s what it means to <em>Remify.</em>
+        </p>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
   <!-- =======================================================
@@ -854,7 +1041,7 @@
       <!-- BRAND -->
       <div class="remify-footer-brand">
 
-        <a href="/" class="remify-footer-logo">
+        <a href="index.html" class="remify-footer-logo">
           <img
             src="images/rem-logo-main.png"
             alt="Remify"
@@ -1030,6 +1217,8 @@
        ============================================= -->
 
   <script src="why.js"></script>
+    
+    <script src="script.js"></script>
     
   <!-- LENIS SMOOTH SCROLL -->
 <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>

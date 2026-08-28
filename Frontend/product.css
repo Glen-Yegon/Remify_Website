@@ -3004,13 +3004,7 @@ padding: clamp(6px, 0.8vw, 12px) clamp(26px, 3vw, 38px) clamp(26px, 3vw, 38px);
 
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      180deg,
-      #1d082b 0%,
-      #12051b 48%,
-      #09030d 100%
-    );
+background: #5b2d82;
 
   color: #fff;
 
@@ -3018,106 +3012,6 @@ padding: clamp(6px, 0.8vw, 12px) clamp(26px, 3vw, 38px) clamp(26px, 3vw, 38px);
 
 }
 
-
-/* =========================================================
-   ATMOSPHERE
-   ========================================================= */
-
-.remify-footer::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    radial-gradient(
-      ellipse at 80% 15%,
-      rgba(128,55,163,.18),
-      transparent 34%
-    ),
-    radial-gradient(
-      ellipse at 15% 65%,
-      rgba(84,30,111,.12),
-      transparent 35%
-    );
-
-  pointer-events: none;
-
-  z-index: -2;
-
-}
-
-
-.remify-footer::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      115deg,
-      transparent 20%,
-      rgba(255,255,255,.018) 50%,
-      transparent 80%
-    );
-
-  pointer-events: none;
-
-  z-index: -1;
-
-}
-
-
-.remify-footer-glow {
-
-  position: absolute;
-
-  border-radius: 50%;
-
-  filter: blur(110px);
-
-  pointer-events: none;
-
-  z-index: -1;
-
-}
-
-
-.remify-footer-glow--one {
-
-  width: 420px;
-
-  height: 420px;
-
-  right: -180px;
-
-  top: 100px;
-
-  background:
-    rgba(132,63,164,.13);
-
-}
-
-
-.remify-footer-glow--two {
-
-  width: 300px;
-
-  height: 300px;
-
-  left: -170px;
-
-  bottom: 180px;
-
-  background:
-    rgba(92,36,119,.1);
-
-}
 
 
 /* =========================================================

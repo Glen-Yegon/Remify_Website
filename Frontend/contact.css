@@ -260,6 +260,7 @@ textarea {
 }
 
 
+
 /* =========================================================
    NAVBAR
    ========================================================= */
@@ -894,22 +895,22 @@ padding: 5px 7px 5px 14px;
     gap: 15px;
     border-bottom: 1px solid rgba(255,255,255,.1);
   font-family: "Satoshi", sans-serif;
-    font-size: clamp(40px,12vw,58px);
+font-size: clamp(32px, 9vw, 48px);
     font-weight: 100;
     line-height: 1;
   }
 
   .contact-mobile-links a span {
-    color: rgba(255,255,255,.28);
+    color: rgb(255, 255, 255);
   font-family: "Satoshi", sans-serif;
-    font-size: 8px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: .15em;
   }
 
   .contact-mobile-footer {
-    color: rgba(255,255,255,.3);
-    font-size: 7px;
+    color: rgb(255, 255, 255);
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: .18em;
   }
@@ -1182,47 +1183,12 @@ padding: 5px 7px 5px 14px;
 
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      180deg,
-      #4a1767 0%,
-      #321047 48%,
-      #1d082b 100%
-    );
+background: #5b2d82;
 
   color: #fff;
 
 }
 
-
-/* subtle atmospheric light */
-
-.remify-social-transition::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 700px;
-  height: 300px;
-
-  left: 50%;
-  top: -180px;
-
-  transform: translateX(-50%);
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(217,185,233,.16),
-      transparent 70%
-    );
-
-  filter: blur(45px);
-
-  pointer-events: none;
-
-}
 
 
 /* =========================================================
@@ -1667,118 +1633,11 @@ padding: 5px 7px 5px 14px;
 
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      180deg,
-      #1d082b 0%,
-      #12051b 48%,
-      #09030d 100%
-    );
+background: #5b2d82;
 
   color: #fff;
 
   isolation: isolate;
-
-}
-
-
-/* =========================================================
-   ATMOSPHERE
-   ========================================================= */
-
-.remify-footer::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    radial-gradient(
-      ellipse at 80% 15%,
-      rgba(128,55,163,.18),
-      transparent 34%
-    ),
-    radial-gradient(
-      ellipse at 15% 65%,
-      rgba(84,30,111,.12),
-      transparent 35%
-    );
-
-  pointer-events: none;
-
-  z-index: -2;
-
-}
-
-
-.remify-footer::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      115deg,
-      transparent 20%,
-      rgba(255,255,255,.018) 50%,
-      transparent 80%
-    );
-
-  pointer-events: none;
-
-  z-index: -1;
-
-}
-
-
-.remify-footer-glow {
-
-  position: absolute;
-
-  border-radius: 50%;
-
-  filter: blur(110px);
-
-  pointer-events: none;
-
-  z-index: -1;
-
-}
-
-
-.remify-footer-glow--one {
-
-  width: 420px;
-
-  height: 420px;
-
-  right: -180px;
-
-  top: 100px;
-
-  background:
-    rgba(132,63,164,.13);
-
-}
-
-
-.remify-footer-glow--two {
-
-  width: 300px;
-
-  height: 300px;
-
-  left: -170px;
-
-  bottom: 180px;
-
-  background:
-    rgba(92,36,119,.1);
 
 }
 

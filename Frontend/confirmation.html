@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Your Remify order has been confirmed."
+  >
+
+  <title>Order Confirmed — Remify</title>
+
+
+  <style>
+
+    /* =========================================================
+       FONTS
+       ========================================================= */
+
+    @font-face {
+
+      font-family: "Satoshi";
+
+      src:
+        url("./fonts/Satoshi-Regular.woff2")
+        format("woff2");
+
+      font-weight: 400;
+
+      font-style: normal;
+
+      font-display: swap;
+
+    }
+
+
+    @font-face {
+
+      font-family: "Satoshi";
+
+      src:
+        url("./fonts/Satoshi-Bold.woff2")
+        format("woff2");
+
+      font-weight: 700;
+
+      font-style: normal;
+
+      font-display: swap;
+
+    }
+
+
+    @font-face {
+
+      font-family: "Satoshi";
+
+      src:
+        url("./fonts/Satoshi-Black.woff2")
+        format("woff2");
+
+      font-weight: 900;
+
+      font-style: normal;
+
+      font-display: swap;
+
+    }
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+    }
+
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+
+    body {
+
+      min-height: 100vh;
+
+      font-family: "Satoshi", sans-serif;
+
+      background: #f7f5f8;
+
+      color: #171717;
+
+      font-weight: 400;
+
+      -webkit-font-smoothing: antialiased;
+
+      overflow-x: hidden;
+
+    }
+
+
+    button,
+    a {
+
+      font-family: "Satoshi", sans-serif;
+
+    }
+
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    .confirmation-page {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    .confirmation-header {
+
+      width: 100%;
+
+      padding: 30px 5vw;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      position: relative;
+
+      z-index: 5;
+
+    }
+
+
+    .logo {
+
+      text-decoration: none;
+
+      color: #171717;
+
+      font-size: 25px;
+
+      font-weight: 900;
+
+      letter-spacing: -1.5px;
+
+    }
+
+
+    .logo span {
+
+      color: #5b2d82;
+
+    }
+
+
+    .header-label {
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      color: #777;
+
+    }
+
+
+    /* =========================================================
+       MAIN
+       ========================================================= */
+
+    .confirmation-main {
+
+      flex: 1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 80px 24px 100px;
+
+      position: relative;
+
+    }
+
+
+    /* =========================================================
+       DECORATIVE BACKGROUND
+       ========================================================= */
+
+    .background-orb {
+
+      position: absolute;
+
+      width: 500px;
+
+      height: 500px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(91,45,130,.10) 0%,
+          rgba(91,45,130,.04) 45%,
+          transparent 72%
+        );
+
+      filter: blur(10px);
+
+      pointer-events: none;
+
+      top: 50%;
+
+      left: 50%;
+
+      transform:
+        translate(
+          -50%,
+          -50%
+        );
+
+    }
+
+
+    /* =========================================================
+       CONFIRMATION CARD
+       ========================================================= */
+
+    .confirmation-card {
+
+      width: 100%;
+
+      max-width: 650px;
+
+      position: relative;
+
+      z-index: 2;
+
+      text-align: center;
+
+      animation:
+        confirmationReveal .8s
+        cubic-bezier(.22,1,.36,1)
+        both;
+
+    }
+
+
+    @keyframes confirmationReveal {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(25px);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+
+      }
+
+    }
+
+
+    /* =========================================================
+       SUCCESS ICON
+       ========================================================= */
+
+    .success-icon {
+
+      width: 76px;
+
+      height: 76px;
+
+      margin: 0 auto 32px;
+
+      border-radius: 50%;
+
+      background: #5b2d82;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      box-shadow:
+        0 18px 50px
+        rgba(91,45,130,.22);
+
+    }
+
+
+    .success-icon::after {
+
+      content: "";
+
+      position: absolute;
+
+      inset: -9px;
+
+      border: 1px solid
+        rgba(91,45,130,.16);
+
+      border-radius: 50%;
+
+    }
+
+
+    .success-check {
+
+      width: 27px;
+
+      height: 15px;
+
+      border-left: 3px solid white;
+
+      border-bottom: 3px solid white;
+
+      transform:
+        rotate(-45deg)
+        translateY(-2px);
+
+    }
+
+
+    /* =========================================================
+       EYEBROW
+       ========================================================= */
+
+    .confirmation-eyebrow {
+
+      display: block;
+
+      margin-bottom: 18px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      color: #5b2d82;
+
+    }
+
+
+    /* =========================================================
+       TITLE
+       ========================================================= */
+
+    .confirmation-title {
+
+      font-size: clamp(
+        42px,
+        6vw,
+        72px
+      );
+
+      line-height: .95;
+
+      letter-spacing: -3px;
+
+      font-weight: 900;
+
+      color: #171717;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .confirmation-title span {
+
+      color: #5b2d82;
+
+    }
+
+
+    /* =========================================================
+       MESSAGE
+       ========================================================= */
+
+    .confirmation-message {
+
+      max-width: 510px;
+
+      margin: 0 auto;
+
+      font-size: 17px;
+
+      line-height: 1.7;
+
+      color: #6c6c6c;
+
+    }
+
+
+    /* =========================================================
+       REFERENCE
+       ========================================================= */
+
+    .reference-box {
+
+      margin: 40px auto 35px;
+
+      max-width: 470px;
+
+      padding: 20px 24px;
+
+      background: rgba(255,255,255,.72);
+
+      border: 1px solid
+        rgba(23,23,23,.08);
+
+      border-radius: 16px;
+
+      backdrop-filter: blur(12px);
+
+    }
+
+
+    .reference-label {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      color: #888;
+
+    }
+
+
+    .reference-value {
+
+      display: block;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      letter-spacing: .5px;
+
+      color: #171717;
+
+      word-break: break-all;
+
+    }
+
+
+    /* =========================================================
+       BUTTON
+       ========================================================= */
+
+    .back-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 56px;
+
+      padding: 0 30px;
+
+      border-radius: 100px;
+
+      background: #171717;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+
+    }
+
+
+    .back-button:hover {
+
+      background: #5b2d82;
+
+      transform:
+        translateY(-3px);
+
+      box-shadow:
+        0 14px 35px
+        rgba(91,45,130,.20);
+
+    }
+
+
+    .back-button svg {
+
+      width: 16px;
+
+      height: 16px;
+
+      margin-left: 10px;
+
+      transition:
+        transform .25s ease;
+
+    }
+
+
+    .back-button:hover svg {
+
+      transform:
+        translateX(4px);
+
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .confirmation-footer {
+
+      padding: 25px 5vw;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      z-index: 3;
+
+    }
+
+
+    .confirmation-footer p {
+
+      font-size: 11px;
+
+      color: #999;
+
+      letter-spacing: .5px;
+
+    }
+
+
+    /* =========================================================
+       LOADING STATE
+       ========================================================= */
+
+    .loading-state {
+
+      text-align: center;
+
+    }
+
+
+    .loading-spinner {
+
+      width: 45px;
+
+      height: 45px;
+
+      margin: 0 auto 28px;
+
+      border-radius: 50%;
+
+      border: 2px solid
+        rgba(91,45,130,.12);
+
+      border-top-color:
+        #5b2d82;
+
+      animation:
+        spin .8s linear infinite;
+
+    }
+
+
+    @keyframes spin {
+
+      to {
+
+        transform:
+          rotate(360deg);
+
+      }
+
+    }
+
+
+    .loading-title {
+
+      font-size: 28px;
+
+      font-weight: 700;
+
+      letter-spacing: -1px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .loading-message {
+
+      color: #777;
+
+      font-size: 15px;
+
+    }
+
+
+    /* =========================================================
+       ERROR STATE
+       ========================================================= */
+
+    .error-state {
+
+      text-align: center;
+
+    }
+
+
+    .error-icon {
+
+      width: 70px;
+
+      height: 70px;
+
+      margin: 0 auto 28px;
+
+      border-radius: 50%;
+
+      background: #171717;
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 24px;
+
+      font-weight: 700;
+
+    }
+
+
+    .error-title {
+
+      font-size: 40px;
+
+      font-weight: 900;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .error-message {
+
+      max-width: 500px;
+
+      margin: 0 auto 30px;
+
+      color: #777;
+
+      line-height: 1.7;
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 600px) {
+
+      .confirmation-header {
+
+        padding:
+          24px 22px;
+
+      }
+
+
+      .logo {
+
+        font-size: 22px;
+
+      }
+
+
+      .header-label {
+
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+
+      }
+
+
+      .confirmation-main {
+
+        padding:
+          50px 20px 70px;
+
+      }
+
+
+      .success-icon {
+
+        width: 68px;
+
+        height: 68px;
+
+        margin-bottom: 27px;
+
+      }
+
+
+      .confirmation-title {
+
+        font-size: 48px;
+
+        letter-spacing: -2.5px;
+
+      }
+
+
+      .confirmation-message {
+
+        font-size: 15px;
+
+        line-height: 1.65;
+
+      }
+
+
+      .reference-box {
+
+        margin-top: 32px;
+
+        padding: 18px;
+
+      }
+
+
+      .back-button {
+
+        width: 100%;
+
+        max-width: 320px;
+
+      }
+
+
+      .confirmation-footer {
+
+        padding:
+          20px;
+
+      }
+
+
+      .background-orb {
+
+        width: 350px;
+
+        height: 350px;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+
+        animation-duration:
+          .01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          .01ms !important;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <div class="confirmation-page">
+
+
+    <!-- HEADER -->
+
+    <header class="confirmation-header">
+
+      <a
+        href="index.html"
+        class="logo"
+        aria-label="Remify home"
+      >
+        remify<span>.</span>
+      </a>
+
+      <span class="header-label">
+        Order confirmation
+      </span>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="confirmation-main">
+
+      <div class="background-orb"></div>
+
+
+      <div
+        class="confirmation-card"
+        id="confirmationContent"
+      >
+
+        <!-- JS CONTENT -->
+
+      </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="confirmation-footer">
+
+      <p>
+        © 2026 Remify. All rights reserved.
+      </p>
+
+    </footer>
+
+
+  </div>
+
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      async () => {
+
+
+        /* =====================================================
+           API
+           ===================================================== */
+
+        const API_BASE_URL =
+          "http://localhost:5000";
+
+
+        const content =
+          document.getElementById(
+            "confirmationContent"
+          );
+
+
+        /* =====================================================
+           HELPERS
+           ===================================================== */
+
+        const getReference = () => {
+
+          const params =
+            new URLSearchParams(
+              window.location.search
+            );
+
+          return (
+            params.get("reference") ||
+            params.get("trxref")
+          );
+
+        };
+
+
+        const escapeHTML = value => {
+
+          return String(value ?? "")
+            .replace(
+              /&/g,
+              "&amp;"
+            )
+            .replace(
+              /</g,
+              "&lt;"
+            )
+            .replace(
+              />/g,
+              "&gt;"
+            )
+            .replace(
+              /"/g,
+              "&quot;"
+            )
+            .replace(
+              /'/g,
+              "&#039;"
+            );
+
+        };
+
+
+        /* =====================================================
+           LOADING
+           ===================================================== */
+
+        const showLoading = () => {
+
+          content.innerHTML = `
+
+            <div class="loading-state">
+
+              <div class="loading-spinner"></div>
+
+              <h1 class="loading-title">
+                Confirming your payment
+              </h1>
+
+              <p class="loading-message">
+                Please wait while we verify your order.
+              </p>
+
+            </div>
+
+          `;
+
+        };
+
+
+        /* =====================================================
+           SUCCESS
+           ===================================================== */
+
+        const showSuccess = reference => {
+
+          document.title =
+            "Order Confirmed — Remify";
+
+
+          content.innerHTML = `
+
+            <div class="success-icon">
+
+              <div
+                class="success-check"
+              ></div>
+
+            </div>
+
+
+            <span class="confirmation-eyebrow">
+              Payment successful
+            </span>
+
+
+            <h1 class="confirmation-title">
+              Order <span>confirmed.</span>
+            </h1>
+
+
+            <p class="confirmation-message">
+              Thank you for your order.
+              Your payment has been successfully
+              verified and your order is now being
+              processed.
+            </p>
+
+
+            <div class="reference-box">
+
+              <span class="reference-label">
+                Order reference
+              </span>
+
+              <span class="reference-value">
+                ${escapeHTML(reference)}
+              </span>
+
+            </div>
+
+
+            <a
+              href="index.html"
+              class="back-button"
+            >
+
+              Back to Remify
+
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+
+                <path
+                  d="M5 12H19"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+
+                <path
+                  d="M13 6L19 12L13 18"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+
+              </svg>
+
+            </a>
+
+          `;
+
+        };
+
+
+        /* =====================================================
+           ERROR
+           ===================================================== */
+
+        const showError = message => {
+
+          document.title =
+            "Payment Verification — Remify";
+
+
+          content.innerHTML = `
+
+            <div class="error-state">
+
+              <div class="error-icon">
+                !
+              </div>
+
+
+              <h1 class="error-title">
+                We couldn't confirm
+                your payment.
+              </h1>
+
+
+              <p class="error-message">
+                ${escapeHTML(message)}
+              </p>
+
+
+              <a
+                href="index.html"
+                class="back-button"
+              >
+                Back to Remify
+              </a>
+
+            </div>
+
+          `;
+
+        };
+
+
+        /* =====================================================
+           GET REFERENCE
+           ===================================================== */
+
+        const reference =
+          getReference();
+
+
+        if(!reference){
+
+          showError(
+            "No payment reference was found. If you completed a payment, please contact Remify with your payment details."
+          );
+
+          return;
+
+        }
+
+
+        /* =====================================================
+           GET PENDING ORDER
+           ===================================================== */
+
+        let pendingOrder = null;
+
+
+        try {
+
+          const savedOrder =
+            sessionStorage.getItem(
+              "remifyPendingOrder"
+            );
+
+
+          if(savedOrder){
+
+            pendingOrder =
+              JSON.parse(
+                savedOrder
+              );
+
+          }
+
+        } catch(error) {
+
+          console.error(
+            "Could not restore pending order:",
+            error
+          );
+
+        }
+
+
+        if(!pendingOrder){
+
+          showError(
+            `We couldn't recover your order details. Please contact Remify with your payment reference: ${reference}`
+          );
+
+          return;
+
+        }
+
+
+        /* =====================================================
+           VERIFY PAYMENT
+           ===================================================== */
+
+        showLoading();
+
+
+        try {
+
+          const response =
+            await fetch(
+              `${API_BASE_URL}/api/payment/verify`,
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
+                body:
+                  JSON.stringify({
+
+                    reference,
+
+                    order:
+                      pendingOrder
+
+                  })
+
+              }
+            );
+
+
+          const data =
+            await response.json();
+
+
+          if(
+            !response.ok ||
+            !data.success
+          ){
+
+            throw new Error(
+              data.message ||
+              "Payment verification failed."
+            );
+
+          }
+
+
+          /* =================================================
+             SUCCESS
+             ================================================= */
+
+          const confirmedReference =
+            data.reference ||
+            reference;
+
+
+          /* Clear temporary order */
+
+          sessionStorage.removeItem(
+            "remifyPendingOrder"
+          );
+
+
+          sessionStorage.removeItem(
+            "remifyPaymentReference"
+          );
+
+
+          /* Show confirmation */
+
+          showSuccess(
+            confirmedReference
+          );
+
+
+          /* Clean URL after displaying reference */
+
+          window.history.replaceState(
+            {},
+            document.title,
+            "confirmation.html"
+          );
+
+
+        } catch(error) {
+
+          console.error(
+            "Remify payment verification error:",
+            error
+          );
+
+
+          showError(
+            error.message ||
+            "We couldn't verify your payment. Please contact Remify if money was deducted."
+          );
+
+        }
+
+      }
+
+    );
+
+  </script>
+
+</body>
+
+</html>
