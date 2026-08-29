@@ -1,7 +1,10 @@
 require("dotenv").config();
 
 const { initializeApp, cert } = require("firebase-admin/app");
-const { getFirestore } = require("firebase-admin/firestore");
+const {
+  getFirestore,
+  FieldValue
+} = require("firebase-admin/firestore");
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 initializeApp({
@@ -4998,6 +5001,158 @@ Fresh. Natural. Made with intention.<br>
     html
   });
 };
+
+// ============================================================
+// REMIFY — NEWSLETTER SUBSCRIPTION
+// ============================================================
+
+app.post("/api/subscriptions", async (req, res) => {
+
+  try {
+
+    const { email } = req.body;
+
+
+    // --------------------------------------------------------
+    // Validate email exists
+    // --------------------------------------------------------
+
+    if (!email) {
+
+      return res.status(400).json({
+        success: false,
+        message: "Email address is required."
+      });
+
+    }
+
+
+    // --------------------------------------------------------
+    // Normalize email
+    // --------------------------------------------------------
+
+    const normalizedEmail =
+      String(email)
+        .trim()
+        .toLowerCase();
+
+
+    // --------------------------------------------------------
+    // Validate email format
+    // --------------------------------------------------------
+
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    if (!emailRegex.test(normalizedEmail)) {
+
+      return res.status(400).json({
+        success: false,
+        message: "Please enter a valid email address."
+      });
+
+    }
+
+
+    // --------------------------------------------------------
+    // Check if email already exists
+    // --------------------------------------------------------
+
+    const existingSubscription =
+      await db
+        .collection("subscriptions")
+        .where(
+          "email",
+          "==",
+          normalizedEmail
+        )
+        .limit(1)
+        .get();
+
+
+    if (!existingSubscription.empty) {
+
+      return res.status(409).json({
+        success: false,
+        message: "This email is already subscribed."
+      });
+
+    }
+
+
+    // --------------------------------------------------------
+    // Save subscription to Firestore
+    // --------------------------------------------------------
+
+    const subscriptionRef =
+      await db
+        .collection("subscriptions")
+        .add({
+
+          email: normalizedEmail,
+
+          subscribedAt:
+            FieldValue.serverTimestamp(),
+
+          source: "website",
+
+          status: "active"
+
+        });
+
+
+    // --------------------------------------------------------
+    // Log successful subscription
+    // --------------------------------------------------------
+
+    console.log(
+      `New Remify subscription: ${normalizedEmail}`
+    );
+
+
+    // --------------------------------------------------------
+    // Success response
+    // --------------------------------------------------------
+
+    return res.status(201).json({
+
+      success: true,
+
+      message:
+        "You have successfully subscribed.",
+
+      id:
+        subscriptionRef.id
+
+    });
+
+
+  } catch (error) {
+
+    // --------------------------------------------------------
+    // Server / Firestore error
+    // --------------------------------------------------------
+
+    console.error(
+      "Subscription error:",
+      error
+    );
+
+
+    return res.status(500).json({
+
+      success: false,
+
+      message:
+        "Something went wrong while subscribing. Please try again."
+
+    });
+
+  }
+
+});
+
 
 
 /* =========================================================

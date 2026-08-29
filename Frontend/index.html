@@ -49,7 +49,7 @@
 
   <link
     rel="stylesheet"
-    href="styles.css"
+    href="styles.min.css"
   >
 
 
@@ -785,7 +785,7 @@
 
 
       <!-- Subscription form -->
-      <form class="remify-photo-cta-form">
+      <form class="remify-photo-cta-form" id="subscriptionForm">
 
         <input
           type="email"
@@ -826,7 +826,7 @@
 
       <span class="remify-photo-cta-meta-line"></span>
 
-      <span>REMFY COMMUNITY</span>
+      <span>REMIFY COMMUNITY</span>
 
     </div>
 
@@ -1089,7 +1089,7 @@
   <span></span>
 </div>
 
-  <script src="script.js"></script>
+  <script src="script.min.js"></script>
   <!-- LENIS SMOOTH SCROLL -->
 <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
 <script>
@@ -1111,6 +1111,362 @@
   }
 
   requestAnimationFrame(raf);
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ==========================================================
+  // API
+  // ==========================================================
+
+  const API_BASE_URL =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+      ? "http://localhost:5000"
+      : "https://remify-website.onrender.com";
+
+
+  // ==========================================================
+  // ELEMENTS
+  // ==========================================================
+
+  const form =
+    document.getElementById("subscriptionForm");
+
+  const emailInput =
+    form.querySelector('input[name="email"]');
+
+  const button =
+    form.querySelector(".remify-photo-cta-button");
+
+  const buttonText =
+    button.querySelector("span");
+
+
+  // ==========================================================
+  // SUBMIT
+  // ==========================================================
+
+  form.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+
+    const email =
+      emailInput.value.trim();
+
+
+    if (!email) {
+
+      showSubscriptionModal(
+        "Please enter your email address."
+      );
+
+      return;
+
+    }
+
+
+    // --------------------------------------------------------
+    // Loading state
+    // --------------------------------------------------------
+
+    button.disabled = true;
+
+    buttonText.textContent =
+      "Subscribing...";
+
+
+    try {
+
+      const response =
+        await fetch(
+          `${API_BASE_URL}/api/subscriptions`,
+          {
+
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                email
+              })
+
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      // ------------------------------------------------------
+      // Backend error
+      // ------------------------------------------------------
+
+      if (!response.ok || !data.success) {
+
+        throw new Error(
+          data.message ||
+          "Something went wrong. Please try again."
+        );
+
+      }
+
+
+      // ------------------------------------------------------
+      // Success
+      // ------------------------------------------------------
+
+      form.reset();
+
+      showSubscriptionModal(
+        "You're officially on the list. We'll keep you updated with fresh Remify drops, wellness notes, and more."
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "Subscription error:",
+        error
+      );
+
+
+      showSubscriptionModal(
+        error.message ||
+        "We couldn't complete your subscription. Please try again."
+      );
+
+
+    } finally {
+
+      button.disabled = false;
+
+      buttonText.textContent =
+        "Subscribe";
+
+    }
+
+  });
+
+
+});
+
+
+// ============================================================
+// SUBSCRIPTION MODAL
+// ============================================================
+
+function showSubscriptionModal(message) {
+
+  // Remove existing modal
+  const existingModal =
+    document.getElementById(
+      "subscriptionModal"
+    );
+
+  if (existingModal) {
+    existingModal.remove();
+  }
+
+
+  // Create modal
+  const modal =
+    document.createElement("div");
+
+  modal.id =
+    "subscriptionModal";
+
+  modal.className =
+    "subscription-modal";
+
+
+  modal.innerHTML = `
+
+    <div class="subscription-modal-backdrop"></div>
+
+    <div
+      class="subscription-modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="subscriptionModalTitle"
+    >
+
+      <button
+        class="subscription-modal-close"
+        type="button"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+
+      <div class="subscription-modal-icon">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+
+          <path
+            d="M5 12.5L9.5 17L19 7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+        </svg>
+
+      </div>
+
+
+      <span class="subscription-modal-eyebrow">
+        REMIFY
+      </span>
+
+
+<h3 id="subscriptionModalTitle"> You're officially in. </h3>
+
+
+<h3 id="subscriptionModalTitle">
+  You're officially in.
+</h3>
+
+<p>
+  Keep an eye on your inbox. We'll be sending you exclusive Remify updates
+  and special discount codes to help you save on your next buy.
+</p>
+
+
+
+      <button
+        type="button"
+        class="subscription-modal-button"
+      >
+        Continue
+      </button>
+
+    </div>
+
+  `;
+
+
+  document.body.appendChild(modal);
+
+
+  // ----------------------------------------------------------
+  // Close helpers
+  // ----------------------------------------------------------
+
+  const closeModal = () => {
+
+    modal.classList.remove(
+      "subscription-modal-visible"
+    );
+
+    setTimeout(() => {
+
+      modal.remove();
+
+    }, 250);
+
+  };
+
+
+  const closeButton =
+    modal.querySelector(
+      ".subscription-modal-close"
+    );
+
+
+  const continueButton =
+    modal.querySelector(
+      ".subscription-modal-button"
+    );
+
+
+  const backdrop =
+    modal.querySelector(
+      ".subscription-modal-backdrop"
+    );
+
+
+  closeButton.addEventListener(
+    "click",
+    closeModal
+  );
+
+
+  continueButton.addEventListener(
+    "click",
+    closeModal
+  );
+
+
+  backdrop.addEventListener(
+    "click",
+    closeModal
+  );
+
+
+  // ESC key
+  const handleEscape = (event) => {
+
+    if (event.key === "Escape") {
+
+      closeModal();
+
+      document.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+
+    }
+
+  };
+
+
+  document.addEventListener(
+    "keydown",
+    handleEscape
+  );
+
+
+  // Trigger animation
+  requestAnimationFrame(() => {
+
+    modal.classList.add(
+      "subscription-modal-visible"
+    );
+
+  });
+
+}
+
+
+// ============================================================
+// ESCAPE HTML
+// ============================================================
+
+function escapeModalHTML(value) {
+
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
 </script>
 
 </body>
