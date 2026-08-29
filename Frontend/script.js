@@ -87,201 +87,308 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  /* =========================================================
-     REMIFY — MOBILE MENU
-     ========================================================= */
+/* =========================================================
+   REMIFY — MOBILE MENU
+   ========================================================= */
 
-  const navToggle =
-    document.getElementById('navToggle');
+const navToggle =
+  document.getElementById('navToggle');
 
-  const mobileMenu =
-    document.getElementById('mobileMenu');
+const mobileMenu =
+  document.getElementById('mobileMenu');
 
-  const mobileMenuClose =
-    document.getElementById('mobileMenuClose');
-
-
-  /* =========================================================
-     OPEN MOBILE MENU
-     ========================================================= */
-
-  const openMobileMenu = () => {
-
-    if (!mobileMenu) return;
+const mobileMenuClose =
+  document.getElementById('mobileMenuClose');
 
 
-    mobileMenu.classList.add(
-      'open'
-    );
+/* =========================================================
+   OPEN MOBILE MENU
+   ========================================================= */
+
+const openMobileMenu = () => {
+
+  if (!mobileMenu) return;
 
 
-    mobileMenu.setAttribute(
-      'aria-hidden',
-      'false'
-    );
+  /* -----------------------------------------
+     Make menu available to assistive tech
+     and keyboard navigation
+     ----------------------------------------- */
+
+  mobileMenu.removeAttribute('inert');
+
+  mobileMenu.setAttribute(
+    'aria-hidden',
+    'false'
+  );
 
 
-    if (navToggle) {
+  /* -----------------------------------------
+     Open visual menu
+     ----------------------------------------- */
 
-      navToggle.setAttribute(
-        'aria-expanded',
-        'true'
-      );
-
-      navToggle.setAttribute(
-        'aria-label',
-        'Close menu'
-      );
-
-    }
+  mobileMenu.classList.add('open');
 
 
-    document.body.classList.add(
-      'mobile-menu-open'
-    );
-
-    document.body.style.overflow =
-      'hidden';
-
-  };
-
-
-
-  /* =========================================================
-     CLOSE MOBILE MENU
-     ========================================================= */
-
-  const closeMobileMenu = () => {
-
-    if (!mobileMenu) return;
-
-
-    mobileMenu.classList.remove(
-      'open'
-    );
-
-
-    mobileMenu.setAttribute(
-      'aria-hidden',
-      'true'
-    );
-
-
-    if (navToggle) {
-
-      navToggle.setAttribute(
-        'aria-expanded',
-        'false'
-      );
-
-      navToggle.setAttribute(
-        'aria-label',
-        'Open menu'
-      );
-
-    }
-
-
-    document.body.classList.remove(
-      'mobile-menu-open'
-    );
-
-    document.body.style.overflow =
-      '';
-
-  };
-
-
-
-  /* =========================================================
-     HAMBURGER TOGGLE
-     ========================================================= */
+  /* -----------------------------------------
+     Update hamburger state
+     ----------------------------------------- */
 
   if (navToggle) {
 
-    navToggle.addEventListener(
-      'click',
-      () => {
+    navToggle.setAttribute(
+      'aria-expanded',
+      'true'
+    );
 
-        if (
-          mobileMenu &&
-          mobileMenu.classList.contains('open')
-        ) {
-
-          closeMobileMenu();
-
-        } else {
-
-          openMobileMenu();
-
-        }
-
-      }
+    navToggle.setAttribute(
+      'aria-label',
+      'Close menu'
     );
 
   }
 
 
+  /* -----------------------------------------
+     Lock page scrolling
+     ----------------------------------------- */
 
-  /* =========================================================
-     CLOSE BUTTON
-     ========================================================= */
+  document.body.classList.add(
+    'mobile-menu-open'
+  );
+
+  document.body.style.overflow =
+    'hidden';
+
+
+  /* -----------------------------------------
+     Move focus into the menu
+     ----------------------------------------- */
 
   if (mobileMenuClose) {
 
-    mobileMenuClose.addEventListener(
-      'click',
-      closeMobileMenu
+    requestAnimationFrame(() => {
+
+      mobileMenuClose.focus();
+
+    });
+
+  }
+
+};
+
+
+
+/* =========================================================
+   CLOSE MOBILE MENU
+   ========================================================= */
+
+const closeMobileMenu = () => {
+
+  if (!mobileMenu) return;
+
+
+  /* -----------------------------------------
+     IMPORTANT:
+     Move focus OUT of the menu BEFORE
+     applying aria-hidden / inert.
+     ----------------------------------------- */
+
+  if (
+    document.activeElement &&
+    mobileMenu.contains(
+      document.activeElement
+    )
+  ) {
+
+    if (navToggle) {
+
+      navToggle.focus();
+
+    } else {
+
+      document.activeElement.blur();
+
+    }
+
+  }
+
+
+  /* -----------------------------------------
+     Close visual menu
+     ----------------------------------------- */
+
+  mobileMenu.classList.remove(
+    'open'
+  );
+
+
+  /* -----------------------------------------
+     Hide from assistive technology
+     ----------------------------------------- */
+
+  mobileMenu.setAttribute(
+    'aria-hidden',
+    'true'
+  );
+
+
+  /* -----------------------------------------
+     Prevent keyboard focus while closed
+     ----------------------------------------- */
+
+  mobileMenu.setAttribute(
+    'inert',
+    ''
+  );
+
+
+  /* -----------------------------------------
+     Update hamburger state
+     ----------------------------------------- */
+
+  if (navToggle) {
+
+    navToggle.setAttribute(
+      'aria-expanded',
+      'false'
+    );
+
+    navToggle.setAttribute(
+      'aria-label',
+      'Open menu'
     );
 
   }
 
 
+  /* -----------------------------------------
+     Unlock page scrolling
+     ----------------------------------------- */
 
-  /* =========================================================
-     CLOSE WHEN MOBILE LINK IS CLICKED
-     ========================================================= */
+  document.body.classList.remove(
+    'mobile-menu-open'
+  );
 
-  if (mobileMenu) {
+  document.body.style.overflow =
+    '';
 
-    mobileMenu
-      .querySelectorAll(
-        '.mobile-menu-links a'
-      )
-      .forEach((link) => {
-
-        link.addEventListener(
-          'click',
-          closeMobileMenu
-        );
-
-      });
-
-  }
+};
 
 
 
-  /* =========================================================
-     CLOSE WITH ESCAPE
-     ========================================================= */
+/* =========================================================
+   INITIAL ACCESSIBILITY STATE
+   ========================================================= */
 
-  document.addEventListener(
-    'keydown',
-    (event) => {
+if (mobileMenu) {
+
+  mobileMenu.setAttribute(
+    'aria-hidden',
+    'true'
+  );
+
+  mobileMenu.setAttribute(
+    'inert',
+    ''
+  );
+
+}
+
+
+
+/* =========================================================
+   HAMBURGER TOGGLE
+   ========================================================= */
+
+if (navToggle) {
+
+  navToggle.addEventListener(
+    'click',
+    () => {
 
       if (
-        event.key === 'Escape' &&
         mobileMenu &&
         mobileMenu.classList.contains('open')
       ) {
 
         closeMobileMenu();
 
+      } else {
+
+        openMobileMenu();
+
       }
 
     }
   );
 
+}
+
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+if (mobileMenuClose) {
+
+  mobileMenuClose.addEventListener(
+    'click',
+    closeMobileMenu
+  );
+
+}
+
+
+
+/* =========================================================
+   CLOSE WHEN MOBILE LINK IS CLICKED
+   ========================================================= */
+
+if (mobileMenu) {
+
+  mobileMenu
+    .querySelectorAll(
+      '.mobile-menu-links a'
+    )
+    .forEach((link) => {
+
+      link.addEventListener(
+        'click',
+        () => {
+
+          closeMobileMenu();
+
+        }
+      );
+
+    });
+
+}
+
+
+
+/* =========================================================
+   CLOSE WITH ESCAPE
+   ========================================================= */
+
+document.addEventListener(
+  'keydown',
+  (event) => {
+
+    if (
+      event.key === 'Escape' &&
+      mobileMenu &&
+      mobileMenu.classList.contains('open')
+    ) {
+
+      closeMobileMenu();
+
+    }
+
+  }
+);
 
 
   /* =========================================================

@@ -723,7 +723,7 @@ button {
     padding:
       110px
       22px
-      55px;
+      0px;
 
   }
 
@@ -6105,7 +6105,6 @@ background: #5b2d82;
 
 }
 
-
 /* =========================================================
    MOBILE
    ========================================================= */
@@ -6117,22 +6116,33 @@ background: #5b2d82;
     flex-direction: column;
 
     min-height: auto;
+    margin-top: 0;
+    padding-top: 0;
   }
 
 
-  /* Image comes first on mobile */
+  /* =========================================
+     IMAGE — FIRST
+     ========================================= */
 
   .story-idea-image {
     order: 1;
 
     width: 100%;
+
     height: 65vw;
+
     min-height: 350px;
     max-height: 520px;
+
+    margin-top: -100px;
+    padding-top: 0;
   }
 
 
-  /* Content */
+  /* =========================================
+     CONTENT — BELOW IMAGE
+     ========================================= */
 
   .story-idea-content {
     order: 2;
@@ -6140,24 +6150,43 @@ background: #5b2d82;
     padding: 55px 25px 70px;
 
     min-height: 560px;
+
+    margin-top: 0;
   }
 
+
+  /* =========================================
+     META
+     ========================================= */
 
   .story-section-meta {
     font-size: 10px;
   }
 
 
+  /* =========================================
+     COPY
+     ========================================= */
+
   .story-idea-copy {
     gap: 38px;
   }
 
 
+  /* =========================================
+     HEADING
+     ========================================= */
+
   .story-idea h1 {
     font-size: clamp(52px, 15vw, 76px);
-    line-height: .9;
+
+    line-height: 0.9;
   }
 
+
+  /* =========================================
+     BODY COPY
+     ========================================= */
 
   .story-copy {
     max-width: 100%;
@@ -6166,6 +6195,7 @@ background: #5b2d82;
 
   .story-lead {
     font-size: 15px;
+
     line-height: 1.7;
   }
 
@@ -6454,6 +6484,7 @@ background: #5b2d82;
     flex-direction: column;
 
     min-height: auto;
+    margin-bottom: -100px;
   }
 
 

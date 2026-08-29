@@ -49,7 +49,7 @@
 
   <link
     rel="stylesheet"
-    href="styles.css"
+    href="styles.min.css"
   >
 
 
@@ -269,7 +269,7 @@
       >
 
         <li>
-          <a href="products.html?id=sea-moss-gel">
+          <a href="#products">
             Shop
           </a>
         </li>
@@ -287,67 +287,137 @@
         </li>
 
         <li>
-          <a href="affiliate-dashboard.html">
+          <a href="partner-dashboard.html">
             Partnership
           </a>
         </li>
 
       </ul>
 
+<!-- =========================================================
+     NAV RIGHT
+     ========================================================= -->
 
-      <!-- CART -->
+<div class="nav-right">
 
-      <div class="nav-cart">
+  <!-- =======================================================
+       PHONE
+       ======================================================= -->
 
-        <button
-          class="cart-btn"
-          id="cartBtn"
-          type="button"
-          aria-label="View cart, 0 items"
-        >
+  <div class="nav-actions">
 
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
+    <a
+      href="tel:+254720460145"
+      class="nav-phone"
+      aria-label="Call Remify"
+      title="Call Remify"
+    >
 
-            <path
-              d="M6 6H21L19 15H8L6 6ZM6 6L5 3H2"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
 
-            <circle
-              cx="9.5"
-              cy="19"
-              r="1.25"
-              fill="currentColor"
-            />
+        <path
+          d="M6.62 10.79
+             A15.05 15.05 0 0 0 13.21 17.38
+             L15.48 15.11
+             C15.79 14.8 16.25 14.73 16.63 14.93
+             C17.84 15.57 19.15 15.93 20.5 16
+             C21.05 16 21.5 16.45 21.5 17
+             V20.5
+             C21.5 21.05 21.05 21.5 20.5 21.5
+             C10.56 21.5 2.5 13.44 2.5 3.5
+             C2.5 2.95 2.95 2.5 3.5 2.5
+             H7
+             C7.55 2.5 8 2.95 8 3.5
+             C8.07 4.85 8.43 6.16 9.07 7.37
+             C9.27 7.75 9.2 8.21 8.89 8.52
+             L6.62 10.79Z"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
 
-            <circle
-              cx="17.5"
-              cy="19"
-              r="1.25"
-              fill="currentColor"
-            />
+      </svg>
 
-          </svg>
+    </a>
 
-          <span
-            class="cart-count"
-            id="cartCount"
-          >
-            0
-          </span>
 
-        </button>
+    <!-- =====================================================
+         CART
+         ===================================================== -->
 
-      </div>
+<div class="nav-cart">
 
+  <a
+    href="cart.html"
+    class="cart-btn"
+    id="cartBtn"
+    aria-label="View cart, 0 items"
+    title="View cart"
+  >
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+
+      <path
+        d="M3.5 4.5H5.2L7.05 15.2C7.2 16.05 7.94 16.67 8.8 16.67H18.25C19.06 16.67 19.77 16.1 19.91 15.3L21 9H6"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <circle
+        cx="9.2"
+        cy="20"
+        r="1.15"
+        fill="currentColor"
+      />
+
+      <circle
+        cx="18"
+        cy="20"
+        r="1.15"
+        fill="currentColor"
+      />
+
+      <path
+        d="M8 12.5H19.9"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        opacity=".65"
+      />
+
+    </svg>
+
+    <span
+      class="cart-count"
+      id="cartCount"
+      aria-hidden="true"
+    >
+      0
+    </span>
+
+  </a>
+
+</div>
+
+  </div>
+
+
+
+
+</div>
     </nav>
 
 
@@ -434,7 +504,7 @@
           </a>
 
 
-          <a href="affiliate-dashboard.html">
+          <a href="partner-dashboard.html">
 
             <span>Partnership</span>
             <span>↗</span>
@@ -984,7 +1054,7 @@
 
     <div class="remify-footer-link-content">
 
-      <a href="products.html?id=sea-moss-gel">
+      <a href="#products">
         Shop Now
       </a>
 
@@ -996,7 +1066,7 @@
         Contact
       </a>
 
-      <a href="affiliate-dashboard.html">
+      <a href="partner-dashboard.html">
         Partnership
       </a>
 
@@ -1115,7 +1185,7 @@
       </div>
 
 
-      <a hhref="products.html?id=sea-moss-gel" class="remify-footer-cta">
+      <a href="#products" class="remify-footer-cta">
 
         <span>
           Shop Remify
@@ -1170,7 +1240,7 @@
   <span></span>
 </div>
 
-  <script src="script.min.js"></script>
+  <script src="script.js"></script>
   <!-- LENIS SMOOTH SCROLL -->
 <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
 
@@ -1642,195 +1712,544 @@ document
 
 <script>
   /* =========================================
-   PRODUCTS SECTION
-   ========================================= */
+     PRODUCTS SECTION
+     ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
 
-  const productsGrid = document.getElementById("productsGrid");
+    const productsGrid =
+      document.getElementById("productsGrid");
 
-  if (!productsGrid) return;
-
-
-  fetch("data/products.json")
-    .then(response => {
-
-      if (!response.ok) {
-        throw new Error("Could not load products.json");
-      }
-
-      return response.json();
-    })
-
-    .then(data => {
-
-      const products = data.products || [];
-
-      /*
-       * Only show the products we currently
-       * want in this section.
-       */
-
-      const selectedProductIds = [
-        "purple-sea-moss-gel",
-        "pineapple-sea-moss-gel"
-      ];
+    if (!productsGrid) return;
 
 
-      const selectedProducts = products.filter(product =>
-        selectedProductIds.includes(product.id)
-      );
+    /* =========================================
+       CART CONFIGURATION
+       ========================================= */
+
+    const CART_STORAGE_KEY = "remifyCart";
+
+    const MAX_QUANTITY = 20;
 
 
-      productsGrid.innerHTML = "";
+    /* =========================================
+       LOAD PRODUCTS
+       ========================================= */
+
+    fetch("data/products.json")
+      .then(response => {
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Could not load products.json"
+          );
+
+        }
+
+        return response.json();
+
+      })
+
+      .then(data => {
+
+        const products =
+          data.products || [];
 
 
-      selectedProducts.forEach(product => {
+        /* =====================================
+           PRODUCTS TO DISPLAY
+           ===================================== */
 
-        const card = document.createElement("article");
+        const selectedProductIds = [
 
-        card.className = "product-card";
+          "purple-sea-moss-gel",
 
+          "pineapple-sea-moss-gel"
 
-        card.innerHTML = `
-
-          <!-- PRODUCT IMAGE -->
-
-          <a
-            href="products.html?id=${encodeURIComponent(product.id)}"
-            class="product-card-image-link"
-            aria-label="View ${product.name}"
-          >
-
-            <img
-              src="${product.media.image}"
-              alt="${product.name}"
-              class="product-card-image"
-              loading="lazy"
-            >
-
-          </a>
+        ];
 
 
-          <!-- PRODUCT INFORMATION -->
+        const selectedProducts =
+          products.filter(product =>
+            selectedProductIds.includes(
+              product.id
+            )
+          );
 
-          <div class="product-card-content">
+
+        productsGrid.innerHTML = "";
+
+
+        /* =====================================
+           CREATE PRODUCT CARDS
+           ===================================== */
+
+        selectedProducts.forEach(product => {
+
+          const card =
+            document.createElement("article");
+
+
+          card.className =
+            "product-card";
+
+
+          card.innerHTML = `
+
+            <!-- PRODUCT IMAGE -->
 
             <a
               href="products.html?id=${encodeURIComponent(product.id)}"
-              class="product-card-name"
+              class="product-card-image-link"
+              aria-label="View ${product.name}"
             >
-              ${product.name}
+
+              <img
+                src="${product.media.image}"
+                alt="${product.name}"
+                class="product-card-image"
+                loading="lazy"
+              >
+
             </a>
 
 
-            <div class="product-card-meta">
+            <!-- PRODUCT INFORMATION -->
 
-              <p class="product-card-size">
-                ${product.details.size}
-              </p>
+            <div class="product-card-content">
 
-              <p class="product-card-price">
-                ${product.pricing.display}
-              </p>
+              <a
+                href="products.html?id=${encodeURIComponent(product.id)}"
+                class="product-card-name"
+              >
+                ${product.name}
+              </a>
+
+
+              <div class="product-card-meta">
+
+                <p class="product-card-size">
+                  ${product.details.size}
+                </p>
+
+                <p class="product-card-price">
+                  ${product.pricing.display}
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="product-card-cart"
+                data-product-id="${product.id}"
+              >
+                Add to Cart
+              </button>
 
             </div>
 
-
-            <button
-              type="button"
-              class="product-card-cart"
-              data-product-id="${product.id}"
-            >
-              Add to Cart
-            </button>
-
-          </div>
-
-        `;
+          `;
 
 
-        productsGrid.appendChild(card);
-
-      });
-
-
-      /*
-       * ADD TO CART
-       *
-       * This dispatches a custom event containing
-       * the complete product object.
-       *
-       * You can connect this to your existing cart
-       * system later.
-       */
-
-      document
-        .querySelectorAll(".product-card-cart")
-        .forEach(button => {
-
-          button.addEventListener("click", () => {
-
-            const productId = button.dataset.productId;
-
-            const product = products.find(
-              item => item.id === productId
-            );
-
-
-            if (!product) return;
-
-
-            /*
-             * Custom event for your cart system
-             */
-
-            window.dispatchEvent(
-              new CustomEvent("addToCart", {
-                detail: product
-              })
-            );
-
-
-            /*
-             * Temporary visual feedback
-             */
-
-            const originalText = button.textContent;
-
-            button.textContent = "Added to Cart";
-
-
-            setTimeout(() => {
-              button.textContent = originalText;
-            }, 1200);
-
-          });
+          productsGrid.appendChild(card);
 
         });
 
-    })
 
-    .catch(error => {
+        /* =====================================
+           ADD TO CART
+           ===================================== */
 
-      console.error("Products error:", error);
+        document
+          .querySelectorAll(".product-card-cart")
+          .forEach(button => {
 
-      productsGrid.innerHTML = `
-        <p style="
-          grid-column: 1 / -1;
-          text-align: center;
-          padding: 40px 20px;
-          color: #666;
-        ">
-          Unable to load products.
-        </p>
-      `;
+            button.addEventListener(
+              "click",
+              () => {
 
-    });
+                const productId =
+                  button.dataset.productId;
 
-});
+
+                const product =
+                  products.find(
+                    item =>
+                      item.id === productId
+                  );
+
+
+                if (!product) return;
+
+
+                /* =================================
+                   READ EXISTING CART
+                   ================================= */
+
+                let cart = [];
+
+
+                try {
+
+                  const storedCart =
+                    localStorage.getItem(
+                      CART_STORAGE_KEY
+                    );
+
+
+                  if (storedCart) {
+
+                    const parsedCart =
+                      JSON.parse(storedCart);
+
+
+                    if (
+                      Array.isArray(
+                        parsedCart
+                      )
+                    ) {
+
+                      cart = parsedCart;
+
+                    }
+
+                  }
+
+                } catch (error) {
+
+                  console.error(
+                    "Remify cart read error:",
+                    error
+                  );
+
+                  cart = [];
+
+                }
+
+
+                /* =================================
+                   FIND EXISTING PRODUCT
+                   ================================= */
+
+                const existingItem =
+                  cart.find(
+                    item =>
+                      String(
+                        item?.productId || ""
+                      ).toLowerCase() ===
+                      String(
+                        productId
+                      ).toLowerCase()
+                  );
+
+
+                /* =================================
+                   ADD / INCREASE QUANTITY
+                   ================================= */
+
+                if (existingItem) {
+
+                  const currentQuantity =
+                    Number(
+                      existingItem.quantity
+                    ) || 0;
+
+
+                  existingItem.quantity =
+                    Math.min(
+                      MAX_QUANTITY,
+                      Math.max(
+                        1,
+                        currentQuantity + 1
+                      )
+                    );
+
+                } else {
+
+                  cart.push({
+
+                    productId:
+                      productId,
+
+                    quantity: 1
+
+                  });
+
+                }
+
+
+                /* =================================
+                   SAVE CART
+                   ================================= */
+
+                try {
+
+                  localStorage.setItem(
+                    CART_STORAGE_KEY,
+                    JSON.stringify(cart)
+                  );
+
+                } catch (error) {
+
+                  console.error(
+                    "Remify cart save error:",
+                    error
+                  );
+
+                  return;
+
+                }
+
+
+                /* =================================
+                   REDIRECT TO CART
+                   ================================= */
+
+                window.location.href =
+                  "cart.html";
+
+              }
+            );
+
+          });
+
+      })
+
+      .catch(error => {
+
+        console.error(
+          "Products error:",
+          error
+        );
+
+
+        productsGrid.innerHTML = `
+
+          <p style="
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+          ">
+            Unable to load products.
+          </p>
+
+        `;
+
+      });
+
+  });
 </script>
 
+<script>
+  /* =========================================================
+     REMIFY — GLOBAL CART COUNT
+     ========================================================= */
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const CART_STORAGE_KEY = "remifyCart";
+
+    const cartButton =
+      document.getElementById("cartBtn");
+
+    const cartCount =
+      document.getElementById("cartCount");
+
+
+    if (!cartButton || !cartCount) {
+      return;
+    }
+
+
+    /* =====================================================
+       GET CART FROM LOCAL STORAGE
+       ===================================================== */
+
+    const getCart = () => {
+
+      try {
+
+        const stored =
+          localStorage.getItem(
+            CART_STORAGE_KEY
+          );
+
+
+        if (!stored) {
+          return [];
+        }
+
+
+        const parsed =
+          JSON.parse(stored);
+
+
+        return Array.isArray(parsed)
+          ? parsed
+          : [];
+
+      } catch (error) {
+
+        console.error(
+          "Remify cart count error:",
+          error
+        );
+
+        return [];
+
+      }
+
+    };
+
+
+    /* =====================================================
+       UPDATE CART COUNT
+       ===================================================== */
+
+    const updateCartCount = (
+      animate = false
+    ) => {
+
+      const cart =
+        getCart();
+
+
+      /* ================================================
+         TOTAL QUANTITY
+         ================================================ */
+
+      const totalQuantity =
+        cart.reduce(
+          (total, item) => {
+
+            const quantity =
+              Number(item?.quantity) || 0;
+
+            return total + quantity;
+
+          },
+          0
+        );
+
+
+      /* ================================================
+         DISPLAY COUNT
+         ================================================ */
+
+      cartCount.textContent =
+        totalQuantity > 99
+          ? "99+"
+          : totalQuantity;
+
+
+      /* ================================================
+         EMPTY STATE
+         ================================================ */
+
+      cartCount.classList.toggle(
+        "is-empty",
+        totalQuantity === 0
+      );
+
+
+      /* ================================================
+         ACCESSIBILITY
+         ================================================ */
+
+      cartButton.setAttribute(
+        "aria-label",
+        totalQuantity === 0
+          ? "View cart, 0 items"
+          : `View cart, ${totalQuantity} ${
+              totalQuantity === 1
+                ? "item"
+                : "items"
+            }`
+      );
+
+
+      /* ================================================
+         UPDATE ANIMATION
+         ================================================ */
+
+      if (animate) {
+
+        cartCount.classList.remove(
+          "is-updated"
+        );
+
+
+        void cartCount.offsetWidth;
+
+
+        cartCount.classList.add(
+          "is-updated"
+        );
+
+      }
+
+    };
+
+
+    /* =====================================================
+       IMPORTANT
+       =====================================================
+
+       DO NOT ADD A CLICK EVENT HERE.
+
+       The navbar cart is already an <a href="cart.html">.
+       The browser handles navigation automatically.
+
+       This keeps the navbar cart completely separate from
+       the product-card Add to Cart functionality.
+       */
+
+
+    /* =====================================================
+       INITIAL COUNT
+       ===================================================== */
+
+    updateCartCount();
+
+
+    /* =====================================================
+       WATCH FOR LOCAL STORAGE CHANGES
+       ===================================================== */
+
+    window.addEventListener(
+      "storage",
+      event => {
+
+        if (
+          event.key === CART_STORAGE_KEY
+        ) {
+
+          updateCartCount(true);
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       SAME-TAB CART UPDATES
+       ===================================================== */
+
+    window.addEventListener(
+      "cartUpdated",
+      () => {
+
+        updateCartCount(true);
+
+      }
+    );
+
+  });
+</script>
 
 </body>
 </html>

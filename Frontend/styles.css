@@ -208,43 +208,277 @@ button {
   border-bottom-color: var(--white);
 }
 
+/* =========================================================
+   NAV ACTIONS
+   ========================================================= */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 4px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAV PHONE
+   ========================================================= */
+.nav-phone {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 38px;
+
+  color: var(--white);
+  text-decoration: none;
+
+  border-radius: 50%;
+
+  transition:
+    background-color .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.nav-phone svg {
+  width: 18px;
+  height: 18px;
+
+  display: block;
+}
+
+.nav-phone:hover {
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-1px);
+}
+
+
+.nav-phone svg {
+
+  width: 20px;
+  height: 20px;
+
+}
+
+
+.nav-phone:hover {
+
+  background: rgba(255, 255, 255, .08);
+
+  transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   NAV CART
+   ========================================================= */
+
 .nav-cart {
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
 }
 
 .cart-btn {
+
   position: relative;
+
+  width: 38px;
+  height: 38px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+
+  padding: 0;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
   color: var(--white);
+
+  cursor: pointer;
+
+  border-radius: 50%;
+
+  transition:
+    background-color .25s ease,
+    transform .25s ease;
+
 }
+
+
+.cart-btn:hover {
+
+  background: rgba(255, 255, 255, .08);
+
+  transform: translateY(-1px);
+
+}
+
+
+.cart-btn:active {
+
+  transform: scale(.94);
+
+}
+
 
 .cart-btn svg {
-  width: 22px;
-  height: 22px;
+  width: 19px;
+  height: 19px;
+
+  display: block;
+
 }
 
+
+/* =========================================================
+   CART COUNT
+   ========================================================= */
+
 .cart-count {
+
   position: absolute;
-  top: -2px;
-  right: -2px;
-  min-width: 16px;
-  height: 16px;
+
+  top: 1px;
+  right: 0px;
+
+  min-width: 17px;
+  height: 17px;
+
   padding: 0 4px;
-  border-radius: 50%;
-  background: var(--violet);
-  color: var(--white);
-  font-size: 10px;
-  font-weight: 700;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 999px;
+
+  background: var(--violet);
+  color: var(--white);
+
+  border: 2px solid var(--black);
+
+  font-size: 9px;
+  font-weight: 800;
+
   line-height: 1;
+
+  letter-spacing: -.1px;
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease;
+
 }
+
+
+/* =========================================================
+   CART COUNT — EMPTY
+   ========================================================= */
+
+.cart-count.is-empty {
+
+  opacity: 0;
+
+  transform: scale(.6);
+
+}
+
+
+/* =========================================================
+   CART COUNT — UPDATE ANIMATION
+   ========================================================= */
+
+.cart-count.is-updated {
+
+  animation: cartCountPop .28s ease;
+
+}
+
+
+@keyframes cartCountPop {
+
+  0% {
+
+    transform: scale(1);
+
+  }
+
+  50% {
+
+    transform: scale(1.22);
+
+  }
+
+  100% {
+
+    transform: scale(1);
+
+  }
+
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .nav-actions {
+    gap: 2px;
+  }
+
+  .nav-phone,
+  .cart-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-phone {
+    flex-basis: 36px;
+  }
+
+  .nav-phone svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cart-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cart-count {
+    top: 0;
+    right: -1px;
+    min-width: 16px;
+    height: 16px;
+    font-size: 8px;
+  }
+
+}
+
 
 .nav-toggle {
   display: none;
@@ -339,6 +573,10 @@ color: #5b2d82;
   color: var(--violet);
 }
 
+.navbar.navbar--scrolled .nav-phone {
+  color: var(--violet);
+}
+
 .navbar.navbar--scrolled .nav-toggle span {
   background: var(--violet);
 }
@@ -367,6 +605,7 @@ color: #5b2d82;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 
   pointer-events: none;
+  z-index: 0;
 }
 
 /* Hero content */
@@ -477,9 +716,17 @@ color: #5b2d82;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .nav-toggle {
-    display: flex;
-  }
+.nav-toggle {
+  display: flex !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 100000 !important;
+  width: 32px;
+  height: 32px;
+}
+
   .nav-logo {
   display: flex;
   align-items: center;
@@ -4146,24 +4393,20 @@ background: #5b2d82;
 
 
 .mobile-menu-logo img {
-
   display: block;
 
+  height: 40px;
   width: auto;
-
-  height: 45px;
-
-  max-width: 145px;
+  max-width: none;
 
   object-fit: contain;
 
+  transform: scale(2) !important;
+  transform-origin: left center;
+
+  transition: transform 0.3s ease;
   filter: brightness(0) invert(1);
-
-  transition:
-    transform 0.3s ease;
-
 }
-
 
 .mobile-menu-logo:hover img {
 

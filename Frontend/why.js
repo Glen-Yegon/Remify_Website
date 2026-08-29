@@ -5,50 +5,36 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
-  /* =======================================================
+  /* =========================================================
      AOS
-     ======================================================= */
+     ========================================================= */
 
   if (typeof AOS !== "undefined") {
 
     AOS.init({
-
       once: false,
-
       duration: 1000,
-
-      easing:
-        "cubic-bezier(.16,1,.3,1)",
-
+      easing: "cubic-bezier(.16,1,.3,1)",
       offset: 40,
 
       disable: () =>
         window.matchMedia(
           "(prefers-reduced-motion: reduce)"
         ).matches
-
     });
 
   }
 
 
-  /* =======================================================
-     WHY NAVBAR — STICKY / GLASS STATE
-     ======================================================= */
+  /* =========================================================
+     NAVBAR — STICKY / GLASS STATE
+     ========================================================= */
 
-  const whyNavbar =
-    document.getElementById(
-      "whyNavbar"
-    );
-
-  const whyHero =
-    document.getElementById(
-      "whyHero"
-    );
+  const navbar =
+    document.getElementById("navbar");
 
 
-  if (whyNavbar && whyHero) {
+  if (navbar) {
 
     let navbarTicking = false;
 
@@ -59,26 +45,16 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollY || 0;
 
 
-      /*
-       * The navbar stays in its original
-       * hero position until the hero has
-       * been passed.
-       */
+      if (scrollY > 10) {
 
-      const heroHeight =
-        whyHero.offsetHeight;
-
-
-      if (scrollY >= heroHeight - 20) {
-
-        whyNavbar.classList.add(
-          "why-navbar--sticky"
+        navbar.classList.add(
+          "navbar--scrolled"
         );
 
       } else {
 
-        whyNavbar.classList.remove(
-          "why-navbar--sticky"
+        navbar.classList.remove(
+          "navbar--scrolled"
         );
 
       }
@@ -93,11 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!navbarTicking) {
 
+        navbarTicking = true;
+
         window.requestAnimationFrame(
           updateNavbar
         );
-
-        navbarTicking = true;
 
       }
 
@@ -127,110 +103,150 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =======================================================
-     MOBILE MENU
-     ======================================================= */
 
-  const menuToggle =
-    document.getElementById(
-      "whyMenuToggle"
-    );
+  /* =========================================================
+     MOBILE MENU
+     ========================================================= */
+
+  const navToggle =
+    document.getElementById("navToggle");
 
   const mobileMenu =
-    document.getElementById(
-      "whyMobileMenu"
+    document.getElementById("mobileMenu");
+
+  const mobileMenuClose =
+    document.getElementById("mobileMenuClose");
+
+
+  const openMobileMenu = () => {
+
+    if (!mobileMenu) return;
+
+
+    mobileMenu.classList.add("open");
+
+    mobileMenu.setAttribute(
+      "aria-hidden",
+      "false"
     );
 
 
-  if (menuToggle && mobileMenu) {
+    if (navToggle) {
 
+      navToggle.classList.add("is-open");
 
-    const openMenu = () => {
-
-      menuToggle.classList.add(
-        "is-open"
-      );
-
-      mobileMenu.classList.add(
-        "is-open"
-      );
-
-      menuToggle.setAttribute(
+      navToggle.setAttribute(
         "aria-expanded",
         "true"
       );
 
-      menuToggle.setAttribute(
+      navToggle.setAttribute(
         "aria-label",
         "Close menu"
       );
 
-      mobileMenu.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-      document.body.classList.add(
-        "menu-open"
-      );
-
-    };
+    }
 
 
-    const closeMenu = () => {
+    document.body.classList.add(
+      "mobile-menu-open"
+    );
 
-      menuToggle.classList.remove(
-        "is-open"
-      );
 
-      mobileMenu.classList.remove(
-        "is-open"
-      );
+    document.body.style.overflow =
+      "hidden";
 
-      menuToggle.setAttribute(
+  };
+
+
+  const closeMobileMenu = () => {
+
+    if (!mobileMenu) return;
+
+
+    mobileMenu.classList.remove("open");
+
+    mobileMenu.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    if (navToggle) {
+
+      navToggle.classList.remove("is-open");
+
+      navToggle.setAttribute(
         "aria-expanded",
         "false"
       );
 
-      menuToggle.setAttribute(
+      navToggle.setAttribute(
         "aria-label",
         "Open menu"
       );
 
-      mobileMenu.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-      document.body.classList.remove(
-        "menu-open"
-      );
-
-    };
+    }
 
 
-    menuToggle.addEventListener(
+    document.body.classList.remove(
+      "mobile-menu-open"
+    );
+
+
+    document.body.style.overflow = "";
+
+  };
+
+
+  /* =========================================================
+     HAMBURGER
+     ========================================================= */
+
+  if (navToggle) {
+
+    navToggle.addEventListener(
       "click",
       () => {
 
-        const isOpen =
-          mobileMenu.classList.contains(
-            "is-open"
-          );
+        if (
+          mobileMenu &&
+          mobileMenu.classList.contains("open")
+        ) {
 
-        if (isOpen) {
-
-          closeMenu();
+          closeMobileMenu();
 
         } else {
 
-          openMenu();
+          openMobileMenu();
 
         }
 
       }
     );
 
+  }
+
+
+  /* =========================================================
+     MOBILE CLOSE BUTTON
+     ========================================================= */
+
+  if (mobileMenuClose) {
+
+    mobileMenuClose.addEventListener(
+      "click",
+      closeMobileMenu
+    );
+
+  }
+
+
+  /* =========================================================
+     CLOSE MOBILE MENU WHEN LINK IS CLICKED
+     ========================================================= */
+
+  if (mobileMenu) {
 
     mobileMenu
       .querySelectorAll("a")
@@ -238,21 +254,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
         link.addEventListener(
           "click",
-          closeMenu
+          closeMobileMenu
         );
 
       });
 
+  }
 
-    document.addEventListener(
-      "keydown",
-      (event) => {
 
-        if (event.key === "Escape") {
+  /* =========================================================
+     CLOSE MOBILE MENU WITH ESC
+     ========================================================= */
 
-          closeMenu();
+  document.addEventListener(
+    "keydown",
+    (event) => {
 
-        }
+      if (
+        event.key === "Escape" &&
+        mobileMenu &&
+        mobileMenu.classList.contains("open")
+      ) {
+
+        closeMobileMenu();
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     CART
+     ========================================================= */
+
+  const cartBtn =
+    document.getElementById("cartBtn");
+
+  const cartCount =
+    document.getElementById("cartCount");
+
+
+  if (cartBtn) {
+
+    cartBtn.addEventListener(
+      "click",
+      () => {
+
+        window.location.href =
+          "cart.html";
 
       }
     );
@@ -260,100 +311,192 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =======================================================
-     SCROLL PROGRESS
-     ======================================================= */
+  /* =========================================================
+     GLOBAL CART COUNT
+     ========================================================= */
 
-  const scrollFill =
-    document.getElementById(
-      "scrollFill"
-    );
+  const CART_STORAGE_KEY =
+    "remifyCart";
 
 
-  if (scrollFill) {
+  const getCart = () => {
 
-    let ticking = false;
+    try {
 
-
-    const updateScrollProgress = () => {
-
-      const scrollTop =
-        window.scrollY || 0;
-
-
-      const documentHeight =
-        document.documentElement
-          .scrollHeight;
-
-
-      const viewportHeight =
-        window.innerHeight;
-
-
-      const scrollableHeight =
-        documentHeight -
-        viewportHeight;
-
-
-      const progress =
-        scrollableHeight > 0
-          ? scrollTop / scrollableHeight
-          : 0;
-
-
-      scrollFill.style.transform =
-        `scaleY(${Math.min(
-          Math.max(progress, 0),
-          1
-        )})`;
-
-
-      ticking = false;
-
-    };
-
-
-    const requestScrollUpdate = () => {
-
-      if (!ticking) {
-
-        window.requestAnimationFrame(
-          updateScrollProgress
+      const stored =
+        localStorage.getItem(
+          CART_STORAGE_KEY
         );
 
-        ticking = true;
 
+      if (!stored) {
+        return [];
       }
 
-    };
+
+      const parsed =
+        JSON.parse(stored);
 
 
-    window.addEventListener(
-      "scroll",
-      requestScrollUpdate,
-      {
-        passive: true
-      }
+      return Array.isArray(parsed)
+        ? parsed
+        : [];
+
+    } catch (error) {
+
+      console.error(
+        "Remify cart error:",
+        error
+      );
+
+      return [];
+
+    }
+
+  };
+
+
+  const updateCartCount = (
+    animate = false
+  ) => {
+
+    if (!cartCount) return;
+
+
+    const cart =
+      getCart();
+
+
+    const totalQuantity =
+      cart.reduce(
+        (total, item) => {
+
+          const quantity =
+            Number(item?.quantity) || 0;
+
+          return total + quantity;
+
+        },
+        0
+      );
+
+
+    /* =====================================================
+       COUNT
+       ===================================================== */
+
+    cartCount.textContent =
+      totalQuantity > 99
+        ? "99+"
+        : totalQuantity;
+
+
+    /* =====================================================
+       EMPTY STATE
+       ===================================================== */
+
+    cartCount.classList.toggle(
+      "is-empty",
+      totalQuantity === 0
     );
 
 
-    window.addEventListener(
-      "resize",
-      requestScrollUpdate,
-      {
-        passive: true
+    /* =====================================================
+       ACCESSIBILITY
+       ===================================================== */
+
+    if (cartBtn) {
+
+      cartBtn.setAttribute(
+        "aria-label",
+        totalQuantity === 0
+          ? "View cart, 0 items"
+          : `View cart, ${totalQuantity} ${
+              totalQuantity === 1
+                ? "item"
+                : "items"
+            }`
+      );
+
+    }
+
+
+    /* =====================================================
+       UPDATE ANIMATION
+       ===================================================== */
+
+    if (animate) {
+
+      cartCount.classList.remove(
+        "is-updated"
+      );
+
+
+      void cartCount.offsetWidth;
+
+
+      cartCount.classList.add(
+        "is-updated"
+      );
+
+    }
+
+  };
+
+
+  /* =========================================================
+     INITIAL CART COUNT
+     ========================================================= */
+
+  updateCartCount();
+
+
+  /* =========================================================
+     SAME-TAB CART UPDATES
+     ========================================================= */
+
+  window.addEventListener(
+    "cartUpdated",
+    () => {
+
+      updateCartCount(true);
+
+    }
+  );
+
+
+  /* =========================================================
+     OTHER TAB CART UPDATES
+     ========================================================= */
+
+  window.addEventListener(
+    "storage",
+    (event) => {
+
+      if (
+        event.key === CART_STORAGE_KEY
+      ) {
+
+        updateCartCount(true);
+
       }
-    );
+
+    }
+  );
 
 
-    updateScrollProgress();
+  /* =========================================================
+     PUBLIC CART COUNT FUNCTION
+     ========================================================= */
 
-  }
+  window.updateWhyCartCount =
+    updateCartCount;
 
 
-  /* =======================================================
+
+  /* =========================================================
      REMIFY SPARK CURSOR
-     ======================================================= */
+     ========================================================= */
 
   const cursorSpark =
     document.getElementById(
@@ -372,17 +515,24 @@ document.addEventListener("DOMContentLoaded", () => {
     ).matches;
 
 
+  const prefersReducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
   if (
     isFinePointer &&
+    !prefersReducedMotion &&
     cursorSpark &&
     cursorTrail
   ) {
 
-
     const ctx =
-      cursorTrail.getContext(
-        "2d"
-      );
+      cursorTrail.getContext("2d");
+
+
+    if (!ctx) return;
 
 
     let mouseX =
@@ -392,15 +542,19 @@ document.addEventListener("DOMContentLoaded", () => {
       window.innerHeight / 2;
 
 
-    let currentX = mouseX;
+    let currentX =
+      mouseX;
 
-    let currentY = mouseY;
+    let currentY =
+      mouseY;
 
 
     const trail = [];
 
 
-    const TRAIL_LENGTH = 24;
+    const TRAIL_LENGTH =
+      24;
+
 
 
     /* =====================================================
@@ -456,6 +610,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+
     /* =====================================================
        MOUSE MOVEMENT
        ===================================================== */
@@ -477,8 +632,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+
     /* =====================================================
-       TRAIL DRAWING
+       DRAW TRAIL
        ===================================================== */
 
     const drawTrail = () => {
@@ -492,11 +648,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       trail.push({
-
         x: currentX,
-
         y: currentY
-
       });
 
 
@@ -525,10 +678,8 @@ document.addEventListener("DOMContentLoaded", () => {
         i++
       ) {
 
-
         const previous =
           trail[i - 1];
-
 
         const point =
           trail[i];
@@ -562,12 +713,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         ctx.strokeStyle =
-          `rgba(
-            41,
-            0,
-            82,
-            ${opacity}
-          )`;
+          `rgba(41, 0, 82, ${opacity})`;
 
 
         ctx.lineWidth =
@@ -585,12 +731,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
+
     /* =====================================================
        CURSOR ANIMATION
        ===================================================== */
 
     const animateCursor = () => {
-
 
       currentX +=
         (mouseX - currentX) *
@@ -623,19 +769,16 @@ document.addEventListener("DOMContentLoaded", () => {
     animateCursor();
 
 
+
     /* =====================================================
        INTERACTIVE ELEMENTS
        ===================================================== */
 
-    const interactiveElements =
-      document.querySelectorAll(
+    document
+      .querySelectorAll(
         "a, button, input, textarea, select, [role='button']"
-      );
-
-
-    interactiveElements.forEach(
-      (element) => {
-
+      )
+      .forEach((element) => {
 
         element.addEventListener(
           "mouseenter",
@@ -660,12 +803,12 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         );
 
-      }
-    );
+      });
+
 
 
     /* =====================================================
-       CLICK RESPONSE
+       CLICK EFFECT
        ===================================================== */
 
     window.addEventListener(
@@ -704,96 +847,5 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
   }
-
-});
-
-/* =========================================================
-   REMIFY — WHY REMIFY NAVBAR
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const navbar =
-    document.getElementById("whyNavbar");
-
-  const cartBtn =
-    document.getElementById("whyCartBtn");
-
-  const cartCount =
-    document.getElementById("whyCartCount");
-
-
-  /* =======================================================
-     STICKY GLASS NAVBAR
-     ======================================================= */
-
-  if (navbar) {
-
-    const updateNavbar = () => {
-
-      if (window.scrollY > 40) {
-
-        navbar.classList.add("is-scrolled");
-
-      } else {
-
-        navbar.classList.remove("is-scrolled");
-
-      }
-
-    };
-
-
-    window.addEventListener(
-      "scroll",
-      updateNavbar,
-      { passive: true }
-    );
-
-
-    updateNavbar();
-
-  }
-
-
-  /* =======================================================
-     CART
-     ======================================================= */
-
-  if (cartBtn) {
-
-    cartBtn.addEventListener(
-      "click",
-      () => {
-
-        window.location.href = "/cart";
-
-      }
-    );
-
-  }
-
-
-  /* =======================================================
-     UPDATE CART COUNT
-     ======================================================= */
-
-  window.updateWhyCartCount = (count) => {
-
-    if (!cartCount) return;
-
-    cartCount.textContent = count;
-
-    if (cartBtn) {
-
-      cartBtn.setAttribute(
-        "aria-label",
-        `View cart, ${count} items`
-      );
-
-    }
-
-  };
-
 
 });

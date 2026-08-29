@@ -370,39 +370,202 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
 
-  /* =========================================================
-     CONTACT FORM
-     ========================================================= */
+const API_BASE_URL =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://localhost:5000"
+    : "https://remify-website.onrender.com";
 
-  const contactForm =
-    document.getElementById("contactForm");
 
-  const formStatus =
-    document.getElementById("contactFormStatus");
+const contactForm =
+  document.getElementById("contactForm");
 
-  if (contactForm) {
+const formStatus =
+  document.getElementById("contactFormStatus");
 
-    contactForm.addEventListener(
-      "submit",
-      event => {
 
-        event.preventDefault();
+if (contactForm) {
 
-        if (!contactForm.checkValidity()) {
+  contactForm.addEventListener("submit", async event => {
 
-          contactForm.reportValidity();
+    event.preventDefault();
 
-          return;
+
+    /* -----------------------------------------
+       VALIDATION
+       ----------------------------------------- */
+
+    if (!contactForm.checkValidity()) {
+
+      contactForm.reportValidity();
+
+      return;
+
+    }
+
+
+    /* -----------------------------------------
+       GET FORM DATA
+       ----------------------------------------- */
+
+    const formData = {
+
+      name:
+        document.getElementById("contactName").value.trim(),
+
+      email:
+        document.getElementById("contactEmail").value.trim(),
+
+      subject:
+        document.getElementById("contactSubject").value.trim(),
+
+      message:
+        document.getElementById("contactMessage").value.trim()
+
+    };
+
+
+    /* -----------------------------------------
+       LOADING STATE
+       ----------------------------------------- */
+
+    const submitButton =
+      contactForm.querySelector(".contact-submit");
+
+    const submitText =
+      submitButton
+        ? submitButton.querySelector("span")
+        : null;
+
+
+    if (submitButton) {
+
+      submitButton.disabled = true;
+
+    }
+
+    if (submitText) {
+
+      submitText.textContent = "Sending...";
+
+    }
+
+    if (formStatus) {
+
+      formStatus.textContent =
+        "Sending your message...";
+
+      formStatus.className =
+        "contact-form-status is-sending";
+
+    }
+
+
+    try {
+
+      /* -----------------------------------------
+         SEND TO BACKEND
+         ----------------------------------------- */
+
+      const response = await fetch(
+        `${API_BASE_URL}/api/contact`,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify(formData)
         }
+      );
 
-        formStatus.textContent =
-          "Thanks — your message is ready to be sent.";
 
-        contactForm.reset();
+      const data = await response.json();
+
+
+      /* -----------------------------------------
+         BACKEND ERROR
+         ----------------------------------------- */
+
+      if (!response.ok) {
+
+        throw new Error(
+          data.message ||
+          "Something went wrong. Please try again."
+        );
 
       }
-    );
-  }
+
+
+      /* -----------------------------------------
+         SUCCESS
+         ----------------------------------------- */
+
+      if (formStatus) {
+
+        formStatus.textContent =
+          "Message sent successfully. We'll get back to you soon.";
+
+        formStatus.className =
+          "contact-form-status is-success";
+
+      }
+
+
+      contactForm.reset();
+
+
+    } catch (error) {
+
+      console.error(
+        "Contact form error:",
+        error
+      );
+
+
+      /* -----------------------------------------
+         ERROR
+         ----------------------------------------- */
+
+      if (formStatus) {
+
+        formStatus.textContent =
+          error.message ||
+          "Unable to send your message. Please try again.";
+
+        formStatus.className =
+          "contact-form-status is-error";
+
+      }
+
+    } finally {
+
+      /* -----------------------------------------
+         RESTORE BUTTON
+         ----------------------------------------- */
+
+      if (submitButton) {
+
+        submitButton.disabled = false;
+
+      }
+
+      if (submitText) {
+
+        submitText.textContent =
+          "Send message";
+
+      }
+
+    }
+
+  });
+
+}
 
 });
