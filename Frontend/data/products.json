@@ -1,8 +1,8 @@
 {
   "products": [
     {
-      "id": "sea-moss-gel",
-      "name": "Sea Moss Gel",
+      "id": "purple-sea-moss-gel",
+      "name": "Purple Sea Moss Gel",
       "tagline": "Fresh. Natural. Nourishing.",
 
       "pricing": {
@@ -15,30 +15,77 @@
         "image": "images/product2.jpg"
       },
 
-      "description": "Fresh, natural and nourishing sea moss gel made for everyday wellness.",
+      "description": "Fresh, natural and nourishing purple sea moss gel made for everyday wellness.",
 
-"details": {
-  "size": "1000ml",
+      "details": {
+        "size": "1000ml",
 
-  "ingredients": [
-    "Purple Sea Moss",
-    "Spring Water",
-    "Key Lime"
-  ],
+        "ingredients": [
+          "Purple Sea Moss",
+          "Spring Water",
+          "Key Lime"
+        ],
 
-  "benefits": [
-    "Supports everyday wellness",
-    "Provides essential minerals",
-    "Supports nourishment and digestion",
-    "May support daily energy"
-  ],
+        "benefits": [
+          "Supports everyday wellness",
+          "Provides essential minerals",
+          "Supports nourishment and digestion",
+          "May support daily energy"
+        ],
 
-  "usage": "Start with 1 tablespoon per day and increase to 2 tablespoons if it works well for you. Enjoy directly from the spoon or mix into smoothies, juices, porridge, tea, soups, sauces, or other foods and drinks.",
+        "usage": "Start with 1 tablespoon per day and increase to 2 tablespoons if it works well for you. Enjoy directly from the spoon or mix into smoothies, juices, porridge, tea, soups, sauces, or other foods and drinks.",
 
-  "storage": "Keep refrigerated after receiving. Always use a clean spoon when serving.",
+        "storage": "Keep refrigerated after receiving. Always use a clean spoon when serving.",
 
-  "shelfLife": "Use within 3 weeks."
-},
+        "shelfLife": "Use within 3 weeks."
+      },
+
+      "commerce": {
+        "available": true
+      }
+    },
+
+    {
+      "id": "pineapple-sea-moss-gel",
+      "name": "Pineapple Sea Moss Gel",
+      "tagline": "Tropical. Natural. Nourishing.",
+
+      "pricing": {
+        "amount": 1300,
+        "currency": "KES",
+        "display": "Kshs. 1,300"
+      },
+
+      "media": {
+        "image": "images/pineapple.webp"
+      },
+
+      "description": "Fresh and naturally nourishing sea moss gel blended with juicy pineapple and honey for a delicious tropical twist on everyday wellness.",
+
+      "details": {
+        "size": "1000ml",
+
+        "ingredients": [
+          "Purple Sea Moss",
+          "Fresh Pineapple",
+          "Natural Honey",
+          "Spring Water",
+          "Key Lime"
+        ],
+
+        "benefits": [
+          "Supports everyday wellness",
+          "Provides essential minerals",
+          "Supports nourishment and digestion",
+          "May support daily energy"
+        ],
+
+        "usage": "Start with 1 tablespoon per day and increase to 2 tablespoons if it works well for you. Enjoy directly from the spoon or mix into smoothies, juices, porridge, tea, soups, sauces, or other foods and drinks.",
+
+        "storage": "Keep refrigerated after receiving. Always use a clean spoon when serving.",
+
+        "shelfLife": "Use within 3 weeks."
+      },
 
       "commerce": {
         "available": true

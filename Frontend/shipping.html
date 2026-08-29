@@ -262,74 +262,135 @@
       </div>
 
 
-      <!-- NAVIGATION -->
-      <div class="remify-footer-nav">
+    <!-- =====================================================
+     REMIFY FOOTER — DROPDOWN LINKS
+     ===================================================== -->
+
+<div class="remify-footer-links">
+
+  <!-- EXPLORE -->
+  <div class="remify-footer-link-section">
+
+    <button
+      type="button"
+      class="remify-footer-link-trigger"
+      aria-expanded="false"
+    >
+
+      <span>EXPLORE</span>
+
+      <span class="remify-footer-link-arrow">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 9L12 15L18 9"></path>
+        </svg>
+      </span>
+
+    </button>
 
 
-        <div class="remify-footer-group">
+    <div class="remify-footer-link-content">
 
-          <span class="remify-footer-label">
-            EXPLORE
-          </span>
+      <a href="products.html?id=sea-moss-gel">
+        Shop Now
+      </a>
 
-<a href="products.html?id=sea-moss-gel">
-  Shop Now
-</a>
+      <a href="why-remify.html">
+        Why Remify
+      </a>
 
+      <a href="contact.html">
+        Contact
+      </a>
 
-          <a href="contact.html">
-            Contact
-          </a>
-          <a href="affiliate-dashboard.html">
-            Partnership
-          </a>
+      <a href="affiliate-dashboard.html">
+        Partnership
+      </a>
 
-        </div>
+    </div>
 
-
-        <div class="remify-footer-group">
-
-          <span class="remify-footer-label">
-            INFORMATION
-          </span>
-
-          <a href="shipping.html">
-            Shipping
-          </a>
-
-          <a href="privacy-policy.html">
-            Privacy Policy
-          </a>
-
-          <a href="terms.html">
-            Terms & Conditions
-          </a>
-
-        </div>
+  </div>
 
 
-        <div class="remify-footer-group">
 
-          <span class="remify-footer-label">
-            GET IN TOUCH
-          </span>
+  <!-- INFORMATION -->
+  <div class="remify-footer-link-section">
 
-          <a href="mailto:remifyproducts@gmail.com">
-            Email us
-          </a>
+    <button
+      type="button"
+      class="remify-footer-link-trigger"
+      aria-expanded="false"
+    >
 
-          <a href="tel:+254000000000">
-            +254 720 460 145
-          </a>
+      <span>INFORMATION</span>
 
-          <span class="remify-footer-location">
-            Nairobi, Kenya
-          </span>
+      <span class="remify-footer-link-arrow">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 9L12 15L18 9"></path>
+        </svg>
+      </span>
 
-        </div>
+    </button>
 
 
-      </div>
+    <div class="remify-footer-link-content">
+
+      <a href="shipping.html">
+        Shipping
+      </a>
+
+      <a href="privacy-policy.html">
+        Privacy Policy
+      </a>
+
+      <a href="terms.html">
+        Terms &amp; Conditions
+      </a>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- GET IN TOUCH -->
+  <div class="remify-footer-link-section">
+
+    <button
+      type="button"
+      class="remify-footer-link-trigger"
+      aria-expanded="false"
+    >
+
+      <span>GET IN TOUCH</span>
+
+      <span class="remify-footer-link-arrow">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 9L12 15L18 9"></path>
+        </svg>
+      </span>
+
+    </button>
+
+
+    <div class="remify-footer-link-content">
+
+      <a href="mailto:remifyproducts@gmail.com">
+        remifyproducts@gmail.com
+      </a>
+
+      <a href="tel:+254720460145">
+        +254 720 460 145
+      </a>
+
+      <span class="remify-footer-location">
+        Nairobi, Kenya
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
 
     </div>
 
@@ -406,6 +467,59 @@
 <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
 <script src="./lenis.min.js"></script>
 <script src="./combined.min.js"></script>
+<script>
 
+document
+  .querySelectorAll(".remify-footer-link-trigger")
+  .forEach(trigger => {
+
+    trigger.addEventListener("click", function () {
+
+      const section =
+        this.closest(".remify-footer-link-section");
+
+      const currentlyOpen =
+        section.classList.contains("is-open");
+
+
+      /* Close every section */
+
+      document
+        .querySelectorAll(".remify-footer-link-section")
+        .forEach(item => {
+
+          item.classList.remove("is-open");
+
+          const button =
+            item.querySelector(".remify-footer-link-trigger");
+
+          if (button) {
+            button.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+          }
+
+        });
+
+
+      /* Open the clicked section */
+
+      if (!currentlyOpen) {
+
+        section.classList.add("is-open");
+
+        this.setAttribute(
+          "aria-expanded",
+          "true"
+        );
+
+      }
+
+    });
+
+  });
+
+</script>
 </body>
 </html>

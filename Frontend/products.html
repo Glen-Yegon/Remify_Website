@@ -42,7 +42,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="product.min.css">
+<link rel="stylesheet" href="product.css">
 
 <!-- Organization + Product Structured Data -->
 <script type="application/ld+json">
@@ -468,11 +468,6 @@
 
       <div class="product-details-heading">
 
-        <h2 id="productDetailsTitle">
-          Everything that goes
-          <span>into Remify.</span>
-        </h2>
-
         <p>
           A closer look at what makes this product
           simple, natural and intentional.
@@ -761,83 +756,141 @@
           href="mailto:hello@remifyproducts.com"
           class="remify-footer-email"
         >
-          hello@remifyproducts.com
+        remifyproducts@gmail.com
         </a>
 
       </div>
 
 
-      <!-- NAVIGATION -->
-      <div class="remify-footer-nav">
+      <!-- =====================================================
+     REMIFY FOOTER — DROPDOWN LINKS
+     ===================================================== -->
+
+<div class="remify-footer-links">
+
+  <!-- EXPLORE -->
+  <div class="remify-footer-link-section">
+
+    <button
+      type="button"
+      class="remify-footer-link-trigger"
+      aria-expanded="false"
+    >
+
+      <span>EXPLORE</span>
+
+      <span class="remify-footer-link-arrow">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 9L12 15L18 9"></path>
+        </svg>
+      </span>
+
+    </button>
 
 
-        <div class="remify-footer-group">
+    <div class="remify-footer-link-content">
 
-          <span class="remify-footer-label">
-            EXPLORE
-          </span>
+      <a href="products.html?id=sea-moss-gel">
+        Shop Now
+      </a>
 
-<a href="products.html?id=sea-moss-gel">
-  Shop Now
-</a>
+      <a href="why-remify.html">
+        Why Remify
+      </a>
 
-          <a href="why-remify.html">
-            Why Remify
-          </a>
+      <a href="contact.html">
+        Contact
+      </a>
 
-          <a href="contact.html">
-            Contact
-          </a>
-                    <a href="affiliate-dashboard.html">
-            Partnership
-          </a>
+      <a href="affiliate-dashboard.html">
+        Partnership
+      </a>
 
-        </div>
+    </div>
 
-
-        <div class="remify-footer-group">
-
-          <span class="remify-footer-label">
-            INFORMATION
-          </span>
-
-          <a href="shipping.html">
-            Shipping
-          </a>
-
-          <a href="privacy-policy.html">
-            Privacy Policy
-          </a>
-
-          <a href="terms.html">
-            Terms & Conditions
-          </a>
-
-        </div>
+  </div>
 
 
-        <div class="remify-footer-group">
 
-          <span class="remify-footer-label">
-            GET IN TOUCH
-          </span>
+  <!-- INFORMATION -->
+  <div class="remify-footer-link-section">
 
-          <a href="mailto:hello@remifyproducts.com">
-            Email us
-          </a>
+    <button
+      type="button"
+      class="remify-footer-link-trigger"
+      aria-expanded="false"
+    >
 
-          <a href="tel:+254000000000">
-            +254 720 460 145
-          </a>
+      <span>INFORMATION</span>
 
-          <span class="remify-footer-location">
-            Nairobi, Kenya
-          </span>
+      <span class="remify-footer-link-arrow">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 9L12 15L18 9"></path>
+        </svg>
+      </span>
 
-        </div>
+    </button>
 
 
-      </div>
+    <div class="remify-footer-link-content">
+
+      <a href="shipping.html">
+        Shipping
+      </a>
+
+      <a href="privacy-policy.html">
+        Privacy Policy
+      </a>
+
+      <a href="terms.html">
+        Terms &amp; Conditions
+      </a>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- GET IN TOUCH -->
+  <div class="remify-footer-link-section">
+
+    <button
+      type="button"
+      class="remify-footer-link-trigger"
+      aria-expanded="false"
+    >
+
+      <span>GET IN TOUCH</span>
+
+      <span class="remify-footer-link-arrow">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 9L12 15L18 9"></path>
+        </svg>
+      </span>
+
+    </button>
+
+
+    <div class="remify-footer-link-content">
+
+      <a href="mailto:remifyproducts@gmail.com">
+        remifyproducts@gmail.com
+      </a>
+
+      <a href="tel:+254720460145">
+        +254 720 460 145
+      </a>
+
+      <span class="remify-footer-location">
+        Nairobi, Kenya
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
 
     </div>
 
@@ -941,6 +994,323 @@
   requestAnimationFrame(raf);
 </script>
 
+<script>
+
+document
+  .querySelectorAll(".remify-footer-link-trigger")
+  .forEach(trigger => {
+
+    trigger.addEventListener("click", function () {
+
+      const section =
+        this.closest(".remify-footer-link-section");
+
+      const currentlyOpen =
+        section.classList.contains("is-open");
+
+
+      /* Close every section */
+
+      document
+        .querySelectorAll(".remify-footer-link-section")
+        .forEach(item => {
+
+          item.classList.remove("is-open");
+
+          const button =
+            item.querySelector(".remify-footer-link-trigger");
+
+          if (button) {
+            button.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+          }
+
+        });
+
+
+      /* Open the clicked section */
+
+      if (!currentlyOpen) {
+
+        section.classList.add("is-open");
+
+        this.setAttribute(
+          "aria-expanded",
+          "true"
+        );
+
+      }
+
+    });
+
+  });
+
+</script>
+
+<script>
+
+/* =========================================================
+   PRODUCT DETAILS — MOBILE ACCORDION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const cards = document.querySelectorAll(
+    ".product-detail-card"
+  );
+
+  const mobileBreakpoint = 700;
+
+
+  /* -----------------------------------------
+     CHECK MOBILE
+     ----------------------------------------- */
+
+  function isMobile() {
+
+    return window.innerWidth <= mobileBreakpoint;
+
+  }
+
+
+  /* -----------------------------------------
+     SETUP CARD
+     ----------------------------------------- */
+
+  cards.forEach(card => {
+
+    const header =
+      card.querySelector(".product-detail-card-header");
+
+    if (!header) return;
+
+
+    /* Accessibility */
+
+    header.setAttribute(
+      "role",
+      "button"
+    );
+
+    header.setAttribute(
+      "tabindex",
+      "0"
+    );
+
+    header.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+
+    /* -----------------------------------------
+       CLICK
+       ----------------------------------------- */
+
+    header.addEventListener("click", () => {
+
+      if (!isMobile()) return;
+
+
+      const isOpen =
+        card.classList.contains(
+          "is-mobile-open"
+        );
+
+
+      /* Close every other card */
+
+      cards.forEach(otherCard => {
+
+        if (otherCard !== card) {
+
+          otherCard.classList.remove(
+            "is-mobile-open"
+          );
+
+          const otherHeader =
+            otherCard.querySelector(
+              ".product-detail-card-header"
+            );
+
+          if (otherHeader) {
+
+            otherHeader.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+
+          const otherContent =
+            otherCard.querySelector(
+              ":scope > .product-ingredients, " +
+              ":scope > .product-benefits, " +
+              ":scope > .product-usage, " +
+              ":scope > .product-freshness"
+            );
+
+          if (otherContent) {
+
+            otherContent.style.maxHeight = "0px";
+
+          }
+
+        }
+
+      });
+
+
+      /* -----------------------------------------
+         CLOSE CURRENT
+         ----------------------------------------- */
+
+      if (isOpen) {
+
+        card.classList.remove(
+          "is-mobile-open"
+        );
+
+        header.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        const content =
+          card.querySelector(
+            ":scope > .product-ingredients, " +
+            ":scope > .product-benefits, " +
+            ":scope > .product-usage, " +
+            ":scope > .product-freshness"
+          );
+
+        if (content) {
+
+          content.style.maxHeight = "0px";
+
+        }
+
+        return;
+
+      }
+
+
+      /* -----------------------------------------
+         OPEN CURRENT
+         ----------------------------------------- */
+
+      card.classList.add(
+        "is-mobile-open"
+      );
+
+      header.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+
+      const content =
+        card.querySelector(
+          ":scope > .product-ingredients, " +
+          ":scope > .product-benefits, " +
+          ":scope > .product-usage, " +
+          ":scope > .product-freshness"
+        );
+
+
+      if (content) {
+
+        content.style.maxHeight =
+          content.scrollHeight + "px";
+
+      }
+
+    });
+
+
+    /* -----------------------------------------
+       KEYBOARD ACCESS
+       ----------------------------------------- */
+
+    header.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+
+          header.click();
+
+        }
+
+      }
+    );
+
+  });
+
+
+  /* -----------------------------------------
+     HANDLE RESIZE
+     ----------------------------------------- */
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      if (!isMobile()) {
+
+        cards.forEach(card => {
+
+          card.classList.remove(
+            "is-mobile-open"
+          );
+
+
+          const header =
+            card.querySelector(
+              ".product-detail-card-header"
+            );
+
+          if (header) {
+
+            header.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+
+
+          const content =
+            card.querySelector(
+              ":scope > .product-ingredients, " +
+              ":scope > .product-benefits, " +
+              ":scope > .product-usage, " +
+              ":scope > .product-freshness"
+            );
+
+          if (content) {
+
+            content.style.maxHeight = "";
+
+          }
+
+        });
+
+      }
+
+    }
+  );
+
+});
+
+</script>
 
 </body>
 </html>

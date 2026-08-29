@@ -2737,7 +2737,7 @@ padding: clamp(6px, 0.8vw, 12px) clamp(26px, 3vw, 38px) clamp(26px, 3vw, 38px);
 
   .product-details {
     padding:
-      78px 15px
+      28px 15px
       90px;
   }
 
@@ -2970,6 +2970,464 @@ padding: clamp(6px, 0.8vw, 12px) clamp(26px, 3vw, 38px) clamp(26px, 3vw, 38px);
 
 
 /* =========================================================
+   MOBILE PRODUCT DETAILS — ACCORDION
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  /* -----------------------------------------
+     RESET THE MOBILE CARDS
+     ----------------------------------------- */
+
+  .product-details-grid {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    width: 100%;
+
+  }
+
+
+  .product-detail-card {
+
+    position: relative;
+
+    min-height: 0;
+
+    width: 100%;
+
+    padding: 0;
+
+    border: 0;
+
+    border-top: 1px solid rgba(17,17,17,.10);
+
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    overflow: hidden;
+
+  }
+
+
+  /* Last item gets bottom border */
+
+  .product-detail-card:last-child {
+
+    border-bottom: 1px solid rgba(17,17,17,.10);
+
+  }
+
+
+  /* Disable desktop card hover */
+
+  .product-detail-card:hover {
+
+    transform: none;
+
+    border-color: rgba(17,17,17,.10);
+
+    box-shadow: none;
+
+  }
+
+
+  /* -----------------------------------------
+     HEADER
+     ----------------------------------------- */
+
+  .product-detail-card-header {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    min-height: 82px;
+
+    margin: 0;
+
+    padding: 18px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+  }
+
+
+  /* -----------------------------------------
+     NUMBER
+     ----------------------------------------- */
+
+  .product-detail-card-index {
+
+    width: 34px;
+
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    font-size: 8px;
+
+    border-color: rgba(91,45,130,.16);
+
+    transition:
+
+      background .3s ease,
+
+      border-color .3s ease,
+
+      color .3s ease;
+
+  }
+
+
+  /* -----------------------------------------
+     TITLE AREA
+     ----------------------------------------- */
+
+  .product-detail-card-header > div:nth-child(2) {
+
+    flex: 1;
+
+    min-width: 0;
+
+  }
+
+
+  .product-detail-card-eyebrow {
+
+    margin-bottom: 4px;
+
+    font-size: 7px;
+
+    letter-spacing: .16em;
+
+    color: rgba(17,17,17,.38);
+
+  }
+
+
+  .product-detail-card h3 {
+
+    margin: 0;
+
+    font-size: 19px;
+
+    line-height: 1.1;
+
+    letter-spacing: -.025em;
+
+    font-weight: 400;
+
+  }
+
+
+  /* -----------------------------------------
+     ACCORDION ARROW
+     ----------------------------------------- */
+
+  .product-detail-card-header::after {
+
+    content: "";
+
+    width: 30px;
+
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(91,45,130,.15);
+
+    border-radius: 50%;
+
+    background:
+
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b2d82' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")
+
+      center / 13px 13px
+
+      no-repeat;
+
+    transition:
+
+      transform .4s cubic-bezier(.22,1,.36,1),
+
+      background-color .3s ease,
+
+      border-color .3s ease;
+
+  }
+
+
+  /* -----------------------------------------
+     CLOSED CONTENT
+     ----------------------------------------- */
+
+  .product-detail-card > .product-ingredients,
+  .product-detail-card > .product-benefits,
+  .product-detail-card > .product-usage,
+  .product-detail-card > .product-freshness {
+
+    max-height: 0;
+
+    padding: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform: translateY(-8px);
+
+    transition:
+
+      max-height .5s cubic-bezier(.22,1,.36,1),
+
+      opacity .3s ease,
+
+      transform .45s cubic-bezier(.22,1,.36,1),
+
+      padding .45s ease;
+
+  }
+
+
+  /* -----------------------------------------
+     OPEN CONTENT
+     ----------------------------------------- */
+
+  .product-detail-card.is-mobile-open
+  > .product-ingredients,
+
+  .product-detail-card.is-mobile-open
+  > .product-benefits,
+
+  .product-detail-card.is-mobile-open
+  > .product-usage,
+
+  .product-detail-card.is-mobile-open
+  > .product-freshness {
+
+    padding:
+
+      0
+
+      0
+
+      27px
+
+      49px;
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+
+  /* -----------------------------------------
+     OPEN ARROW
+     ----------------------------------------- */
+
+  .product-detail-card.is-mobile-open
+  .product-detail-card-header::after {
+
+    transform: rotate(180deg);
+
+    border-color: rgba(91,45,130,.28);
+
+    background-color: rgba(91,45,130,.04);
+
+  }
+
+
+  /* -----------------------------------------
+     OPEN NUMBER
+     ----------------------------------------- */
+
+  .product-detail-card.is-mobile-open
+  .product-detail-card-index {
+
+    border-color: rgba(91,45,130,.3);
+
+    color: #5b2d82;
+
+    background: rgba(91,45,130,.035);
+
+  }
+
+
+  /* -----------------------------------------
+     OPEN TITLE
+     ----------------------------------------- */
+
+  .product-detail-card.is-mobile-open
+  .product-detail-card-eyebrow {
+
+    color: #5b2d82;
+
+  }
+
+
+  /* -----------------------------------------
+     INGREDIENTS
+     ----------------------------------------- */
+
+  .product-detail-card.is-mobile-open
+  .product-ingredient:first-child {
+
+    padding-top: 0;
+
+  }
+
+
+  /* -----------------------------------------
+     BENEFITS
+     ----------------------------------------- */
+
+  .product-detail-card.is-mobile-open
+  .product-benefit:first-child {
+
+    padding-top: 0;
+
+  }
+
+
+  /* -----------------------------------------
+     USAGE
+     ----------------------------------------- */
+
+  .product-detail-card.is-mobile-open
+  .product-usage-copy p {
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+  }
+
+
+  /* -----------------------------------------
+     FRESHNESS
+     ----------------------------------------- */
+
+  .product-detail-card.is-mobile-open
+  .product-freshness-main {
+
+    padding-bottom: 20px;
+
+  }
+
+
+  .product-detail-card.is-mobile-open
+  .product-storage {
+
+    padding-top: 20px;
+
+  }
+
+
+  /* -----------------------------------------
+     TOUCH FEEDBACK
+     ----------------------------------------- */
+
+  .product-detail-card-header:active {
+
+    opacity: .72;
+
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .product-detail-card-header {
+
+    min-height: 76px;
+
+    gap: 12px;
+
+  }
+
+
+  .product-detail-card-index {
+
+    width: 32px;
+
+    height: 32px;
+
+    flex-basis: 32px;
+
+  }
+
+
+  .product-detail-card h3 {
+
+    font-size: 18px;
+
+  }
+
+
+  .product-detail-card-header::after {
+
+    width: 28px;
+
+    height: 28px;
+
+    flex-basis: 28px;
+
+  }
+
+
+  .product-detail-card.is-mobile-open
+  > .product-ingredients,
+
+  .product-detail-card.is-mobile-open
+  > .product-benefits,
+
+  .product-detail-card.is-mobile-open
+  > .product-usage,
+
+  .product-detail-card.is-mobile-open
+  > .product-freshness {
+
+    padding-left: 44px;
+
+  }
+
+}
+
+/* =========================================================
    FOOTER TOP LINE
    ========================================================= */
 
@@ -3147,6 +3605,332 @@ background: #5b2d82;
 
   border-color:
     rgba(255,255,255,.5);
+
+}
+/* =========================================================
+   REMIFY — FOOTER DROPDOWN LINKS
+   NEW VERSION
+   ========================================================= */
+
+.remify-footer-links {
+
+  width: 100%;
+
+  max-width: 600px;
+
+  margin-left: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.remify-footer-link-section {
+
+  width: 100%;
+
+  border-bottom: 1px solid rgba(255,255,255,.12);
+
+}
+
+
+/* =========================================================
+   TRIGGER
+   ========================================================= */
+
+.remify-footer-link-trigger {
+
+  width: 100%;
+
+  min-height: 72px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  text-align: left;
+
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.remify-footer-link-trigger > span:first-child {
+
+  color: rgba(255,255,255,.75);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: .2em;
+
+  transition: color .3s ease;
+
+}
+
+
+.remify-footer-link-trigger:hover > span:first-child {
+
+  color: #fff;
+
+}
+
+
+/* =========================================================
+   ARROW CIRCLE
+   ========================================================= */
+
+.remify-footer-link-arrow {
+
+  width: 32px;
+
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,.18);
+
+  border-radius: 50%;
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    background .3s ease,
+    border-color .3s ease;
+
+}
+
+
+.remify-footer-link-arrow svg {
+
+  width: 13px;
+
+  height: 13px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.6;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+/* =========================================================
+   HOVER ARROW
+   ========================================================= */
+
+.remify-footer-link-trigger:hover
+.remify-footer-link-arrow {
+
+  border-color: rgba(255,255,255,.4);
+
+  background: rgba(255,255,255,.06);
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.remify-footer-link-content {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform: translateY(-8px);
+
+  transition:
+    max-height .45s cubic-bezier(.22,1,.36,1),
+    opacity .3s ease,
+    transform .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+/* =========================================================
+   OPEN
+   ========================================================= */
+
+.remify-footer-link-section.is-open
+.remify-footer-link-content {
+
+  max-height: 300px;
+
+  padding-bottom: 25px;
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   OPEN ARROW
+   ========================================================= */
+
+.remify-footer-link-section.is-open
+.remify-footer-link-arrow {
+
+  transform: rotate(180deg);
+
+  background: rgba(255,255,255,.08);
+
+  border-color: rgba(255,255,255,.3);
+
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.remify-footer-link-content a {
+
+  position: relative;
+
+  color: rgba(255,255,255,.55);
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
+
+}
+
+
+.remify-footer-link-content a:hover {
+
+  color: #fff;
+
+  transform: translateX(5px);
+
+}
+
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
+.remify-footer-link-content
+.remify-footer-location {
+
+  color: rgba(255,255,255,.3);
+
+  font-size: 11px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .remify-footer-links {
+
+    max-width: none;
+
+    margin-left: 0;
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .remify-footer-links {
+
+    width: 100%;
+
+  }
+
+
+  .remify-footer-link-trigger {
+
+    min-height: 68px;
+
+  }
+
+
+  .remify-footer-link-trigger > span:first-child {
+
+    font-size: 9px;
+
+  }
+
+
+  .remify-footer-link-arrow {
+
+    width: 30px;
+
+    height: 30px;
+
+  }
+
+
+  .remify-footer-link-content a {
+
+    font-size: 12px;
+
+  }
 
 }
 

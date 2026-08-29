@@ -820,6 +820,59 @@
 
 <!-- Cursor + Scroll -->
 <script src="./combined.min.js"></script>
+<script>
 
+document
+  .querySelectorAll(".remify-footer-link-trigger")
+  .forEach(trigger => {
+
+    trigger.addEventListener("click", function () {
+
+      const section =
+        this.closest(".remify-footer-link-section");
+
+      const currentlyOpen =
+        section.classList.contains("is-open");
+
+
+      /* Close every section */
+
+      document
+        .querySelectorAll(".remify-footer-link-section")
+        .forEach(item => {
+
+          item.classList.remove("is-open");
+
+          const button =
+            item.querySelector(".remify-footer-link-trigger");
+
+          if (button) {
+            button.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+          }
+
+        });
+
+
+      /* Open the clicked section */
+
+      if (!currentlyOpen) {
+
+        section.classList.add("is-open");
+
+        this.setAttribute(
+          "aria-expanded",
+          "true"
+        );
+
+      }
+
+    });
+
+  });
+
+</script>
 </body>
 </html>

@@ -1272,6 +1272,332 @@ body.nav-open {
 
 }
 
+/* =========================================================
+   REMIFY — FOOTER DROPDOWN LINKS
+   NEW VERSION
+   ========================================================= */
+
+.remify-footer-links {
+
+  width: 100%;
+
+  max-width: 600px;
+
+  margin-left: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.remify-footer-link-section {
+
+  width: 100%;
+
+  border-bottom: 1px solid rgba(255,255,255,.12);
+
+}
+
+
+/* =========================================================
+   TRIGGER
+   ========================================================= */
+
+.remify-footer-link-trigger {
+
+  width: 100%;
+
+  min-height: 72px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  text-align: left;
+
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.remify-footer-link-trigger > span:first-child {
+
+  color: rgba(255,255,255,.75);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: .2em;
+
+  transition: color .3s ease;
+
+}
+
+
+.remify-footer-link-trigger:hover > span:first-child {
+
+  color: #fff;
+
+}
+
+
+/* =========================================================
+   ARROW CIRCLE
+   ========================================================= */
+
+.remify-footer-link-arrow {
+
+  width: 32px;
+
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,.18);
+
+  border-radius: 50%;
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    background .3s ease,
+    border-color .3s ease;
+
+}
+
+
+.remify-footer-link-arrow svg {
+
+  width: 13px;
+
+  height: 13px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.6;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+/* =========================================================
+   HOVER ARROW
+   ========================================================= */
+
+.remify-footer-link-trigger:hover
+.remify-footer-link-arrow {
+
+  border-color: rgba(255,255,255,.4);
+
+  background: rgba(255,255,255,.06);
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.remify-footer-link-content {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform: translateY(-8px);
+
+  transition:
+    max-height .45s cubic-bezier(.22,1,.36,1),
+    opacity .3s ease,
+    transform .45s cubic-bezier(.22,1,.36,1);
+
+}
+
+
+/* =========================================================
+   OPEN
+   ========================================================= */
+
+.remify-footer-link-section.is-open
+.remify-footer-link-content {
+
+  max-height: 300px;
+
+  padding-bottom: 25px;
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   OPEN ARROW
+   ========================================================= */
+
+.remify-footer-link-section.is-open
+.remify-footer-link-arrow {
+
+  transform: rotate(180deg);
+
+  background: rgba(255,255,255,.08);
+
+  border-color: rgba(255,255,255,.3);
+
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.remify-footer-link-content a {
+
+  position: relative;
+
+  color: rgba(255,255,255,.55);
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
+
+}
+
+
+.remify-footer-link-content a:hover {
+
+  color: #fff;
+
+  transform: translateX(5px);
+
+}
+
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
+.remify-footer-link-content
+.remify-footer-location {
+
+  color: rgba(255,255,255,.3);
+
+  font-size: 11px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .remify-footer-links {
+
+    max-width: none;
+
+    margin-left: 0;
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .remify-footer-links {
+
+    width: 100%;
+
+  }
+
+
+  .remify-footer-link-trigger {
+
+    min-height: 68px;
+
+  }
+
+
+  .remify-footer-link-trigger > span:first-child {
+
+    font-size: 9px;
+
+  }
+
+
+  .remify-footer-link-arrow {
+
+    width: 30px;
+
+    height: 30px;
+
+  }
+
+
+  .remify-footer-link-content a {
+
+    font-size: 12px;
+
+  }
+
+}
 
 /* =========================================================
    NAVIGATION
