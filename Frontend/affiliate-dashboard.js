@@ -23,7 +23,7 @@ async function loadAffiliateDashboard() {
       localStorage.getItem("remifyAffiliateToken");
 
     if (!token) {
-      window.location.href = "affiliate-login.html";
+      window.location.href = "partner-login.html";
       return;
     }
 
@@ -62,7 +62,7 @@ async function loadAffiliateDashboard() {
     );
 
     window.location.href =
-      "affiliate-login.html";
+      "partner-login.html";
 
   }
 
@@ -92,7 +92,7 @@ async function loadAffiliatePayouts() {
 
     if (!token) {
       window.location.href =
-        "affiliate-login.html";
+        "partner-login.html";
       return;
     }
 
@@ -633,7 +633,7 @@ function logoutAffiliate() {
   );
 
   window.location.replace(
-    "affiliate-login.html"
+    "partner-login.html"
   );
 
 }
