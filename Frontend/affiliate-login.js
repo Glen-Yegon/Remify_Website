@@ -164,7 +164,7 @@ loginForm.addEventListener(
          ===================================================== */
 
       window.location.href =
-        "affiliate-dashboard.html";
+        "partner-dashboard.html";
 
 
     } catch (error) {
