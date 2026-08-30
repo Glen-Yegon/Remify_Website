@@ -932,19 +932,35 @@ function openAffiliateModal(
     </div>
 
 
-    <div class="modal-detail">
+    <div class="modal-detail modal-detail-commission">
 
       <span>
         Commission rate
       </span>
 
-      <strong>
-        ${
-          Number(
-            affiliate.commissionRate || 0
-          ) * 100
-        }%
-      </strong>
+      <div class="commission-rate-edit">
+
+        <input
+          type="number"
+          id="commissionRateInput"
+          min="1"
+          max="100"
+          step="1"
+          value="${Number(
+            (affiliate.commissionRate || 0.20) * 100
+          )}"
+        >
+
+        <span>%</span>
+
+        <button
+          type="button"
+          id="saveCommissionRateButton"
+        >
+          Save
+        </button>
+
+      </div>
 
     </div>
 
@@ -996,6 +1012,27 @@ function openAffiliateModal(
       affiliate.status === "rejected"
         ? "none"
         : "block";
+
+  }
+
+
+  const saveCommissionButton =
+    document.getElementById(
+      "saveCommissionRateButton"
+    );
+
+  if (saveCommissionButton) {
+
+    saveCommissionButton.addEventListener(
+      "click",
+      () => {
+
+        updateCommissionRate(
+          affiliate.affiliateId
+        );
+
+      }
+    );
 
   }
 
@@ -1092,6 +1129,35 @@ async function updateAffiliateStatus(
     }
 
 
+    const commissionInput =
+      document.getElementById(
+        "commissionRateInput"
+      );
+
+    const requestBody = {};
+
+    if (
+      action === "approve" &&
+      commissionInput
+    ) {
+
+      const percentValue =
+        Number(commissionInput.value);
+
+      if (
+        Number.isFinite(percentValue) &&
+        percentValue > 0 &&
+        percentValue <= 100
+      ) {
+
+        requestBody.commissionRate =
+          percentValue / 100;
+
+      }
+
+    }
+
+
     const response =
       await fetch(
         endpoint,
@@ -1107,7 +1173,9 @@ async function updateAffiliateStatus(
             "Content-Type":
               "application/json"
 
-          }
+          },
+
+          body: JSON.stringify(requestBody)
 
         }
       );
@@ -1198,6 +1266,130 @@ showSuccess(
 
 }
 
+
+/* =========================================================
+   UPDATE COMMISSION RATE
+   ========================================================= */
+
+async function updateCommissionRate(
+  affiliateId
+) {
+
+  const token =
+    localStorage.getItem(
+      "remifyOwnerToken"
+    );
+
+  if (!token) {
+    window.location.href = "owner-login.html";
+    return;
+  }
+
+  const input =
+    document.getElementById(
+      "commissionRateInput"
+    );
+
+  if (!input) {
+    return;
+  }
+
+  const percentValue =
+    Number(input.value);
+
+  if (
+    !Number.isFinite(percentValue) ||
+    percentValue <= 0 ||
+    percentValue > 100
+  ) {
+
+    showError(
+      "Please enter a valid commission rate between 1 and 100."
+    );
+
+    return;
+
+  }
+
+  const commissionRate =
+    percentValue / 100;
+
+  const button =
+    document.getElementById(
+      "saveCommissionRateButton"
+    );
+
+  const originalText =
+    button ? button.textContent : "";
+
+  try {
+
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Saving...";
+    }
+
+    const response =
+      await fetch(
+        `${API_BASE_URL}/api/owner/affiliates/${encodeURIComponent(
+          affiliateId
+        )}/commission`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ commissionRate })
+        }
+      );
+
+    const data = await response.json();
+
+    if (
+      response.status === 401 ||
+      response.status === 403
+    ) {
+      localStorage.removeItem("remifyOwnerToken");
+      window.location.href = "owner-login.html";
+      return;
+    }
+
+    if (!response.ok || !data.success) {
+      throw new Error(
+        data.message || "Unable to update commission rate."
+      );
+    }
+
+    showSuccess(
+      data.message ||
+      "Commission rate updated successfully."
+    );
+
+    await loadAffiliateData();
+
+  } catch (error) {
+
+    console.error(
+      "Update commission rate error:",
+      error
+    );
+
+    showError(
+      error.message ||
+      "Unable to update commission rate."
+    );
+
+  } finally {
+
+    if (button) {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+
+  }
+
+}
 
 
 /* =========================================================
