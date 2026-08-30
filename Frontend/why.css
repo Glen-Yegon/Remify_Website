@@ -6059,16 +6059,13 @@ background: #5b2d82;
 
 .story-idea-image img {
   display: block;
-
   width: 100%;
   height: 100%;
-
+  max-height: 800px;
   object-fit: cover;
   object-position: center;
-
   transition: transform 1s cubic-bezier(.16, 1, .3, 1);
 }
-
 
 /* Subtle image movement */
 
@@ -6236,6 +6233,7 @@ background: #5b2d82;
 
   width: 100%;
   height: 100%;
+    max-height: 800px;
   min-height: 720px;
 
   overflow: hidden;
@@ -6974,7 +6972,7 @@ background: #5b2d82;
   color: #ffffff;
 
   /* Your background image */
-  background-image: url("images/hero-desk2.webp");
+  background-image: url("images/DSC00686.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

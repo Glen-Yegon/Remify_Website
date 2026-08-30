@@ -143,7 +143,7 @@ a {
 
   min-height: calc(100vh - 82px);
 
-  padding: 90px 30px 120px;
+  padding: 90px 30px 220px;
 }
 
 
@@ -1156,10 +1156,14 @@ a {
   }
 
 
+  /* =====================================================
+     CART PAGE
+     ===================================================== */
+
   .cart-page {
     min-height: calc(100vh - 70px);
 
-    padding: 50px 8px 80px;
+    padding: 50px 8px 180px;
   }
 
 
@@ -1167,6 +1171,10 @@ a {
     width: 100%;
   }
 
+
+  /* =====================================================
+     HEADER
+     ===================================================== */
 
   .cart-header {
     margin-bottom: 32px;
@@ -1198,9 +1206,9 @@ a {
   }
 
 
-  /* =====================================
+  /* =====================================================
      CART LAYOUT
-     ===================================== */
+     ===================================================== */
 
   .cart-layout {
     display: flex;
@@ -1211,9 +1219,9 @@ a {
   }
 
 
-  /* =====================================
+  /* =====================================================
      CART ITEMS
-     ===================================== */
+     ===================================================== */
 
   .cart-item {
     grid-template-columns: 115px minmax(0, 1fr);
@@ -1268,9 +1276,9 @@ a {
   }
 
 
-  /* =====================================
+  /* =====================================================
      QUANTITY
-     ===================================== */
+     ===================================================== */
 
   .cart-quantity {
     min-height: 34px;
@@ -1302,9 +1310,9 @@ a {
   }
 
 
-  /* =====================================
+  /* =====================================================
      SUMMARY
-     ===================================== */
+     ===================================================== */
 
   .cart-summary {
     position: static;
@@ -1342,9 +1350,9 @@ a {
   }
 
 
-  /* =====================================
+  /* =====================================================
      EMPTY CART
-     ===================================== */
+     ===================================================== */
 
   .cart-empty {
     padding: 55px 18px;
@@ -1361,91 +1369,336 @@ a {
   }
 
 
-  /* =====================================
-     DISCOVER
-     ===================================== */
+  /* =====================================================
+     FIXED — EXPLORE MORE
+     ===================================================== */
 
   .cart-discover-section {
-    margin-top: 70px;
+    position: fixed;
 
-    padding-top: 50px;
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 10px 10px 12px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    box-shadow:
+      0 -6px 24px rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
   }
 
 
-  .cart-discover-header {
-    align-items: flex-end;
+  /* =====================================================
+     EXPLORE HEADER
+     ===================================================== */
 
-    margin-bottom: 22px;
+  .cart-discover-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 9px !important;
+  }
+
+
+  .cart-discover-header .cart-eyebrow {
+    margin-bottom: 4px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.15em;
   }
 
 
   .cart-discover-header h2 {
-    font-size: 29px;
+    margin: 0;
+
+    font-size: 17px !important;
+
+    line-height: 1;
+
+    letter-spacing: -0.025em;
   }
 
 
+  /* =====================================================
+     EXPLORE CONTROLS
+     ===================================================== */
+
   .cart-discover-controls {
-    gap: 5px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    flex-shrink: 0;
   }
 
 
   .cart-discover-arrow {
-    width: 38px;
+    display: flex;
 
-    height: 38px;
+    align-items: center;
 
-    font-size: 15px;
+    justify-content: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    padding: 0;
+
+    font-size: 12px;
   }
 
+
+  /* =====================================================
+     EXPLORE VIEWPORT
+     ===================================================== */
+
+  .cart-discover-viewport {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+
+  /* =====================================================
+     EXPLORE TRACK
+     ===================================================== */
 
   .cart-discover-track {
-    gap: 10px;
+    display: flex;
+
+    flex-direction: row;
+
+    flex-wrap: nowrap;
+
+    gap: 8px;
+
+    width: max-content;
   }
 
+
+  /* =====================================================
+     HORIZONTAL PRODUCT CARD
+     ===================================================== */
 
   .cart-discover-card {
-    width: calc((100vw - 26px) / 2);
+    display: grid;
 
-    flex-basis: calc((100vw - 26px) / 2);
+    grid-template-columns: 72px minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 9px;
+
+    width: 205px;
+
+    flex: 0 0 205px;
+
+    background: transparent;
   }
 
+
+  /* =====================================================
+     PRODUCT IMAGE
+     ===================================================== */
 
   .cart-discover-image {
-    height: 220px;
+    display: block;
+
+    width: 72px;
+
+    height: 72px;
+
+    overflow: hidden;
+
+    background: #ece9ed;
   }
 
 
+  .cart-discover-image img {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+
+  /* =====================================================
+     PRODUCT INFORMATION
+     ===================================================== */
+
   .cart-discover-info {
-    padding-top: 13px;
+    min-width: 0;
+
+    padding-top: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
   }
 
 
   .cart-discover-name {
-    font-size: 16px;
+    display: block;
+
+    width: 100%;
+
+    margin: 0 0 3px;
+
+    color: #171717;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
   }
 
 
   .cart-discover-size {
-    font-size: 10px;
+    margin: 0 0 3px;
+
+    color: #777777;
+
+    font-size: 8px;
+
+    line-height: 1.2;
   }
 
 
   .cart-discover-price {
-    font-size: 12px;
+    margin: 0 0 6px;
 
-    margin-bottom: 11px;
+    color: #171717;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
   }
 
 
-  .cart-discover-add {
-    min-height: 42px;
+  /* =====================================================
+     ADD TO CART
+     ===================================================== */
 
-    font-size: 10px;
+  .cart-discover-add {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 27px;
+
+    padding: 0 7px;
+
+    background: #5b2d82;
+
+    color: #ffffff;
+
+    font-size: 8px;
+
+    font-weight: 700;
+  }
+
+
+  /* =====================================================
+     DISCOVER SECTION — MOBILE SCROLL
+     ===================================================== */
+
+  .cart-discover-viewport {
+    overflow: hidden;
+  }
+
+
+  /* =====================================================
+     SMALL PHONE
+     ===================================================== */
+
+  @media (max-width: 380px) {
+
+    .cart-discover-card {
+      grid-template-columns: 64px minmax(0, 1fr);
+
+      width: 185px;
+
+      flex: 0 0 185px;
+
+      gap: 8px;
+    }
+
+
+    .cart-discover-image {
+      width: 64px;
+
+      height: 64px;
+    }
+
+
+    .cart-discover-name {
+      font-size: 11px;
+    }
+
+
+    .cart-discover-size {
+      font-size: 7px;
+    }
+
+
+    .cart-discover-price {
+      font-size: 8px;
+
+      margin-bottom: 5px;
+    }
+
+
+    .cart-discover-add {
+      min-height: 25px;
+
+      font-size: 7px;
+    }
+
   }
 
 }
-
-
 /* =========================================================
    VERY SMALL PHONES
    ========================================================= */
@@ -1498,15 +1751,287 @@ a {
   }
 
 
-  .cart-discover-card {
-    width: calc((100vw - 19px) / 2);
+.cart-discover-card {
+  display: grid;
 
-    flex-basis: calc((100vw - 19px) / 2);
-  }
+  grid-template-columns: 60px minmax(0, 1fr);
+
+  gap: 8px;
+
+  width: 180px;
+
+  flex: 0 0 180px;
+}
 
 
-  .cart-discover-image {
-    height: 190px;
-  }
+.cart-discover-image {
+  width: 60px;
 
+  height: 60px;
+}
+
+}
+
+
+/* =========================================================
+   FIXED EXPLORE MORE — DESKTOP BOTTOM TRAY
+   ========================================================= */
+
+.cart-discover-section {
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+
+  margin: 0;
+
+  padding: 12px 30px 14px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  box-shadow:
+    0 -8px 30px rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   TRAY HEADER
+   ========================================================= */
+
+.cart-discover-section .cart-discover-header {
+  max-width: 1180px;
+
+  margin: 0 auto 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.cart-discover-section .cart-discover-header .cart-eyebrow {
+  margin-bottom: 4px;
+
+  font-size: 8px;
+
+  line-height: 1.1;
+}
+
+
+.cart-discover-section .cart-discover-header h2 {
+  margin: 0;
+
+  font-size: 18px;
+
+  line-height: 1;
+
+  letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.cart-discover-section .cart-discover-controls {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+
+.cart-discover-section .cart-discover-arrow {
+  width: 32px;
+
+  height: 32px;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   VIEWPORT
+   ========================================================= */
+
+.cart-discover-section .cart-discover-viewport {
+  width: 100%;
+
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   PRODUCT TRACK
+   ========================================================= */
+
+.cart-discover-section .cart-discover-track {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  width: max-content;
+}
+
+
+/* =========================================================
+   MEDIUM DESKTOP PRODUCT CARD
+   ========================================================= */
+
+.cart-discover-section .cart-discover-card {
+
+  display: grid;
+
+  grid-template-columns: 82px minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 12px;
+
+  width: 235px;
+
+  flex: 0 0 235px;
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   MEDIUM PRODUCT IMAGE
+   ========================================================= */
+
+.cart-discover-section .cart-discover-image {
+
+  display: block;
+
+  width: 82px;
+
+  height: 82px;
+
+  overflow: hidden;
+
+  background: #ece9ed;
+}
+
+
+.cart-discover-section .cart-discover-image img {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+
+.cart-discover-section .cart-discover-card:hover
+.cart-discover-image img {
+
+  transform: scale(1.025);
+}
+
+
+/* =========================================================
+   PRODUCT INFORMATION
+   ========================================================= */
+
+.cart-discover-section .cart-discover-info {
+
+  min-width: 0;
+
+  padding-top: 0;
+}
+
+
+.cart-discover-section .cart-discover-name {
+
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 4px;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 1.1;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+.cart-discover-section .cart-discover-size {
+
+  margin: 0 0 4px;
+
+  font-size: 9px;
+
+  line-height: 1.2;
+}
+
+
+.cart-discover-section .cart-discover-price {
+
+  margin: 0 0 6px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   ADD TO CART
+   ========================================================= */
+
+.cart-discover-section .cart-discover-add {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 30px;
+
+  padding: 0 8px;
+
+  font-size: 9px;
+
+  font-weight: 700;
 }
