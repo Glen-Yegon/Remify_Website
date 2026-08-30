@@ -49,8 +49,8 @@
       "source": "/favicon-32x32.png",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+        "key": "Cache-Control",
+        "value": "public, max-age=31536000, immutable"
         }
       ]
     },
@@ -73,6 +73,85 @@
       ]
     }
   ],
+
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/products.html",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/why-remify.html",
+      "destination": "/why-remify",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/checkout.html",
+      "destination": "/checkout",
+      "permanent": true
+    },
+    {
+      "source": "/confirmation.html",
+      "destination": "/confirmation",
+      "permanent": true
+    },
+    {
+      "source": "/affiliate-register.html",
+      "destination": "/affiliate",
+      "permanent": true
+    },
+    {
+      "source": "/affiliate-login.html",
+      "destination": "/affiliate-login",
+      "permanent": true
+    },
+    {
+      "source": "/affiliate-dashboard.html",
+      "destination": "/affiliate-dashboard",
+      "permanent": true
+    },
+    {
+      "source": "/owner-login.html",
+      "destination": "/owner-login",
+      "permanent": true
+    },
+    {
+      "source": "/owner-dashboard.html",
+      "destination": "/owner-dashboard",
+      "permanent": true
+    },
+    {
+      "source": "/owner-affiliates.html",
+      "destination": "/owner-affiliates",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions.html",
+      "destination": "/terms-and-conditions",
+      "permanent": true
+    },
+    {
+      "source": "/shipping.html",
+      "destination": "/shipping",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "/privacy-policy",
+      "permanent": true
+    }
+  ],
+
   "rewrites": [
     {
       "source": "/",
