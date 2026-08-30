@@ -1160,12 +1160,11 @@ a {
      CART PAGE
      ===================================================== */
 
-  .cart-page {
-    min-height: calc(100vh - 70px);
+ .cart-page {
+  min-height: calc(100vh - 70px);
 
-    padding: 50px 8px 180px;
-  }
-
+  padding: 8px 8px 180px;
+}
 
   .cart-container {
     width: 100%;
@@ -1504,38 +1503,38 @@ a {
      HORIZONTAL PRODUCT CARD
      ===================================================== */
 
-  .cart-discover-card {
-    display: grid;
+.cart-discover-card {
+  display: grid;
 
-    grid-template-columns: 72px minmax(0, 1fr);
+  grid-template-columns: 62px minmax(0, 1fr);
 
-    align-items: center;
+  align-items: center;
 
-    gap: 9px;
+  gap: 8px;
 
-    width: 205px;
+  width: 185px;
 
-    flex: 0 0 205px;
+  flex: 0 0 185px;
 
-    background: transparent;
-  }
+  background: transparent;
+}
 
 
   /* =====================================================
      PRODUCT IMAGE
      ===================================================== */
 
-  .cart-discover-image {
-    display: block;
+.cart-discover-image {
+  display: block;
 
-    width: 72px;
+  width: 62px;
 
-    height: 72px;
+  height: 62px;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    background: #ece9ed;
-  }
+  background: #ece9ed;
+}
 
 
   .cart-discover-image img {
@@ -1566,79 +1565,74 @@ a {
   }
 
 
-  .cart-discover-name {
-    display: block;
+ .cart-discover-name {
+  display: block;
 
-    width: 100%;
+  width: 100%;
 
-    margin: 0 0 3px;
+  margin: 0 0 3px;
 
-    color: #171717;
+  color: #171717;
 
-    font-size: 12px;
+  font-size: 11px;
 
-    font-weight: 400;
+  font-weight: 400;
 
-    line-height: 1.1;
+  line-height: 1.1;
 
-    white-space: nowrap;
+  white-space: nowrap;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    text-overflow: ellipsis;
-  }
-
-
-  .cart-discover-size {
-    margin: 0 0 3px;
-
-    color: #777777;
-
-    font-size: 8px;
-
-    line-height: 1.2;
-  }
+  text-overflow: ellipsis;
+}
 
 
-  .cart-discover-price {
-    margin: 0 0 6px;
+.cart-discover-size {
+  margin: 0 0 3px;
 
-    color: #171717;
+  color: #777777;
 
-    font-size: 9px;
+  font-size: 7px;
 
-    font-weight: 700;
-
-    line-height: 1.2;
-  }
+  line-height: 1.2;
+}
 
 
-  /* =====================================================
-     ADD TO CART
-     ===================================================== */
+.cart-discover-price {
+  margin: 0 0 5px;
 
-  .cart-discover-add {
-    display: flex;
+  color: #171717;
 
-    align-items: center;
+  font-size: 8px;
 
-    justify-content: center;
+  font-weight: 700;
 
-    width: 100%;
+  line-height: 1.2;
+}
 
-    min-height: 27px;
 
-    padding: 0 7px;
+.cart-discover-add {
+  display: flex;
 
-    background: #5b2d82;
+  align-items: center;
 
-    color: #ffffff;
+  justify-content: center;
 
-    font-size: 8px;
+  width: 100%;
 
-    font-weight: 700;
-  }
+  min-height: 25px;
 
+  padding: 0 6px;
+
+  background: #5b2d82;
+
+  color: #ffffff;
+
+  font-size: 7px;
+
+  font-weight: 700;
+}
 
   /* =====================================================
      DISCOVER SECTION — MOBILE SCROLL
@@ -1655,22 +1649,24 @@ a {
 
   @media (max-width: 380px) {
 
-    .cart-discover-card {
-      grid-template-columns: 64px minmax(0, 1fr);
+.cart-discover-card {
+  display: grid;
 
-      width: 185px;
+  grid-template-columns: 55px minmax(0, 1fr);
 
-      flex: 0 0 185px;
+  gap: 7px;
 
-      gap: 8px;
-    }
+  width: 170px;
+
+  flex: 0 0 170px;
+}
 
 
-    .cart-discover-image {
-      width: 64px;
+.cart-discover-image {
+  width: 55px;
 
-      height: 64px;
-    }
+  height: 55px;
+}
 
 
     .cart-discover-name {
