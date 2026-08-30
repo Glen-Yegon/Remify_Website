@@ -815,6 +815,13 @@ padding: 5px 7px 5px 14px;
   }
 }
 
+/* Show only on mobile */
+@media (min-width: 900px) {
+  .contact-menu-toggle {
+    display: none;
+  }
+}
+
 /* =========================================================
    REMIFY — CONTACT MOBILE MENU
    ========================================================= */
