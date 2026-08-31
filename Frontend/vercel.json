@@ -106,18 +106,18 @@
       "permanent": true
     },
     {
-      "source": "/affiliate-register.html",
-      "destination": "/affiliate",
+      "source": "/partner-register.html",
+      "destination": "/partner",
       "permanent": true
     },
     {
-      "source": "/affiliate-login.html",
-      "destination": "/affiliate-login",
+      "source": "/partner-login.html",
+      "destination": "/partner-login",
       "permanent": true
     },
     {
-      "source": "/affiliate-dashboard.html",
-      "destination": "/affiliate-dashboard",
+      "source": "/partner-dashboard.html",
+      "destination": "/partner-dashboard",
       "permanent": true
     },
     {

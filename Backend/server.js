@@ -1171,6 +1171,8 @@ app.post(
       const affiliateId =
         String(req.params.affiliateId || "").trim();
 
+      const { commissionRate } = req.body;
+
 
       /* =========================================
          VALIDATION
@@ -1262,6 +1264,28 @@ app.post(
 
 
       /* =========================================
+         COMMISSION RATE
+         ========================================= */
+
+      let finalCommissionRate =
+        affiliate.commissionRate ?? 0.20;
+
+      const parsedApprovalRate =
+        Number(commissionRate);
+
+      if (
+        Number.isFinite(parsedApprovalRate) &&
+        parsedApprovalRate > 0 &&
+        parsedApprovalRate <= 1
+      ) {
+
+        finalCommissionRate =
+          parsedApprovalRate;
+
+      }
+
+
+      /* =========================================
          UPDATE AFFILIATE
          ========================================= */
 
@@ -1270,7 +1294,10 @@ app.post(
         status:
           "approved",
 
-        approvedAt
+        approvedAt,
+
+        commissionRate:
+          finalCommissionRate
 
       });
 
@@ -1366,6 +1393,95 @@ app.post(
 
   }
 );
+
+/* =========================================================
+   OWNER — UPDATE AFFILIATE COMMISSION RATE
+   ========================================================= */
+
+app.post(
+  "/api/owner/affiliates/:affiliateId/commission",
+  authenticateOwner,
+  async (req, res) => {
+
+    try {
+
+      const affiliateId =
+        String(req.params.affiliateId || "").trim();
+
+      const { commissionRate } = req.body;
+
+      if (!affiliateId) {
+
+        return res.status(400).json({
+          success: false,
+          message: "Affiliate ID is required."
+        });
+
+      }
+
+      const parsedRate =
+        Number(commissionRate);
+
+      if (
+        !Number.isFinite(parsedRate) ||
+        parsedRate <= 0 ||
+        parsedRate > 1
+      ) {
+
+        return res.status(400).json({
+          success: false,
+          message:
+            "Commission rate must be between 1% and 100%."
+        });
+
+      }
+
+      const affiliateRef =
+        db.collection("affiliates").doc(affiliateId);
+
+      const affiliateSnapshot =
+        await affiliateRef.get();
+
+      if (!affiliateSnapshot.exists) {
+
+        return res.status(404).json({
+          success: false,
+          message:
+            "Affiliate account could not be found."
+        });
+
+      }
+
+      await affiliateRef.update({
+        commissionRate: parsedRate
+      });
+
+      return res.json({
+        success: true,
+        message:
+          "Commission rate updated successfully.",
+        commissionRate: parsedRate
+      });
+
+    } catch (error) {
+
+      console.error(
+        "Update commission rate error:",
+        error
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "We couldn't update the commission rate."
+      });
+
+    }
+
+  }
+);
+
+
 /* =========================================================
    OWNER — REMOVE AFFILIATE
    ========================================================= */
@@ -1553,6 +1669,7 @@ app.post(
 
   }
 );
+
 
 /* =========================================================
    15I. OWNER DASHBOARD
