@@ -49,8 +49,8 @@
       "source": "/favicon-32x32.png",
       "headers": [
         {
-        "key": "Cache-Control",
-        "value": "public, max-age=31536000, immutable"
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
@@ -105,6 +105,7 @@
       "destination": "/confirmation",
       "permanent": true
     },
+
     {
       "source": "/partner-register.html",
       "destination": "/partner",
@@ -120,6 +121,7 @@
       "destination": "/partner-dashboard",
       "permanent": true
     },
+
     {
       "source": "/owner-login.html",
       "destination": "/owner-login",
@@ -135,6 +137,7 @@
       "destination": "/owner-affiliates",
       "permanent": true
     },
+
     {
       "source": "/terms-and-conditions.html",
       "destination": "/terms-and-conditions",
@@ -177,18 +180,20 @@
       "source": "/confirmation",
       "destination": "/confirmation.html"
     },
+
     {
-      "source": "/affiliate",
-      "destination": "/affiliate-register.html"
+      "source": "/partner",
+      "destination": "/partner-register.html"
     },
     {
-      "source": "/affiliate-login",
-      "destination": "/affiliate-login.html"
+      "source": "/partner-login",
+      "destination": "/partner-login.html"
     },
     {
-      "source": "/affiliate-dashboard",
-      "destination": "/affiliate-dashboard.html"
+      "source": "/partner-dashboard",
+      "destination": "/partner-dashboard.html"
     },
+
     {
       "source": "/owner-login",
       "destination": "/owner-login.html"
@@ -201,6 +206,7 @@
       "source": "/owner-affiliates",
       "destination": "/owner-affiliates.html"
     },
+
     {
       "source": "/terms-and-conditions",
       "destination": "/terms-and-conditions.html"
